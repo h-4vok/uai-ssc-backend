@@ -18,6 +18,7 @@ namespace SSC.Business
 
         public IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
         {
+            var data = DependencyResolver.Obj.Resolve<IUserData>();
             throw new NotImplementedException();
         }
 

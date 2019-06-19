@@ -11,5 +11,6 @@ namespace SSC.Common.Interfaces
     public interface IUserBusiness
     {
         AuthenticationResponseViewModel Authenticate(string userName, string password);
+        IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DBNostalgia;
 using SSC.Common;
 using SSC.Common.Interfaces;
+using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,11 @@ namespace SSC.Data
             return null;
         }
 
+        private UserReportViewModel FetchUserReportViewModel(IDataReader reader)
+        {
+            return null;
+        }
+
         private User ToUser(IEnumerable<UserReportRow> records)
         {
             return null;
@@ -73,6 +79,17 @@ namespace SSC.Data
                     .And("count", count)
                     .And("block", block)
                 );
+        }
+
+        public IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
+        {
+            return uow.GetDirect(
+                "sp_User_getReport",
+                this.FetchUserReportViewModel,
+                ParametersBuilder
+                    .With("roles", selectedRoles)
+                    .And("permissions", selectedPermissions)
+                ).ToList();
         }
     }
 }
