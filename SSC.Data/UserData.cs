@@ -91,5 +91,37 @@ namespace SSC.Data
                     .And("permissions", selectedPermissions)
                 ).ToList();
         }
+
+        public void Create(User model)
+        {
+            uow.Run(() =>
+            {
+                model.Id = uow.Scalar(
+                    "sp_User_create",
+                    ParametersBuilder.With("userName", model.UserName)
+                        .And("password", model.Password)
+                        .And("clientCompanyId", model.ClientCompany?.Id)
+                    ).AsInt();
+
+                model.Roles.ForEach(role =>
+                {
+                    uow.NonQuery("sp_UserRole_create",
+                        ParametersBuilder
+                            .With("userId", model.Id)
+                            .And("roleId", role.Id)
+                        );
+                });
+            });
+        }
+
+        public bool Exists(string userName)
+        {
+            return this.uow.ScalarDirect("sp_User_exists", ParametersBuilder.With("userName", userName)).AsBool();
+        }
+
+        public bool IsInvited(string userName)
+        {
+            return this.uow.ScalarDirect("sp_User_IsInvited", ParametersBuilder.With("userName", userName)).AsBool();
+        }
     }
 }

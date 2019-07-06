@@ -1,6 +1,7 @@
 ﻿using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,17 @@ namespace SSC.Business
         }
 
         private void RegisterLoginFailure(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(User model)
+        {
+            var data = DependencyResolver.Obj.Resolve<IUserData>();
+            throw new NotImplementedException();
+        }
+
+        public string ValidateNewUserSignUp(string userName, string password)
         {
             throw new NotImplementedException();
         }

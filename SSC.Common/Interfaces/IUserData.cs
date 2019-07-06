@@ -13,5 +13,8 @@ namespace SSC.Common.Interfaces
         User Get(string userName);
         IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
         void RegisterLoginFailure(string userName, int count, bool block);
+        void Create(User model);
+        bool Exists(string userName);
+        bool IsInvited(string userName); 
     }
 }

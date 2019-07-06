@@ -1,5 +1,6 @@
 ﻿using SSC.Common;
 using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace SSC.Common.Interfaces
     {
         AuthenticationResponseViewModel Authenticate(string userName, string password);
         IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
+        void Create(User model);
+        string ValidateNewUserSignUp(string userName, string password);
     }
 }
