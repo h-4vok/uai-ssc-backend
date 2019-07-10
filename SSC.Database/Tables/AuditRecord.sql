@@ -1,12 +1,17 @@
 ﻿CREATE TABLE [dbo].[AuditRecord]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-	UserName NVARCHAR(200) NOT NULL,
+	UserReference NVARCHAR(200) NOT NULL,
 	Message NVARCHAR(MAX) NOT NULL,
 	AuditTypeId INT NOT NULL,
+	ClientId INT NULL,
+	ErrorType NVARCHAR(500) NULL,
+	ErrorSource NVARCHAR(500) NULL,
+	StackTrace NVARCHAR(MAX) NULL,
 
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT (GETDATE()), 
-    FOREIGN KEY (AuditTypeId) REFERENCES AuditType
+    FOREIGN KEY (AuditTypeId) REFERENCES AuditType,
+	FOREIGN KEY (ClientId) REFERENCES ClientCompany
 )
 
 GO
@@ -26,7 +31,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1type = N'TABLE',
     @level1name = N'AuditRecord',
     @level2type = N'COLUMN',
-    @level2name = N'UserName'
+    @level2name = N'UserReference'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Mensaje que se registró.',

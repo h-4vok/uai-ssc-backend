@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SSC.Api.ViewModels;
+namespace SSC.Api.ViewModels
 {
     public class ResponseViewModel
     {

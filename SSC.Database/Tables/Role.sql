@@ -3,6 +3,7 @@
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
 	[Name] NVARCHAR(200) NOT NULL,
 	[IsPlatformRole] BIT NOT NULL DEFAULT(0),
+	IsEnabled BIT NOT NULL DEFAULT(1),
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,
 	[UpdatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
@@ -72,3 +73,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Role',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'1 si el registro está habilitado',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Role',
+    @level2type = N'COLUMN',
+    @level2name = N'IsEnabled'

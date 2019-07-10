@@ -2,7 +2,7 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
 	[Code] NVARCHAR(50) NOT NULL,
-	[Description] NVARCHAR(700) NOT NULL,
+	Name NVARCHAR(700) NOT NULL,
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,
 	[UpdatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
@@ -27,15 +27,6 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Permission',
     @level2type = N'COLUMN',
     @level2name = N'Code'
-GO
-EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'Descripción de a qué funcionalidad se relaciona este permiso.',
-    @level0type = N'SCHEMA',
-    @level0name = N'dbo',
-    @level1type = N'TABLE',
-    @level1name = N'Permission',
-    @level2type = N'COLUMN',
-    @level2name = N'Description'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Fecha de creación del registro.',
@@ -72,3 +63,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Permission',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre del permiso.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Permission',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'

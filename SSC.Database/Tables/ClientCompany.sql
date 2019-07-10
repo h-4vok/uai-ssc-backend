@@ -2,10 +2,15 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
 	Name NVARCHAR(200) NOT NULL,
+	CurrentPricingPlanId INT NOT NULL,
+	IsEnabled BIT NOT NULL DEFAULT(1),
+	ApiToken NVARCHAR(500) NOT NULL,
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,
 	[UpdatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
-	[UpdatedBy] INT
+	[UpdatedBy] INT,
+
+	FOREIGN KEY (CurrentPricingPlanId) REFERENCES PricingPlan
 )
 
 GO
