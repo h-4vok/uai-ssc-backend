@@ -62,3 +62,57 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'WorkOrderExpectedSample',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Orden de trabajo que es dueña de este registro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'WorkOrderId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Muestra padre relacionada a esta muestra hija',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'ParentSampleId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Factor de dilución a utilizar para generar la muestra hija',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'DilutionFactor'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Volumen a utilizar de la muestra padre para generar esta muestra hija',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'VolumeToUse'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Volumen resultante esperada en la muestra hija',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'ResultingVolume'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Unidad de medida del volumen referenciado',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderExpectedSample',
+    @level2type = N'COLUMN',
+    @level2name = N'UnitOfMeasureId'

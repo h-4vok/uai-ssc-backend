@@ -57,3 +57,21 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClinicRunSample',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia al ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunSample',
+    @level2type = N'COLUMN',
+    @level2name = N'ClinicRunId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia a una muestra del inventario.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunSample',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleId'

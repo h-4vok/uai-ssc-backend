@@ -62,3 +62,48 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'WorkOrder',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Estado de la orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrder',
+    @level2type = N'COLUMN',
+    @level2name = N'WorkOrderStatusId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece esta orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrder',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha en la que se crea la orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrder',
+    @level2type = N'COLUMN',
+    @level2name = N'RequestDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrder',
+    @level2type = N'COLUMN',
+    @level2name = N'WorkOrderTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Usuario asignado actualmente a esta orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrder',
+    @level2type = N'COLUMN',
+    @level2name = N'CurrentlyAssignedUserId'

@@ -60,3 +60,75 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'QueuedMail',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Campo Recipiente del email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'MailTo'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Campo CC del email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'MailCc'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Campo BCC del email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'MailBcc'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Título del email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'Subject'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cuerpo del email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'Body'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'En qué fecha se encoló este email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'QueuedDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'En qué fecha debe mandarse este email',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'ToPublishDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de efectivo envío del mail',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'QueuedMail',
+    @level2type = N'COLUMN',
+    @level2name = N'SendDate'

@@ -57,3 +57,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SystemLanguageEntry',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Clave de entrada del diccionario de traducciones',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SystemLanguageEntry',
+    @level2type = N'COLUMN',
+    @level2name = N'EntryKey'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Traducción para esta clave de entrada',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SystemLanguageEntry',
+    @level2type = N'COLUMN',
+    @level2name = N'Translation'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Idioma al que le pertenece esta traducción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SystemLanguageEntry',
+    @level2type = N'COLUMN',
+    @level2name = N'SystemLanguageId'

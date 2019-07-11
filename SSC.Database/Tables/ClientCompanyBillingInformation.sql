@@ -63,3 +63,75 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClientCompanyBillingInformation',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Razón Social a utilizar en las facturas',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'LegalName'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'CUIT/CUIL del cliente.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'TaxCode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Calle del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'StreetName'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Número de calle del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'StreetNumber'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Ciudad del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'City'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código postal del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'PostalCode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Departamento o localidad del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'Department'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Provincia del domicilio de facturación.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyBillingInformation',
+    @level2type = N'COLUMN',
+    @level2name = N'ProvinceId'

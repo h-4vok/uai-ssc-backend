@@ -60,3 +60,48 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Receipt',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece este comprobante',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Receipt',
+    @level2type = N'COLUMN',
+    @level2name = N'ClientId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de vencimiento del comprobante',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Receipt',
+    @level2type = N'COLUMN',
+    @level2name = N'ExpirationDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de comprobante',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Receipt',
+    @level2type = N'COLUMN',
+    @level2name = N'ReceiptTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Número del comprobante',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Receipt',
+    @level2type = N'COLUMN',
+    @level2name = N'ReceiptNumber'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Si el comprobante se encuentra anulado',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Receipt',
+    @level2type = N'COLUMN',
+    @level2name = N'IsNullified'

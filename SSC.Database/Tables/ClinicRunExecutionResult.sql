@@ -58,3 +58,39 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClinicRunExecutionResult',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Ejecución correspondiente a este resultado.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunExecutionResult',
+    @level2type = N'COLUMN',
+    @level2name = N'ClinicRunExecutionId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código de barra de la muestra.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunExecutionResult',
+    @level2type = N'COLUMN',
+    @level2name = N'Barcode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Volumen remanente de la muestra.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunExecutionResult',
+    @level2type = N'COLUMN',
+    @level2name = N'Volume'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Indica si la muestra se ha echado a perder por algún motivo.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunExecutionResult',
+    @level2type = N'COLUMN',
+    @level2name = N'IsTrashed'

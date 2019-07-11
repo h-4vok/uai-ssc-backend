@@ -58,3 +58,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SampleParameter',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia a la muestra a la que le corresponde este parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de parámetro de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'ParameterTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Valor del parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'Value'

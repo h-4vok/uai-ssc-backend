@@ -100,3 +100,57 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'PlatformUser',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Indica si el usuario se encuentra habilitado por los administradores de SSC',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'IsEnabled'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Primer nombre de la persona.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'FirstName'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Apellido de la persona',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'LastName'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que corresponde este usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'ClientId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Título de esta persona en la empresa cliente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'TitleInCompany'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Indica si el usuario se encuentra habilitado por el administrador del cliente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUser',
+    @level2type = N'COLUMN',
+    @level2name = N'IsEnabledInCompany'

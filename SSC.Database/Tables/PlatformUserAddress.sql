@@ -60,3 +60,57 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'PlatformUserAddress',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre de calle del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'StreetName'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Número de calle del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'StreetNumber'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Ciudad del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'City'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código postal del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'PostalCode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Departamento o localidad del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'Department'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Provincia del domicilio del usuario',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PlatformUserAddress',
+    @level2type = N'COLUMN',
+    @level2name = N'ProvinceId'

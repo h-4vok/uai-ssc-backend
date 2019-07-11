@@ -56,3 +56,39 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SiteNewsArticle',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre completo del autor de la noticia',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SiteNewsArticle',
+    @level2type = N'COLUMN',
+    @level2name = N'Author'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Título de la noticia',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SiteNewsArticle',
+    @level2type = N'COLUMN',
+    @level2name = N'Title'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Contenido, en HTML, de la noticia',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SiteNewsArticle',
+    @level2type = N'COLUMN',
+    @level2name = N'Content'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de publicación de la noticia',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SiteNewsArticle',
+    @level2type = N'COLUMN',
+    @level2name = N'PublicationDate'

@@ -54,3 +54,21 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClinicRunStatus',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código inmutable del estado de ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunStatus',
+    @level2type = N'COLUMN',
+    @level2name = N'Code'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Descripción amigable del estado de ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRunStatus',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'

@@ -60,3 +60,75 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'PricingPlan',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código inmutable del plan de precios',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'Code'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre amigable del plan de precios',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Límite de usuarios del plan',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'UserLimit'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Límite de ensayos clínicos mensuales del plan',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'ClinicRehearsalLimit'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Límite de muestras de pacientes del plan',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'PatientSampleLimit'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Límite de muestras de control del plan',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'ControlSampleLimit'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Descuento por suscripción anual',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'AnualDiscountPercentage'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Precio mensual del plan',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'PricingPlan',
+    @level2type = N'COLUMN',
+    @level2name = N'Price'

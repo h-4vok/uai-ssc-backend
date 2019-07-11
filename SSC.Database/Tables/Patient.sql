@@ -58,3 +58,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Patient',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre completo del paciente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Patient',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente que ingresó este paciente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Patient',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de paciente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Patient',
+    @level2type = N'COLUMN',
+    @level2name = N'PatientTypeId'

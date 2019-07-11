@@ -66,3 +66,84 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SampleTypeParameter',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de muestra al que le pertenece este parámetro de tipo de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código del parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'Code'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Descripción amigable del parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'DefaultDescription'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de dato del parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'ParameterDataTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Dígitos decimales que permite el parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'DecimalDigits'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Rango mínimo de valor que requiere este parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'MinimumRange'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Rango máximo de valor que requiere este parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'MaximumRange'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia a la unidad de medida de este parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'UnitOfMeasureId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece este parámetro',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTypeParameter',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'

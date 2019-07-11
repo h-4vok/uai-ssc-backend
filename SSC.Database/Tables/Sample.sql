@@ -61,3 +61,48 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Sample',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Sample',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de función de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Sample',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleFunctionId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Volumen inicial original de la muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Sample',
+    @level2type = N'COLUMN',
+    @level2name = N'InitialVolume'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Volumen actual/saldo de la muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Sample',
+    @level2type = N'COLUMN',
+    @level2name = N'CurrentVolume'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Unidad de medida de la muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'Sample',
+    @level2type = N'COLUMN',
+    @level2name = N'UnitOfMeasureId'

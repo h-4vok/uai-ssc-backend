@@ -33,7 +33,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2name = N'Id'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'Fecha de creación del registro',
+    @value = N's',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
@@ -67,3 +67,66 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClinicRun',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'A quién actualmente se encuentra asignado este ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'CurrentAssigneeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Estado del ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'ClinicRunStatusId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Etapa en la que se encuentra el ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'ClinicRunStageId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Científico ejecutor del ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'PrimaryAssigneeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Científico auditor del ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'AuditorAssigneeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Controlador de calidad del ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'QualityControlAssigneeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece este ensayo clínico.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClinicRun',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'

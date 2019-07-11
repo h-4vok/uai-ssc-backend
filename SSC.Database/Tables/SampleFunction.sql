@@ -57,3 +57,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SampleFunction',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código inmutable de la función de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleFunction',
+    @level2type = N'COLUMN',
+    @level2name = N'Code'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Descripción amigable de la función de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleFunction',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente la que le pertenece este tipo de función de muestra',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleFunction',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'

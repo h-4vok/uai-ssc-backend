@@ -58,3 +58,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'WorkOrderParentSample',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Orden de trabajo en donde se asignó esta muestra como muestra padre',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderParentSample',
+    @level2type = N'COLUMN',
+    @level2name = N'WorkOrderId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia a la muestra padre',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderParentSample',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Indica si ha sido escaneada/comprobada en la etapa de Comprobación de la orden de trabajo',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'WorkOrderParentSample',
+    @level2type = N'COLUMN',
+    @level2name = N'Checked'

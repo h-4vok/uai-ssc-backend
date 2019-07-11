@@ -63,3 +63,66 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SampleTransaction',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Referencia a la muestra a la que le corresponde esta transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'TransactionDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Origen de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleTransactionOriginId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Descriptor adicional del origen de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'OriginDescriptor'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de concepto de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleTransactionConceptId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Valor de la transacción. Volumen afectado.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'Value'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Saldo de volumen de la muestra al momento de efectuarse la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'BalanceAtTransactionTime'

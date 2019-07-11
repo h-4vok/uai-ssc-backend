@@ -67,3 +67,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClientCompany',
     @level2type = N'COLUMN',
     @level2name = N'Name'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'El plan contratado actual por el cliente',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompany',
+    @level2type = N'COLUMN',
+    @level2name = N'CurrentPricingPlanId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Si el cliente está habilitado en la plataforma o no.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompany',
+    @level2type = N'COLUMN',
+    @level2name = N'IsEnabled'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Token de seguridad que se utiliza como salt para encriptar datos sensibles del cliente.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompany',
+    @level2type = N'COLUMN',
+    @level2name = N'ApiToken'

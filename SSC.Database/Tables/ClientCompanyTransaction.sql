@@ -30,7 +30,7 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2name = N'Id'
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'Fecha de creación del registro',
+    @value = N's',
     @level0type = N'SCHEMA',
     @level0name = N'dbo',
     @level1type = N'TABLE',
@@ -64,3 +64,57 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClientCompanyTransaction',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'TransactionTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'TransactionDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Total de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'Total'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece esta transacción.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'ClientId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Comprobante de la transacción',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'ReceiptId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Comprobante relacionado a la transacción.',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyTransaction',
+    @level2type = N'COLUMN',
+    @level2name = N'RelatedReceiptId'

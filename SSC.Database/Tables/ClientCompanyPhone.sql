@@ -58,3 +58,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ClientCompanyPhone',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de teléfono',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyPhone',
+    @level2type = N'COLUMN',
+    @level2name = N'PhoneTypeId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Número de teléfono',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyPhone',
+    @level2type = N'COLUMN',
+    @level2name = N'Number'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece este teléfono',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ClientCompanyPhone',
+    @level2type = N'COLUMN',
+    @level2name = N'ClientId'

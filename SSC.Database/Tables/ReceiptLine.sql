@@ -58,3 +58,39 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ReceiptLine',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Comprobante al que le pertenece esta línea',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ReceiptLine',
+    @level2type = N'COLUMN',
+    @level2name = N'ReceiptId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Concepto indicado en la línea',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ReceiptLine',
+    @level2type = N'COLUMN',
+    @level2name = N'Concept'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Subtotal de la línea',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ReceiptLine',
+    @level2type = N'COLUMN',
+    @level2name = N'Subtotal'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Impuestos de la línea',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'ReceiptLine',
+    @level2type = N'COLUMN',
+    @level2name = N'Taxes'

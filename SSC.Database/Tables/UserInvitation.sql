@@ -62,3 +62,66 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'UserInvitation',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente que creó esta invitación',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'ClientId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Token generado para esta invitación específica',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'InvitationToken'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Email al que se le envió la invitación',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'Email'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Rol por defecto que tendrá el usuario invitado al registrarse con este token',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'DefaultRoleId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Nombre del usuario invitado',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'Name'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de expiración de la invitación',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'ExpirationDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Indica si la invitación fué utilizada',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'UserInvitation',
+    @level2type = N'COLUMN',
+    @level2name = N'IsUsed'

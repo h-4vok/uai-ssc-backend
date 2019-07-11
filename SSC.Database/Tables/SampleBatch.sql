@@ -61,3 +61,48 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'SampleBatch',
     @level2type = N'COLUMN',
     @level2name = N'UpdatedBy'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Código de barra de la caja de muestras',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleBatch',
+    @level2type = N'COLUMN',
+    @level2name = N'Barcode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Fecha de ingreso de la caja',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleBatch',
+    @level2type = N'COLUMN',
+    @level2name = N'EntryDate'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Tipo de origen de las muestras de la caja',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleBatch',
+    @level2type = N'COLUMN',
+    @level2name = N'SampleBatchOriginId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Cliente al que le pertenece esta caja',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleBatch',
+    @level2type = N'COLUMN',
+    @level2name = N'TenantId'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Paciente del cual provienen las muestras',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'SampleBatch',
+    @level2type = N'COLUMN',
+    @level2name = N'PatientId'
