@@ -43,12 +43,44 @@ namespace SSC.Data
 
         private UserReportRow FetchUserGetRecord(IDataReader reader)
         {
-            return null;
+            var record = new UserReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                UserName = reader.GetString("UserName"),
+                Password = reader.GetString("Password"),
+                IsBlocked = reader.GetBoolean("IsBlocked"),
+                IsDisabled = reader.GetBoolean("IsDisabled"),
+                LoginFailures = reader.GetInt32("LoginFailures"),
+                CreatedDate = reader.GetDateTime("CreatedDate"),
+                CreatedBy = reader.GetInt32("CreatedBy"),
+                UpdatedDate = reader.GetDateTime("UpdatedDate"),
+                UpdatedBy = reader.GetInt32("UpdatedBy"),
+                RoleId = reader.GetInt32("RoleId"),
+                RoleName = reader.GetString("RoleName"),
+                RoleIsPlatformRole = reader.GetBoolean("RoleIsPlatformRole"),
+                PermissionId = reader.GetInt32("PermissionId"),
+                PermissionCode = reader.GetString("PermissionCode"),
+                PermissionName = reader.GetString("PermissionName"),
+            };
+
+            return record;
         }
 
         private UserReportViewModel FetchUserReportViewModel(IDataReader reader)
         {
-            return null;
+            var record = new UserReportViewModel
+            {
+                Id = reader.GetInt32("Id"),
+                ClientName = reader.GetString("ClientName"),
+                UserName = reader.GetString("UserName"),
+                IsDisabled = reader.GetBoolean("IsDisabled"),
+                IsBlocked = reader.GetBoolean("IsBlocked"),
+                CountOfRoles = reader.GetInt32("CountOfRoles"),
+                CountOfPermissions = reader.GetInt32("CountOfPermissions"),
+                IsPlatformAdmin = reader.GetBoolean("IsPlatformAdmin")
+            };
+
+            return record;
         }
 
         private User ToUser(IEnumerable<UserReportRow> records)
@@ -94,6 +126,8 @@ namespace SSC.Data
 
         public void Create(User model)
         {
+            var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
             uow.Run(() =>
             {
                 model.Id = uow.Scalar(
@@ -101,6 +135,7 @@ namespace SSC.Data
                     ParametersBuilder.With("userName", model.UserName)
                         .And("password", model.Password)
                         .And("clientCompanyId", model.ClientCompany?.Id)
+                        .And("createdBy", authProvider.CurrentUserId)
                     ).AsInt();
 
                 model.Roles.ForEach(role =>
@@ -109,6 +144,7 @@ namespace SSC.Data
                         ParametersBuilder
                             .With("userId", model.Id)
                             .And("roleId", role.Id)
+                            .And("createdBy", authProvider.CurrentUserId)
                         );
                 });
             });

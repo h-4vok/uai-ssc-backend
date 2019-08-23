@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataReaderExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DataReaderExtensions.1.0.0\lib\net45\DataReaderExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="DBNostalgia, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DBNostalgia.1.0.4\lib\net461\DBNostalgia.dll</HintPath>
     </Reference>

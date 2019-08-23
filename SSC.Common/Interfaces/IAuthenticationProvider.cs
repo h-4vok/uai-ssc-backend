@@ -9,5 +9,9 @@ namespace SSC.Common.Interfaces
     public interface IAuthenticationProvider
     {
         string CurrentUserName { get; }
+        int CurrentClientId { get; }
+        int CurrentUserId { get; }
+        IEnumerable<string> CurrentUserRoleCodes { get; }
+        string CurrentClientApiKey { get; }
     }
 }

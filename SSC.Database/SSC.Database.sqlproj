@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{19e22062-74b9-4281-9ad2-b2e8f7ced19a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -61,6 +61,8 @@
     <Folder Include="Tables" />
     <Folder Include="Programmability" />
     <Folder Include="Programmability\Stored Procedures" />
+    <Folder Include="Programmability\Types" />
+    <Folder Include="Programmability\Types\User-Defined Table Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Permission.sql" />
@@ -121,6 +123,14 @@
     <Build Include="Tables\ClinicRunExecutionResult.sql" />
     <Build Include="Tables\ClinicRunComment.sql" />
     <Build Include="Tables\ClientTestimonial.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_getFull.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_registerLoginFailure.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_getReport.sql" />
+    <Build Include="Programmability\Types\User-Defined Table Types\ListOfIds.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_UserRole_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_IsInvited.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
