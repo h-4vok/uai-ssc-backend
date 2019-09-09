@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace SSC.Api
 {
@@ -13,6 +14,10 @@ namespace SSC.Api
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            // Enable CORS globally
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
