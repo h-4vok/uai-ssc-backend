@@ -38,5 +38,21 @@ namespace SSC.Business
         {
             throw new NotImplementedException();
         }
+
+        public string PreValidateNewUser(string userName, string password)
+        {
+            var data = DependencyResolver.Obj.Resolve<IUserData>();
+            if (data.Exists(userName))
+            {
+                return "La cuenta de email ya se encuentra registrada.";
+            }
+
+            if (data.IsInvited(userName))
+            {
+                return "La cuenta de email ya ha sido invitada a la plataforma. Revise su correo electrónico.";
+            }
+
+            return String.Empty;
+        }
     }
 }

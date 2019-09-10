@@ -296,6 +296,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SSC.Business\SSC.Business.csproj">
+      <Project>{F30D7B69-ECE4-4A7E-93C4-A28226DF2AD3}</Project>
+      <Name>SSC.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SSC.Common\SSC.Common.csproj">
       <Project>{D42D3B49-DE94-4980-B0BB-89E4C60491B9}</Project>
       <Name>SSC.Common</Name>
