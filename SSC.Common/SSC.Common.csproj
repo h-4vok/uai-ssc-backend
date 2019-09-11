@@ -76,7 +76,6 @@
     <Compile Include="Interfaces\IEnvironment.cs" />
     <Compile Include="Interfaces\IFileSystemProvider.cs" />
     <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
-    <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="PasswordHasher.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="ViewModels\CreditCardReportRow.cs" />
     <Compile Include="ViewModels\PatientReportRow.cs" />
     <Compile Include="ViewModels\RawDataReportRow.cs" />
+    <Compile Include="ViewModels\ResponseViewModel.cs" />
     <Compile Include="ViewModels\RoleReportRow.cs" />
     <Compile Include="ViewModels\SampleBatchReportRow.cs" />
     <Compile Include="ViewModels\SampleReportRow.cs" />

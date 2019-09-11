@@ -1,4 +1,5 @@
-﻿using SSC.Common;
+﻿using SSC.Business.Interfaces;
+using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
@@ -54,6 +55,61 @@ namespace SSC.Business
             }
 
             return String.Empty;
+        }
+
+        ResponseViewModel<AuthenticationResponseViewModel> IUserBusiness.Authenticate(string userName, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<UserReportRow> IUserBusiness.GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendForgottenPasswordRecovery(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsRecoveryTokenValid(string userName, string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePassword(string userName, string newPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateIsEnabled(int id, bool isEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateIsBlocked(int id, bool isBlocked)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ClientMemberReportRow> GetClientUsers(int clientId, int currentUserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User Get(int id, int currentUserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateClientIsEnabled(int id, bool isEnabled)
+        {
+            throw new NotImplementedException();
         }
     }
 }

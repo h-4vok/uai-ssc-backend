@@ -41,6 +41,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessDependencyInjector.cs" />
+    <Compile Include="Interfaces\IAboutUsBusiness.cs" />
+    <Compile Include="Interfaces\IBackupBusiness.cs" />
+    <Compile Include="Interfaces\IBillBusiness.cs" />
+    <Compile Include="Interfaces\IClientCompanyBusiness.cs" />
+    <Compile Include="Interfaces\IClientCompanyLabScriptBusiness.cs" />
+    <Compile Include="Interfaces\IClientTransactionBusiness.cs" />
+    <Compile Include="Interfaces\IClinicRunBusiness.cs" />
+    <Compile Include="Interfaces\ICreditCardBusiness.cs" />
+    <Compile Include="Interfaces\IExternalCreditCardValidator.cs" />
+    <Compile Include="Interfaces\ILogBusiness.cs" />
+    <Compile Include="Interfaces\IPatientBusiness.cs" />
+    <Compile Include="Interfaces\IPricingPlanBusiness.cs" />
+    <Compile Include="Interfaces\IRoleBusiness.cs" />
+    <Compile Include="Interfaces\ISampleBatchBusiness.cs" />
+    <Compile Include="Interfaces\ISampleBusiness.cs" />
+    <Compile Include="Interfaces\ISampleFunctionBusiness.cs" />
+    <Compile Include="Interfaces\ISampleParameterTypeBusiness.cs" />
+    <Compile Include="Interfaces\ISampleTransactionBusiness.cs" />
+    <Compile Include="Interfaces\ISampleTypeBusiness.cs" />
+    <Compile Include="Interfaces\ISatelliteDataBusiness.cs" />
+    <Compile Include="Interfaces\ISiteNewsBusiness.cs" />
+    <Compile Include="Interfaces\ISystemLanguageBusiness.cs" />
+    <Compile Include="Interfaces\IUserBusiness.cs" />
+    <Compile Include="Interfaces\IUserInvitationBusiness.cs" />
+    <Compile Include="Interfaces\IWorkOrderBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBusiness.cs" />
     <Compile Include="Validator.cs" />

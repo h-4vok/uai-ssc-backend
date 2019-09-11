@@ -205,7 +205,6 @@
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\ClientCompanyViewModel.cs" />
     <Compile Include="ViewModels\PhoneViewModel.cs" />
-    <Compile Include="ViewModels\ResponseViewModel.cs" />
     <Compile Include="ViewModels\EditUserViewModel.cs" />
     <Compile Include="ViewModels\SignUpValidationViewModel.cs" />
   </ItemGroup>
