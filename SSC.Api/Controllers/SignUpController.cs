@@ -14,10 +14,21 @@ namespace SSC.Api.Controllers
 {
     public class SignUpController : ApiController
     {
+        private IUserBusiness business;
+        private IClientCompanyBusiness companyBusiness;
+
+        public SignUpController(IUserBusiness business, IClientCompanyBusiness companyBusiness)
+        {
+            this.business = business;
+            this.companyBusiness = companyBusiness;
+        }
+
         public ResponseViewModel Get(SignUpValidationViewModel model)
         {
             return null;
         }
+
+        public ResponseViewModel ValidateNewSignUp(UserBusiness user) => throw new NotImplementedException();
 
         public ResponseViewModel Post(SignUpValidationViewModel model)
         {

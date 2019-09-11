@@ -44,6 +44,7 @@
     <Compile Include="AuditableEntity.cs" />
     <Compile Include="AuditRecord.cs" />
     <Compile Include="AuditType.cs" />
+    <Compile Include="BackupRegistry.cs" />
     <Compile Include="ClientCompany.cs" />
     <Compile Include="ClientCompanyBillingInformation.cs" />
     <Compile Include="ClientCompanyLabScript.cs" />

@@ -3,23 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Dependencies;
 using Unity;
 using Unity.Registration;
 using Unity.Resolution;
 
 namespace SSC.Common
 {
-    public class DependencyResolver
+    public class DependencyResolver : IDependencyResolver
     {
-        private DependencyResolver()
+        #region Singleton
+        private DependencyResolver(IUnityContainer container = null)
         {
-            this.container = new UnityContainer();
+            this.container = container ?? new UnityContainer();
         }
         static DependencyResolver() { }
         
         public static DependencyResolver Obj { get; } = new DependencyResolver();
 
         private IUnityContainer container;
+
+        #endregion
+
+        #region IDependencyResolver
+
+        public object GetService(Type serviceType)
+        {
+            return this.container.Resolve(serviceType);
+        }
+
+        public IEnumerable<object> GetServices(Type serviceType)
+        {
+            return this.container.ResolveAll(serviceType);
+        }
+
+        public IDependencyScope BeginScope()
+        {
+            var child = this.container.CreateChildContainer();
+            return new DependencyResolver(child);
+        }
+
+        public void Dispose()
+        {
+            this.container.Dispose();
+        }
+
+        #endregion
 
         public void SetContainer(IUnityContainer container)
         {
