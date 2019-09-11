@@ -40,7 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsBusiness.cs" />
+    <Compile Include="BackupBusiness.cs" />
     <Compile Include="BusinessDependencyInjector.cs" />
+    <Compile Include="ClientCompanyBusiness.cs" />
+    <Compile Include="ClientCompanyLabScriptBusiness.cs" />
+    <Compile Include="ClientTransactionBusiness.cs" />
+    <Compile Include="ClinicRunBusiness.cs" />
+    <Compile Include="CreditCardBusiness.cs" />
+    <Compile Include="ExternalCreditCardValidator.cs" />
     <Compile Include="Interfaces\IAboutUsBusiness.cs" />
     <Compile Include="Interfaces\IBackupBusiness.cs" />
     <Compile Include="Interfaces\IBillBusiness.cs" />
@@ -66,9 +74,24 @@
     <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Interfaces\IUserInvitationBusiness.cs" />
     <Compile Include="Interfaces\IWorkOrderBusiness.cs" />
+    <Compile Include="LogBusiness.cs" />
+    <Compile Include="PatientBusiness.cs" />
+    <Compile Include="PricingPlanBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleBusiness.cs" />
+    <Compile Include="SampleBatchBusiness.cs" />
+    <Compile Include="SampleBusiness.cs" />
+    <Compile Include="SampleFunctionBusiness.cs" />
+    <Compile Include="SampleParameterTypeBusiness.cs" />
+    <Compile Include="SampleTransactionBusiness.cs" />
+    <Compile Include="SampleTypeBusiness.cs" />
+    <Compile Include="SatelliteDataBusiness.cs" />
+    <Compile Include="SiteNewsBusiness.cs" />
+    <Compile Include="SystemLanguageBusiness.cs" />
     <Compile Include="UserBusiness.cs" />
+    <Compile Include="UserInvitationBusiness.cs" />
     <Compile Include="Validator.cs" />
+    <Compile Include="WorkOrderBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSC.Common\SSC.Common.csproj">
