@@ -49,7 +49,7 @@ namespace SSC.Business
 
             if (propertyAccessor(this.model).Length > length)
             {
-                return this.SetAndReturn(String.Format("El campo {0} supera los {1} caracteres.", fieldName));
+                return this.SetAndReturn(String.Format("El campo {0} supera los {1} caracteres.", fieldName, length));
             }
 
             return this;
@@ -59,9 +59,9 @@ namespace SSC.Business
         {
             if (!this.ShouldRun) return this;
 
-            if (propertyAccessor(this.model).Length > minLength)
+            if (propertyAccessor(this.model).Length < minLength)
             {
-                return this.SetAndReturn(String.Format("El campo {0} debe tener al menos {1} caracteres.", fieldName));
+                return this.SetAndReturn(String.Format("El campo {0} debe tener al menos {1} caracteres.", fieldName, minLength));
             }
 
             return this;
@@ -77,7 +77,7 @@ namespace SSC.Business
             }
             catch
             {
-                return this.SetAndReturn(String.Format("El campo {0} no es un correo electrónico válido."));
+                return this.SetAndReturn(String.Format("El campo {0} no es un correo electrónico válido.", fieldName));
             }
 
             return this;

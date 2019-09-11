@@ -67,6 +67,7 @@
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Interfaces\IAuthenticationProvider.cs" />
+    <Compile Include="Interfaces\IEnvironment.cs" />
     <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Interfaces\IUserData.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />

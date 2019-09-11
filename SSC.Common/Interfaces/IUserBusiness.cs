@@ -15,5 +15,6 @@ namespace SSC.Common.Interfaces
         IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
         void Create(User model);
         string ValidateNewUserSignUp(string userName, string password);
+        string PreValidateNewUser(string userName, string password);
     }
 }

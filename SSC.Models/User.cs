@@ -13,7 +13,13 @@ namespace SSC.Models
         public IEnumerable<Role> Roles { get; set; } = new List<Role>();
         public bool IsBlocked { get; set; }
         public bool IsDisabled { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public ClientCompany ClientCompany { get; set; }
+        public IEnumerable<Phone> Phones { get; set; } = new List<Phone>();
+        public IEnumerable<Address> Addresses { get; set; } = new List<Address>();
+        public string TitleInCompany { get; set; }
+        public bool IsEnabledInCompany { get; set; }
 
         public IEnumerable<Permission> GetGrantedPermissions()
         {

@@ -10,6 +10,7 @@ namespace SSC.Models
     {
         public string Name { get; set; }
         public bool IsPlatformRole { get; set; }
+        public bool IsEnabled { get; set; }
         public IEnumerable<Permission> Permissions { get; set; } = new List<Permission>();
     }
 }
