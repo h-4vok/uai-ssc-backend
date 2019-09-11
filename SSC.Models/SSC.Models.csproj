@@ -79,6 +79,7 @@
     <Compile Include="ReceiptType.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Sample.cs" />
+    <Compile Include="SampleBatch.cs" />
     <Compile Include="SampleBatchOrigin.cs" />
     <Compile Include="SampleFunction.cs" />
     <Compile Include="SampleParameter.cs" />

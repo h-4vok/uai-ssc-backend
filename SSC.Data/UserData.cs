@@ -2,6 +2,7 @@
 using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
+using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
@@ -158,6 +159,61 @@ namespace SSC.Data
         public bool IsInvited(string userName)
         {
             return this.uow.ScalarDirect("sp_User_IsInvited", ParametersBuilder.With("userName", userName)).AsBool();
+        }
+
+        public bool IsEnabled(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void QueueMailTo(string userName, string subject, string body)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckTokenValidity(string userName, string token, int daysValid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePassword(string userName, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateIsEnabled(int id, bool isEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateIsBlocked(int id, bool isBlocked)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ClientMemberReportRow> GetClientUsers(int clientId, int currentUserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateIsClientEnabled(int id, bool isEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        private ClientMemberReportRow FetchClientMemberReportRow(IDataReader reader)
+        {
+            throw new NotImplementedException();
         }
     }
 }

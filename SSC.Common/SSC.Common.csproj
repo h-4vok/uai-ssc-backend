@@ -77,7 +77,6 @@
     <Compile Include="Interfaces\IFileSystemProvider.cs" />
     <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
     <Compile Include="Interfaces\IUserBusiness.cs" />
-    <Compile Include="Interfaces\IUserData.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="PasswordHasher.cs" />

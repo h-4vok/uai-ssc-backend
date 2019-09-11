@@ -1,6 +1,7 @@
 ﻿using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
+using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
 using System.Collections.Generic;

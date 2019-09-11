@@ -70,9 +70,56 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsData.cs" />
+    <Compile Include="BackupData.cs" />
+    <Compile Include="ClientCompanyData.cs" />
+    <Compile Include="ClientCompanyLabScriptData.cs" />
+    <Compile Include="ClientTransactionData.cs" />
+    <Compile Include="ClinicRunData.cs" />
+    <Compile Include="CreditCardData.cs" />
     <Compile Include="DataDependencyInjector.cs" />
+    <Compile Include="Interfaces\IAboutUsData.cs" />
+    <Compile Include="Interfaces\IBackupData.cs" />
+    <Compile Include="Interfaces\IClientCompanyLabScriptData.cs" />
+    <Compile Include="Interfaces\IClientCompanyData.cs" />
+    <Compile Include="Interfaces\IClientTransactionData.cs" />
+    <Compile Include="Interfaces\IClinicRunData.cs" />
+    <Compile Include="Interfaces\ICreditCardData.cs" />
+    <Compile Include="Interfaces\ILogData.cs" />
+    <Compile Include="Interfaces\IPatientData.cs" />
+    <Compile Include="Interfaces\IPricingPlanData.cs" />
+    <Compile Include="Interfaces\IReceiptData.cs" />
+    <Compile Include="Interfaces\IRoleData.cs" />
+    <Compile Include="Interfaces\ISampleBatchData.cs" />
+    <Compile Include="Interfaces\ISampleData.cs" />
+    <Compile Include="Interfaces\ISampleFunctionData.cs" />
+    <Compile Include="Interfaces\ISampleParameterTypeData.cs" />
+    <Compile Include="Interfaces\ISampleTransactionData.cs" />
+    <Compile Include="Interfaces\ISampleTypeData.cs" />
+    <Compile Include="Interfaces\ISatelliteDataData.cs" />
+    <Compile Include="Interfaces\ISiteNewsData.cs" />
+    <Compile Include="Interfaces\ISystemLanguageData.cs" />
+    <Compile Include="Interfaces\IUserData.cs" />
+    <Compile Include="Interfaces\IUserInvitationData.cs" />
+    <Compile Include="Interfaces\IWorkOrderData.cs" />
+    <Compile Include="LogData.cs" />
+    <Compile Include="PatientData.cs" />
+    <Compile Include="PricingPlanData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptData.cs" />
+    <Compile Include="RoleData.cs" />
+    <Compile Include="SampleBatchData.cs" />
+    <Compile Include="SampleData.cs" />
+    <Compile Include="SampleFunctionData.cs" />
+    <Compile Include="SampleParameterTypeData.cs" />
+    <Compile Include="SampleTransactionData.cs" />
+    <Compile Include="SampleTypeData.cs" />
+    <Compile Include="SatelliteDataData.cs" />
+    <Compile Include="SiteNewsData.cs" />
+    <Compile Include="SystemLanguageData.cs" />
     <Compile Include="UserData.cs" />
+    <Compile Include="UserInvitationData.cs" />
+    <Compile Include="WorkOrderData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSC.Common\SSC.Common.csproj">

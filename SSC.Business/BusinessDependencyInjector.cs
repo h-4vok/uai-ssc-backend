@@ -1,6 +1,7 @@
 ﻿using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Data;
+using SSC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
