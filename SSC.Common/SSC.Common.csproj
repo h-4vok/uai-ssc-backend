@@ -34,6 +34,7 @@
       <HintPath>..\packages\Unity.5.8.6\lib\net47\CommonServiceLocator.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,18 +65,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationProvider.cs" />
+    <Compile Include="DataToPDFProcessor.cs" />
+    <Compile Include="DataToXLSXProcessor.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="FileSystemProvider.cs" />
     <Compile Include="Interfaces\IAuthenticationProvider.cs" />
+    <Compile Include="Interfaces\IDataToBlobProcessor.cs" />
     <Compile Include="Interfaces\IEnvironment.cs" />
+    <Compile Include="Interfaces\IFileSystemProvider.cs" />
+    <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
     <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Interfaces\IUserData.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="PasswordHasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PythonEngineProcessor.cs" />
+    <Compile Include="ViewModels\AboutUsViewModel.cs" />
     <Compile Include="ViewModels\AuthenticationResponseViewModel.cs" />
+    <Compile Include="ViewModels\ClientBalanceBillReport.cs" />
+    <Compile Include="ViewModels\ClientBalanceReport.cs" />
+    <Compile Include="ViewModels\ClientCompanyReportRow.cs" />
+    <Compile Include="ViewModels\ClientMemberReportRow.cs" />
+    <Compile Include="ViewModels\ClientTransactionReportRow.cs" />
+    <Compile Include="ViewModels\ClinicRunReportRow.cs" />
+    <Compile Include="ViewModels\CreditCardReportRow.cs" />
+    <Compile Include="ViewModels\PatientReportRow.cs" />
+    <Compile Include="ViewModels\RawDataReportRow.cs" />
+    <Compile Include="ViewModels\RoleReportRow.cs" />
+    <Compile Include="ViewModels\SampleBatchReportRow.cs" />
+    <Compile Include="ViewModels\SampleReportRow.cs" />
+    <Compile Include="ViewModels\SampleTransactionReportRow.cs" />
+    <Compile Include="ViewModels\SampleTypeParameterReportRow.cs" />
+    <Compile Include="ViewModels\SampleTypeReportRow.cs" />
+    <Compile Include="ViewModels\UserReportRow.cs" />
     <Compile Include="ViewModels\UserReportViewModel.cs" />
+    <Compile Include="SystemEnvironment.cs" />
+    <Compile Include="ViewModels\WorkOrderReportRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSC.Models\SSC.Models.csproj">

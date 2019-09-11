@@ -12,6 +12,8 @@ namespace SSC.Api.App_Start
     {
         public static void Register()
         {
+            DependencyResolver.Obj.Register<IEnvironment, SystemEnvironment>();
+
             DependencyResolver.Obj.Register<IUserBusiness, UserBusiness>();
 
             BusinessDependencyInjector.RegisterBusinessDependencies();

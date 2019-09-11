@@ -39,10 +39,10 @@ namespace SSC.Common.Logging
             const string format = "Error '{1}' - Source '{2}' - Message '{3}'{0}" +
                 "Stack Trace:{0}" +
                 "{4}";
-            var message = 
-                String.Format(
-                    format, 
-                    Environment.NewLine, 
+            var message =
+                string.Format(
+                    format,
+                    System.Environment.NewLine, 
                     ex.GetType().FullName, 
                     ex.Source, 
                     ex.Message, 

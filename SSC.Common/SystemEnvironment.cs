@@ -6,15 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 
-namespace SSC.Api.App_Start
+namespace SSC.Common
 {
-    public class WebApiEnvironment : IEnvironment
+    public class SystemEnvironment : IEnvironment
     {
-        public static void RegisterEnvironmentDependency()
-        {
-            DependencyResolver.Obj.Register<IEnvironment, WebApiEnvironment>();
-        }
-
         public string GetAboutUsText()
         {
             throw new NotImplementedException();
