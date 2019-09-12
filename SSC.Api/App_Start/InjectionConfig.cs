@@ -31,6 +31,7 @@ namespace SSC.Api.App_Start
             Register<ILogBusiness, LogBusiness>();
             Register<IPatientBusiness, PatientBusiness>();
             Register<IPricingPlanBusiness, PricingPlanBusiness>();
+            Register<IProvinceBusiness, ProvinceBusiness>();
             Register<IRoleBusiness, RoleBusiness>();
             Register<ISampleBatchBusiness, SampleBatchBusiness>();
             Register<ISampleBusiness, SampleBusiness>();

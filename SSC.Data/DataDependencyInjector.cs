@@ -46,6 +46,7 @@ namespace SSC.Data
             Register<ILogData, LogData>();
             Register<IPatientData, PatientData>();
             Register<IPricingPlanData, PricingPlanData>();
+            Register<IProvinceData, ProvinceData>();
             Register<IReceiptData, ReceiptData>();
             Register<IRoleData, RoleData>();
             Register<ISampleBatchData, SampleBatchData>();

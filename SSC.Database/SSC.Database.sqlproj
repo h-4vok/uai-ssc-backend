@@ -131,11 +131,15 @@
     <Build Include="Programmability\Stored Procedures\sp_UserRole_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_exists.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_IsInvited.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Province_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SSC.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

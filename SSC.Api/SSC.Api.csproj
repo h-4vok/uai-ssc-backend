@@ -215,6 +215,7 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PatientTypeController.cs" />
     <Compile Include="Controllers\PricingPlanController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\RawDataController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SampleBatchController.cs" />

@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\ILogBusiness.cs" />
     <Compile Include="Interfaces\IPatientBusiness.cs" />
     <Compile Include="Interfaces\IPricingPlanBusiness.cs" />
+    <Compile Include="Interfaces\IProvinceBusiness.cs" />
     <Compile Include="Interfaces\IRoleBusiness.cs" />
     <Compile Include="Interfaces\ISampleBatchBusiness.cs" />
     <Compile Include="Interfaces\ISampleBusiness.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="PatientBusiness.cs" />
     <Compile Include="PricingPlanBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceBusiness.cs" />
     <Compile Include="RoleBusiness.cs" />
     <Compile Include="SampleBatchBusiness.cs" />
     <Compile Include="SampleBusiness.cs" />
