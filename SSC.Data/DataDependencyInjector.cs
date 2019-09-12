@@ -1,6 +1,7 @@
 ﻿using DBNostalgia;
 using SSC.Common;
 using SSC.Common.Interfaces;
+using SSC.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,7 @@ namespace SSC.Data
 {
     public static class DataDependencyInjector
     {
-        public static void Register()
+        private static void RegisterUnitOfWork()
         {
             var unitOfWorkInjectionFactory = new InjectionFactory(c =>
             {
@@ -30,6 +31,40 @@ namespace SSC.Data
             });
 
             DependencyResolver.Obj.Register<IUnitOfWork>(unitOfWorkInjectionFactory);
+        }
+
+        public static void RegisterAll()
+        {
+            RegisterUnitOfWork();
+
+            Register<IAboutUsData, AboutUsData>();
+            Register<IBackupData, BackupData>();
+            Register<IClientCompanyData, ClientCompanyData>();
+            Register<IClientCompanyLabScriptData, ClientCompanyLabScriptData>();
+            Register<IClientTransactionData, ClientTransactionData>();
+            Register<IClinicRunData, ClinicRunData>();
+            Register<ILogData, LogData>();
+            Register<IPatientData, PatientData>();
+            Register<IPricingPlanData, PricingPlanData>();
+            Register<IReceiptData, ReceiptData>();
+            Register<IRoleData, RoleData>();
+            Register<ISampleBatchData, SampleBatchData>();
+            Register<ISampleData, SampleData>();
+            Register<ISampleFunctionData, SampleFunctionData>();
+            Register<ISampleParameterTypeData, SampleParameterTypeData>();
+            Register<ISampleTransactionData, SampleTransactionData>();
+            Register<ISampleTypeData, SampleTypeData>();
+            Register<ISatelliteDataData, SatelliteDataData>();
+            Register<ISiteNewsData, SiteNewsData>();
+            Register<ISystemLanguageData, SystemLanguageData>();
+            Register<IUserData, UserData>();
+            Register<IUserInvitationData, UserInvitationData>();
+            Register<IWorkOrderData, WorkOrderData>();
+        }
+
+        private static void Register<Interface, Concrete>() where Concrete : Interface
+        {
+            DependencyResolver.Obj.Register<Interface, Concrete>();
         }
     }
 }

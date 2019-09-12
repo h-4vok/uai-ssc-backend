@@ -16,7 +16,7 @@ namespace SSC.Business
         {
             DependencyResolver.Obj.Register<IUserData, UserData>();
 
-            DataDependencyInjector.Register();
+            DataDependencyInjector.RegisterAll();
         }
     }
 }

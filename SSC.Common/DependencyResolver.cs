@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
 using Unity;
+using Unity.Exceptions;
 using Unity.Registration;
 using Unity.Resolution;
 
@@ -29,12 +30,26 @@ namespace SSC.Common
 
         public object GetService(Type serviceType)
         {
-            return this.container.Resolve(serviceType);
+            try
+            {
+                return this.container.Resolve(serviceType);
+            }
+            catch (ResolutionFailedException)
+            {
+                return null;
+            }
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return this.container.ResolveAll(serviceType);
+            try
+            {
+                return this.container.ResolveAll(serviceType);
+            }
+            catch (ResolutionFailedException)
+            {
+                return null;
+            }
         }
 
         public IDependencyScope BeginScope()
