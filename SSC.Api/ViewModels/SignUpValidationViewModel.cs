@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,7 @@ namespace SSC.Api.ViewModels
 
     public class SignUpValidationViewModel
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public SignUpValidationStep Step { get; set; } = SignUpValidationStep.Initial;
 
         public string FirstName { get; set; }

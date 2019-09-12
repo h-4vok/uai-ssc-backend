@@ -14,6 +14,13 @@ namespace SSC.Business
 {
     public class UserBusiness : IUserBusiness
     {
+        private IUserData data;
+
+        public UserBusiness()
+        {
+            this.data = DependencyResolver.Obj.Resolve<IUserData>();
+        }
+
         public AuthenticationResponseViewModel Authenticate(string userName, string password)
         {
             throw new NotImplementedException();
@@ -21,7 +28,6 @@ namespace SSC.Business
 
         public IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
         {
-            var data = DependencyResolver.Obj.Resolve<IUserData>();
             throw new NotImplementedException();
         }
 
@@ -32,18 +38,19 @@ namespace SSC.Business
 
         public void Create(User model)
         {
-            var data = DependencyResolver.Obj.Resolve<IUserData>();
             throw new NotImplementedException();
         }
 
-        public string ValidateNewUserSignUp(string userName, string password)
+        public string ValidateNewUserSignUp(string companyName, string companyTaxCode)
         {
-            throw new NotImplementedException();
+            var companyData = DependencyResolver.Obj.Resolve<IClientCompanyData>();
+            var exists = companyData.Exists(companyName, companyTaxCode);
+
+            return exists ? String.Format("La compañía {0} ya existe en la plataforma.", companyName) : String.Empty;
         }
 
         public string PreValidateNewUser(string userName, string password)
         {
-            var data = DependencyResolver.Obj.Resolve<IUserData>();
             if (data.Exists(userName))
             {
                 return "La cuenta de email ya se encuentra registrada.";

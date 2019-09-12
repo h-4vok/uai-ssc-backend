@@ -11,7 +11,7 @@ namespace SSC.Data.Interfaces
 
     public interface IClientCompanyData
     {
-        void Exists(string name, string taxCode);
+        bool Exists(string name, string taxCode);
         int Create(ClientCompany model);
         IEnumerable<ClientCompanyReportRow> GetAll();
         void UpdateIsEnabled(int id, bool isEnabled);

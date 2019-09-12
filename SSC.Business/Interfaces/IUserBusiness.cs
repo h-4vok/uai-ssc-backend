@@ -19,6 +19,8 @@ namespace SSC.Business.Interfaces
 
         string PreValidateNewUser(string userName, string password);
 
+        string ValidateNewUserSignUp(string companyName, string companyTaxCode);
+
         void SendForgottenPasswordRecovery(string userName);
 
         bool IsRecoveryTokenValid(string userName, string token);

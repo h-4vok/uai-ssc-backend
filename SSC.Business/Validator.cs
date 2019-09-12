@@ -82,5 +82,29 @@ namespace SSC.Business
 
             return this;
         }
+
+        public Validator<T> NotNull(Func<T, object> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            if (propertyAccessor(this.model) == null)
+            {
+                return this.SetAndReturn(String.Format("El campo {0} no puede ser vacío.", fieldName));
+            }
+
+            return this;
+        }
+
+        public Validator<T> MandatoryDropdownSelection(Func<T, int> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            if (propertyAccessor(this.model) <= 0)
+            {
+                return this.SetAndReturn(String.Format("El campo {0} es obligatorio.", fieldName));
+            }
+
+            return this;
+        }
     }
 }

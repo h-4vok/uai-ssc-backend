@@ -26,9 +26,16 @@ namespace SSC.Data
             throw new NotImplementedException();
         }
 
-        public void Exists(string name, string taxCode)
+        public bool Exists(string name, string taxCode)
         {
-            throw new NotImplementedException();
+            var output = this.uow.Run(() =>
+            {
+                return this.uow.Scalar("sp_ClientCompany_exists", ParametersBuilder.With("name", name)).AsBool()
+                    || (!String.IsNullOrEmpty(taxCode) && 
+                    this.uow.Scalar("sp_ClientCompanyBillingInformation_taxCodeExists", ParametersBuilder.With("taxCode", taxCode)).AsBool());
+            });
+
+            return output;
         }
 
         public IEnumerable<ClientCompanyReportRow> GetAll()
