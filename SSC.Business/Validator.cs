@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -102,6 +103,33 @@ namespace SSC.Business
             if (propertyAccessor(this.model) <= 0)
             {
                 return this.SetAndReturn(String.Format("El campo {0} es obligatorio.", fieldName));
+            }
+
+            return this;
+        }
+
+        public Validator<T> IsNumber(Func<T, string> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            Regex regex = new Regex(@"^[0-9]+$");
+
+            if (!regex.IsMatch(propertyAccessor(this.model)))
+            {
+                return this.SetAndReturn(String.Format("El campo {0} no es un número válido.", fieldName));
+            }
+
+            return this;
+        }
+
+        public Validator<T> DateFormat(Func<T, string> propertyAccessor, string fieldName, string format)
+        {
+            if (!this.ShouldRun) return this;
+
+            var output = DateTime.TryParseExact(propertyAccessor(this.model), format, CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
+            if (!output)
+            {
+                return this.SetAndReturn(String.Format("El campo {0} no tiene el formato de fecha esperado '{1}'.", fieldName, format));
             }
 
             return this;

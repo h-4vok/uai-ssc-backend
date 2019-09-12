@@ -4,6 +4,7 @@ using SSC.Business.Interfaces;
 using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,10 +83,31 @@ namespace SSC.Api.Controllers
                 return partial;
             }
 
+            string Payment_Validation()
+            {
+                var creditCard = new CreditCard
+                {
+                    Number = model.CreditCardNumber,
+                    Owner = model.CreditCardOwner,
+                    ExpirationDateMMYY = model.CreditCardExpirationDateMMYY,
+                    CCV = model.CreditCardCCV,
+                };
+
+                var creditCardController = new CreditCardController(DependencyResolver.Obj.Resolve<ICreditCardBusiness>());
+                var creditCardResponse = creditCardController.Validate(creditCard);
+
+                if (creditCardResponse.IsError)
+                    return creditCardResponse.ErrorMessage;
+
+                return String.Empty;
+            }
+
             var validators = new Dictionary<SignUpValidationStep, Func<string>>
             {
                 { SignUpValidationStep.Initial, Initial_Validation },
-                { SignUpValidationStep.Company, Company_Validation }
+                { SignUpValidationStep.Company, Company_Validation },
+                { SignUpValidationStep.Pricing, () => "" },
+                { SignUpValidationStep.Payment, Payment_Validation }
             };
 
             var currentValidator = validators[model.Step];

@@ -15,7 +15,10 @@ namespace SSC.Api.Controllers
 
         public CreditCardController(ICreditCardBusiness business) => this.business = business;
 
-        public ResponseViewModel Validate(CreditCard model) => throw new NotImplementedException();
+        internal ResponseViewModel Validate(CreditCard model)
+        {
+            return this.business.ValidateData(model);
+        }
 
         public ResponseViewModel<CreditCard> Get(int id) => throw new NotImplementedException();
 

@@ -48,7 +48,7 @@ namespace SSC.Business
 
         public string ValidateData(CreditCard model)
         {
-            throw new NotImplementedException();
+            return this.externalValidator.Validate(model.Number, model.CCV.ToString(), model.Owner, model.ExpirationDateMMYY);
         }
     }
 }
