@@ -28,7 +28,7 @@ namespace SSC.Api.Controllers
             return null;
         }
 
-        public ResponseViewModel ValidateNewSignUp(UserBusiness user) => throw new NotImplementedException();
+        //public ResponseViewModel ValidateNewSignUp(UserBusiness user) => throw new NotImplementedException();
 
         public ResponseViewModel Post(SignUpValidationViewModel model)
         {
