@@ -118,5 +118,59 @@ namespace SSC.Api.Controllers
 
             return true;
         }
+
+        public ResponseViewModel Put(int id, CompleteSignUpViewModel vm)
+        {
+            var partial = Validator<CompleteSignUpViewModel>.Start(vm)
+                .NotNull(x => x.User, "Usuario")
+                .NotNull(x => x.ClientCompany, "Empresa")
+                .NotNull(x => x.ClientCompany.DefaultCreditCard, "Tarjeta de Crédito")
+                .NotNull(x => x.ClientCompany.BillingInformation, "Datos de facturación")
+                .NotNull(x => x.ClientCompany.Addresses.FirstOrDefault(), "Domicilio")
+                .NotNull(x => x.ClientCompany.Addresses.First().Province, "Selección de Provincia")
+                .MandatoryString(x => x.User.FirstName, "Nombre")
+                .MaxStringLength(x => x.User.FirstName, "Nombre", 200)
+                .MandatoryString(x => x.User.LastName, "Apellido")
+                .MaxStringLength(x => x.User.LastName, "Apellido", 200)
+                .MandatoryString(x => x.User.UserName, "Email")
+                .MinStringLength(x => x.User.UserName, "Email", 6)
+                .ValidEmailAddress(x => x.User.UserName, "Email")
+                .MandatoryString(x => x.User.Password, "Contraseña")
+                .MandatoryString(x => x.ClientCompany.Name, "Nombre de la empresa")
+                .MaxStringLength(x => x.ClientCompany.Name, "Nombre de la empresa", 200)
+                .MandatoryDropdownSelection(x => x.ClientCompany.Addresses.First().Province.Id, "Provincia")
+                .MandatoryString(x => x.ClientCompany.Addresses.First().City, "Ciudad")
+                .MaxStringLength(x => x.ClientCompany.Addresses.First().City, "Ciudad", 200)
+                .MandatoryString(x => x.ClientCompany.Addresses.First().StreetName, "Calle")
+                .MaxStringLength(x => x.ClientCompany.Addresses.First().StreetName, "Calle", 500)
+                .MandatoryString(x => x.ClientCompany.Addresses.First().StreetNumber, "Número")
+                .MaxStringLength(x => x.ClientCompany.Addresses.First().StreetNumber, "Número", 35)
+                .MandatoryString(x => x.ClientCompany.Addresses.First().Department, "Departamento")
+                .MaxStringLength(x => x.ClientCompany.Addresses.First().Department, "Departamento", 35)
+                .MandatoryString(x => x.ClientCompany.Addresses.First().PostalCode, "Código Postal")
+                .MaxStringLength(x => x.ClientCompany.Addresses.First().PostalCode, "Código Postal", 35)
+                .ValidationResult;
+
+            var creditCard = new CreditCard
+            {
+                Number = vm.ClientCompany.DefaultCreditCard.Number,
+                Owner = vm.ClientCompany.DefaultCreditCard.Owner,
+                ExpirationDateMMYY = vm.ClientCompany.DefaultCreditCard.ExpirationDateMMYY,
+                CCV = vm.ClientCompany.DefaultCreditCard.CCV
+            };
+
+            var creditCardController = new CreditCardController(DependencyResolver.Obj.Resolve<ICreditCardBusiness>());
+            var creditCardResponse = creditCardController.Validate(creditCard);
+
+            if (creditCardResponse.IsError)
+                return creditCardResponse.ErrorMessage;
+
+            var companyId = this.companyBusiness.Create(vm.ClientCompany);
+
+            vm.ClientCompany.Id = companyId;
+            vm.User.ClientCompany = vm.ClientCompany;
+
+            return null;
+        }
     }
 }

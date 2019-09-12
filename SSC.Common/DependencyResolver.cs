@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
 using Unity;
 using Unity.Exceptions;
+using Unity.Injection;
 using Unity.Registration;
 using Unity.Resolution;
 

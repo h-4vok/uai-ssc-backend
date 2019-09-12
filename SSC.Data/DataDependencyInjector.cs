@@ -17,7 +17,9 @@ namespace SSC.Data
     {
         private static void RegisterUnitOfWork()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             var unitOfWorkInjectionFactory = new InjectionFactory(c =>
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 IDbConnection connectionBuilder()
                 {
