@@ -2,7 +2,8 @@
 	@userName NVARCHAR(200),
 	@password NVARCHAR(200),
 	@clientCompanyId INT,
-	@createdBy INT = 1
+	@createdBy INT = 1,
+	@isClientAdmin BIT = 0
 AS
 BEGIN
 
@@ -34,6 +35,26 @@ BEGIN
 		CreatedBy = @createdBy,
 		UpdatedBy = @createdBy
 
-	SELECT SCOPE_IDENTITY()
+	DECLARE @UserId INT
+
+	SELECT @UserId = SCOPE_IDENTITY()
+
+	IF (@isClientAdmin = 1)
+	BEGIN
+
+		DECLARE @RoleId INT
+
+		SELECT @RoleId = Id FROM Role WHERE Name = 'Administrador de Cliente'
+
+		IF (@RoleId > 0)
+		BEGIN
+
+			EXEC sp_UserRole_create @UserId, @RoleId, @UserId
+
+		END
+
+	END
+
+	SELECT @UserId
 
 END

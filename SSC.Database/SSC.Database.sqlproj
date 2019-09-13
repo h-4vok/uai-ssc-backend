@@ -134,6 +134,12 @@
     <Build Include="Programmability\Stored Procedures\sp_Province_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_exists.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompanyBillingInformation_taxCodeExists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompanyCreditCard_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompanyBillingInformation_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_UserAddress_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PricingPlan_getByCode.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PricingPlan_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

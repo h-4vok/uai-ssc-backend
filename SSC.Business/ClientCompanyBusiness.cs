@@ -21,7 +21,13 @@ namespace SSC.Business
 
         public int Create(ClientCompany model)
         {
-            throw new NotImplementedException();
+            if (model.CurrentPricingPlan.Id <= 0)
+            {
+                var pricingPlanBusiness = DependencyResolver.Obj.Resolve<IPricingPlanBusiness>();
+                model.CurrentPricingPlan = pricingPlanBusiness.GetByCode(model.CurrentPricingPlan.Code);
+            }
+
+            return this.data.Create(model);
         }
 
         public IEnumerable<ClientCompanyReportRow> GetAll()

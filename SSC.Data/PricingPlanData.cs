@@ -22,12 +22,32 @@ namespace SSC.Data
 
         private PricingPlan Fetch(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var output = new PricingPlan
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code"),
+                Name = reader.GetString("Name"),
+                UserLimit = reader.GetInt32Nullable("UserLimit"),
+                PatientSampleLimit = reader.GetInt32Nullable("PatientSampleLimit"),
+                ControlSampleLimit = reader.GetInt32Nullable("ControlSampleLimit"),
+                ClinicRehearsalLimit = reader.GetInt32Nullable("ClinicRehearsalLimit"),
+                AnualDiscountPercentage = reader.GetInt32Nullable("AnualDiscountPercentage"),
+                Price = reader.GetDecimal(reader.GetOrdinal("Price"))
+            };
+
+            return output;
         }
 
         public IEnumerable<PricingPlan> GetAll()
         {
-            throw new NotImplementedException();
+            var output = this.uow.GetDirect("sp_PricingPlan_getAll", this.Fetch);
+            return output;
+        }
+
+        public PricingPlan GetByCode(string code)
+        {
+            var output = this.uow.GetOneDirect("sp_PricingPlan_getByCode", this.Fetch, ParametersBuilder.With("Code", code));
+            return output;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace SSC.Business
 
         public void Create(User model)
         {
-            throw new NotImplementedException();
+            this.data.Create(model);
         }
 
         public string ValidateNewUserSignUp(string companyName, string companyTaxCode)

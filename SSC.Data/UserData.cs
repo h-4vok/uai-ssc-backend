@@ -137,6 +137,7 @@ namespace SSC.Data
                         .And("password", model.Password)
                         .And("clientCompanyId", model.ClientCompany?.Id)
                         .And("createdBy", authProvider.CurrentUserId)
+                        .And("isClientAdmin", !model.Roles.Any())
                     ).AsInt();
 
                 model.Roles.ForEach(role =>
@@ -146,6 +147,19 @@ namespace SSC.Data
                             .With("userId", model.Id)
                             .And("roleId", role.Id)
                             .And("createdBy", authProvider.CurrentUserId)
+                        );
+                });
+
+                model.Addresses.ForEach(record =>
+                {
+                    uow.NonQuery("sp_UserAddress_create",
+                        ParametersBuilder.With("StreetName", record.StreetName)
+                        .And("StreetNumber", record.StreetNumber)
+                        .And("City", record.City)
+                        .And("PostalCode", record.PostalCode)
+                        .And("Department", record.Department)
+                        .And("ProvinceId", record.Province.Id)
+                        .And("CreatedBy", authProvider.CurrentUserId > 0 ? authProvider.CurrentUserId : model.Id)
                         );
                 });
             });

@@ -128,6 +128,7 @@ namespace SSC.Api.Controllers
                 .NotNull(x => x.ClientCompany.BillingInformation, "Datos de facturación")
                 .NotNull(x => x.ClientCompany.Addresses.FirstOrDefault(), "Domicilio")
                 .NotNull(x => x.ClientCompany.Addresses.First().Province, "Selección de Provincia")
+                .NotNull(x => x.ClientCompany.BillingInformation, "Datos de Facturación")
                 .MandatoryString(x => x.User.FirstName, "Nombre")
                 .MaxStringLength(x => x.User.FirstName, "Nombre", 200)
                 .MandatoryString(x => x.User.LastName, "Apellido")
@@ -149,6 +150,23 @@ namespace SSC.Api.Controllers
                 .MaxStringLength(x => x.ClientCompany.Addresses.First().Department, "Departamento", 35)
                 .MandatoryString(x => x.ClientCompany.Addresses.First().PostalCode, "Código Postal")
                 .MaxStringLength(x => x.ClientCompany.Addresses.First().PostalCode, "Código Postal", 35)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.LegalName, "Denominación Fiscal")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.LegalName, "Denominación Fiscal", 200)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.TaxCode, "Número de identificación fiscal")
+                .MinStringLength(x => x.ClientCompany.BillingInformation.TaxCode, "Número de identificación fiscal", 11)
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.TaxCode, "Número de identificación fiscal", 11)
+                .IsNumber(x => x.ClientCompany.BillingInformation.TaxCode, "Número de identificación fiscal")
+                .MandatoryDropdownSelection(x => x.ClientCompany.BillingInformation.Address.Province.Id, "Provincia")
+                .MandatoryString(x => x.ClientCompany.BillingInformation.Address.City, "Ciudad")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.Address.City, "Ciudad", 200)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.Address.StreetName, "Calle")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.Address.StreetName, "Calle", 500)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.Address.StreetNumber, "Número")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.Address.StreetNumber, "Número", 35)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.Address.Department, "Departamento")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.Address.Department, "Departamento", 35)
+                .MandatoryString(x => x.ClientCompany.BillingInformation.Address.PostalCode, "Código Postal")
+                .MaxStringLength(x => x.ClientCompany.BillingInformation.Address.PostalCode, "Código Postal", 35)
                 .ValidationResult;
 
             var creditCard = new CreditCard
@@ -170,7 +188,9 @@ namespace SSC.Api.Controllers
             vm.ClientCompany.Id = companyId;
             vm.User.ClientCompany = vm.ClientCompany;
 
-            return null;
+            this.business.Create(vm.User);
+
+            return true;
         }
     }
 }

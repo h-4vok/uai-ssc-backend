@@ -1,0 +1,27 @@
+﻿CREATE PROCEDURE sp_ClientCompanyCreditCard_create
+	@ClientId INT,
+	@Number NVARCHAR(30),
+	@Owner NVARCHAR(500),
+	@CCV INT,
+	@ExpirationDateMMYY NVARCHAR(4),
+	@IsDefault BIT = 0
+AS
+BEGIN
+
+	INSERT ClientCompanyCreditCard (
+		ClientId,
+		Number,
+		Owner,
+		CCV,
+		ExpirationDateMMYY,
+		IsDefault
+	)
+	SELECT
+		ClientId = @ClientId,
+		Number = @Number,
+		Owner = @Owner,
+		CCV = @CCV,
+		ExpirationDateMMYY = @ExpirationDateMMYY,
+		IsDefault = @IsDefault
+
+END

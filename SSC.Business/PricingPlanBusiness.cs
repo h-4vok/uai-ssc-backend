@@ -23,5 +23,10 @@ namespace SSC.Business
         {
             throw new NotImplementedException();
         }
+
+        public PricingPlan GetByCode(string code)
+        {
+            return this.data.GetByCode(code);
+        }
     }
 }

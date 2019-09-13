@@ -10,5 +10,6 @@ namespace SSC.Business.Interfaces
     public interface IPricingPlanBusiness
     {
         IEnumerable<PricingPlan> GetAll();
+        PricingPlan GetByCode(string code);
     }
 }
