@@ -102,12 +102,38 @@ namespace SSC.Api.Controllers
                 return String.Empty;
             }
 
+            string Billing_Validation()
+            {
+                var partial = Validator<SignUpValidationViewModel>.Start(model)
+                    .MandatoryString(x => x.BillingCompanyName, "Nombre de la empresa")
+                    .MaxStringLength(x => x.BillingCompanyName, "Nombre de la empresa", 200)
+                    .MandatoryString(x => x.BillingCompanyIdentification, "Número de identificación fiscal")
+                    .MinStringLength(x => x.BillingCompanyIdentification, "Número de identificación fiscal", 11)
+                    .MaxStringLength(x => x.BillingCompanyIdentification, "Número de identificación fiscal", 11)
+                    .IsNumber(x => x.BillingCompanyIdentification, "Número de identificación fiscal")
+                    .MandatoryDropdownSelection(x => x.BillingProvinceId, "Provincia")
+                    .MandatoryString(x => x.BillingCity, "Ciudad")
+                    .MaxStringLength(x => x.BillingCity, "Ciudad", 200)
+                    .MandatoryString(x => x.BillingStreet, "Calle")
+                    .MaxStringLength(x => x.BillingStreet, "Calle", 500)
+                    .MandatoryString(x => x.BillingStreetNumber, "Número")
+                    .MaxStringLength(x => x.BillingStreetNumber, "Número", 35)
+                    .MandatoryString(x => x.BillingDepartment, "Departamento")
+                    .MaxStringLength(x => x.BillingDepartment, "Departamento", 35)
+                    .MandatoryString(x => x.BillingPostalCode, "Código Postal")
+                    .MaxStringLength(x => x.BillingPostalCode, "Código Postal", 35)
+                    .ValidationResult;
+
+                return partial;
+            }
+
             var validators = new Dictionary<SignUpValidationStep, Func<string>>
             {
                 { SignUpValidationStep.Initial, Initial_Validation },
                 { SignUpValidationStep.Company, Company_Validation },
                 { SignUpValidationStep.Pricing, () => "" },
-                { SignUpValidationStep.Payment, Payment_Validation }
+                { SignUpValidationStep.Payment, Payment_Validation },
+                { SignUpValidationStep.Billing, Billing_Validation },
             };
 
             var currentValidator = validators[model.Step];

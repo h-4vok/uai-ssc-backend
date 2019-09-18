@@ -134,7 +134,7 @@ namespace SSC.Data
                 model.Id = uow.Scalar(
                     "sp_User_create",
                     ParametersBuilder.With("userName", model.UserName)
-                        .And("password", model.Password)
+                        .And("password", PasswordHasher.obj.Hash(model.Password))
                         .And("clientCompanyId", model.ClientCompany?.Id)
                         .And("createdBy", authProvider.CurrentUserId)
                         .And("isClientAdmin", !model.Roles.Any())

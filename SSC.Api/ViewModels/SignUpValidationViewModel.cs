@@ -38,5 +38,14 @@ namespace SSC.Api.ViewModels
         public string CreditCardOwner { get; set; }
         public int CreditCardCCV { get; set; }
         public string CreditCardExpirationDateMMYY { get; set; }
+
+        public string BillingCompanyName { get; set; }
+        public string BillingCompanyIdentification { get; set; }
+        public int BillingProvinceId { get; set; }
+        public string BillingCity { get; set; }
+        public string BillingStreet { get; set; }
+        public string BillingStreetNumber { get; set; }
+        public string BillingDepartment { get; set; }
+        public string BillingPostalCode { get; set; }
     }
 }
