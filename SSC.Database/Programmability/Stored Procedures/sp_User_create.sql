@@ -3,7 +3,9 @@
 	@password NVARCHAR(200),
 	@clientCompanyId INT,
 	@createdBy INT = 1,
-	@isClientAdmin BIT = 0
+	@isClientAdmin BIT = 0,
+	@FirstName NVARCHAR(200),
+	@LastName NVARCHAR(200)
 AS
 BEGIN
 
@@ -26,8 +28,8 @@ BEGIN
 		Password = @password,
 		IsBlocked = 0,
 		IsEnabled = 1,
-		FirstName = NULL,
-		LastName = NULL,
+		FirstName = @FirstName,
+		LastName = @LastName,
 		ClientId = @clientCompanyId,
 		TitleInCompany = NULL,
 		IsEnabledInCompany = 1,

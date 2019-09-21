@@ -8,14 +8,24 @@ namespace SSC.Api.Behavior
 {
     public class AuthenticationProvider : IAuthenticationProvider
     {
-        public string CurrentUserName => HttpContext.Current.Session["UserName"].AsString();
+        private object GetSessionValue(string key)
+        {
+            if (HttpContext.Current.Session == null)
+            {
+                return null;
+            }
 
-        public int CurrentClientId => HttpContext.Current.Session["ClientId"].AsInt();
+            return HttpContext.Current.Session[key];
+        }
 
-        public int CurrentUserId => HttpContext.Current.Session["UserId"].AsInt();
+        public string CurrentUserName => this.GetSessionValue("UserName").AsString();
 
-        public IEnumerable<string> CurrentUserRoleCodes => HttpContext.Current.Session["Permissions"] as IEnumerable<string> ?? new List<string>();
+        public int CurrentClientId => this.GetSessionValue("ClientId").AsInt();
 
-        public string CurrentClientApiKey => HttpContext.Current.Session["ClientApiKey"].AsString();
+        public int CurrentUserId => this.GetSessionValue("UserId").AsInt();
+
+        public IEnumerable<string> CurrentUserRoleCodes => this.GetSessionValue("Permissions") as IEnumerable<string> ?? new List<string>();
+
+        public string CurrentClientApiKey => this.GetSessionValue("ClientApiKey").AsString();
     }
 }

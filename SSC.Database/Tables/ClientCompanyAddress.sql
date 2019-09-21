@@ -1,6 +1,7 @@
 ﻿CREATE TABLE ClientCompanyAddress
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	ClientCompanyId INT NOT NULL,
 	StreetName NVARCHAR(200) NOT NULL,
 	StreetNumber NVARCHAR(200) NOT NULL,
 	City NVARCHAR(200) NOT NULL,
@@ -12,7 +13,8 @@
 	[UpdatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[UpdatedBy] INT,
 
-	FOREIGN KEY (ProvinceId) REFERENCES Province
+	FOREIGN KEY (ProvinceId) REFERENCES Province,
+	FOREIGN KEY (ClientCompanyId) REFERENCES ClientCompany
 )
 
 GO

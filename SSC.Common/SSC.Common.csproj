@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticationProvider.cs" />
     <Compile Include="DataToPDFProcessor.cs" />
     <Compile Include="DataToXLSXProcessor.cs" />
     <Compile Include="DependencyResolver.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Interfaces\IEnvironment.cs" />
     <Compile Include="Interfaces\IFileSystemProvider.cs" />
     <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
+    <Compile Include="Interfaces\IVerificationCodeHandler.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="PasswordHasher.cs" />

@@ -35,8 +35,9 @@ namespace SSC.Data
                 model.Addresses.ForEach(record =>
                 {
                     this.uow.NonQuery("sp_ClientCompanyAddress_create",
-                        ParametersBuilder.With("StreetName", record.StreetName)
+                        ParametersBuilder.With("ClientCompanyId", id)
                             .And("StreetName", record.StreetName)
+                            .And("StreetNumber", record.StreetNumber)
                             .And("City", record.City)
                             .And("PostalCode", record.PostalCode)
                             .And("Department", record.Department)
@@ -44,7 +45,7 @@ namespace SSC.Data
                         );
                 });
 
-                this.uow.NonQuery("sp_ClientCompanyCreditCard_create", 
+                this.uow.NonQuery("sp_ClientCompanyCreditCard_create",
                     ParametersBuilder.With("ClientId", id)
                     .And("Number", model.DefaultCreditCard.Number)
                     .And("Owner", model.DefaultCreditCard.Owner)
@@ -61,6 +62,7 @@ namespace SSC.Data
                     .And("StreetNumber", model.BillingInformation.Address.StreetNumber)
                     .And("City", model.BillingInformation.Address.City)
                     .And("PostalCode", model.BillingInformation.Address.PostalCode)
+                    .And("Department", model.BillingInformation.Address.Department)
                     .And("ProvinceId", model.BillingInformation.Address.Province.Id)
                     );
 
@@ -77,7 +79,7 @@ namespace SSC.Data
             var output = this.uow.Run(() =>
             {
                 return this.uow.Scalar("sp_ClientCompany_exists", ParametersBuilder.With("name", name)).AsBool()
-                    || (!String.IsNullOrEmpty(taxCode) && 
+                    || (!String.IsNullOrEmpty(taxCode) &&
                     this.uow.Scalar("sp_ClientCompanyBillingInformation_taxCodeExists", ParametersBuilder.With("taxCode", taxCode)).AsBool());
             });
 

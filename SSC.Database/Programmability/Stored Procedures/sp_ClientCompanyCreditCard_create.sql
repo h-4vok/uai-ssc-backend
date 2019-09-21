@@ -4,7 +4,7 @@
 	@Owner NVARCHAR(500),
 	@CCV INT,
 	@ExpirationDateMMYY NVARCHAR(4),
-	@IsDefault BIT = 0
+	@IsDefault BIT
 AS
 BEGIN
 
@@ -14,7 +14,9 @@ BEGIN
 		Owner,
 		CCV,
 		ExpirationDateMMYY,
-		IsDefault
+		IsDefault,
+		CreatedDate,
+		UpdatedDate
 	)
 	SELECT
 		ClientId = @ClientId,
@@ -22,6 +24,8 @@ BEGIN
 		Owner = @Owner,
 		CCV = @CCV,
 		ExpirationDateMMYY = @ExpirationDateMMYY,
-		IsDefault = @IsDefault
+		IsDefault = @IsDefault,
+		CreatedDate = GETUTCDATE(),
+		UpdatedDate = GETUTCDATE()
 
 END

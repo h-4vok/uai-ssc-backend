@@ -1,32 +1,36 @@
-﻿CREATE PROCEDURE sp_UserAddress_create
+﻿CREATE PROCEDURE sp_ClientCompanyAddress_create
+	@ClientCompanyId INT,
 	@StreetName NVARCHAR(200),
 	@StreetNumber NVARCHAR(200),
 	@City NVARCHAR(200),
 	@PostalCode NVARCHAR(70),
 	@Department NVARCHAR(200),
-	@ProvinceId INT,
-	@CreatedBy INT = NULL
+	@ProvinceId INT 
 AS
 BEGIN
 
-	INSERT PlatformUserAddress (
+	INSERT ClientCompanyAddress (
+		ClientCompanyId,
 		StreetName,
 		StreetNumber,
 		City,
 		PostalCode,
 		Department,
 		ProvinceId,
-		CreatedBy,
-		UpdatedBy
+		CreatedDate,
+		UpdatedDate
 	)
 	SELECT
+		ClientCompanyId = @ClientCompanyId,
 		StreetName = @StreetName,
 		StreetNumber = @StreetNumber,
 		City = @City,
 		PostalCode = @PostalCode,
 		Department = @Department,
 		ProvinceId = @ProvinceId,
-		CreatedBy = @CreatedBy,
-		UpdatedBy = @CreatedBy
+		CreatedDate = GETUTCDATE(),
+		UpdatedDate = GETUTCDATE()
+
+	SELECT SCOPE_IDENTITY()
 
 END

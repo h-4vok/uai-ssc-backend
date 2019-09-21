@@ -128,6 +128,8 @@ namespace SSC.Data
         public void Create(User model)
         {
             var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            int? userId = authProvider.CurrentUserId;
+            userId = userId == 0 ? null : userId;
 
             uow.Run(() =>
             {
@@ -136,7 +138,9 @@ namespace SSC.Data
                     ParametersBuilder.With("userName", model.UserName)
                         .And("password", PasswordHasher.obj.Hash(model.Password))
                         .And("clientCompanyId", model.ClientCompany?.Id)
-                        .And("createdBy", authProvider.CurrentUserId)
+                        .And("FirstName", model.FirstName)
+                        .And("LastName", model.LastName)
+                        .And("createdBy", userId)
                         .And("isClientAdmin", !model.Roles.Any())
                     ).AsInt();
 
@@ -146,7 +150,7 @@ namespace SSC.Data
                         ParametersBuilder
                             .With("userId", model.Id)
                             .And("roleId", role.Id)
-                            .And("createdBy", authProvider.CurrentUserId)
+                            .And("createdBy", authProvider.CurrentUserId > 0 ? authProvider.CurrentUserId : model.Id)
                         );
                 });
 

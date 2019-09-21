@@ -142,11 +142,30 @@ namespace SSC.Api.Controllers
             if (!String.IsNullOrWhiteSpace(validation))
                 return validation;
 
+            if (model.Step == SignUpValidationStep.Billing)
+            {
+                // Crear verification code en base
+                var random = new Random(DateTime.Now.Second);
+                var verificationCode = random.Next(111111, 999999);
+
+                var verificationCodeHandler = DependencyResolver.Obj.Resolve<IVerificationCodeHandler>();
+                verificationCodeHandler.Set(model.UserName, verificationCode);
+            }
+
             return true;
         }
 
         public ResponseViewModel Put(int id, CompleteSignUpViewModel vm)
         {
+            var verificationCodeHandler = DependencyResolver.Obj.Resolve<IVerificationCodeHandler>();
+
+            var verificationCode = verificationCodeHandler.Get(vm.User.UserName);
+
+            if (vm.VerificationCode != verificationCode)
+            {
+                return "El código de verificación no coincide, es inválido o ha expirado.";
+            }
+
             var partial = Validator<CompleteSignUpViewModel>.Start(vm)
                 .NotNull(x => x.User, "Usuario")
                 .NotNull(x => x.ClientCompany, "Empresa")

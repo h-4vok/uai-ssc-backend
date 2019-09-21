@@ -1,4 +1,5 @@
-﻿using SSC.Business;
+﻿using SSC.Api.Behavior;
+using SSC.Business;
 using SSC.Business.Interfaces;
 using SSC.Common;
 using SSC.Common.Interfaces;
@@ -14,7 +15,14 @@ namespace SSC.Api.App_Start
         public static void Register()
         {
             RegisterAll();
+            RegisterWebProviders();
             BusinessDependencyInjector.RegisterBusinessDependencies();
+        }
+
+        private static void RegisterWebProviders()
+        {
+            Register<IAuthenticationProvider, AuthenticationProvider>();
+            Register<IVerificationCodeHandler, VerificationCodeHandler>();
         }
 
         private static void RegisterAll()
@@ -44,6 +52,7 @@ namespace SSC.Api.App_Start
             Register<IUserBusiness, UserBusiness>();
             Register<IUserInvitationBusiness, UserInvitationBusiness>();
             Register<IWorkOrderBusiness, WorkOrderBusiness>();
+            Register<ISmtpHandler, SmtpHandler>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {

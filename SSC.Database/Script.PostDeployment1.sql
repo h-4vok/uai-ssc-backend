@@ -1,4 +1,8 @@
-﻿-- Satellite Data: Provinces
+﻿-- Setup ssc login
+CREATE USER ssc FOR LOGIN ssc;
+EXEC sp_addrolemember N'db_owner', N'ssc';
+
+-- Satellite Data: Provinces
 INSERT Province ( Name )
 SELECT
 	Name = data.Name
