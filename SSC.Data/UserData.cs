@@ -59,9 +59,9 @@ namespace SSC.Data
                 RoleId = reader.GetInt32("RoleId"),
                 RoleName = reader.GetString("RoleName"),
                 RoleIsPlatformRole = reader.GetBoolean("RoleIsPlatformRole"),
-                PermissionId = reader.GetInt32("PermissionId"),
+                PermissionId = reader.GetInt32Nullable("PermissionId"),
                 PermissionCode = reader.GetString("PermissionCode"),
-                PermissionName = reader.GetString("PermissionName"),
+                PermissionName = reader.GetString("PermissionName")
             };
 
             return record;
@@ -86,7 +86,62 @@ namespace SSC.Data
 
         private User ToUser(IEnumerable<UserReportRow> records)
         {
-            return null;
+            var firstRecord = records.First();
+            var user = new User
+            {
+                Id = firstRecord.Id,
+                UserName = firstRecord.UserName,
+                Password = firstRecord.Password,
+                IsBlocked = firstRecord.IsBlocked,
+                IsDisabled = firstRecord.IsDisabled,
+                FirstName = null,
+                LastName = null,
+                TitleInCompany = null,
+                IsEnabledInCompany = true,
+                LoginFailures = firstRecord.LoginFailures,
+                CreatedDate = firstRecord.CreatedDate,
+                CreatedBy = firstRecord.CreatedBy,
+                UpdatedDate = firstRecord.UpdatedDate,
+                UpdatedBy = firstRecord.UpdatedBy,
+            };
+
+            var roles = new List<Role>();
+            var currentPermissions = new List<Permission>();
+            var currentRole = new Role();
+
+            foreach(var record in records)
+            {
+                if (!record.RoleId.HasValue) break;
+
+                if (currentRole.Name != record.RoleName)
+                {
+                    currentRole = new Role
+                    {
+                        Id = record.RoleId.AsInt(),
+                        Name = record.RoleName,
+                        IsPlatformRole = record.RoleIsPlatformRole.AsBool(),
+                        IsEnabled = true
+                    };
+
+                    currentRole.Permissions = currentPermissions = new List<Permission>();
+                    roles.Add(currentRole);
+                }
+
+                if (!record.PermissionId.HasValue) continue;
+
+                var permission = new Permission
+                {
+                    Id = record.PermissionId.AsInt(),
+                    Code = record.PermissionCode,
+                    Name = record.PermissionName,
+                };
+
+                currentPermissions.Add(permission);
+            }
+
+            user.Roles = roles;
+
+            return user;
         }
 
         public User Get(string userName)
@@ -232,6 +287,12 @@ namespace SSC.Data
         private ClientMemberReportRow FetchClientMemberReportRow(IDataReader reader)
         {
             throw new NotImplementedException();
+        }
+
+        public bool IncreaseLoginFailures(int id)
+        {
+            var isBlocked = this.uow.ScalarDirect("sp_User_IncreaseLoginFailure", ParametersBuilder.With("id", id)).AsBool();
+            return isBlocked;
         }
     }
 }

@@ -141,6 +141,7 @@
     <Build Include="Programmability\Stored Procedures\sp_PricingPlan_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompanyAddress_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompanyCreditCard_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_IncreaseLoginFailure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

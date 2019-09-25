@@ -8,7 +8,7 @@ BEGIN
 		UserName = pu.UserName,
 		Password = pu.Password,
 		IsBlocked = pu.IsBlocked,
-		IsDisabled = CASE WHEN pu.IsEnabled = 1 THEN 0 ELSE 1 END,
+		IsDisabled = CONVERT(BIT, CASE WHEN pu.IsEnabled = 1 THEN 0 ELSE 1 END),
 		LoginFailures = pu.LoginFailures,
 		CreatedDate = pu.CreatedDate,
 		CreatedBy = pu.CreatedBy,

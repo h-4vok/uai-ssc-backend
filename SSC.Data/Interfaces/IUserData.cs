@@ -26,5 +26,6 @@ namespace SSC.Data.Interfaces
         IEnumerable<ClientMemberReportRow> GetClientUsers(int clientId, int currentUserId);
         User Get(int id);
         void UpdateIsClientEnabled(int id, bool isEnabled);
+        bool IncreaseLoginFailures(int id);
     }
 }

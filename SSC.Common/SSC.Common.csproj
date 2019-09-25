@@ -63,6 +63,7 @@
     <Compile Include="DataToPDFProcessor.cs" />
     <Compile Include="DataToXLSXProcessor.cs" />
     <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Exceptions\UserAuthenticationException.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="FileSystemProvider.cs" />
     <Compile Include="Interfaces\IAuthenticationProvider.cs" />

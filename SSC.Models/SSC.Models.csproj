@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="AnonymousComparer.cs" />
     <Compile Include="AuditableEntity.cs" />
     <Compile Include="AuditRecord.cs" />
     <Compile Include="AuditType.cs" />
@@ -101,6 +102,9 @@
     <Compile Include="WorkOrderExpectedSample.cs" />
     <Compile Include="WorkOrderStatus.cs" />
     <Compile Include="WorkOrderType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

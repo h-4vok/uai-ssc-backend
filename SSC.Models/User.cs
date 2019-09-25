@@ -20,10 +20,17 @@ namespace SSC.Models
         public IEnumerable<Address> Addresses { get; set; } = new List<Address>();
         public string TitleInCompany { get; set; }
         public bool IsEnabledInCompany { get; set; }
+        public int LoginFailures { get; set; }
 
         public IEnumerable<Permission> GetGrantedPermissions()
         {
-            throw new NotImplementedException();
+            var output =
+                (this.Roles ?? new List<Role>())
+                .SelectMany(x => x.Permissions)
+                .Distinct(x => x.Code)
+                .ToList();
+
+            return output;
         }
     }
 }

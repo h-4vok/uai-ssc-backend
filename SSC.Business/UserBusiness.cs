@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
@@ -21,20 +22,6 @@ namespace SSC.Business
             this.data = DependencyResolver.Obj.Resolve<IUserData>();
         }
 
-        public AuthenticationResponseViewModel Authenticate(string userName, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void RegisterLoginFailure(string userName)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Create(User model)
         {
@@ -64,12 +51,46 @@ namespace SSC.Business
             return String.Empty;
         }
 
-        ResponseViewModel<AuthenticationResponseViewModel> IUserBusiness.Authenticate(string userName, string password)
+        public ResponseViewModel<AuthenticationResponseViewModel> Authenticate(string userName, string password)
         {
-            throw new NotImplementedException();
+            if (!data.Exists(userName))
+            {
+                throw UserAuthenticationException.AsUnexistingUserException();
+            }
+
+            var user = data.Get(userName);
+
+            if (user.IsDisabled)
+            {
+                throw UserAuthenticationException.AsDisabledUserException();
+            }
+
+            if (user.IsBlocked)
+            {
+                throw UserAuthenticationException.AsBlockedUserException();
+            }
+
+            if (user.Password != PasswordHasher.obj.Hash(password))
+            {
+                var isBlocked = data.IncreaseLoginFailures(user.Id);
+
+                if (isBlocked)
+                {
+                    throw UserAuthenticationException.AsBlockedUserException();
+                }
+                else
+                {
+                    throw UserAuthenticationException.AsIncorrectPasswordException();
+                }
+            }
+
+            return new AuthenticationResponseViewModel
+            {
+                GrantedPermissions = user.GetGrantedPermissions().Select(p => p.Code).ToList(),
+            };
         }
 
-        IEnumerable<UserReportRow> IUserBusiness.GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
+        public IEnumerable<UserReportRow> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
         {
             throw new NotImplementedException();
         }
