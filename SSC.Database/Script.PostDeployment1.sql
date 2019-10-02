@@ -1,6 +1,11 @@
 ﻿-- Setup ssc login
-CREATE USER ssc FOR LOGIN ssc;
-EXEC sp_addrolemember N'db_owner', N'ssc';
+IF NOT EXISTS (SELECT [name]
+                FROM [sys].[database_principals]
+                WHERE [type] = N'S' AND [name] = N'ssc')
+BEGIN
+	CREATE USER ssc FOR LOGIN ssc;
+	EXEC sp_addrolemember N'db_owner', N'ssc';
+END
 
 -- Satellite Data: Provinces
 INSERT Province ( Name )
@@ -147,7 +152,6 @@ BEGIN
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Administrador de Sistema'
 	AND			P.Code IN (
-		'CLIENT_BILLING_MANAGEMENT',
 		'CLIENT_MANAGEMENT',
 		'LANGUAGES_MANAGEMENT',
 		'NEWS_MANAGEMENT',
@@ -281,6 +285,56 @@ BEGIN
 		'WORK_ORDER_EXECUTE',
 		'WORK_ORDER_REPORT'
 	)
+END
+
+-- Initial Admin account
+IF (NOT EXISTS(SELECT TOP 1 1 FROM PlatformUser WHERE UserName = 'admin@ssc.com'))
+BEGIN
+	INSERT PlatformUser (
+		UserName,
+		Password,
+		IsBlocked,
+		IsEnabled,
+		FirstName,
+		LastName,
+		IsEnabledInCompany,
+		LoginFailures,
+		CreatedDate,
+		UpdatedDate,
+		CreatedBy,
+		UpdatedBy
+	)
+	SELECT
+		UserName = 'admin@ssc.com',
+		Password = '1A4+OYh1+avWgZilfsAZY1hBt+Y=',
+		IsBlocked = 0,
+		IsEnabled = 1,
+		FirstName = 'Christian',
+		LastName = 'Guzman',
+		IsEnabledInCompany = 1,
+		LoginFailures = 0,
+		CreatedDate = GETUTCDATE(),
+		UpdatedDate = GETUTCDATE(),
+		CreatedBy = 1,
+		UpdatedBy = 1
+
+	DECLARE @adminUserId INT
+	SET @adminUserId = SCOPE_IDENTITY()
+
+	-- Relate admin account to the admin role
+	INSERT UserRole (
+		UserId,
+		RoleId,
+		CreatedDate,
+		UpdatedDate
+	)
+	SELECT
+		UserId = @adminUserId,
+		RoleId = r.Id,
+		CreatedDate = GETUTCDATE(),
+		UpdatedDate = GETUTCDATE()
+	FROM		Role R
+	WHERE		R.Name = 'Administrador de Sistema'
 END
 
 -- Satellite Data: Pricing Plans
