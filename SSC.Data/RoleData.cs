@@ -23,7 +23,16 @@ namespace SSC.Data
 
         private RoleReportRow FetchReportRow(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new RoleReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                IsEnabled = reader.GetBoolean("IsEnabled"),
+                Name = reader.GetString("Name"),
+                QuantityOfUsers = reader.GetInt32("QuantityOfUsers"),
+                QuantityOfPermissions = reader.GetInt32("QuantityOfPermissions")
+            };
+
+            return record;
         }
 
         public void Create(Role model)
@@ -43,7 +52,8 @@ namespace SSC.Data
 
         public IEnumerable<RoleReportRow> GeteAll(string userNameLike, IEnumerable<int> permissionsToHave)
         {
-            throw new NotImplementedException();
+            var output = this.uow.GetDirect("sp_Role_getAll", this.FetchReportRow);
+            return output;
         }
 
         public void Update(Role model)

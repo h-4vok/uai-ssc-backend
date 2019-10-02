@@ -276,7 +276,17 @@ namespace SSC.Data
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            var output = uow.Run(() =>
+            {
+                var userData =
+                    uow.Get("sp_User_getFull", this.FetchUserGetRecord, ParametersBuilder.With("userId", id));
+
+                var user = this.ToUser(userData);
+
+                return user;
+            });
+
+            return output;
         }
 
         public void UpdateIsClientEnabled(int id, bool isEnabled)
@@ -293,6 +303,24 @@ namespace SSC.Data
         {
             var isBlocked = this.uow.ScalarDirect("sp_User_IncreaseLoginFailure", ParametersBuilder.With("id", id)).AsBool();
             return isBlocked;
+        }
+
+        private UserSessionViewModel FetchUserSessionViewModel(IDataReader reader)
+        {
+            var record = new UserSessionViewModel
+            {
+                UserId = reader.GetInt32("UserId"),
+                UserName = reader.GetString("UserName"),
+                ClientId = reader.GetInt32("ClientId"),
+                ClientApiKey = reader.GetString("ClientApiKey")
+            };
+            return record;
+        }
+
+        public UserSessionViewModel GetSessionViewModel(string userName)
+        {
+            var output = this.uow.GetOneDirect("sp_User_getSessionData", this.FetchUserSessionViewModel, ParametersBuilder.With("userName", userName));
+            return output;
         }
     }
 }

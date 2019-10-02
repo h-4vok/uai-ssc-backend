@@ -1,7 +1,9 @@
 ﻿using SSC.Api.ViewModels;
 using SSC.Business;
 using SSC.Business.Interfaces;
+using SSC.Common;
 using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,15 @@ namespace SSC.Api.Controllers
             try
             {
                 var response = this.business.Authenticate(viewModel.UserName, viewModel.Password);
+
+                var userSessionData = this.business.GetSessionViewModel(viewModel.UserName);
+
+                HttpContext.Current.Session["UserName"] = userSessionData.UserName;
+                HttpContext.Current.Session["ClientId"] = userSessionData.ClientId;
+                HttpContext.Current.Session["UserId"] = userSessionData.UserId;
+                HttpContext.Current.Session["Permissions"] = response.Result.GrantedPermissions;
+                HttpContext.Current.Session["ClientApiKey"] = userSessionData.ClientApiKey;
+
                 return response;
             }
             catch (UserAuthenticationException ex)

@@ -132,12 +132,22 @@ namespace SSC.Business
 
         public User Get(int id, int currentUserId)
         {
-            throw new NotImplementedException();
+            var user = this.data.Get(id);
+
+            // TODO: Evaluate if this currentUserId can access this user id
+
+            return user;
         }
 
         public void UpdateClientIsEnabled(int id, bool isEnabled)
         {
             throw new NotImplementedException();
+        }
+
+        public UserSessionViewModel GetSessionViewModel(string userName)
+        {
+            var output = this.data.GetSessionViewModel(userName);
+            return output;
         }
     }
 }

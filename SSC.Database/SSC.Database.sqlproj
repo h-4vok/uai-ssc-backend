@@ -142,6 +142,8 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientCompanyAddress_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompanyCreditCard_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_IncreaseLoginFailure.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_getSessionData.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

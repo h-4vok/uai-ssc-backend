@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE sp_User_getFull
-	@userName NVARCHAR(200)
+	@userName NVARCHAR(200) = NULL,
+	@userId INT = NULL
 AS
 BEGIN
 
@@ -34,5 +35,7 @@ BEGIN
 
 	LEFT  JOIN	Permission P
 			ON	rp.PermissionId = p.Id
+
+	WHERE		pu.UserName = @userName OR pu.Id = @userId
 
 END

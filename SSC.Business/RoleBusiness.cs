@@ -31,7 +31,8 @@ namespace SSC.Business
 
         public IEnumerable<RoleReportRow> GetAll(string userNameLike, IEnumerable<int> permissionsToHave)
         {
-            throw new NotImplementedException();
+            var output = this.data.GeteAll(userNameLike, permissionsToHave);
+            return output;
         }
 
         public void Update(Role model)

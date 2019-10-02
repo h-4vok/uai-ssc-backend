@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 
 namespace SSC.Api
 {
@@ -20,6 +21,17 @@ namespace SSC.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InjectionConfig.Register();
+        }
+
+        protected void Application_PostAuthorizeRequest()
+        {
+            if (IsWebApiRequest())
+                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+        }
+        private bool IsWebApiRequest()
+        {
+            var apiPrefix = "~/api";
+            return HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith(apiPrefix, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,7 +16,13 @@ namespace SSC.Api.Controllers
 
         public RoleController(IRoleBusiness business) => this.business = business;
 
-        public ResponseViewModel<RoleReportRow> GetAll(string userNameLike, IEnumerable<int> permissionsToHave) => throw new NotImplementedException();
+        [HttpGet]
+        [SscAuthorize(Permissions = "ROLES_REPORT,ROLES_MANAGEMENT")]
+        public ResponseViewModel<IEnumerable<RoleReportRow>> GetAll(string userNameLike, IEnumerable<int> permissionsToHave)
+        {
+            var output = this.business.GetAll(userNameLike, permissionsToHave);
+            return output.ToList();
+        }
 
         public ResponseViewModel Post(Role model) => throw new NotImplementedException();
 

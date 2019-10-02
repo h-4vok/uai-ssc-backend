@@ -18,14 +18,14 @@ namespace SSC.Api.Behavior
             return HttpContext.Current.Session[key];
         }
 
-        public string CurrentUserName => this.GetSessionValue("UserName").AsString();
+        public string CurrentUserName { get { return this.GetSessionValue("UserName").AsString(); } }
 
-        public int CurrentClientId => this.GetSessionValue("ClientId").AsInt();
+        public int CurrentClientId { get { return this.GetSessionValue("ClientId").AsInt(); } }
 
-        public int CurrentUserId => this.GetSessionValue("UserId").AsInt();
+        public int CurrentUserId { get { return this.GetSessionValue("UserId").AsInt(); } }
 
-        public IEnumerable<string> CurrentUserRoleCodes => this.GetSessionValue("Permissions") as IEnumerable<string> ?? new List<string>();
+        public IEnumerable<string> CurrentUserRoleCodes { get { return this.GetSessionValue("Permissions") as IEnumerable<string> ?? new List<string>(); } }
 
-        public string CurrentClientApiKey => this.GetSessionValue("ClientApiKey").AsString();
+        public string CurrentClientApiKey { get { return this.GetSessionValue("ClientApiKey").AsString(); } }
     }
 }
