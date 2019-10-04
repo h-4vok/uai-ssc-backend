@@ -20,7 +20,9 @@ namespace SSC.Api
             config.DependencyResolver = DependencyResolver.Obj;
 
             // Enable CORS globally
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            var cors = new EnableCorsAttribute("http://localhost:8000", "*", "*", "*");
+            cors.SupportsCredentials = true;
+            cors.ExposedHeaders.Add("Set-Cookie");
             config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(

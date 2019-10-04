@@ -35,7 +35,6 @@ namespace SSC.Api.Controllers
             try
             {
                 var response = this.business.Authenticate(viewModel.UserName, viewModel.Password);
-
                 var userSessionData = this.business.GetSessionViewModel(viewModel.UserName);
 
                 HttpContext.Current.Session["UserName"] = userSessionData.UserName;
@@ -43,6 +42,8 @@ namespace SSC.Api.Controllers
                 HttpContext.Current.Session["UserId"] = userSessionData.UserId;
                 HttpContext.Current.Session["Permissions"] = response.Result.GrantedPermissions;
                 HttpContext.Current.Session["ClientApiKey"] = userSessionData.ClientApiKey;
+
+                response.Result.SetCookie = String.Format("ASP.NET_SessionId={0}", HttpContext.Current.Session.SessionID); 
 
                 return response;
             }

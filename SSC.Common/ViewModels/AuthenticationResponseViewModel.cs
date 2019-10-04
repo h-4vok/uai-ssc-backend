@@ -9,5 +9,6 @@ namespace SSC.Common.ViewModels
     public class AuthenticationResponseViewModel
     {
         public IEnumerable<string> GrantedPermissions { get; set; } = new List<string>();
+        public string SetCookie { get; set; }
     }
 }
