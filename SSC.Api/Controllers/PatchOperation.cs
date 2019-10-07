@@ -1,5 +1,12 @@
-﻿namespace SSC.Api.Controllers
+﻿using System.Collections.Generic;
+
+namespace SSC.Api.Controllers
 {
+    public class PatchOperationList
+    {
+        public IEnumerable<PatchOperation> Operations { get; set; }
+    }
+
     public class PatchOperation
     {
         public string op { get; set; }

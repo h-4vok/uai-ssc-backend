@@ -98,7 +98,13 @@ namespace SSC.Data
 
         public void UpdateIsEnabled(int id, bool isEnabled)
         {
-            this.uow.NonQueryDirect("sp_Role_updateIsEnabled", ParametersBuilder.With("id", id).And("IsEnabled", isEnabled));
+            var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
+
+            this.uow.NonQueryDirect("sp_Role_updateIsEnabled", 
+                ParametersBuilder.With("Id", id)
+                    .And("IsEnabled", isEnabled)
+                    .And("UpdatedBy", userId)
+                );
         }
 
         private Role Fetch(IDataReader reader)

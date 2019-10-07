@@ -80,9 +80,9 @@ namespace SSC.Api.Controllers
         }
 
         [SscAuthorize(Permissions = "ROLES_MANAGEMENT")]
-        public ResponseViewModel Patch(IEnumerable<PatchOperation> operations)
+        public ResponseViewModel Patch(int id, PatchOperationList list)
         {
-            foreach(var operation in operations)
+            foreach(var operation in list.Operations)
             {
                 if (operation.op == "replace" && operation.field == "IsEnabled")
                 {
