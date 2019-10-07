@@ -5,13 +5,11 @@
 AS
 BEGIN
 
-	INSERT ClientCompany ( Name, CurrentPricingPlanId, ApiToken, CreatedDate, UpdatedDate )
+	INSERT ClientCompany ( Name, CurrentPricingPlanId, ApiToken )
 	SELECT
 		Name = @Name, 
 		CurrentPricingPlanId = @CurrentPricingPlanId, 
-		ApiToken = @ApiToken,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		ApiToken = @ApiToken
 
 	SELECT SCOPE_IDENTITY()
 

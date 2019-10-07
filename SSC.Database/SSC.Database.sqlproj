@@ -144,6 +144,15 @@
     <Build Include="Programmability\Stored Procedures\sp_User_IncreaseLoginFailure.sql" />
     <Build Include="Programmability\Stored Procedures\sp_Role_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_getSessionData.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Permission_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_RolePermission_add.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_RolePermission_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Role_getPermissions.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

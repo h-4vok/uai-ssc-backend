@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\IExternalCreditCardValidator.cs" />
     <Compile Include="Interfaces\ILogBusiness.cs" />
     <Compile Include="Interfaces\IPatientBusiness.cs" />
+    <Compile Include="Interfaces\IPermissionBusiness.cs" />
     <Compile Include="Interfaces\IPricingPlanBusiness.cs" />
     <Compile Include="Interfaces\IProvinceBusiness.cs" />
     <Compile Include="Interfaces\IRoleBusiness.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Interfaces\IWorkOrderBusiness.cs" />
     <Compile Include="LogBusiness.cs" />
     <Compile Include="PatientBusiness.cs" />
+    <Compile Include="PermissionBusiness.cs" />
     <Compile Include="PricingPlanBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceBusiness.cs" />

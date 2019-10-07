@@ -11,6 +11,8 @@ namespace SSC.Business.Interfaces
     public interface IRoleBusiness
     {
         IEnumerable<RoleReportRow> GetAll(string userNameLike, IEnumerable<int> permissionsToHave);
+
+        Role Get(int id);
         void Create(Role model);
         void Update(Role model);
         void UpdateIsEnabled(int id, bool enabled);

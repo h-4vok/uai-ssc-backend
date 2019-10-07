@@ -40,6 +40,8 @@ namespace SSC.Business
             Register<IUserInvitationData, UserInvitationData>();
             Register<IWorkOrderData, WorkOrderData>();
 
+            Register<IPermissionData, PermissionData>();
+
             DataDependencyInjector.RegisterAll();
         }
 

@@ -134,5 +134,18 @@ namespace SSC.Business
 
             return this;
         }
+
+        public Validator<T> ListNotEmpty<Y>(Func<T, IEnumerable<Y>> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            var output = propertyAccessor(this.model);
+            if (output == null || output.Count() == 0)
+            {
+                return this.SetAndReturn(String.Format("Debe seleccionar al menos un elemento para el campo {0}.", fieldName));
+            }
+
+            return this;
+        }
     }
 }

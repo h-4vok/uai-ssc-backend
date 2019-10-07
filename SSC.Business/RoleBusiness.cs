@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -21,28 +22,46 @@ namespace SSC.Business
 
         public void Create(Role model)
         {
-            throw new NotImplementedException();
+            var exists = this.data.Exists(model.Name);
+            if (exists)
+            {
+                throw new UnprocessableEntityException("El rol '{0}' ya existe.");
+            }
+
+            this.data.Create(model);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.data.Delete(id);
         }
 
         public IEnumerable<RoleReportRow> GetAll(string userNameLike, IEnumerable<int> permissionsToHave)
         {
-            var output = this.data.GeteAll(userNameLike, permissionsToHave);
+            var output = this.data.GetAll(userNameLike, permissionsToHave);
             return output;
         }
 
         public void Update(Role model)
         {
-            throw new NotImplementedException();
+            var exists = this.data.Exists(model.Name, model.Id);
+            if (exists)
+            {
+                throw new UnprocessableEntityException("El rol '{0}' ya existe.");
+            }
+
+            this.data.Update(model);
         }
 
         public void UpdateIsEnabled(int id, bool enabled)
         {
-            throw new NotImplementedException();
+            this.data.UpdateIsEnabled(id, enabled);
+        }
+
+        public Role Get(int id)
+        {
+            var item = this.data.Get(id);
+            return item;
         }
     }
 }

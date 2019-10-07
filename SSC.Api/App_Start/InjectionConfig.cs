@@ -53,6 +53,8 @@ namespace SSC.Api.App_Start
             Register<IUserInvitationBusiness, UserInvitationBusiness>();
             Register<IWorkOrderBusiness, WorkOrderBusiness>();
             Register<ISmtpHandler, SmtpHandler>();
+
+            Register<IPermissionBusiness, PermissionBusiness>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {

@@ -71,8 +71,8 @@ INSERT Permission (
 SELECT
 	Code = aux.Code, 
 	Name = aux.Name,
-	CreatedDate = GETUTCDATE(),
-	UpdatedDate = GETUTCDATE()
+	CreatedDate = GETDATE(),
+	UpdatedDate = GETDATE()
 FROM (
 	SELECT Code = 'CLIENT_BILLING_MANAGEMENT', Name = 'Gestión de Facturación de Clientes' UNION ALL
 	SELECT Code = 'CLIENT_MANAGEMENT', Name = 'Gestión de Clientes' UNION ALL
@@ -120,8 +120,8 @@ SELECT
 	Name = aux.Name,
 	IsPlatformRole = aux.IsPlatformRole,
 	IsEnabled = 1,
-	CreatedDate = GETUTCDATE(),
-	UpdatedDate = GETUTCDATE()
+	CreatedDate = GETDATE(),
+	UpdatedDate = GETDATE()
 FROM (
 	SELECT Name = 'Usuario No Registrado', IsPlatformRole = 0 UNION ALL
 	SELECT Name = 'Administrador de Sistema', IsPlatformRole = 1 UNION ALL
@@ -146,8 +146,8 @@ BEGIN
 	SELECT
 		RoleId = r.Id,
 		PermissionId = p.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Administrador de Sistema'
@@ -178,8 +178,8 @@ BEGIN
 	SELECT
 		RoleId = r.Id,
 		PermissionId = p.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Científico Ejecutor'
@@ -207,8 +207,8 @@ BEGIN
 	SELECT
 		RoleId = r.Id,
 		PermissionId = p.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Científico Auditor'
@@ -234,8 +234,8 @@ BEGIN
 	SELECT
 		RoleId = r.Id,
 		PermissionId = p.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Controlador de Calidad'
@@ -261,8 +261,8 @@ BEGIN
 	SELECT
 		RoleId = r.Id,
 		PermissionId = p.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	CROSS JOIN	Permission P
 	WHERE		R.Name = 'Administrador de Cliente'
@@ -313,8 +313,8 @@ BEGIN
 		LastName = 'Guzman',
 		IsEnabledInCompany = 1,
 		LoginFailures = 0,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE(),
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE(),
 		CreatedBy = 1,
 		UpdatedBy = 1
 
@@ -331,8 +331,8 @@ BEGIN
 	SELECT
 		UserId = @adminUserId,
 		RoleId = r.Id,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		CreatedDate = GETDATE(),
+		UpdatedDate = GETDATE()
 	FROM		Role R
 	WHERE		R.Name = 'Administrador de Sistema'
 END

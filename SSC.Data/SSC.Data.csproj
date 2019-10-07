@@ -73,6 +73,7 @@
     <Compile Include="Interfaces\ICreditCardData.cs" />
     <Compile Include="Interfaces\ILogData.cs" />
     <Compile Include="Interfaces\IPatientData.cs" />
+    <Compile Include="Interfaces\IPermissionData.cs" />
     <Compile Include="Interfaces\IPricingPlanData.cs" />
     <Compile Include="Interfaces\IProvinceData.cs" />
     <Compile Include="Interfaces\IReceiptData.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Interfaces\IWorkOrderData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="PatientData.cs" />
+    <Compile Include="PermissionData.cs" />
     <Compile Include="PricingPlanData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceData.cs" />

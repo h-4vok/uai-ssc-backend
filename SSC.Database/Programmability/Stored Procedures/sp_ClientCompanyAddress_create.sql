@@ -16,9 +16,7 @@ BEGIN
 		City,
 		PostalCode,
 		Department,
-		ProvinceId,
-		CreatedDate,
-		UpdatedDate
+		ProvinceId
 	)
 	SELECT
 		ClientCompanyId = @ClientCompanyId,
@@ -27,9 +25,7 @@ BEGIN
 		City = @City,
 		PostalCode = @PostalCode,
 		Department = @Department,
-		ProvinceId = @ProvinceId,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		ProvinceId = @ProvinceId
 
 	SELECT SCOPE_IDENTITY()
 

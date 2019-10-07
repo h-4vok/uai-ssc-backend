@@ -21,9 +21,7 @@ BEGIN
 		City,
 		PostalCode,
 		Department,
-		ProvinceId,
-		CreatedDate,
-		UpdatedDate
+		ProvinceId
 	)
 	SELECT
 		Id = @Id,
@@ -34,8 +32,6 @@ BEGIN
 		City = @City,
 		PostalCode = @PostalCode,
 		Department = @Department,
-		ProvinceId = @ProvinceId,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		ProvinceId = @ProvinceId
 
 END

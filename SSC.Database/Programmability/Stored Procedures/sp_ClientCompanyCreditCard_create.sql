@@ -14,9 +14,7 @@ BEGIN
 		Owner,
 		CCV,
 		ExpirationDateMMYY,
-		IsDefault,
-		CreatedDate,
-		UpdatedDate
+		IsDefault
 	)
 	SELECT
 		ClientId = @ClientId,
@@ -24,8 +22,6 @@ BEGIN
 		Owner = @Owner,
 		CCV = @CCV,
 		ExpirationDateMMYY = @ExpirationDateMMYY,
-		IsDefault = @IsDefault,
-		CreatedDate = GETUTCDATE(),
-		UpdatedDate = GETUTCDATE()
+		IsDefault = @IsDefault
 
 END
