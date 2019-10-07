@@ -52,5 +52,11 @@ namespace SSC.Api.Controllers
                 return ex.Message;
             }
         }
+
+        public ResponseViewModel Delete(int id)
+        {
+            HttpContext.Current?.Session?.Clear();
+            return true;
+        }
     }
 }
