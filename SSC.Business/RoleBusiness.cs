@@ -47,7 +47,7 @@ namespace SSC.Business
             var exists = this.data.Exists(model.Name, model.Id);
             if (exists)
             {
-                throw new UnprocessableEntityException("El rol '{0}' ya existe.");
+                throw new UnprocessableEntityException(String.Format("El rol '{0}' ya existe.", model.Id));
             }
 
             this.data.Update(model);

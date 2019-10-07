@@ -87,7 +87,11 @@ namespace SSC.Data
 
                 foreach (var permission in model.Permissions)
                 {
-                    this.uow.NonQuery("sp_RolePermission_add", ParametersBuilder.With("roleId", model.Id).And("permissionId", permission.Id));
+                    this.uow.NonQuery("sp_RolePermission_add", 
+                        ParametersBuilder.With("roleId", model.Id)
+                        .And("permissionId", permission.Id)
+                        .And("createdBy", userId)
+                    );
                 }
             }, true);
         }

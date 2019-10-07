@@ -69,7 +69,7 @@ namespace SSC.Api.Controllers
 
             try
             {
-                this.business.Create(model);
+                this.business.Update(model);
             }
             catch (UnprocessableEntityException ex)
             {
