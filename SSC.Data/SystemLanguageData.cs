@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -18,35 +19,86 @@ namespace SSC.Data
             this.uow = DependencyResolver.Obj.Resolve<IUnitOfWork>();
         }
 
-        private IUnitOfWork uow;
+        private readonly IUnitOfWork uow;
 
-        private SystemLanguage Fetch(IDataReader reader) => throw new NotImplementedException();
+        private SystemLanguage Fetch(IDataReader reader)
+        {
+            var record = new SystemLanguage
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code"),
+                Name = reader.GetString("Name")
+            };
+            return record;
+        }
 
-        private SystemLanguageEntry FetchEntry(IDataReader reader) => throw new NotImplementedException();
+        private SystemLanguageEntry FetchEntry(IDataReader reader)
+        {
+            var record = new SystemLanguageEntry
+            {
+                Id = reader.GetInt32("Id"),
+                Key = reader.GetString("Key"),
+                Translation = reader.GetString("Translation")
+            };
+            return record;
+        }
 
         public void AddNewTranslationKey(string key, string defaultTranslation)
         {
-            throw new NotImplementedException();
+            var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
+
+            this.uow.NonQueryDirect("sp_SystemLanguageEntry_new",
+                ParametersBuilder.With("key", key)
+                .And("defaultTranslation", defaultTranslation)
+                .And("createdBy", userId)
+                );
         }
 
-        public string GetDictionary(string languageCode)
+        public SystemLanguage GetDictionary(string languageCode)
         {
-            throw new NotImplementedException();
+            var output = this.uow.Run(() =>
+            {
+                var language = this.uow.GetOne("sp_SystemLanguage_get", this.Fetch, ParametersBuilder.With("code", languageCode));
+
+                language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.id));
+
+                return language;
+            });
+
+            return output;
         }
 
         public string GetKey(string languageCode, string key)
         {
-            throw new NotImplementedException();
+            var output = this.uow.GetOne("sp_SystemLanguageEntry_getOne", this.FetchEntry,
+                ParametersBuilder.With("languageCode", languageCode).And("key", key)
+                );
+            return output?.Translation;
         }
 
         public IEnumerable<SystemLanguage> GetLanguages()
         {
-            throw new NotImplementedException();
+            var output = this.uow.Run(() =>
+            {
+                var languages = this.uow.Get("sp_SystemLanguage_getAll", this.Fetch);
+
+                foreach(var language in languages)
+                {
+                    language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.id));
+                }
+
+                return languages;
+            });
+
+            return output;
         }
 
         public void UpdateTranslation(SystemLanguageEntry model)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_SystemLanguageEntry_update",
+                ParametersBuilder.With("id", model.Id)
+                    .And("translation", model.Translation)
+            );
         }
     }
 }

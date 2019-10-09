@@ -20,27 +20,27 @@ namespace SSC.Business
 
         public void AddTranslationKey(string key, string defaultTranslation)
         {
-            throw new NotImplementedException();
+            this.data.AddNewTranslationKey(key, defaultTranslation);
         }
 
-        public string GetDictionary(string language)
+        public SystemLanguage GetDictionary(string language)
         {
-            throw new NotImplementedException();
+            return this.data.GetDictionary(language);
         }
 
         public IEnumerable<SystemLanguage> GetLanguages()
         {
-            throw new NotImplementedException();
+            return this.data.GetLanguages();
         }
 
         public string GetTranslation(string language, string key)
         {
-            throw new NotImplementedException();
+            return this.data.GetTranslation(language, key);
         }
 
         public void UpdateTranslation(SystemLanguageEntry model)
         {
-            throw new NotImplementedException();
+            this.data.UpdateTranslation(model);
         }
     }
 }

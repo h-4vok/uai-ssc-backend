@@ -10,7 +10,7 @@ namespace SSC.Data.Interfaces
     public interface ISystemLanguageData
     {
         string GetKey(string languageCode, string key);
-        string GetDictionary(string languageCode);
+        SystemLanguage GetDictionary(string languageCode);
         void AddNewTranslationKey(string key, string defaultTranslation);
         IEnumerable<SystemLanguage> GetLanguages();
         void UpdateTranslation(SystemLanguageEntry model);

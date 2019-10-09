@@ -10,7 +10,7 @@ namespace SSC.Business.Interfaces
     public interface ISystemLanguageBusiness
     {
         string GetTranslation(string language, string key);
-        string GetDictionary(string language);
+        SystemLanguage GetDictionary(string language);
         void AddTranslationKey(string key, string defaultTranslation);
         IEnumerable<SystemLanguage> GetLanguages();
         void UpdateTranslation(SystemLanguageEntry model);
