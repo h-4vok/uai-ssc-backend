@@ -160,6 +160,8 @@
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_getOne.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguage_getAll.sql" />
+    <Build Include="Tables\sp_AboutUs_address.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientTestimonial_getLast5.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
