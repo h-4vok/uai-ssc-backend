@@ -16,7 +16,6 @@ namespace SSC.Data
 
         public void DoBackup()
         {
-            throw new NotImplementedException();
         }
 
         public void DoRestore(int id)

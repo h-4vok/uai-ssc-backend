@@ -19,7 +19,7 @@ namespace SSC.Data
             this.uow = DependencyResolver.Obj.Resolve<IUnitOfWork>();
         }
 
-        private IUnitOfWork uow;
+        private readonly IUnitOfWork uow;
 
         public int Create(ClientCompany model)
         {
@@ -88,7 +88,7 @@ namespace SSC.Data
 
         public IEnumerable<ClientCompanyReportRow> GetAll()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_ClientCompany_getAll", this.FetchReportRow);
         }
 
         public ClientBalanceReport GetBalanceReport(int id)
@@ -98,7 +98,9 @@ namespace SSC.Data
 
         public ClientCompanyBillingInformation GetBillingInformation(int clientId)
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_ClientCompanyBillingInformation_getOne", 
+                this.FetchClientBillingInformation, 
+                ParametersBuilder.With("ClientCompanyId", clientId));
         }
 
         public void UpdateBillingInformation(ClientCompanyBillingInformation model)
@@ -113,12 +115,41 @@ namespace SSC.Data
 
         private ClientCompanyReportRow FetchReportRow(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new ClientCompanyReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                BalanceStatusDescription = reader.GetString("BalanceStatusDescription"),
+                IsEnabled = reader.GetBoolean("IsEnabled"),
+                LastBillExpirationDate = reader.GetDateTime("LastBillExpirationDate"),
+                LegalName = reader.GetString("LegalName"),
+                SelectedPaymentType = reader.GetString("SelectedPaymentType"),
+                SelectedPlanDescription = reader.GetString("SelectedPlanDescription"),
+                TaxCode = reader.GetString("TaxCode")
+            };
+            return record;
         }
 
         private ClientCompanyBillingInformation FetchClientBillingInformation(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new ClientCompanyBillingInformation
+            {
+                Id = reader.GetInt32("Id"),
+                TaxCode = reader.GetString("TaxCode"),
+                LegalName = reader.GetString("LegalName"),
+                Address =
+                {
+                    City = reader.GetString("City"),
+                    Department = reader.GetString("Department"),
+                    PostalCode = reader.GetString("PostalCode"),
+                    Province = {
+                        Id = reader.GetInt32("ProvinceId"),
+                        Name = reader.GetString("ProvinceName")
+                    },
+                    StreetName = reader.GetString("StreetName"),
+                    StreetNumber = reader.GetString("StreetNumber")
+                }
+            };
+            return record;
         }
     }
 }
