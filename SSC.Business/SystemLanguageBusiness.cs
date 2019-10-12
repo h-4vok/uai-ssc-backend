@@ -42,5 +42,10 @@ namespace SSC.Business
         {
             this.data.UpdateTranslation(model);
         }
+
+        public SystemLanguageEntry GetEntry(int id)
+        {
+            return this.data.GetEntry(id);
+        }
     }
 }

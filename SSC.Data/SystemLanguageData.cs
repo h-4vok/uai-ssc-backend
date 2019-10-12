@@ -100,5 +100,11 @@ namespace SSC.Data
                     .And("translation", model.Translation)
             );
         }
+
+        public SystemLanguageEntry GetEntry(int id)
+        {
+            var output = this.uow.GetOneDirect("sp_SystemLanguage_getEntry", this.FetchEntry, ParametersBuilder.With("id", id));
+            return output;
+        }
     }
 }
