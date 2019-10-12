@@ -37,7 +37,7 @@ namespace SSC.Data
             var record = new SystemLanguageEntry
             {
                 Id = reader.GetInt32("Id"),
-                Key = reader.GetString("Key"),
+                Key = reader.GetString("EntryKey"),
                 Translation = reader.GetString("Translation")
             };
             return record;
@@ -60,7 +60,7 @@ namespace SSC.Data
             {
                 var language = this.uow.GetOne("sp_SystemLanguage_get", this.Fetch, ParametersBuilder.With("code", languageCode));
 
-                language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.id));
+                language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.Id));
 
                 return language;
             });
@@ -84,7 +84,7 @@ namespace SSC.Data
 
                 foreach(var language in languages)
                 {
-                    language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.id));
+                    language.Entries = this.uow.Get("sp_SystemLanguageEntry_get", this.FetchEntry, ParametersBuilder.With("languageId", language.Id));
                 }
 
                 return languages;

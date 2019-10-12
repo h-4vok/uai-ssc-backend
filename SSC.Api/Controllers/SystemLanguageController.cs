@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,10 +16,27 @@ namespace SSC.Api.Controllers
 
         public SystemLanguageController(ISystemLanguageBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SystemLanguage>> Get() => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "LANGUAGES_MANAGEMENT")]
+        public ResponseViewModel<IEnumerable<SystemLanguage>> Get()
+        {
+            var output = this.business.GetLanguages();
 
-        public ResponseViewModel<IEnumerable<SystemLanguageEntry>> Get(int id) => throw new NotImplementedException();
+            return output.ToList();
+        }
 
-        public ResponseViewModel Put(int id, SystemLanguageEntry model) => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<SystemLanguageEntry>> Get(string code)
+        {
+            var output = this.business.GetDictionary(code);
+            return output.Entries.ToList();
+        }
+
+        [SscAuthorize(Permissions = "LANGUAGES_MANAGEMENT")]
+        public ResponseViewModel Put(int id, SystemLanguageEntry model)
+        {
+            model.Id = id;
+            this.business.UpdateTranslation(model);
+
+            return true;
+        }
     }
 }

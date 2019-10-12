@@ -98,7 +98,7 @@ namespace SSC.Data
 
         public ClientCompanyBillingInformation GetBillingInformation(int clientId)
         {
-            return this.uow.GetDirect("sp_ClientCompanyBillingInformation_getOne", 
+            return this.uow.GetOneDirect("sp_ClientCompanyBillingInformation_getOne", 
                 this.FetchClientBillingInformation, 
                 ParametersBuilder.With("ClientCompanyId", clientId));
         }

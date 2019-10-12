@@ -35,7 +35,7 @@ namespace SSC.Business
 
         public string GetTranslation(string language, string key)
         {
-            return this.data.GetTranslation(language, key);
+            return this.data.GetKey(language, key);
         }
 
         public void UpdateTranslation(SystemLanguageEntry model)

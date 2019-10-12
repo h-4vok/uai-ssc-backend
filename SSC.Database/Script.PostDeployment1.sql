@@ -391,3 +391,85 @@ FROM (
 LEFT  JOIN	PricingPlan PP
 		ON	data.Code = pp.Code
 WHERE		pp.CODE IS NULL
+
+-- System Languages (Initial)
+INSERT SystemLanguage (
+	Code,
+	Name,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	Code = data.Code,
+	Name = data.Name,
+	CreatedBy = 1,
+	UpdatedBy = 1
+FROM	(
+	SELECT Code = 'es', Name = 'Español' UNION
+	SELECT Code = 'en', Name = 'English'
+) AS data
+LEFT  JOIN	SystemLanguage SL
+		ON	sl.Code = data.Code
+
+WHERE		sl.Code IS NULL
+
+-- System Language Entries (Initial - Spanish)
+INSERT SystemLanguageEntry (
+	SystemLanguageId,
+	EntryKey,
+	Translation,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	SystemLanguageId = sl.Id,
+	EntryKey = data.k,
+	Translation = data.t,
+	CreatedBy = 1,
+	UpdatedBy = 1
+FROM	(
+	SELECT k = 'app.title', t = 'SAMPLE SUPPLY CHAIN' UNION
+	SELECT k = 'app.home.slogan', t = 'La solución integral para la administración de muestras de tu laboratorio.' UNION
+	SELECT k = 'app.marketing.menu.pricing', t = 'Precios' UNION
+	SELECT k = 'app.marketing.menu.about-us', t = 'Sobre Nosotros' UNION
+	SELECT k = 'app.marketing.menu.platform', t = 'Ingresar'
+) AS data
+INNER JOIN		SystemLanguage SL
+		ON		sl.Code = 'es'
+
+LEFT  JOIN		SystemLanguageEntry SLE
+		ON		sle.SystemLanguageId = sl.Id
+		AND		sle.EntryKey = data.k
+
+WHERE			sle.EntryKey IS NULL
+
+-- System Language Entries (Initial - English)
+INSERT SystemLanguageEntry (
+	SystemLanguageId,
+	EntryKey,
+	Translation,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	SystemLanguageId = sl.Id,
+	EntryKey = data.k,
+	Translation = data.t,
+	CreatedBy = 1,
+	UpdatedBy = 1
+FROM	(
+	SELECT k = 'app.title', t = 'SAMPLE SUPPLY CHAIN' UNION
+	SELECT k = 'app.home.slogan', t = 'Your one stop shop for sample supply management in your lab.' UNION
+	SELECT k = 'app.marketing.menu.pricing', t = 'Pricing' UNION
+	SELECT k = 'app.marketing.menu.about-us', t = 'About Us' UNION
+	SELECT k = 'app.marketing.menu.platform', t = 'Login'
+) AS data
+INNER JOIN		SystemLanguage SL
+		ON		sl.Code = 'en'
+
+LEFT  JOIN		SystemLanguageEntry SLE
+		ON		sle.SystemLanguageId = sl.Id
+		AND		sle.EntryKey = data.k
+
+WHERE			sle.EntryKey IS NULL
+
