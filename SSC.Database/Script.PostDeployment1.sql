@@ -899,9 +899,9 @@ FROM	(
 	UNION SELECT k = 'validator.ui.string-min-length-spec',
 		es = 'El campo ${propLabel} debe superar los ${minLength} caracteres.',
 		en = 'The field ${propLabel} cannot have less than ${minLength} characters.'
-	UNION SELECT k = '',
-		es = '',
-		en = ''
+	UNION SELECT k = 'spinner.please-wait',
+		es = 'Por favor espere...',
+		en = 'Please wait...'
 	UNION SELECT k = '',
 		es = '',
 		en = ''
