@@ -10,24 +10,34 @@ using System.Web.Http;
 
 namespace SSC.Api.Controllers
 {
+    [RoutePrefix("systemLanguage")]
     public class SystemLanguageController : ApiController
     {
         private ISystemLanguageBusiness business;
 
         public SystemLanguageController(ISystemLanguageBusiness business) => this.business = business;
 
-        [SscAuthorize(Permissions = "LANGUAGES_MANAGEMENT")]
+        public ResponseViewModel<IEnumerable<SystemLanguageEntry>> Get(int id)
+        {
+            string code;
+            if (id == 1)
+            {
+                code = "es";
+            }
+            else
+            {
+                code = "en";
+            }
+
+            var output = this.business.GetDictionary(code);
+            return output.Entries.ToList();
+        }
+
         public ResponseViewModel<IEnumerable<SystemLanguage>> Get()
         {
             var output = this.business.GetLanguages();
 
             return output.ToList();
-        }
-
-        public ResponseViewModel<IEnumerable<SystemLanguageEntry>> Get(string code)
-        {
-            var output = this.business.GetDictionary(code);
-            return output.Entries.ToList();
         }
 
         [SscAuthorize(Permissions = "LANGUAGES_MANAGEMENT")]
