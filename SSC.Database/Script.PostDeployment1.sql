@@ -701,6 +701,18 @@ FROM	(
 	UNION SELECT k = 'sign-up--billing.continue',
 		es = 'Continuar',
 		en = 'Continue'
+	UNION SELECT k = 'sign-up--confirm-pending.page.title',
+		es = 'Verificación por correo',
+		en = 'Check your e-mail inbox'
+	UNION SELECT k = 'sign-up--confirm-pending.page.subtitle',
+		es = 'Hemos enviado por correo electrónico un código de verificación. Utilice el link del correo o coloque el código aquí para finalizar su registro.',
+		en = 'We have sent you a verification code to your e-mail inbox. Use the link from the e-mail or just type the verification code here.'
+	UNION SELECT k = 'sign-up--confirm-pending.verificationCode',
+		es = 'Código de Verificación',
+		en = 'Verification Code'
+	UNION SELECT k = 'sign-up--confirm-pending.validate',
+		es = 'Validar',
+		en = 'Validate'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
