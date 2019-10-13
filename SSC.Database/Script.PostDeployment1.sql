@@ -626,6 +626,33 @@ FROM	(
 	UNION SELECT k = 'sign-up--initial.continue',
 		es = 'Continuar',
 		en = 'Continue'
+	UNION SELECT k = 'sign-up--company.page.title',
+		es = 'Datos de la compañía',
+		en = 'Company information'
+	UNION SELECT k = 'sign-up--company.name',
+		es = 'Nombre de la organización',
+		en = 'Company Name'
+	UNION SELECT k = 'sign-up--company.province',
+		es = 'Provincia',
+		en = 'Province'
+	UNION SELECT k = 'sign-up--company.city',
+		es = 'Ciudad',
+		en = 'City'
+	UNION SELECT k = 'sign-up--company.street',
+		es = 'Calle',
+		en = 'Street'
+	UNION SELECT k = 'sign-up--company.streetNumber',
+		es = 'Número',
+		en = 'Street Number'
+	UNION SELECT k = 'sign-up--company.department',
+		es = 'Departamento',
+		en = 'Department'
+	UNION SELECT k = 'sign-up--company.postalCode',
+		es = 'Código Postal',
+		en = 'Postal Code'
+	UNION SELECT k = 'sign-up--company.continue',
+		es = 'Continuar',
+		en = 'Continue'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
