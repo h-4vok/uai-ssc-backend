@@ -653,6 +653,21 @@ FROM	(
 	UNION SELECT k = 'sign-up--company.continue',
 		es = 'Continuar',
 		en = 'Continue'
+	UNION SELECT k = 'sign-up--payment-data.page.title',
+		es = 'Datos de Tarjeta de Crédito',
+		en = 'Credit Card Payment Info'
+	UNION SELECT k = 'sign-up--payment-data.creditCardNumber',
+		es = 'Número de tarjeta',
+		en = 'Credit card number'
+	UNION SELECT k = 'sign-up--payment-data.creditCardHolder',
+		es = 'Titular como figura en la tarjeta',
+		en = 'Credit card holder'
+	UNION SELECT k = 'sign-up--payment-data.ccv',
+		es = 'CCV',
+		en = 'CCV'
+	UNION SELECT k = 'sign-up--payment-data.expirationDate',
+		es = 'Fecha de expiración (MMYY)',
+		en = 'Expiration Date (MMYY)'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
