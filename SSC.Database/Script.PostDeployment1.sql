@@ -668,6 +668,39 @@ FROM	(
 	UNION SELECT k = 'sign-up--payment-data.expirationDate',
 		es = 'Fecha de expiración (MMYY)',
 		en = 'Expiration Date (MMYY)'
+	UNION SELECT k = 'sign-up--payment-data.continue',
+		es = 'Continuar',
+		en = 'Continue'
+	UNION SELECT k = 'sign-up--billing.page.title',
+		es = 'Datos de Facturación',
+		en = 'Company Billing Information'
+	UNION SELECT k = 'sign-up--billing.name',
+		es = 'Denominación Fiscal',
+		en = 'Company Legal Name'
+	UNION SELECT k = 'sign-up--billing.taxCode',
+		es = 'Número de identificación fiscal',
+		en = 'Company Tax Code'
+	UNION SELECT k = 'sign-up--billing.province',
+		es = 'Provincia',
+		en = 'Province'
+	UNION SELECT k = 'sign-up--billing.city',
+		es = 'Ciudad',
+		en = 'City'
+	UNION SELECT k = 'sign-up--billing.street',
+		es = 'Calle',
+		en = 'Street'
+	UNION SELECT k = 'sign-up--billing.streetNumber',
+		es = 'Número',
+		en = 'Street number'
+	UNION SELECT k = 'sign-up--billing.department',
+		es = 'Departamento',
+		en = 'Department'
+	UNION SELECT k = 'sign-up--billing.postalCode',
+		es = 'Código Postal',
+		en = 'Postal Code'
+	UNION SELECT k = 'sign-up--billing.continue',
+		es = 'Continuar',
+		en = 'Continue'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
