@@ -442,7 +442,7 @@ FROM	(
 		en = 'About Us'
 	UNION SELECT k = 'app.marketing.menu.platform', 
 		es = 'Ingresar',
-		en = 'Login'
+		en = 'Sign in'
 	UNION SELECT k = 'home.card.tracking.header',
 		es = 'Preparado para su negocio',
 		en = 'Ready for your business'
@@ -572,6 +572,24 @@ FROM	(
 	UNION SELECT k = 'pricing-plan.corporate.signUpDescription',
 		es = 'Operatoria profesional',
 		en = 'Professional Operations'
+	UNION SELECT k = 'sign-in.page.title',
+		es = 'Autenticarse',
+		en = 'Sign in'
+	UNION SELECT k = 'sign-in.email',
+		es = 'Correo electrónico',
+		en = 'E-mail'
+	UNION SELECT k = 'sign-in.password',
+		es = 'Contraseña',
+		en = 'Password'
+	UNION SELECT k = 'sign-in.login',
+		es = 'Autenticarse',
+		en = 'Sign In'
+	UNION SELECT k = 'sign-in.forgot-password',
+		es = 'Olvidé mi contraseña',
+		en = 'Forgot my password'
+	UNION SELECT k = 'sign-in.sign-up',
+		es = 'Registrar nueva cuenta',
+		en = 'Sign up a new account'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
