@@ -590,6 +590,42 @@ FROM	(
 	UNION SELECT k = 'sign-in.sign-up',
 		es = 'Registrar nueva cuenta',
 		en = 'Sign up a new account'
+	UNION SELECT k = 'sign-up--initial.page.title',
+		es = 'Registración',
+		en = 'Sign up'
+	UNION SELECT k = 'sign-up--initial.name',
+		es = 'Nombre',
+		en = 'Name'
+	UNION SELECT k = 'sign-up--initial.lastName',
+		es = 'Apellido',
+		en = 'Last Name'
+	UNION SELECT k = 'sign-up--initial.email',
+		es = 'Correo electrónico',
+		en = 'E-mail'
+	UNION SELECT k = 'sign-up--initial.password',
+		es = 'Contraseña',
+		en = 'Password'
+	UNION SELECT k = 'sign-up--initial.repeatPassword',
+		es = 'Repetir contraseña',
+		en = 'Repeat password'
+	UNION SELECT k = 'sign-up--initial.password-strength.minChar',
+		es = 'La contraseña debe tener al menos 8 caracteres',
+		en = 'Password must be at least 8 characters long'
+	UNION SELECT k = 'sign-up--initial.password-strength.oneNumber',
+		es = 'Debe utilizar al menos un número',
+		en = 'Must use at least one number'
+	UNION SELECT k = 'sign-up--initial.password-strength.oneLowerCaseChar',
+		es = 'Debe utilizar al menos una letra minúscula',
+		en = 'Must use at least one lower case character'
+	UNION SELECT k = 'sign-up--initial.password-strength.oneUpperCaseChar',
+		es = 'Debe utilizar al menos una letra mayúscula',
+		en = 'Must use at least one upper case character'
+	UNION SELECT k = 'sign-up--initial.password-strength.oneSpecialSymbol',
+		es = 'Debe utilizar un caractér especial de entre: (! @ + # $ ^ & *)',
+		en = 'Must use at least one special character: (! @ + # $ ^ & *)'
+	UNION SELECT k = 'sign-up--initial.continue',
+		es = 'Continuar',
+		en = 'Continue'
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
