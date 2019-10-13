@@ -424,49 +424,156 @@ INSERT SystemLanguageEntry (
 SELECT
 	SystemLanguageId = sl.Id,
 	EntryKey = data.k,
-	Translation = data.t,
+	Translation = (CASE WHEN sl.Code = 'es' THEN data.es ELSE data.en END),
 	CreatedBy = 1,
 	UpdatedBy = 1
 FROM	(
-	SELECT k = 'app.title', t = 'SAMPLE SUPPLY CHAIN' UNION
-	SELECT k = 'app.home.slogan', t = 'La solución integral para la administración de muestras de tu laboratorio.' UNION
-	SELECT k = 'app.marketing.menu.pricing', t = 'Precios' UNION
-	SELECT k = 'app.marketing.menu.about-us', t = 'Sobre Nosotros' UNION
-	SELECT k = 'app.marketing.menu.platform', t = 'Ingresar'
+	SELECT k = 'app.title', 
+		es = 'Sample Supply Chain', 
+		en = 'Sample Supply Chain' 
+	UNION SELECT k = 'app.home.slogan', 
+		es = 'La solución integral para la administración de muestras de tu laboratorio.', 
+		en = 'Your one stop shop for sample supply management in your lab.' 
+	UNION SELECT k = 'app.marketing.menu.pricing', 
+		es = 'Precios',
+		en = 'Pricing'
+	UNION SELECT k = 'app.marketing.menu.about-us', 
+		es = 'Sobre Nosotros',
+		en = 'About Us'
+	UNION SELECT k = 'app.marketing.menu.platform', 
+		es = 'Ingresar',
+		en = 'Login'
+	UNION SELECT k = 'home.card.tracking.header',
+		es = 'Preparado para su negocio',
+		en = 'Ready for your business'
+	UNION SELECT k = 'home.card.tracking.title',
+		es = 'Gestión y Seguimiento de Muestras',
+		en = 'Sample Management and Tracking'
+	UNION SELECT k = 'home.card.tracking.subtitle',
+		es = 'Sea capaz de gestionar y seguir todas las muestras de sus depósitos distribuídas en ubicaciones geográficas diferentes.',
+		en = 'Be capable of managing and tracking all your samples from all your geographically distributed warehouses.'
+	UNION SELECT k = 'home.card.all.start-now',
+		es = '¡Empiece Ahora!',
+		en = 'Start Now!'
+	UNION SELECT k = 'home.card.compliance.header',
+		es = 'No gaste en auditorías',
+		en = 'Do not waste your money in auditing'
+	UNION SELECT k = 'home.card.compliance.title',
+		es = 'Compliance',
+		en = 'Compliance'
+	UNION SELECT k = 'home.card.compliance.subtitle',
+		es = 'No se preocupe más por todos los formularios que debe presentar a las diferentes instituciones controladoras. Hacemos el trabajo por usted.',
+		en = 'Do not worry anymore about all the forms you must present to the different controlling institutions. We do the heavy lifting for you.'
+	UNION SELECT k = 'home.card.custom-runs.header',
+		es = 'Libertad para definir sus investigaciones',
+		en = 'Freedom to define your researches'
+	UNION SELECT k = 'home.card.custom-runs.title',
+		es = 'Customización de Ensayos Clínicos',
+		en = 'Customize all your Clinic Runs'
+	UNION SELECT k = 'home.card.custom-runs.subtitle',
+		es = 'Con una plataforma capaz de configurarse para realizar los ensayos clínicos de cualquier forma que usted y su equipo necesite.',
+		en = 'Use a platform able to be configured to run your clinic runs in any way you and your team needs.'
+	UNION SELECT k = 'home.card.inventory.header',
+		es = 'No pierda rastro de sus caros recursos',
+		en = 'Do not lose tracking of your expensive resources'
+	UNION SELECT k = 'home.card.inventory.title',
+		es = 'Inventariado',
+		en = 'Inventory'
+	UNION SELECT k = 'home.card.inventory.subtitle',
+		es = 'Mantenga completo control de todas sus muestras automáticamente seleccionando el mejor conjunto de las mismas para sus ensayos.',
+		en = 'Keep full control of all your samples by automatically selecting the best possible group for your clinic runs.'
+	UNION SELECT k = 'pricing-plan.free.title',
+		es = 'Gratuito',
+		en = 'Free'
+	UNION SELECT k = 'pricing-plan.free.subheader',
+		es = 'Para probar la plataforma',
+		en = 'Test our platform'
+	UNION SELECT k = 'pricing-plan.free.price',
+		es = 'USD 0',
+		en = 'USD 0'
+	UNION SELECT k = 'pricing-plan.free.billFrequency',
+		es = '/mes',
+		en = '/month'
+	UNION SELECT k = 'pricing-plan.free.planDescription',
+		es = 'Suscripción gratuita para probar',
+		en = 'Free subscription for testing purposes'
+	UNION SELECT k = 'pricing-plan.free.patientSamplesDescription',
+		es = 'Hasta 1000 muestras de pacientes',
+		en = 'Up to 1000 patient samples'
+	UNION SELECT k = 'pricing-plan.free.controlSamplesDescription',
+		es = 'Hasta 1000 muestras de control',
+		en = 'Up to 1000 control samples'
+	UNION SELECT k = 'pricing-plan.free.userAccountsDescription',
+		es = 'Hasta 5 cuentas de usuario',
+		en = 'Up to 5 user accounts'
+	UNION SELECT k = 'pricing-plan.free.runExecutionsDescription',
+		es = 'Hasta 10 ensayos clinicos por mes',
+		en = 'Up to 10 clinic runs each month'
+	UNION SELECT k = 'pricing-plan.free.signUpDescription',
+		es = 'Probar la plataforma',
+		en = 'Try the platform'
+	UNION SELECT k = 'pricing-plan.premium.title',
+		es = 'Premium',
+		en = 'Premium'
+	UNION SELECT k = 'pricing-plan.premium.subheader',
+		es = 'Para laboratorios pequeños y medianos',
+		en = 'For small and medium sized organizations'
+	UNION SELECT k = 'pricing-plan.premium.price',
+		es = 'USD 17.500',
+		en = 'USD 17.500'
+	UNION SELECT k = 'pricing-plan.premium.billFrequency',
+		es = '/mes',
+		en = '/month'
+	UNION SELECT k = 'pricing-plan.premium.planDescription',
+		es = 'Suscripción mensual o anual (con descuento)',
+		en = 'Monthly subscription or anual subscription at discount'
+	UNION SELECT k = 'pricing-plan.premium.patientSamplesDescription',
+		es = 'Hasta 5000 muestras de pacientes por mes',
+		en = 'Up to 5000 patient samples a month'
+	UNION SELECT k = 'pricing-plan.premium.controlSamplesDescription',
+		es = 'Hasta 5000 muestras de control por mes',
+		en = 'Up to 5000 control samples a month'
+	UNION SELECT k = 'pricing-plan.premium.userAccountsDescription',
+		es = 'Hasta 50 cuentas de usuario',
+		en = 'Up to 50 user accounts'
+	UNION SELECT k = 'pricing-plan.premium.runExecutionsDescription',
+		es = 'Sin límite de ensayos clínicos',
+		en = 'No clinic run limits'
+	UNION SELECT k = 'pricing-plan.premium.signUpDescription',
+		es = 'Comenzar a operar',
+		en = 'Start Working'
+	UNION SELECT k = 'pricing-plan.corporate.title',
+		es = 'Corporativo',
+		en = 'Corporate'
+	UNION SELECT k = 'pricing-plan.corporate.subheader',
+		es = 'La solución completa de SSC',
+		en = 'Our most complete solution'
+	UNION SELECT k = 'pricing-plan.corporate.price',
+		es = 'USD 50.000',
+		en = 'USD 50.000'
+	UNION SELECT k = 'pricing-plan.corporate.billFrequency',
+		es = '/mes',
+		en = '/month'
+	UNION SELECT k = 'pricing-plan.corporate.planDescription',
+		es = 'Suscripción mensual o anual (con descuento)',
+		en = 'Monthly subscription or anual subscription at discount'
+	UNION SELECT k = 'pricing-plan.corporate.patientSamplesDescription',
+		es = 'Sin límite de muestras de pacientes',
+		en = 'Unlimited patient samples'
+	UNION SELECT k = 'pricing-plan.corporate.controlSamplesDescription',
+		es = 'Sin límite de muestras de control',
+		en = 'Unlimited control samples'
+	UNION SELECT k = 'pricing-plan.corporate.userAccountsDescription',
+		es = 'Sin límite de cuentas de usuario',
+		en = 'Unlimited user accounts'
+	UNION SELECT k = 'pricing-plan.corporate.runExecutionsDescription',
+		es = 'Sin límite de ensayos clínicos',
+		en = 'Unlimited clinic runs'
+	UNION SELECT k = 'pricing-plan.corporate.signUpDescription',
+		es = 'Operatoria profesional',
+		en = 'Professional Operations'
 ) AS data
-INNER JOIN		SystemLanguage SL
-		ON		sl.Code = 'es'
-
-LEFT  JOIN		SystemLanguageEntry SLE
-		ON		sle.SystemLanguageId = sl.Id
-		AND		sle.EntryKey = data.k
-
-WHERE			sle.EntryKey IS NULL
-
--- System Language Entries (Initial - English)
-INSERT SystemLanguageEntry (
-	SystemLanguageId,
-	EntryKey,
-	Translation,
-	CreatedBy,
-	UpdatedBy
-)
-SELECT
-	SystemLanguageId = sl.Id,
-	EntryKey = data.k,
-	Translation = data.t,
-	CreatedBy = 1,
-	UpdatedBy = 1
-FROM	(
-	SELECT k = 'app.title', t = 'SAMPLE SUPPLY CHAIN' UNION
-	SELECT k = 'app.home.slogan', t = 'Your one stop shop for sample supply management in your lab.' UNION
-	SELECT k = 'app.marketing.menu.pricing', t = 'Pricing' UNION
-	SELECT k = 'app.marketing.menu.about-us', t = 'About Us' UNION
-	SELECT k = 'app.marketing.menu.platform', t = 'Login'
-) AS data
-INNER JOIN		SystemLanguage SL
-		ON		sl.Code = 'en'
-
+CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
 		ON		sle.SystemLanguageId = sl.Id
 		AND		sle.EntryKey = data.k

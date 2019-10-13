@@ -164,6 +164,7 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientTestimonial_getLast5.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguage_getEntry.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_buildDefaultDictionary.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
