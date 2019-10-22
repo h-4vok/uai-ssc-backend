@@ -26,19 +26,14 @@ namespace SSC.Api.ViewModels
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-
         public string TitleInCompany { get; set; }
-
         public int SelectedPricingPlan { get; set; }
-
         public ClientCompanyViewModel CompanyData { get; set; }
         public IEnumerable<PhoneViewModel> PersonalPhones { get; set; }
-
         public string CreditCardNumber { get; set; }
         public string CreditCardOwner { get; set; }
         public int CreditCardCCV { get; set; }
         public string CreditCardExpirationDateMMYY { get; set; }
-
         public string BillingCompanyName { get; set; }
         public string BillingCompanyIdentification { get; set; }
         public int BillingProvinceId { get; set; }
@@ -47,5 +42,6 @@ namespace SSC.Api.ViewModels
         public string BillingStreetNumber { get; set; }
         public string BillingDepartment { get; set; }
         public string BillingPostalCode { get; set; }
+        public string IncomingHost { get; set; }
     }
 }

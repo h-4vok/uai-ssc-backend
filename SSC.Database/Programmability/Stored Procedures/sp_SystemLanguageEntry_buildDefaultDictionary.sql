@@ -6,6 +6,11 @@ BEGIN
 	SELECT @langId = Id FROM SystemLanguage WHERE Code = 'es'
 
 	SELECT
+		r = '/* eslint-disable */'
+
+		UNION ALL
+
+	SELECT
 		r = 'export const defaultDictionary = {'
 
 		UNION ALL

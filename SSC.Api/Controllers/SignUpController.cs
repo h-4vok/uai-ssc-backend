@@ -7,8 +7,10 @@ using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 
 namespace SSC.Api.Controllers
@@ -33,6 +35,9 @@ namespace SSC.Api.Controllers
 
         public ResponseViewModel Post(SignUpValidationViewModel model)
         {
+            var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
             string Initial_Validation()
             {
                 var partial = Validator<SignUpValidationViewModel>.Start(model)
@@ -150,6 +155,25 @@ namespace SSC.Api.Controllers
 
                 var verificationCodeHandler = DependencyResolver.Obj.Resolve<IVerificationCodeHandler>();
                 verificationCodeHandler.Set(model.UserName, verificationCode);
+
+                // Preparar mail de verificacion a este usuario
+                var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/verification-code_{0}.html", authProvider.CurrentLanguageCode));
+                var mailTemplate = File.ReadAllText(mailTemplatePath);
+
+                mailTemplate = mailTemplate.Replace("${FirstName}", model.FirstName);
+                mailTemplate = mailTemplate.Replace("${VerificationCode}", verificationCode.AsString());
+                mailTemplate = mailTemplate.Replace("${VerificationLink}", String.Format("http://{0}/#/sign-up--verify/{1}/{2}", model.IncomingHost, model.UserName, verificationCode));
+
+                // Enviar mail de verificacion
+                var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
+                var mail = new QueuedMail
+                {
+                    To = model.UserName,
+                    Subject = i10n["email.verification-email.subject"],
+                    Body = mailTemplate,
+                };
+
+                smtpHandler.Send(mail, true);
             }
 
             return true;

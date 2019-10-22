@@ -980,9 +980,9 @@ FROM	(
 	UNION SELECT k = 'validator.api.list-not-empty',
 		es = 'Debe seleccionar al menos un elemento para el campo {0}.',
 		en = 'You must select at least one element for field {0}.'
-	UNION SELECT k = '',
-		es = '',
-		en = ''
+	UNION SELECT k = 'email.verification-email.subject',
+		es = 'Verifique su cuenta de SSC',
+		en = 'Verify your account at SSC'
 	UNION SELECT k = '',
 		es = '',
 		en = ''
