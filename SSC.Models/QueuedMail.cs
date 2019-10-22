@@ -10,8 +10,8 @@ namespace SSC.Models
     {
         public int Id { get; set; }
         public string To { get; set; }
-        public string Cc { get; set; }
-        public string Bcc { get; set; }
+        public string Cc { get; set; } = String.Empty;
+        public string Bcc { get; set; } = String.Empty;
         public string Subject { get; set; }
         public string Body { get; set; }
         public DateTime QueuedDate { get; set; }

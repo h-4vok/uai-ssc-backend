@@ -2,6 +2,7 @@
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -14,9 +15,13 @@ namespace SSC.Business
     {
         public SmtpHandler()
         {
-            this.Port = 25;
-            this.UseDefaultCredentials = false;
-            this.DeliveryMethod = SmtpDeliveryMethod.Network;
+            this.Port = ConfigurationManager.AppSettings["Smtp.Port"].AsInt();
+            this.EnableSsl = ConfigurationManager.AppSettings["Smtp.EnableSsl"].AsBool();
+            this.UseDefaultCredentials = ConfigurationManager.AppSettings["Smtp.UseDefaultCredentials"].AsBool();
+            this.DeliveryMethod = (SmtpDeliveryMethod)Enum.Parse(typeof(SmtpDeliveryMethod), ConfigurationManager.AppSettings["Smtp.DeliveryMethod"].AsString());
+            this.HostName = ConfigurationManager.AppSettings["Smtp.HostName"].AsString();
+            this.UserName = ConfigurationManager.AppSettings["Smtp.UserName"].AsString();
+            this.Password = ConfigurationManager.AppSettings["Smtp.Password"].AsString();
         }
 
         public int Port { get; set; }
@@ -57,7 +62,8 @@ namespace SSC.Business
         {
             var output = new MailMessage();
 
-            output.From = new MailAddress("no-reply@ssc.com");
+            //output.From = new MailAddress("no-reply@ssc.com");
+            output.From = new MailAddress(this.UserName);
 
             Action<string, Action<string>> setReceivers = (input, actionOnProperty) =>
             {
