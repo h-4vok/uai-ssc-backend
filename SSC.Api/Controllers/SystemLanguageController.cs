@@ -1,5 +1,7 @@
 ﻿using SSC.Api.Behavior;
 using SSC.Business.Interfaces;
+using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -28,6 +30,9 @@ namespace SSC.Api.Controllers
             {
                 code = "en";
             }
+
+            var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            authProvider.CurrentLanguageCode = code;
 
             var output = this.business.GetDictionary(code);
             return output.Entries.ToList();

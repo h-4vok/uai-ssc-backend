@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SSC.Common;
+using SSC.Common.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,9 +16,12 @@ namespace SSC.Business
         public Validator(T model)
         {
             this.model = model;
+            this.i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
         }
 
         private readonly T model;
+        private ILocalizationProvider i10n;
+
         public string ValidationResult { get; private set; }
 
         public static Validator<T> Start(T model)
@@ -38,7 +43,7 @@ namespace SSC.Business
 
             if (String.IsNullOrWhiteSpace(propertyAccessor(this.model)))
             {
-                return this.SetAndReturn(String.Format("El campo {0} es obligatorio.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.mandatory-string"], fieldName));
             }
 
             return this;
@@ -50,7 +55,7 @@ namespace SSC.Business
 
             if (propertyAccessor(this.model).Length > length)
             {
-                return this.SetAndReturn(String.Format("El campo {0} supera los {1} caracteres.", fieldName, length));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.max-string-length"], fieldName, length));
             }
 
             return this;
@@ -62,7 +67,7 @@ namespace SSC.Business
 
             if (propertyAccessor(this.model).Length < minLength)
             {
-                return this.SetAndReturn(String.Format("El campo {0} debe tener al menos {1} caracteres.", fieldName, minLength));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.min-string-length"], fieldName, minLength));
             }
 
             return this;
@@ -78,7 +83,7 @@ namespace SSC.Business
             }
             catch
             {
-                return this.SetAndReturn(String.Format("El campo {0} no es un correo electrónico válido.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.valid-email-address"], fieldName));
             }
 
             return this;
@@ -90,7 +95,7 @@ namespace SSC.Business
 
             if (propertyAccessor(this.model) == null)
             {
-                return this.SetAndReturn(String.Format("El campo {0} no puede ser vacío.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.not-null"], fieldName));
             }
 
             return this;
@@ -102,7 +107,7 @@ namespace SSC.Business
 
             if (propertyAccessor(this.model) <= 0)
             {
-                return this.SetAndReturn(String.Format("El campo {0} es obligatorio.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.mandatory-dropdown-selection"], fieldName));
             }
 
             return this;
@@ -116,7 +121,7 @@ namespace SSC.Business
 
             if (!regex.IsMatch(propertyAccessor(this.model)))
             {
-                return this.SetAndReturn(String.Format("El campo {0} no es un número válido.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.is-number"], fieldName));
             }
 
             return this;
@@ -129,7 +134,7 @@ namespace SSC.Business
             var output = DateTime.TryParseExact(propertyAccessor(this.model), format, CultureInfo.InvariantCulture, DateTimeStyles.None, out _);
             if (!output)
             {
-                return this.SetAndReturn(String.Format("El campo {0} no tiene el formato de fecha esperado '{1}'.", fieldName, format));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.date-format"], fieldName, format));
             }
 
             return this;
@@ -142,7 +147,7 @@ namespace SSC.Business
             var output = propertyAccessor(this.model);
             if (output == null || output.Count() == 0)
             {
-                return this.SetAndReturn(String.Format("Debe seleccionar al menos un elemento para el campo {0}.", fieldName));
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.list-not-empty"], fieldName));
             }
 
             return this;

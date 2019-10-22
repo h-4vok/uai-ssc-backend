@@ -13,5 +13,7 @@ namespace SSC.Common.Interfaces
         int CurrentUserId { get; }
         IEnumerable<string> CurrentUserRoleCodes { get; }
         string CurrentClientApiKey { get; }
+
+        string CurrentLanguageCode { get; set; }
     }
 }

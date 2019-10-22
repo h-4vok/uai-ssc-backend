@@ -71,6 +71,7 @@
     <Compile Include="Interfaces\IDataToBlobProcessor.cs" />
     <Compile Include="Interfaces\IEnvironment.cs" />
     <Compile Include="Interfaces\IFileSystemProvider.cs" />
+    <Compile Include="Interfaces\ILocalizationProvider.cs" />
     <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
     <Compile Include="Interfaces\IVerificationCodeHandler.cs" />
     <Compile Include="Logging\LoggerSubscriber.cs" />

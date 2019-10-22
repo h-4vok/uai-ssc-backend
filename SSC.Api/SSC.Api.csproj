@@ -195,6 +195,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Behavior\AuthenticationProvider.cs" />
+    <Compile Include="Behavior\LocalizationProvider.cs" />
     <Compile Include="Behavior\SscAuthorize.cs" />
     <Compile Include="Behavior\VerificationCodeHandler.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />

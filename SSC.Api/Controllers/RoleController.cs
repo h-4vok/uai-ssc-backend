@@ -1,7 +1,9 @@
 ﻿using SSC.Api.Behavior;
 using SSC.Business;
 using SSC.Business.Interfaces;
+using SSC.Common;
 using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -36,10 +38,12 @@ namespace SSC.Api.Controllers
         [SscAuthorize(Permissions = "ROLES_MANAGEMENT")]
         public ResponseViewModel Post(Role model)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
             var validation = Validator<Role>.Start(model)
-                .MandatoryString(x => x.Name, "Nombre")
-                .MaxStringLength(x => x.Name, "Nombre", 300)
-                .ListNotEmpty<Permission>(x => x.Permissions, "Permisos")
+                .MandatoryString(x => x.Name, i10n["security.role.field.name"])
+                .MaxStringLength(x => x.Name, i10n["security.role.field.name"], 300)
+                .ListNotEmpty<Permission>(x => x.Permissions, i10n["security.role.field.permissions"])
                 .ValidationResult;
 
             if (!String.IsNullOrWhiteSpace(validation))

@@ -23,6 +23,7 @@ namespace SSC.Api.App_Start
         {
             Register<IAuthenticationProvider, AuthenticationProvider>();
             Register<IVerificationCodeHandler, VerificationCodeHandler>();
+            Register<ILocalizationProvider, LocalizationProvider>();
         }
 
         private static void RegisterAll()

@@ -18,6 +18,13 @@ namespace SSC.Api.Behavior
             return HttpContext.Current.Session[key];
         }
 
+        private void SetSessionValue(string key, object value)
+        {
+            if (HttpContext.Current.Session == null) return;
+
+            HttpContext.Current.Session[key] = value;
+        }
+
         public string CurrentUserName { get { return this.GetSessionValue("UserName").AsString(); } }
 
         public int CurrentClientId { get { return this.GetSessionValue("ClientId").AsInt(); } }
@@ -27,5 +34,18 @@ namespace SSC.Api.Behavior
         public IEnumerable<string> CurrentUserRoleCodes { get { return this.GetSessionValue("Permissions") as IEnumerable<string> ?? new List<string>(); } }
 
         public string CurrentClientApiKey { get { return this.GetSessionValue("ClientApiKey").AsString(); } }
+
+        public string CurrentLanguageCode
+        {
+            get
+            {
+                var sessionValue = this.GetSessionValue("CurrentLanguageCode").AsString();
+                return  String.IsNullOrEmpty(sessionValue) ? "es" : sessionValue.AsString() ;
+            }
+            set
+            {
+                this.SetSessionValue("CurrentLanguageCode", value);
+            }
+        }
     }
 }
