@@ -24,6 +24,7 @@ namespace SSC.Api.App_Start
             Register<IAuthenticationProvider, AuthenticationProvider>();
             Register<IVerificationCodeHandler, VerificationCodeHandler>();
             Register<ILocalizationProvider, LocalizationProvider>();
+            Register<IForgotPasswordTokenCache, ForgotPasswordTokenCache>();
         }
 
         private static void RegisterAll()

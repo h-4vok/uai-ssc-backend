@@ -413,7 +413,7 @@ LEFT  JOIN	SystemLanguage SL
 
 WHERE		sl.Code IS NULL
 
--- System Language Entries (Initial - Spanish)
+-- System Language Entries (Initial - Spanish) - Part 1
 INSERT SystemLanguageEntry (
 	SystemLanguageId,
 	EntryKey,
@@ -992,6 +992,42 @@ FROM	(
 	UNION SELECT k = 'email.welcome-email.subject',
 		es = 'Bienvenido a SSC',
 		en = 'Welcome to SSC'
+	UNION SELECT k = 'forgot-password.submit-message',
+		es = 'Se ha enviado un correo electrónico a la cuenta indicada. Siga los pasos para recuperar su cuenta.',
+		en = 'An email has been sent to the indicated account. Follow the steps indicated to recover your password.'
+	UNION SELECT k = 'forgot-password.page.title',
+		es = 'Recuperar contraseña',
+		en = 'Recover your password'
+	UNION SELECT k = 'forgot-password.recover-password',
+		es = 'Recuperar contraseña',
+		en = 'Recover password'
+	UNION SELECT k = 'forgot-password.validation.user-not-exists',
+		es = 'El usuario indicado no existe en la plataforma. Verifique el e-mail ingresado',
+		en = 'The indicated user does not exist in the platform. Verify the e-mail input.'
+	UNION SELECT k = 'forgot-password.validation.user-not-enabled',
+		es = 'El usuario se encuentra deshabilitado. Si considera que esto es un error contacte a nuestra Mesa de Ayuda.',
+		en = 'The user is disabled. If you consider this to be a mistake please contact our Help Desk.'
+	UNION SELECT k = 'email.forgot-password.subject',
+		es = 'Recupere su contraseña en SSC',
+		en = 'Recover your SSC password'
+	UNION SELECT k = '',
+		es = '',
+		en = ''
+	UNION SELECT k = '',
+		es = '',
+		en = ''
+	UNION SELECT k = '',
+		es = '',
+		en = ''
+	UNION SELECT k = '',
+		es = '',
+		en = ''
+	UNION SELECT k = '',
+		es = '',
+		en = ''
+	UNION SELECT k = '',
+		es = '',
+		en = ''
 	UNION SELECT k = '',
 		es = '',
 		en = ''

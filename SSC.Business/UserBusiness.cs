@@ -95,9 +95,46 @@ namespace SSC.Business
             throw new NotImplementedException();
         }
 
-        public void SendForgottenPasswordRecovery(string userName)
+        public void SendForgottenPasswordRecovery(string userName, string host)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            var exists = this.data.Exists(userName);
+            if (!exists)
+            {
+                throw new UnprocessableEntityException(i10n["forgot-password.validation.user-not-exists"]);
+            }
+
+            var enabled = this.data.IsEnabled(userName);
+            if (!enabled)
+            {
+                throw new UnprocessableEntityException(i10n["forgot-password.validation.user-not-enabled"]);
+            }
+
+            var recoveryToken = Guid.NewGuid().ToString();
+            var forgotPasswordTokenCache = DependencyResolver.Obj.Resolve<IForgotPasswordTokenCache>();
+            forgotPasswordTokenCache.Set(recoveryToken, userName);
+
+            {
+
+                var smtp = DependencyResolver.Obj.Resolve<ISmtpHandler>();
+                var environment = DependencyResolver.Obj.Resolve<IEnvironment>();
+
+                var mailTemplate = environment.GetEmailTemplate("recover_password_{0}.html");
+                var url = String.Format("http://{0}/recover-password/{1}", host, recoveryToken);
+                mailTemplate = mailTemplate.Replace("${ResetPasswordLink}", url);
+
+                var mail = new QueuedMail
+                {
+                    To = userName,
+                    Subject = i10n["email.forgot-password.subject"],
+                    Body = mailTemplate,
+                };
+
+                smtp.Send(mail, true);
+
+                this.data.QueueMailTo(mail.To, mail.Subject, mail.Body);
+            }
         }
 
         public bool IsRecoveryTokenValid(string userName, string token)

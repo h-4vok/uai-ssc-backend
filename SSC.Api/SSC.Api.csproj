@@ -197,6 +197,7 @@
     <Compile Include="Behavior\AuthenticationProvider.cs" />
     <Compile Include="Behavior\LocalizationProvider.cs" />
     <Compile Include="Behavior\SscAuthorize.cs" />
+    <Compile Include="Behavior\ForgotPasswordTokenCache.cs" />
     <Compile Include="Behavior\VerificationCodeHandler.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\BackupController.cs" />
@@ -271,6 +272,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="EmailTemplates\recover_password_es.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplates\recover_password_en.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="EmailTemplates\welcome_es.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -43,6 +43,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
@@ -71,6 +72,7 @@
     <Compile Include="Interfaces\IDataToBlobProcessor.cs" />
     <Compile Include="Interfaces\IEnvironment.cs" />
     <Compile Include="Interfaces\IFileSystemProvider.cs" />
+    <Compile Include="Interfaces\IForgotPasswordTokenCache.cs" />
     <Compile Include="Interfaces\ILocalizationProvider.cs" />
     <Compile Include="Interfaces\IPythonEngineProcessor.cs" />
     <Compile Include="Interfaces\IVerificationCodeHandler.cs" />

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Configuration;
+using System.Web.Hosting;
+using System.IO;
 
 namespace SSC.Common
 {
@@ -13,6 +15,17 @@ namespace SSC.Common
         public string GetAboutUsText()
         {
             throw new NotImplementedException();
+        }
+
+        public string GetEmailTemplate(string filename)
+        {
+            var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            var fullFileName = String.Format(filename, authProvider.CurrentLanguageCode);
+            var fullPath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/{0}", fullFileName));
+            var templateContent = File.ReadAllText(fullPath);
+
+            return templateContent;
         }
 
         public string GetInfoEmail()

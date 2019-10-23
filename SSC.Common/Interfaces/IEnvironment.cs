@@ -17,5 +17,6 @@ namespace SSC.Common.Interfaces
         string GetLabScriptsPath(int clientId);
         string GetLabScriptUserConnectionString();
         string GetLabScriptFileFormat();
+        string GetEmailTemplate(string filename);
     }
 }

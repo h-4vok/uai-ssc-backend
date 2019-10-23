@@ -236,12 +236,17 @@ namespace SSC.Data
 
         public bool IsEnabled(string userName)
         {
-            throw new NotImplementedException();
+            return this.uow.ScalarDirect("sp_User_IsEnabled", ParametersBuilder.With("UserName", userName)).AsBool();
         }
 
         public void QueueMailTo(string userName, string subject, string body)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_QueuedMail_create",
+                ParametersBuilder
+                    .With("MailTo", userName)
+                    .And("Subject", subject)
+                    .And("Body", body)
+                );
         }
 
         public bool CheckTokenValidity(string userName, string token, int daysValid)

@@ -165,6 +165,8 @@
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguage_getEntry.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_buildDefaultDictionary.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_QueuedMail_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_IsEnabled.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
