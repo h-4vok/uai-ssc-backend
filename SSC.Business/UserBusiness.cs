@@ -121,7 +121,7 @@ namespace SSC.Business
                 var environment = DependencyResolver.Obj.Resolve<IEnvironment>();
 
                 var mailTemplate = environment.GetEmailTemplate("recover_password_{0}.html");
-                var url = String.Format("http://{0}/recover-password/{1}", host, recoveryToken);
+                var url = String.Format("http://{0}/#/recover-password/{1}/{2}", host, recoveryToken, userName);
                 mailTemplate = mailTemplate.Replace("${ResetPasswordLink}", url);
 
                 var mail = new QueuedMail
@@ -139,12 +139,18 @@ namespace SSC.Business
 
         public bool IsRecoveryTokenValid(string userName, string token)
         {
-            throw new NotImplementedException();
+            var forgotPasswordTokenCache = DependencyResolver.Obj.Resolve<IForgotPasswordTokenCache>();
+            var savedUserForToken = forgotPasswordTokenCache.Get(token);
+
+            var isValid = String.Compare(userName, savedUserForToken, true) == 0;
+            return isValid;
         }
 
         public void UpdatePassword(string userName, string newPassword)
         {
-            throw new NotImplementedException();
+            var hashedPassword = PasswordHasher.obj.Hash(newPassword);
+
+            this.data.UpdatePassword(userName, hashedPassword);
         }
 
         public void Update(User model)

@@ -256,7 +256,7 @@ namespace SSC.Data
 
         public void UpdatePassword(string userName, string password)
         {
-            throw new NotImplementedException();
+            this.uow.ScalarDirect("sp_PlatformUser_updatePassword", ParametersBuilder.With("UserName", userName).And("NewPassword", password));
         }
 
         public void Update(User model)

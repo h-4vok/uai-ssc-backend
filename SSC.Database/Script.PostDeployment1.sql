@@ -1010,15 +1010,42 @@ FROM	(
 	UNION SELECT k = 'email.forgot-password.subject',
 		es = 'Recupere su contraseña en SSC',
 		en = 'Recover your SSC password'
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
+) AS data
+CROSS JOIN		SystemLanguage SL
+LEFT  JOIN		SystemLanguageEntry SLE
+		ON		sle.SystemLanguageId = sl.Id
+		AND		sle.EntryKey = data.k
+
+WHERE			sle.EntryKey IS NULL
+AND				data.k <> ''
+
+-- System Language Entries (Initial - Spanish) - Part 2
+INSERT SystemLanguageEntry (
+	SystemLanguageId,
+	EntryKey,
+	Translation,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	SystemLanguageId = sl.Id,
+	EntryKey = data.k,
+	Translation = (CASE WHEN sl.Code = 'es' THEN data.es ELSE data.en END),
+	CreatedBy = 1,
+	UpdatedBy = 1
+FROM	(
+	SELECT k = 'forgot-password.token-invalid', 
+		es = 'No se pudo validar su pedido de blanquear la contraseña. Por favor, vuelva a intentarlo.', 
+		en = 'We could not validate your password reset request. Please, try again.' 
+	UNION SELECT k = 'forgot-password.password-reset-success',
+		es = 'La contraseña ha sido cambiada con éxito.',
+		en = 'Password reset has been a success.'
+	UNION SELECT k = 'forgot-password.password-mismatch',
+		es = 'Las contraseñas no coinciden.',
+		en = 'Passwords do not match.'
+	UNION SELECT k = 'recover-password.page.title',
+		es = 'Recupere su contraseña',
+		en = 'Recover your password'
 	UNION SELECT k = '',
 		es = '',
 		en = ''

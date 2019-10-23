@@ -52,8 +52,17 @@ namespace SSC.Api.Controllers
             return true;
         }
 
-        public ResponseViewModel Get(PasswordRecoveryViewModel viewModel) => throw new NotImplementedException();
+        public ResponseViewModel Get(string username, string token)
+        {
+            var isValid = this.business.IsRecoveryTokenValid(username, token);
+            return isValid;
+        }
 
-        public ResponseViewModel Put(string userName, PasswordRecoveryViewModel viewModel) => throw new NotImplementedException();
+        public ResponseViewModel Put(int id, PasswordRecoveryViewModel viewModel)
+        {
+            this.business.UpdatePassword(viewModel.UserName, viewModel.Password);
+
+            return true;
+        }
     }
 }
