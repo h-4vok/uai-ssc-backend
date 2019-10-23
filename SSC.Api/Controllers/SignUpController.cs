@@ -259,6 +259,35 @@ namespace SSC.Api.Controllers
 
             this.business.Create(vm.User);
 
+            // Enviamos mail de bienvenida
+            try
+            {
+                var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+                // Preparar mail de verificacion a este usuario
+                var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/welcome_{0}.html", authProvider.CurrentLanguageCode));
+                var mailTemplate = File.ReadAllText(mailTemplatePath);
+
+                mailTemplate = mailTemplate.Replace("${FirstName}", vm.User.UserName);
+                mailTemplate = mailTemplate.Replace("${SignInLink}", String.Format("http://{0}/#/sign-in", vm.IncomingHost));
+
+                // Enviar mail de verificacion
+                var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
+                var mail = new QueuedMail
+                {
+                    To = vm.User.UserName,
+                    Subject = i10n["email.welcome-email.subject"],
+                    Body = mailTemplate,
+                };
+
+                smtpHandler.Send(mail, true);
+            }
+            catch
+            {
+                // nothing
+            }
+
             return true;
         }
     }

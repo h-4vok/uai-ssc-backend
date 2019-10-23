@@ -11,5 +11,6 @@ namespace SSC.Api.ViewModels
         public int VerificationCode { get; set; }
         public User User { get; set; }
         public ClientCompany ClientCompany { get; set; }
+        public string IncomingHost { get; set; }
     }
 }
