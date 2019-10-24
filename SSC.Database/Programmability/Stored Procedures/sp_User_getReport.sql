@@ -37,6 +37,7 @@ BEGIN
 	SELECT
 		Id = pu.Id,
 		ClientName = cc.Name,
+		UserName = pu.UserName,
 		IsDisabled = CONVERT(BIT, CASE WHEN pu.IsEnabled = 1 THEN 0 ELSE 1 END),
 		IsBlocked = pu.IsBlocked,
 		CountOfRoles = ISNULL(COUNT(DISTINCT ur.RoleId), 0),
@@ -66,6 +67,7 @@ BEGIN
 	GROUP BY
 		pu.Id,
 		cc.Name,
+		pu.UserName,
 		pu.IsEnabled,
 		pu.IsBlocked,
 		uwpr.UserId

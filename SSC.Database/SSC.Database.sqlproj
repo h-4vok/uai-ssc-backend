@@ -168,6 +168,7 @@
     <Build Include="Programmability\Stored Procedures\sp_QueuedMail_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_IsEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformUser_updatePassword.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_addOrUpdate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

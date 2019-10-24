@@ -90,9 +90,9 @@ namespace SSC.Business
             };
         }
 
-        public IEnumerable<UserReportRow> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
+        public IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions)
         {
-            throw new NotImplementedException();
+            return this.data.GetReport(selectedRoles, selectedPermissions);
         }
 
         public void SendForgottenPasswordRecovery(string userName, string host)

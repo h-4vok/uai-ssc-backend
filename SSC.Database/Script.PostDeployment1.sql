@@ -1078,30 +1078,6 @@ FROM	(
 	UNION SELECT k = 'recover-password.page.title',
 		es = 'Recupere su contraseña',
 		en = 'Recover your password'
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
-	UNION SELECT k = '',
-		es = '',
-		en = ''
 ) AS data
 CROSS JOIN		SystemLanguage SL
 LEFT  JOIN		SystemLanguageEntry SLE
@@ -1111,3 +1087,113 @@ LEFT  JOIN		SystemLanguageEntry SLE
 WHERE			sle.EntryKey IS NULL
 AND				data.k <> ''
 
+-- More Language Entries
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.id',
+	@es = 'Id',
+	@en = 'Id'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.clientName',
+	@es = 'Client',
+	@en = 'Cliente'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.userName',
+	@es = 'Cuenta',
+	@en = 'Account'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.isDisabled',
+	@es = 'Deshabilitado',
+	@en = 'Disabled'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.isBlocked',
+	@es = 'Bloqueado',
+	@en = 'Blocked'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.countOfRoles',
+	@es = '# de Roles',
+	@en = '# of Roles'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.countOfPermissions',
+	@es = '# de Permisos',
+	@en = '# of Permissions'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.grid.isPlatformAdmin',
+	@es = 'Es Administrador',
+	@en = 'Is Admin'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.isDisabled.true',
+	@es = 'No Habilitado',
+	@en = 'Disabled'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.isDisabled.false',
+	@es = 'Habilitado',
+	@en = 'Enabled'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.isBlocked.true',
+	@es = 'Bloqueado',
+	@en = 'Blocked'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.isAdmin.true',
+	@es = 'Sí',
+	@en = 'Yes'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.refresh',
+	@es = 'Ejecutar',
+	@en = 'Execute'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.new',
+	@es = 'Nuevo',
+	@en = 'New'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.edit',
+	@es = 'Editar',
+	@en = 'Edit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.enable',
+	@es = 'Habilitar',
+	@en = 'Enable'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.disable',
+	@es = 'Deshabilitar',
+	@en = 'Disable'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listUsers.delete',
+	@es = 'Eliminar',
+	@en = 'Delete'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''

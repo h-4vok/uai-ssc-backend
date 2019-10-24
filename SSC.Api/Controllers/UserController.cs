@@ -18,7 +18,12 @@ namespace SSC.Api.Controllers
 
         public UserController(IUserBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<UserReportViewModel>> Get(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions) => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<UserReportViewModel>> Get(string selectedRoles, string selectedPermissions)
+        {
+            // TODO: Pending using filters
+            var users = this.business.GetReport(null, null);
+            return users.ToList();
+        }
 
         public ResponseViewModel Post(User model) => throw new NotImplementedException();
 

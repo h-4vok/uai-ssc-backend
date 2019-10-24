@@ -13,7 +13,7 @@ namespace SSC.Business.Interfaces
     {
         ResponseViewModel<AuthenticationResponseViewModel> Authenticate(string userName, string password);
 
-        IEnumerable<UserReportRow> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
+        IEnumerable<UserReportViewModel> GetReport(IEnumerable<int> selectedRoles, IEnumerable<int> selectedPermissions);
 
         void Create(User model);
 
