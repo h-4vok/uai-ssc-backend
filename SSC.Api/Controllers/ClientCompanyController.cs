@@ -15,7 +15,11 @@ namespace SSC.Api.Controllers
 
         public ClientCompanyController(IClientCompanyBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<ClientCompanyReportRow>> Get() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<ClientCompanyReportRow>> Get()
+        {
+            var output = this.business.GetAll();
+            return output.ToList();
+        }
 
         public ResponseViewModel Post(ClientCompany model) => throw new NotImplementedException();
 

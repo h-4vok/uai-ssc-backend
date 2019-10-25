@@ -169,6 +169,9 @@
     <Build Include="Programmability\Stored Procedures\sp_User_IsEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformUser_updatePassword.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_addOrUpdate.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_UserRole_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

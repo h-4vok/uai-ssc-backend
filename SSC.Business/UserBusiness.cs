@@ -25,6 +25,22 @@ namespace SSC.Business
 
         public void Create(User model)
         {
+            var exists = this.data.Exists(model.UserName);
+            
+            if (exists)
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+                throw new UnprocessableEntityException(String.Format(i10n["user-business.create.exists"], model.UserName));
+            }
+
+            if (model.ClientCompany == null && !model.Roles.Any())
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+                throw new UnprocessableEntityException(i10n["user-model.create.company-or-role"]);
+            }
+
             this.data.Create(model);
         }
 
@@ -155,7 +171,7 @@ namespace SSC.Business
 
         public void Update(User model)
         {
-            throw new NotImplementedException();
+            this.data.Update(model);
         }
 
         public void UpdateIsEnabled(int id, bool isEnabled)

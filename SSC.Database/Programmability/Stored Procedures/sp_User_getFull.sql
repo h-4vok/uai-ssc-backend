@@ -20,7 +20,9 @@ BEGIN
 		RoleIsPlatformRole = r.IsPlatformRole,
 		PermissionId = p.Id,
 		PermissionCode = p.Code,
-		PermissionName = p.Name
+		PermissionName = p.Name,
+		ClientCompanyId = pu.ClientId,
+		ClientCompanyName = cc.Name
 
 	FROM		PlatformUser PU
 
@@ -35,6 +37,9 @@ BEGIN
 
 	LEFT  JOIN	Permission P
 			ON	rp.PermissionId = p.Id
+
+	LEFT  JOIN	ClientCompany CC
+			ON	pu.ClientId = cc.Id
 
 	WHERE		pu.UserName = @userName OR pu.Id = @userId
 

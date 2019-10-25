@@ -33,6 +33,8 @@ namespace SSC.Data
             public int? PermissionId { get; set; }
             public string PermissionCode { get; set; }
             public string PermissionName { get; set; }
+            public int? ClientCompanyId { get; set; }
+            public string ClientCompanyName { get; set; }
         }
 
         public UserData()
@@ -61,7 +63,9 @@ namespace SSC.Data
                 RoleIsPlatformRole = reader.GetBoolean("RoleIsPlatformRole"),
                 PermissionId = reader.GetInt32Nullable("PermissionId"),
                 PermissionCode = reader.GetString("PermissionCode"),
-                PermissionName = reader.GetString("PermissionName")
+                PermissionName = reader.GetString("PermissionName"),
+                ClientCompanyId = reader.GetInt32Nullable("ClientCompanyId"),
+                ClientCompanyName = reader.GetString("ClientCompanyName")
             };
 
             return record;
@@ -104,6 +108,15 @@ namespace SSC.Data
                 UpdatedDate = firstRecord.UpdatedDate,
                 UpdatedBy = firstRecord.UpdatedBy,
             };
+
+            if (firstRecord.ClientCompanyId.HasValue)
+            {
+                user.ClientCompany = new ClientCompany
+                {
+                    Id = firstRecord.ClientCompanyId.Value,
+                    Name = firstRecord.ClientCompanyName,
+                };
+            }
 
             var roles = new List<Role>();
             var currentPermissions = new List<Permission>();
@@ -191,12 +204,12 @@ namespace SSC.Data
                 model.Id = uow.Scalar(
                     "sp_User_create",
                     ParametersBuilder.With("userName", model.UserName)
-                        .And("password", PasswordHasher.obj.Hash(model.Password))
+                        .And("password", String.IsNullOrEmpty(model.Password) ? PasswordHasher.obj.Hash(Guid.NewGuid().ToString()) : PasswordHasher.obj.Hash(model.Password))
                         .And("clientCompanyId", model.ClientCompany?.Id)
-                        .And("FirstName", model.FirstName)
-                        .And("LastName", model.LastName)
+                        .And("FirstName", model.FirstName ?? model.UserName)
+                        .And("LastName", model.LastName ?? model.UserName)
                         .And("createdBy", userId)
-                        .And("isClientAdmin", !model.Roles.Any())
+                        .And("isClientAdmin", !model.Roles.Any() && model.ClientCompany != null)
                     ).AsInt();
 
                 model.Roles.ForEach(role =>
@@ -209,7 +222,7 @@ namespace SSC.Data
                         );
                 });
 
-                model.Addresses.ForEach(record =>
+                model.Addresses?.ForEach(record =>
                 {
                     uow.NonQuery("sp_UserAddress_create",
                         ParametersBuilder.With("StreetName", record.StreetName)
@@ -261,7 +274,29 @@ namespace SSC.Data
 
         public void Update(User model)
         {
-            throw new NotImplementedException();
+            var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            this.uow.Run(() =>
+            {
+                this.uow.NonQuery("sp_User_update",
+                    ParametersBuilder.With("Id", model.Id)
+                        .And("UserName", model.UserName)
+                        .And("ClientCompanyId", model.ClientCompany?.Id)
+                        .And("UpdatedBy", authProvider.CurrentUserId)
+                    );
+
+                this.uow.NonQuery("sp_UserRole_delete", ParametersBuilder.With("UserId", model.Id));
+
+                model.Roles.ForEach(role =>
+                {
+                    uow.NonQuery("sp_UserRole_create",
+                        ParametersBuilder
+                            .With("userId", model.Id)
+                            .And("roleId", role.Id)
+                            .And("createdBy", authProvider.CurrentUserId)
+                        );
+                });
+            });
         }
 
         public void UpdateIsEnabled(int id, bool isEnabled)

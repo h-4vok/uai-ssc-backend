@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE sp_User_create
 	@userName NVARCHAR(200),
 	@password NVARCHAR(200),
-	@clientCompanyId INT,
+	@clientCompanyId INT = NULL,
 	@createdBy INT = 1,
 	@isClientAdmin BIT = 0,
 	@FirstName NVARCHAR(200),

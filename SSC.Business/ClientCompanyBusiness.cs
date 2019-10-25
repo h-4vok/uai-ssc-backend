@@ -32,7 +32,7 @@ namespace SSC.Business
 
         public IEnumerable<ClientCompanyReportRow> GetAll()
         {
-            throw new NotImplementedException();
+            return this.data.GetAll();
         }
 
         public ClientBalanceReport GetBalanceReport(int id)

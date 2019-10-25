@@ -393,25 +393,35 @@ LEFT  JOIN	PricingPlan PP
 WHERE		pp.CODE IS NULL
 
 -- System Languages (Initial)
-INSERT SystemLanguage (
-	Code,
-	Name,
-	CreatedBy,
-	UpdatedBy
-)
-SELECT
-	Code = data.Code,
-	Name = data.Name,
-	CreatedBy = 1,
-	UpdatedBy = 1
-FROM	(
-	SELECT Code = 'es', Name = 'Español' UNION
-	SELECT Code = 'en', Name = 'English'
-) AS data
-LEFT  JOIN	SystemLanguage SL
-		ON	sl.Code = data.Code
+IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'es'))
+BEGIN
+	INSERT SystemLanguage (
+		Code,
+		Name,
+		CreatedBy,
+		CreatedDate
+	)
+	SELECT
+		Code = 'es',
+		Name = 'Español',
+		CreatedBy = 1,
+		UpdatedBy = 1
+END
 
-WHERE		sl.Code IS NULL
+IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'en'))
+BEGIN
+	INSERT SystemLanguage (
+		Code,
+		Name,
+		CreatedBy,
+		CreatedDate
+	)
+	SELECT
+		Code = 'en',
+		Name = 'English',
+		CreatedBy = 1,
+		UpdatedBy = 1
+END
 
 -- System Language Entries (Initial - Spanish) - Part 1
 INSERT SystemLanguageEntry (
@@ -1095,8 +1105,8 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'security.listUsers.grid.clientName',
-	@es = 'Client',
-	@en = 'Cliente'
+	@es = 'Cliente',
+	@en = 'Client'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'security.listUsers.grid.userName',
@@ -1179,19 +1189,44 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Delete'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'user-business.create.exists',
+	@es = 'El nombre de usuario {0} ya existe.',
+	@en = 'The username {0} is already taken.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.user.username',
+	@es = 'Nombre de usuario',
+	@en = 'UserName'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'user-model.create.company-or-role',
+	@es = 'El cliente es obligatorio o el usuario debe ser especificado como usuario de la plataforma.',
+	@en = 'The client is mandatory or the user must have a platform role.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.editUser.title.edit',
+	@es = 'Editar Usuario',
+	@en = 'Edit User'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.editUser.title.new',
+	@es = 'Nuevo Usuario',
+	@en = 'New User'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.editUser.confirm',
+	@es = 'Confirmar',
+	@en = 'Confirm'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.user.clientCompany',
+	@es = 'Cliente',
+	@en = 'Client'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'welcome-text',
+	@es = 'Bienvenido a Sample Supply Chain',
+	@en = 'Welcome to Sample Supply Chain'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
