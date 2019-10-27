@@ -30,8 +30,18 @@ namespace SSC.Business
             {
                 throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-decimal"])
             }
-            // El codigo ya existe
+
             // El rango minimo es mayor al maximo
+            if (model.MinimumRange > model.MaximumRange)
+            {
+                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-ranges"])
+            }
+
+            // El codigo ya existe
+            if (this.data.Exists(model.Code, null))
+            {
+                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.code-exists"]);
+            }
 
             this.data.Create(model);
         }

@@ -45,7 +45,7 @@ namespace SSC.Business
 
         public IEnumerable<UnitOfMeasure> GetUnitOfMeasures()
         {
-            throw new NotImplementedException();
+            return this.data.GetUnitOfMeasures();
         }
 
         public void UpdateIsEnabled<T>(int id, bool isEnabled)
