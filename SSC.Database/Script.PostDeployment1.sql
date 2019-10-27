@@ -1300,6 +1300,51 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Read'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.title',
+	@es = 'Registro de Bitácora',
+	@en = 'Log Record'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.event-type-description',
+	@es = 'Tipo de Evento',
+	@en = 'Event Type'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.date',
+	@es = 'Fechad el Evento',
+	@en = 'Event Date'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.user',
+	@es = 'Usuario',
+	@en = 'User'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.client-id',
+	@es = 'Id del Cliente',
+	@en = 'Client Id'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.read-log.message',
+	@es = 'Mensaje',
+	@en = 'Message'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
