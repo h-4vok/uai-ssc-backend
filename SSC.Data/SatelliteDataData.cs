@@ -22,7 +22,14 @@ namespace SSC.Data
 
         private UnitOfMeasure FetchUnitOfMeasure(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new UnitOfMeasure
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code"),
+                DefaultDescription = reader.GetString("DefaultDescription")
+            };
+
+            return record;
         }
 
         private ParameterDataType FetchParameterDataType(IDataReader reader)
@@ -47,7 +54,7 @@ namespace SSC.Data
 
         public IEnumerable<UnitOfMeasure> GetUnitOfMeasures()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_UnitOfMeasure_getAll", this.FetchUnitOfMeasure);
         }
 
         public void Create<T>(T model)

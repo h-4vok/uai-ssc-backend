@@ -1,5 +1,7 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -21,6 +23,16 @@ namespace SSC.Business
 
         public void Create(SampleTypeParameter model)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            // El tipo de dato es decimal pero la cantidad de decimales es cero
+            if (model.DataType.Code == "DECIMAL" && model.DecimalDigits.GetValueOrDefault() <= 0)
+            {
+                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-decimal"])
+            }
+            // El codigo ya existe
+            // El rango minimo es mayor al maximo
+
             this.data.Create(model);
         }
 

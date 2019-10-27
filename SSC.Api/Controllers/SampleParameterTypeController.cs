@@ -1,5 +1,9 @@
 ﻿using SSC.Api.Behavior;
+using SSC.Business;
 using SSC.Business.Interfaces;
+using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -25,9 +29,22 @@ namespace SSC.Api.Controllers
         [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
         public ResponseViewModel Post(SampleTypeParameter model)
         {
-            // TODO: validations
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
-            this.business.Create(model);
+            // TODO: validations
+            var validations = Validator<SampleTypeParameter>.Start(model)
+                .MandatoryString(x => x.Code, i10n["global.code"])
+                .MandatoryString(x => x.DefaultDescription, i10n["global.description"])
+                .ValidationResult;
+               
+            try
+            {
+                this.business.Create(model);
+            }
+            catch (UnprocessableEntityException ex)
+            {
+                return ex.Message;
+            }
 
             return true;
         }
@@ -37,8 +54,20 @@ namespace SSC.Api.Controllers
         {
             // TODO: Validations
 
-            model.Id = id;
-            this.business.Update(model);
+            try
+            {
+                // Validar que los rangos de numero no afecten datos existentes
+
+                // Validator que los rangos decimales no afected datos existentes
+
+                model.Id = id;
+                this.business.Update(model);
+            }
+            catch (UnprocessableEntityException ex)
+            {
+                return ex.Message;
+            }
+
 
             return true;
         }

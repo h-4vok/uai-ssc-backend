@@ -9,6 +9,8 @@ namespace SSC.Api.Controllers
 {
     public class UnitOfMeasureController : SatelliteDataController<UnitOfMeasure>
     {
+        public ResponseViewModel<IEnumerable<UnitOfMeasure>> Get() => this.business.GetUnitOfMeasures().ToList();
+
         public ResponseViewModel Post(UnitOfMeasure model) => throw new NotImplementedException();
 
         public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();

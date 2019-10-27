@@ -11,10 +11,10 @@ namespace SSC.Api.Controllers
 {
     public abstract class SatelliteDataController<T> : ApiController
     {
-        private ISatelliteDataBusiness business;
+        protected ISatelliteDataBusiness business;
 
         public SatelliteDataController() => this.business = DependencyResolver.Obj.Resolve<ISatelliteDataBusiness>();
 
-        public ResponseViewModel<IEnumerable<T>> Get() => throw new NotImplementedException();
+        public ResponseViewModel<T> Get(int id) => this.business.Get<T>(id);
     }
 }

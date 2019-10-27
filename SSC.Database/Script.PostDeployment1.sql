@@ -1509,19 +1509,19 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Export'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-parameter-type.validation.invalid-decimal',
+	@es = 'La cantidad de decimales debe ser mayor a cero.',
+	@en = 'The amount of decimal digits must be more than zero.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-parameter-type.validation.invalid-ranges',
+	@es = 'El rango mínimo debe ser igual o menor al rango máximo.',
+	@en = 'The minimum range must be equal or below the maximum range.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = '"sample-parameter-type.validation.code-exists',
+	@es = 'El código del parámetro ya existe.',
+	@en = 'The code already exists.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
