@@ -4,6 +4,7 @@ using SSC.Business.Interfaces;
 using SSC.Common;
 using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
+using SSC.Common.Logging;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -52,6 +53,8 @@ namespace SSC.Api.Controllers
             }
 
             this.business.Create(model);
+            Logger.Obj.LogInfo(String.Format("El rol '{0}' ha sido creado.", model.Name));
+
             return true;
         }
 

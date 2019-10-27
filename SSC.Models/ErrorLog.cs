@@ -8,8 +8,6 @@ namespace SSC.Models
 {
     public class ErrorLog : Log
     {
-        public string ErrorType { get; set; }
-        public string ErrorSource { get; set; }
-        public string ErrorStackTrace { get; set; }
+        
     }
 }

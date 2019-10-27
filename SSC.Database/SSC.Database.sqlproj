@@ -172,6 +172,9 @@
     <Build Include="Programmability\Stored Procedures\sp_User_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_UserRole_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_AuditRecord_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_AuditRecord_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_AuditRecord_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

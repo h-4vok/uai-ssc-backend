@@ -408,6 +408,32 @@ BEGIN
 		UpdatedBy = 1
 END
 
+-- Audit Types
+INSERT AuditType (
+	Id,
+	Name,
+	CreatedBy,
+	CreatedDate,
+	UpdatedBy,
+	UpdatedDate
+)
+SELECT
+	Id = data.Id,
+	Name = data.Name,
+	CreatedBy = 1,
+	CreatedDate = GETUTCDATE(),
+	UpdatedBy = 1,
+	UpdatedDate = GETUTCDATE()
+FROM (
+	SELECT Id = 1, Name = 'Information' UNION
+	SELECT Id = 2, Name = 'Error'
+) AS data
+LEFT  JOIN	AuditType AT
+		ON	data.Id = at.Id
+
+WHERE		at.Id IS NULL
+
+-- SystemLanguages
 IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'en'))
 BEGIN
 	INSERT SystemLanguage (
@@ -1227,6 +1253,76 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'welcome-text',
 	@es = 'Bienvenido a Sample Supply Chain',
 	@en = 'Welcome to Sample Supply Chain'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'event-type.info',
+	@es = 'Información',
+	@en = 'Information'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'event-type.error',
+	@es = 'Error',
+	@en = 'Error'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.grid.id',
+	@es = 'Id',
+	@en = 'Id'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.grid.createddate',
+	@es = 'Fecha de Registro',
+	@en = 'Log Date'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.grid.user',
+	@es = 'Usuario',
+	@en = 'User'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.grid.event-type',
+	@es = 'Tipo de Evento',
+	@en = 'Event Type'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.grid.message',
+	@es = 'Mensaje',
+	@en = 'Message'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.refresh',
+	@es = 'Refrescar',
+	@en = 'Refresh'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.listLogs.read',
+	@es = 'Consultar',
+	@en = 'Read'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

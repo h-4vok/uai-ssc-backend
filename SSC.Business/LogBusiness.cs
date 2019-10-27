@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Logging;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SSC.Business
 {
-    public class LogBusiness : ILogBusiness
+    public class LogBusiness : LoggerSubscriber, ILogBusiness
     {
         public LogBusiness()
         {
@@ -20,12 +21,17 @@ namespace SSC.Business
 
         public Log Get(int id)
         {
-            throw new NotImplementedException();
+            return this.data.Get(id);
         }
 
         public IEnumerable<Log> GetAll()
         {
-            throw new NotImplementedException();
+            return this.data.GetAll();
+        }
+
+        public override void Notify(AuditRecord record)
+        {
+            this.data.Create(record);
         }
     }
 }

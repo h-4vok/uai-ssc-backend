@@ -4,6 +4,7 @@ using SSC.Business.Interfaces;
 using SSC.Common;
 using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
+using SSC.Common.Logging;
 using SSC.Common.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,10 @@ namespace SSC.Api.Controllers
                 .ValidationResult;
 
             if (!String.IsNullOrEmpty(validations))
+            {
+                Logger.Obj.LogInfo(String.Format("Autenticación Errónea - '{0}' - Error: '{1}'", viewModel.UserName, validations));
                 return validations;
+            }
 
             try
             {
@@ -43,7 +47,9 @@ namespace SSC.Api.Controllers
                 HttpContext.Current.Session["Permissions"] = response.Result.GrantedPermissions;
                 HttpContext.Current.Session["ClientApiKey"] = userSessionData.ClientApiKey;
 
-                response.Result.SetCookie = String.Format("ASP.NET_SessionId={0}", HttpContext.Current.Session.SessionID); 
+                response.Result.SetCookie = String.Format("ASP.NET_SessionId={0}", HttpContext.Current.Session.SessionID);
+
+                Logger.Obj.LogInfo(String.Format("Autenticación Exitosa - '{0}'", userSessionData.UserName));
 
                 return response;
             }

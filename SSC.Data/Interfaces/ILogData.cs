@@ -11,5 +11,6 @@ namespace SSC.Data.Interfaces
     {
         IEnumerable<Log> GetAll();
         Log Get(int id);
+        void Create(AuditRecord record);
     }
 }

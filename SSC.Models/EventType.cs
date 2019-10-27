@@ -9,6 +9,6 @@ namespace SSC.Models
     public class EventType
     {
         public int Id { get; set; }
-        public string Ddescription { get; set; }
+        public string Description { get; set; }
     }
 }

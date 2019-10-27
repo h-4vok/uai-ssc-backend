@@ -5,9 +5,6 @@
 	Message NVARCHAR(MAX) NOT NULL,
 	AuditTypeId INT NOT NULL,
 	ClientId INT NULL,
-	ErrorType NVARCHAR(500) NULL,
-	ErrorSource NVARCHAR(500) NULL,
-	StackTrace NVARCHAR(MAX) NULL,
 
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT (GETDATE()), 
     FOREIGN KEY (AuditTypeId) REFERENCES AuditType,
@@ -69,29 +66,3 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2type = N'COLUMN',
     @level2name = N'ClientId'
 GO
-EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'En caso de excepciones, el tipo de la Exception.',
-    @level0type = N'SCHEMA',
-    @level0name = N'dbo',
-    @level1type = N'TABLE',
-    @level1name = N'AuditRecord',
-    @level2type = N'COLUMN',
-    @level2name = N'ErrorType'
-GO
-EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'La fuente del error según la exception capturada.',
-    @level0type = N'SCHEMA',
-    @level0name = N'dbo',
-    @level1type = N'TABLE',
-    @level1name = N'AuditRecord',
-    @level2type = N'COLUMN',
-    @level2name = N'ErrorSource'
-GO
-EXEC sp_addextendedproperty @name = N'MS_Description',
-    @value = N'El stack trace del error.',
-    @level0type = N'SCHEMA',
-    @level0name = N'dbo',
-    @level1type = N'TABLE',
-    @level1name = N'AuditRecord',
-    @level2type = N'COLUMN',
-    @level2name = N'StackTrace'

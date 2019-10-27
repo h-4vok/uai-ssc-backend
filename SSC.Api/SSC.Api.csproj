@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\InjectionConfig.cs" />
+    <Compile Include="App_Start\LoggerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Behavior\AuthenticationProvider.cs" />
     <Compile Include="Behavior\LocalizationProvider.cs" />
+    <Compile Include="Behavior\LogExceptionFilterAttribute.cs" />
     <Compile Include="Behavior\SscAuthorize.cs" />
     <Compile Include="Behavior\ForgotPasswordTokenCache.cs" />
     <Compile Include="Behavior\VerificationCodeHandler.cs" />
@@ -255,7 +257,6 @@
     <Compile Include="ViewModels\ClientCompanyViewModel.cs" />
     <Compile Include="ViewModels\CompleteSignUpViewModel.cs" />
     <Compile Include="ViewModels\FileUploadViewModel.cs" />
-    <Compile Include="ViewModels\LogViewModel.cs" />
     <Compile Include="ViewModels\NewInvitesViewModel.cs" />
     <Compile Include="ViewModels\NewNewsletterDistributionModel.cs" />
     <Compile Include="ViewModels\NewsletterSubscriptionViewModel.cs" />

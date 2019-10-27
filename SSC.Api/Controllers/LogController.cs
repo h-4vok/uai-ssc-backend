@@ -16,8 +16,8 @@ namespace SSC.Api.Controllers
 
         public LogController(ILogBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<Log>> GetAll() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<Log>> GetAll() => this.business.GetAll().ToList();
 
-        public ResponseViewModel<LogViewModel> Get(int id) => throw new NotImplementedException();
+        public ResponseViewModel<Log> Get(int id) => this.business.Get(id);
     }
 }

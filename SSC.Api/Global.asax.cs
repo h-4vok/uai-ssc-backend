@@ -1,4 +1,6 @@
 ﻿using SSC.Api.App_Start;
+using SSC.Api.Behavior;
+using SSC.Common.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace SSC.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InjectionConfig.Register();
+            LoggerConfig.Configure();
+            GlobalConfiguration.Configuration.Filters.Add(new LogExceptionFilterAttribute());
         }
 
         protected void Application_PostAuthorizeRequest()
@@ -28,6 +32,13 @@ namespace SSC.Api
             if (IsWebApiRequest())
                 HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
         }
+
+        protected void Application_Error()
+        {
+            var ex = Server.GetLastError();
+            Logger.Obj.LogException(ex);
+        }
+
         private bool IsWebApiRequest()
         {
             var apiPrefix = "~/api";
