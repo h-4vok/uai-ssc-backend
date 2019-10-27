@@ -5,7 +5,8 @@ BEGIN
 	SELECT
 		uom.Id,
 		uom.Code,
-		uom.DefaultDescription
+		uom.DefaultDescription,
+		uom.IsEnabled
 
 	FROM		UnitOfMeasure UOM
 

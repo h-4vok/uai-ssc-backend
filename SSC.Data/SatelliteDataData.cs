@@ -26,7 +26,8 @@ namespace SSC.Data
             {
                 Id = reader.GetInt32("Id"),
                 Code = reader.GetString("Code"),
-                DefaultDescription = reader.GetString("DefaultDescription")
+                DefaultDescription = reader.GetString("DefaultDescription"),
+                IsEnabled = reader.GetBoolean("IsEnabled")
             };
 
             return record;

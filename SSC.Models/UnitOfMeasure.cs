@@ -11,5 +11,6 @@ namespace SSC.Models
         public int Id { get; set; }
         public string Code { get; set; }
         public string DefaultDescription { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }

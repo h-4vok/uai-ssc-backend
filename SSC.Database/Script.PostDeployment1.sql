@@ -1524,9 +1524,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The code already exists.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.configuration.unit-of-measure',
+	@es = 'Gestionar Unidades de Medida',
+	@en = 'Unit of Measures Management'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

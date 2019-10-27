@@ -28,13 +28,13 @@ namespace SSC.Business
             // El tipo de dato es decimal pero la cantidad de decimales es cero
             if (model.DataType.Code == "DECIMAL" && model.DecimalDigits.GetValueOrDefault() <= 0)
             {
-                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-decimal"])
+                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-decimal"]);
             }
 
             // El rango minimo es mayor al maximo
             if (model.MinimumRange > model.MaximumRange)
             {
-                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-ranges"])
+                throw new UnprocessableEntityException(i10n["sample-parameter-type.validation.invalid-ranges"]);
             }
 
             // El codigo ya existe

@@ -176,6 +176,7 @@
     <Build Include="Programmability\Stored Procedures\sp_AuditRecord_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_AuditRecord_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_UnitOfMeasure_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
