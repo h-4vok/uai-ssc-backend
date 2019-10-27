@@ -1529,24 +1529,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Unit of Measures Management'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.editUnitOfMeasure.title.new',
+	@es = 'Nueva Unidad de Medida',
+	@en = 'New Unit Of Measure'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.confirm',
+	@es = 'Confirmar',
+	@en = 'Confirm'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'unit-of-measure.validation.code-not-unique',
+	@es = 'El código ingresado ya existe.',
+	@en = 'The desired Code already exists.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.isenabled',
+	@es = 'Habilitado',
+	@en = 'Enabled'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

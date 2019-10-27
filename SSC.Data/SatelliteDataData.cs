@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -60,21 +61,38 @@ namespace SSC.Data
 
         public void Create<T>(T model)
         {
-            throw new NotImplementedException();
+            if (typeof(T) == typeof(UnitOfMeasure))
+            {
+                this.CreateUnitOfMeasure(model as UnitOfMeasure);
+            }
         }
 
         public void CreateUnitOfMeasure(UnitOfMeasure model)
         {
-            throw new NotImplementedException();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            this.uow.NonQueryDirect("sp_UnitOfMeasure_create",
+                ParametersBuilder.With("Code", model.Code)
+                    .And("DefaultDescription", model.DefaultDescription)
+                    .And("CreatedBy", auth.CurrentUserId)
+            );
         }
 
         public void UpdateIsEnabled<T>(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            if (typeof(T) == typeof(UnitOfMeasure))
+            {
+                this.uow.NonQueryDirect("sp_UnitOfMeasure_update_isEnabled", ParametersBuilder.With("Id", id).And("IsEnabled", isEnabled));
+            }
         }
 
-        public void IsCodeUnique<T>(string code)
+        public bool IsCodeUnique<T>(string code)
         {
+            if (typeof(T) == typeof(UnitOfMeasure))
+            {
+                return this.uow.ScalarDirect("sp_UnitOfMeasure_exists", ParametersBuilder.With("Code", code)).AsBool();
+            }
+
             throw new NotImplementedException();
         }
 

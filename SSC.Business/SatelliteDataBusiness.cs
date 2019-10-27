@@ -1,5 +1,7 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -20,7 +22,19 @@ namespace SSC.Business
 
         public void Create<T>(T model)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            if (typeof(T) == typeof(UnitOfMeasure))
+            {
+                var item = model as UnitOfMeasure;
+
+                if (this.data.IsCodeUnique<UnitOfMeasure>(item.Code))
+                {
+                    throw new UnprocessableEntityException(i10n["unit-of-measure.validation.code-not-unique"]);
+                }
+
+                this.data.Create(item);
+            }
         }
 
         public T Get<T>(int id)
@@ -50,7 +64,7 @@ namespace SSC.Business
 
         public void UpdateIsEnabled<T>(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            this.data.UpdateIsEnabled<T>(id, isEnabled);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SSC.Data.Interfaces
         void Create<T>(T model);
         void CreateUnitOfMeasure(UnitOfMeasure model);
         void UpdateIsEnabled<T>(int id, bool isEnabled);
-        void IsCodeUnique<T>(string code);
+        bool IsCodeUnique<T>(string code);
         T Get<T>(int id);
         IEnumerable<PatientType> GetPatientTypes();
         IEnumerable<SampleBatchOrigin> GetSampleBatchOrigins();

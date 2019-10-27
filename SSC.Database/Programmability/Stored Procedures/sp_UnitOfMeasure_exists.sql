@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE sp_UnitOfMeasure_exists
+	@Code NVARCHAR(10)
+AS
+BEGIN
+
+	SELECT TOP 1 CONVERT(BIT, 1) FROM UnitOfMeasure WHERE Code = @Code
+
+END
