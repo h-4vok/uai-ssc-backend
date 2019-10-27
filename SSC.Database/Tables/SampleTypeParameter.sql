@@ -9,6 +9,7 @@
 	MinimumRange NUMERIC(10, 2) NULL,
 	MaximumRange Numeric(10, 2) NULL,
 	UnitOfMeasureId INT NOT NULL,
+	IsEnabled BIT,
 	TenantId INT,
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,

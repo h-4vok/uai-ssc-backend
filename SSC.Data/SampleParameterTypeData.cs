@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -48,7 +49,8 @@ namespace SSC.Data
 
         public IEnumerable<SampleTypeParameterReportRow> GetAll()
         {
-            throw new NotImplementedException();
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
+            return this.uow.GetDirect("sp_SampleTypeParameter_getAll", this.FetchReportRow, ParametersBuilder.With("TenantId", clientId));
         }
 
         public void Update(SampleTypeParameter model)
@@ -63,7 +65,21 @@ namespace SSC.Data
 
         private SampleTypeParameterReportRow FetchReportRow(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new SampleTypeParameterReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code"),
+                Description = reader.GetString("Description"),
+                DataTypeName = reader.GetString("DataTypeName"),
+                MinimumRange = reader.GetInt32Nullable("MinimumRange"),
+                MaximumRange = reader.GetInt32Nullable("MaximumRange"),
+                DecimalDigits = reader.GetInt32Nullable("DecimalDigits"),
+                UpdatedDate = reader.GetDateTime("UpdatedDate"),
+                UpdatedBy = reader.GetString("UpdatedBy"),
+                IsEnabled = reader.GetBoolean("IsEnabled")
+            };
+
+            return record;
         }
     }
 }

@@ -17,5 +17,6 @@ namespace SSC.Models
         public decimal? MaximumRange { get; set; }
         public UnitOfMeasure UnitOfMeasure { get; set; }
         public ClientCompany Tenant { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }

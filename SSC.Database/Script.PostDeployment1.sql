@@ -102,7 +102,8 @@ FROM (
 	SELECT Code = 'USERS_INVITE', Name = 'Puede invitar a nuevos miembros a la plataforma.' UNION ALL
 	SELECT Code = 'WORK_ORDER_CREATE', Name = 'Creación de Órdenes de Trabajo' UNION ALL
 	SELECT Code = 'WORK_ORDER_EXECUTE', Name = 'Ejecución de Órdenes de Trabajo' UNION ALL
-	SELECT Code = 'WORK_ORDER_REPORT', Name = 'Listar órdenes de trabajo'
+	SELECT Code = 'WORK_ORDER_REPORT', Name = 'Listar órdenes de trabajo' UNION ALL
+	SELECT Code = 'SAMPLE_TYPE_PARAMETERS_MANAGEMENT', Name = 'Gestionar Tipos de Parámetro de Muestra' 
 ) AS aux
 LEFT  JOIN	Permission P
 		ON	aux.Code = p.Code
@@ -162,7 +163,8 @@ BEGIN
 		'ROLES_REPORT',
 		'UNIT_OF_MEASURE_MANAGEMENT',
 		'USERS_MANAGEMENT',
-		'USERS_REPORT'
+		'USERS_REPORT',
+		'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
 	)
 END
 
@@ -432,6 +434,28 @@ LEFT  JOIN	AuditType AT
 		ON	data.Id = at.Id
 
 WHERE		at.Id IS NULL
+
+-- ParameterDataType
+INSERT ParameterDataType (
+	Code,
+	CreatedDate,
+	CreatedBy,
+	UpdatedDate,
+	UpdatedBy
+) 
+SELECT
+	Code = data.Code,
+	CreatedDate = GETUTCDATE(),
+	CreatedBy = 1,
+	UpdatedDate = GETUTCDATE(),
+	UpdatedBy = 1
+FROM (
+	SELECT Code = 'INTEGER' UNION ALL
+	SELECT Code = 'DECIMAL'
+) AS data
+LEFT  JOIN	ParameterDataType ORIG
+		ON	orig.Code = data.Code
+WHERE		orig.Code IS NULL
 
 -- SystemLanguages
 IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'en'))
@@ -1388,6 +1412,196 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'app.marketing.menu.privacy-policy',
 	@es = 'Políticas de Privacidad',
 	@en = 'Privacy Policy'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.is-enabled.enabled',
+	@es = 'Habilitado',
+	@en = 'Enabled'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.is-enabled.disabled',
+	@es = 'Deshabilitado',
+	@en = 'Disabled'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.id',
+	@es = 'Id',
+	@en = 'Id'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.code',
+	@es = 'Código',
+	@en = 'Code'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.description',
+	@es = 'Descripción',
+	@en = 'Description'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.data-type-name',
+	@es = 'Tipo de Dato',
+	@en = 'Data Type'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.minimum-range',
+	@es = 'Rango Mínimo',
+	@en = 'Minimum Range'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.maximum-range',
+	@es = 'Rango Máximo',
+	@en = 'Maximum Range'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.decimal-digits',
+	@es = 'Cant. de Decimales',
+	@en = 'Decimal Digits'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.updated-date',
+	@es = 'Fecha de actualización',
+	@en = 'Last update date'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.updated-by',
+	@es = 'Actualizado por',
+	@en = 'Last update by'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'security.model.sample-parameter-type.isEnabled',
+	@es = '¿Habilitado?',
+	@en = 'Is Enabled?'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.refresh',
+	@es = 'Refrescar',
+	@en = 'Refresh'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.new',
+	@es = 'Nuevo',
+	@en = 'New'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.edit',
+	@es = 'Editar',
+	@en = 'Edit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.enable',
+	@es = 'Habilitar',
+	@en = 'Enable'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.disable',
+	@es = 'Deshabilitar',
+	@en = 'Disable'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.delete',
+	@es = 'Eliminar',
+	@en = 'Delete'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.export',
+	@es = 'Exportar',
+	@en = 'Export'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

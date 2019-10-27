@@ -21,32 +21,32 @@ namespace SSC.Business
 
         public void Create(SampleTypeParameter model)
         {
-            throw new NotImplementedException();
+            this.data.Create(model);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.data.Delete(id);
         }
 
         public SampleTypeParameter Get(int id)
         {
-            throw new NotImplementedException();
+            return this.data.Get(id);
         }
 
         public IEnumerable<SampleTypeParameterReportRow> GetAll()
         {
-            throw new NotImplementedException();
+            return this.data.GetAll();
         }
 
         public void Update(SampleTypeParameter model)
         {
-            throw new NotImplementedException();
+            this.data.Update(model);
         }
 
         public void UpdateIsEnabled(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            this.data.UpdateIsEnabled(id, isEnabled);
         }
     }
 }

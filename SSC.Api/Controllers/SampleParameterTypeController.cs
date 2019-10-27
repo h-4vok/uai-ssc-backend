@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,16 +16,55 @@ namespace SSC.Api.Controllers
 
         public SampleParameterTypeController(ISampleParameterTypeBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SampleTypeParameterReportRow>> Get() => throw new NotImplementedException();
+        [SscAuthorize(Permissions ="SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel<IEnumerable<SampleTypeParameterReportRow>> Get() => this.business.GetAll().ToList();
 
-        public ResponseViewModel<SampleTypeParameter> Get(int id) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel<SampleTypeParameter> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel Post(SampleTypeParameter model) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel Post(SampleTypeParameter model)
+        {
+            // TODO: validations
 
-        public ResponseViewModel Put(int id, SampleTypeParameter model) => throw new NotImplementedException();
+            this.business.Create(model);
 
-        public ResponseViewModel Delete(int id) => throw new NotImplementedException();
+            return true;
+        }
 
-        public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel Put(int id, SampleTypeParameter model)
+        {
+            // TODO: Validations
+
+            model.Id = id;
+            this.business.Update(model);
+
+            return true;
+        }
+
+        [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel Delete(int id)
+        {
+            // TODO: Validations
+
+            this.business.Delete(id);
+
+            return true;
+        }
+
+        [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
+        public ResponseViewModel Patch(int id, PatchOperationList list)
+        {
+            foreach (var operation in list.Operations)
+            {
+                if (operation.op == "replace" && operation.field == "IsEnabled")
+                {
+                    this.business.UpdateIsEnabled(operation.key, operation.value.AsBool());
+                }
+            }
+
+            return true;
+        }
     }
 }
