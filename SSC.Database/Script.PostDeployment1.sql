@@ -1330,14 +1330,64 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Message'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'contact-us.title',
+	@es = 'Contactate con nosotros',
+	@en = 'Contact Us'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'contact-us.text',
+	@es = 'A continuación te mostramos las formas de contacto con Sample Supply Chain.',
+	@en = 'Below you will find all the contact information you need to get in touch with Sample Supply Chain.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'app.marketing.menu.contact-us',
+	@es = 'Contacto',
+	@en = 'Contact Us'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.title',
+	@es = 'Políticas de Privacidad y Seguridad',
+	@en = 'Privacy and Security Policies'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-intro',
+	@es = 'En cumplimiento con lo establecido por la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental le informamos nuestra política de privacidad y manejo de datos personales y hacemos el siguiente compromiso:',
+	@en = 'In compliance with the provisions of the Federal Law on Transparency and Access to Government Public Information, we inform you of our privacy and personal data management policy and make the following commitment:'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-01.txt',
+	@es = 'Reunimos información de carácter no personal, como el tipo de explorador, sistema operativo y página Web visitadas, con el objeto de contribuir a la administración de nuestros sitios Web.',
+	@en = 'We collect non-personal information, such as the type of browser, operating system and Web page visited, in order to contribute to the administration of our Web sites.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-02.txt',
+	@es = 'Utilizamos cookies y otras tecnologías de Internet para administrar nuestro sitio Web y nuestros programas de correo electrónico, pero no para reunir o almacenar información personal.',
+	@en = 'We use cookies and other Internet technologies to manage our website and our email programs, but not to collect or store personal information.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-03.txt',
+	@es = 'Los datos que le solicitamos en los formularios de contacto, red social o cualquier tipo de formulario colocado dentro de nuestro Sitio Web únicamente serán utilizados para  poder establecer contacto con usted en relación a su petición o comentario.',
+	@en = 'The data that we request in the contact forms, social network or any type of form placed within our Website will only be used to establish contact with you in relation to your request or comment.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-04.txt',
+	@es = 'Los datos que ingrese en cualquiera de los formularios dentro del Sitio Web no serán difundidos, distribuidos o comercializados.',
+	@en = 'The data that you enter in any of the forms within the Website will not be disseminated, distributed or commercialized.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-05.txt',
+	@es = 'En caso de que desee ser removido de nuestra base de datos podrá, en cualquier momento, solicitar la baja de la información mediante correo electrónico a admin@ssc.com, o por escrito a la siguiente dirección: Av. Paseo Colón 524, Capital Federal, Argentina.',
+	@en = 'If you wish to be removed from our database, you may, at any time, request the withdrawal of the information by email to admin@ssc.com, or in writing to the following address: Av. Paseo Colón 524, Federal Capital, Argentina.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'privacy-policy.text-06.txt',
+	@es = 'Su petición o comentario puede ser incluido dentro de los informes estadísticos que se elaboren para el seguimiento de avances institucionales del Gobierno Federal. No obstante, dichos informes serán meramente estadísticos y no incluirán información que permita identificarle en lo individual. ',
+	@en = 'Your request or comment can be included in the statistical reports that are prepared for the monitoring of institutional advances of the Federal Government. However, these reports will be purely statistical and will not include information to identify you individually.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'app.marketing.menu.privacy-policy',
+	@es = 'Políticas de Privacidad',
+	@en = 'Privacy Policy'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
