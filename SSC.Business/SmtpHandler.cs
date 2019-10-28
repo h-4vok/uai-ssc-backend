@@ -34,9 +34,16 @@ namespace SSC.Business
 
         public void Send(QueuedMail mail, bool isBodyHtml = false)
         {
-            var mailMessage = this.CreateMailMessage(mail);
-            mailMessage.IsBodyHtml = isBodyHtml;
-            this.CreateSmtpClient(mailMessage);
+            try
+            {
+                var mailMessage = this.CreateMailMessage(mail);
+                mailMessage.IsBodyHtml = isBodyHtml;
+                this.CreateSmtpClient(mailMessage);
+            }
+            catch
+            {
+                // Do nothing
+            }
         }
 
         internal void CreateSmtpClient(MailMessage message)

@@ -457,6 +457,118 @@ LEFT  JOIN	ParameterDataType ORIG
 		ON	orig.Code = data.Code
 WHERE		orig.Code IS NULL
 
+-- Default client user for testing
+INSERT ClientCompany (
+	Name,
+	CurrentPricingPlanId,
+	IsEnabled,
+	ApiToken
+)
+SELECT
+	Name = 'Default Company',
+	CurrentPricingPlanId = 2,
+	IsEnabled = 1,
+	ApiToken = '8kz/12jLWPeHh7cL6Br11yCyRSE='
+
+DECLARE @DefaultCompanyId INT
+SET @DefaultCompanyId = SCOPE_IDENTITY()
+
+INSERT ClientCompanyAddress (
+	ClientCompanyId,
+	StreetName,
+	StreetNumber,
+	City,
+	PostalCode,
+	Department,
+	ProvinceId
+)
+SELECT
+	ClientCompanyId = @DefaultCompanyId,
+	StreetName = 'Calle Falsa',
+	StreetNumbe = '123',
+	City = 'Avellaneda',
+	PostalCode = '1870',
+	Department = '2',
+	ProvinceId = 2
+
+INSERT ClientCompanyBillingInformation (
+	Id,
+	LegalName,
+	TaxCode,
+	StreetName,
+	StreetNumber,
+	City,
+	PostalCode,
+	Department,
+	ProvinceId
+)
+SELECT
+	Id = @DefaultCompanyId,
+	LegalName = 'Default Company',
+	TaxCode = '20330749076',
+	StreetName = 'Calle Falsa',
+	StreetNumber = '123',
+	City = 'Avellaneda',
+	PostalCode = '1870',
+	Department = '2',
+	ProvinceId = 2
+
+INSERT ClientCompanyCreditCard (
+	ClientId,
+	Number,
+	Owner,
+	CCV,
+	ExpirationDateMMYY,
+	IsDefault
+)
+SELECT
+	ClientId = @DefaultCompanyId,
+	Number = '0000000000000000000',
+	Owner = 'GUZMANOV CHRISTOFF',
+	CCV = '878',
+	ExpirationDateMMYY = '0120',
+	IsDefault = 1
+
+INSERT PlatformUser (
+	UserName,
+	Password,
+	IsBlocked,
+	IsEnabled,
+	FirstName,
+	LastName,
+	ClientId,
+	IsEnabledInCompany,
+	LoginFailures,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	UserName = 'test@test.com',
+	Password = '1A4+OYh1+avWgZilfsAZY1hBt+Y=',
+	IsBlocked = 0,
+	IsEnabled = 1,
+	FirstName = 'Tester',
+	LastName = 'McBug',
+	ClientId = @DefaultCompanyId,
+	IsEnabledInCompany = 1,
+	LoginFailures = 0,
+	CreatedBy = 1,
+	UpdatedBy = 1
+
+DECLARE @testUserId INT
+SET @testUserId = SCOPE_IDENTITY()
+
+-- Set roles
+INSERT UserRole (
+	UserId,
+	RoleId
+)
+SELECT
+	UserId = @testUserId,
+	RoleId = r.Id
+FROM		Role R
+WHERE		R.Name in ('Científico Ejecutor','Científico Auditor','Controlador de Calidad','Administrador de Cliente')
+
 -- SystemLanguages
 IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'en'))
 BEGIN
@@ -1596,14 +1708,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The field "{0}" is required.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-function.exists',
+	@es = 'El código indicado ya existe.',
+	@en = 'This code already exists.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-function.forbidden-code',
+	@es = 'El código no puede ser X, S o C',
+	@en = 'The code cannot be X, S or C'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

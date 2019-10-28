@@ -13,7 +13,7 @@ namespace SSC.Data.Interfaces
         SampleFunction Get(int id);
         void Create(SampleFunction model);
         void Update(SampleFunction model);
-        void UpdatedIsEnabled(SampleFunction model, bool isEnabled);
+        void UpdatedIsEnabled(int id, bool isEnabled);
         bool IsUniqueForClient(string code, int clientId, int? currentId);
     }
 }

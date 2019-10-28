@@ -14,4 +14,6 @@ BEGIN
 	LEFT  JOIN	ClientCompany CC
 			ON	pu.ClientId = cc.Id
 
+	WHERE		pu.UserName = @userName
+
 END

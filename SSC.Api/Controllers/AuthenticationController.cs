@@ -25,6 +25,8 @@ namespace SSC.Api.Controllers
 
         public ResponseViewModel<AuthenticationResponseViewModel> Post(AuthenticationViewModel viewModel)
         {
+            HttpContext.Current?.Session?.Clear();
+
             var validations = Validator<AuthenticationViewModel>.Start(viewModel)
                 .MandatoryString(x => x.UserName, "Nombre de usuario")
                 .MandatoryString(x => x.Password, "Contraseña")

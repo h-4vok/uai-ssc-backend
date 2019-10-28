@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSC.Common.Exceptions;
+using System;
 
 namespace SSC.Common.ViewModels
 {
@@ -32,6 +33,20 @@ namespace SSC.Common.ViewModels
             response.ErrorMessage = errorMessage;
 
             return response;
+        }
+
+        public static ResponseViewModel RunAndReturn(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (UnprocessableEntityException ex)
+            {
+                return ex.Message;
+            }
+
+            return true;
         }
     }
 

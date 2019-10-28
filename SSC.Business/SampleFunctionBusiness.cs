@@ -1,5 +1,8 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
+using SSC.Common.Logging;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -18,31 +21,69 @@ namespace SSC.Business
         }
         private ISampleFunctionData data;
 
-        private bool IsForbiddenCode(string code) => throw new NotImplementedException();
+        private bool IsForbiddenCode(string code) => new[] { "X", "C", "S" }.Any(x => x == code);
 
         public void Create(SampleFunction model)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            Validator<SampleFunction>.Start(model)
+                .MandatoryString(x => x.Code, i10n["global.code"])
+                .MandatoryString(x => x.Name, i10n["global.description"])
+                .ThrowExceptionIfApplicable();
+
+            if (this.IsForbiddenCode(model.Code))
+            {
+                throw new UnprocessableEntityException(i10n["sample-function.forbidden-code"]);
+            }
+
+            if (!this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
+            {
+                throw new UnprocessableEntityException(i10n["sample-function.exists"]);
+            }
+
+            this.data.Create(model);
+
+            Logger.Obj.LogInfo(String.Format("Función de Muestra - Creada - Código {0}", model.Code));
         }
 
         public SampleFunction Get(int id)
         {
-            throw new NotImplementedException();
+            return this.data.Get(id);
         }
 
         public IEnumerable<SampleFunction> GetAll()
         {
-            throw new NotImplementedException();
+            return this.data.GetAll();
         }
 
         public void Update(SampleFunction model)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            Validator<SampleFunction>.Start(model)
+                .MandatoryString(x => x.Code, i10n["global.code"])
+                .MandatoryString(x => x.Name, i10n["global.description"])
+                .ThrowExceptionIfApplicable();
+
+            if (this.IsForbiddenCode(model.Code))
+            {
+                throw new UnprocessableEntityException(i10n["sample-function.forbidden-code"]);
+            }
+
+            if (!this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
+            {
+                throw new UnprocessableEntityException(i10n["sample-function.exists"]);
+            }
+
+            this.data.Update(model);
         }
 
         public void UpdateIsEnabled(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            this.data.UpdatedIsEnabled(id, isEnabled);
         }
     }
 }

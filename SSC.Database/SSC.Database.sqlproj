@@ -187,6 +187,12 @@
     <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleParameterType_update_isEnabled.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_update_isEnabled.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleFunction_exists.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

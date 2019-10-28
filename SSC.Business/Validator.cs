@@ -1,4 +1,5 @@
 ﻿using SSC.Common;
+using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,14 @@ namespace SSC.Business
         private ILocalizationProvider i10n;
 
         public string ValidationResult { get; private set; }
+
+        public void ThrowExceptionIfApplicable()
+        {
+            if (!String.IsNullOrEmpty(this.ValidationResult))
+            {
+                throw new UnprocessableEntityException(this.ValidationResult);
+            }
+        }
 
         public static Validator<T> Start(T model)
         {
