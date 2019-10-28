@@ -18,5 +18,6 @@ namespace SSC.Data.Interfaces
         void UpdateIsEnabled(int id, bool isEnabled);
         bool Exists(string code, int? currentId);
         bool AnySampleIsAffected(int id, decimal? newMinimum, decimal? newMaximum);
+        IEnumerable<SampleTypeParameter> GetForSampleType(int sampleTypeId);
     }
 }

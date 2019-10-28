@@ -160,7 +160,6 @@
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_getOne.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguage_getAll.sql" />
-    <Build Include="Tables\sp_AboutUs_address.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientTestimonial_getLast5.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguage_getEntry.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SystemLanguageEntry_update.sql" />
@@ -200,6 +199,17 @@
     <Build Include="Programmability\Stored Procedures\sp_Patient_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_Patient_isOwnedByClient.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PatientType_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_getBySampleType.sql" />
+    <Build Include="Tables\SampleTypeToParameter.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_AboutUs_address.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_addParameter.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_deleteParameters.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_usedOnSamples.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

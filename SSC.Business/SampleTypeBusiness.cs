@@ -1,5 +1,8 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
+using SSC.Common.Logging;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -21,29 +24,68 @@ namespace SSC.Business
         private ISampleTypeData data;
         private ISystemLanguageBusiness languageBusiness;
 
-        public int Create(SampleType model)
+        public void Create(SampleType model)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
+
+            Validator<SampleType>.Start(model)
+                .MandatoryString(x => x.Name, i10n["global.name"])
+                .ThrowExceptionIfApplicable();
+
+
+            if (this.data.Exists(model.Name))
+            {
+                throw new UnprocessableEntityException(i10n["sample-type.validation.exists"]);
+            }
+
+            this.data.Create(model);
+
+            Logger.Obj.LogInfo(String.Format("Nuevo Tipo de Muestra Creado - {0} - Cliente Id {1}", model.Name, clientId));
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            if(this.data.IsUsedOnSamples(id))
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+                throw new UnprocessableEntityException(i10n["sample-type.validation.used"]);
+            }
+
+            this.data.Delete(id);
         }
 
         public SampleType Get(int id)
         {
-            throw new NotImplementedException();
+            return this.data.Get(id);
         }
 
         public IEnumerable<SampleTypeReportRow> GetAll()
         {
-            throw new NotImplementedException();
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
+
+            return this.data.GetAll(clientId);
         }
 
         public void Update(SampleType model)
         {
-            throw new NotImplementedException();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
+
+            Validator<SampleType>.Start(model)
+                .MandatoryString(x => x.Name, i10n["global.name"])
+                .ThrowExceptionIfApplicable();
+
+
+            if (this.data.Exists(model.Name, model.Id))
+            {
+                throw new UnprocessableEntityException(i10n["sample-type.validation.exists"]);
+            }
+
+            this.data.Update(model);
+
+            Logger.Obj.LogInfo(String.Format("Actualización Tipo de Muestra - {0} - Cliente Id {1}", model.Name, clientId));
         }
     }
 }

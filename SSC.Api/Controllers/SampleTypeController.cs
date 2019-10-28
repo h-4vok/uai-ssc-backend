@@ -15,14 +15,14 @@ namespace SSC.Api.Controllers
 
         public SampleTypeController(ISampleTypeBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SampleTypeReportRow>> GetAll() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<SampleTypeReportRow>> GetAll() => this.business.GetAll().ToList();
 
-        public ResponseViewModel<SampleType> Get(int id) => throw new NotImplementedException();
+        public ResponseViewModel<SampleType> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel<int> Post(SampleType model) => throw new NotImplementedException();
+        public ResponseViewModel Post(SampleType model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
-        public ResponseViewModel Put(int id, SampleType model) => throw new NotImplementedException();
+        public ResponseViewModel Put(int id, SampleType model) => ResponseViewModel.RunAndReturn(() => this.business.Update(model));
 
-        public ResponseViewModel Delete(int id) => throw new NotImplementedException();
+        public ResponseViewModel Delete(int id) => ResponseViewModel.RunAndReturn(() => this.business.Delete(id));
     }
 }

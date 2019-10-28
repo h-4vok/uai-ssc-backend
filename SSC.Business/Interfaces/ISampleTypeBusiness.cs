@@ -12,7 +12,7 @@ namespace SSC.Business.Interfaces
     {
         IEnumerable<SampleTypeReportRow> GetAll();
         SampleType Get(int id);
-        int Create(SampleType model);
+        void Create(SampleType model);
         void Update(SampleType model);
         void Delete(int id);
     }

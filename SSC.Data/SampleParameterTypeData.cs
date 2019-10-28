@@ -134,5 +134,10 @@ namespace SSC.Data
 
             return record;
         }
+
+        public IEnumerable<SampleTypeParameter> GetForSampleType(int sampleTypeId)
+        {
+            return this.uow.GetDirect("sp_SampleTypeParameter_getBySampleType", this.Fetch, ParametersBuilder.With("SampleTypeId", sampleTypeId));
+        }
     }
 }

@@ -12,9 +12,10 @@ namespace SSC.Data.Interfaces
     {
         IEnumerable<SampleTypeReportRow> GetAll(int clientId);
         SampleType Get(int id);
-        int Create(SampleType model);
+        void Create(SampleType model);
         void Update(SampleType model);
         void Delete(int id);
         bool IsUsedOnSamples(int id);
+        bool Exists(string name, int? currentId = 0);
     }
 }

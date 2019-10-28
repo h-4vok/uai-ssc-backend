@@ -1800,24 +1800,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Patient Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-type.validation.exists',
+	@es = 'Ya existe un tipo de muestra con este código.',
+	@en = 'A sample type with this code already exists.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sample-type.validation.used',
+	@es = 'Una o más muestras utilizan el tipo de muestra seleccionado.',
+	@en = 'One or more samples use the selected sample type.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.last-update',
+	@es = 'Última Actualización',
+	@en = 'Last Update'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.last-update-by',
+	@es = 'Actualización por',
+	@en = 'Last Update By'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
