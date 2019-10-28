@@ -1728,6 +1728,231 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'New Sample Function'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.name',
+	@es = 'Nombre',
+	@en = 'Name'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.patient-type',
+	@es = 'Tipo de Paciente',
+	@en = 'Patient Type'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.client-company',
+	@es = 'Cliente',
+	@en = 'Tenant'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.invalid-delete',
+	@es = 'Error al intentar eliminar el paciente indicado.',
+	@en = 'Error when trying to delete the indicated patient.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.available-samples',
+	@es = '# de Muestras Disponibles',
+	@en = '# of Available Samples'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.used-samples',
+	@es = '# de Muestras Utilizables',
+	@en = '# of Available Samples'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'model.patient.total-samples',
+	@es = '# de Muestras Total',
+	@en = '# of Total Samples'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

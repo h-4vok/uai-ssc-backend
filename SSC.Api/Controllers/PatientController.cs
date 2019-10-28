@@ -1,4 +1,6 @@
 ﻿using SSC.Business.Interfaces;
+using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,14 +17,19 @@ namespace SSC.Api.Controllers
 
         private IPatientBusiness business;
 
-        public ResponseViewModel<PatientReportRow> Get() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<PatientReportRow>> Get()
+        {
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
 
-        public ResponseViewModel<Patient> Get(int id) => throw new NotImplementedException();
+            return this.business.GetAll(clientId).ToList();
+        }
 
-        public ResponseViewModel Post(Patient model) => throw new NotImplementedException();
+        public ResponseViewModel<Patient> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel Put(int id, Patient model) => throw new NotImplementedException();
+        public ResponseViewModel Post(Patient model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
-        public ResponseViewModel Delete(int id) => throw new NotImplementedException();
+        public ResponseViewModel Put(int id, Patient model) => ResponseViewModel.RunAndReturn(() => this.business.Update(model));
+
+        public ResponseViewModel Delete(int id) => ResponseViewModel.RunAndReturn(() => this.business.Delete(id));
     }
 }

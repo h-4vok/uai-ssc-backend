@@ -47,7 +47,14 @@ namespace SSC.Data
 
         private PatientType FetchPatientType(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new PatientType
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code"),
+                Description = reader.GetString("Description")
+            };
+
+            return record;
         }
 
         private SampleBatchOrigin FetchSampleBatchOrigin(IDataReader reader)
@@ -109,7 +116,7 @@ namespace SSC.Data
 
         public IEnumerable<PatientType> GetPatientTypes()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_PatientType_getAll", this.FetchPatientType);
         }
 
         public IEnumerable<SampleBatchOrigin> GetSampleBatchOrigins()

@@ -193,6 +193,13 @@
     <Build Include="Programmability\Stored Procedures\sp_SampleFunction_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleFunction_update_isEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleFunction_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Patient_isOwnedByClient.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PatientType_getAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

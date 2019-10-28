@@ -49,7 +49,7 @@ namespace SSC.Business
 
         public IEnumerable<PatientType> GetPatientTypes()
         {
-            throw new NotImplementedException();
+            return this.data.GetPatientTypes();
         }
 
         public IEnumerable<SampleBatchOrigin> GetSampleBatchOrigins()
