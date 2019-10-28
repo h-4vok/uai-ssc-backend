@@ -49,6 +49,18 @@ namespace SSC.Business
             return this;
         }
 
+        public Validator<T> MandatoryDecimal(Func<T, decimal?> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            if(!propertyAccessor(this.model).HasValue)
+            {
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.mandatory-decimal"], fieldName));
+            }
+
+            return this;
+        }
+
         public Validator<T> MaxStringLength(Func<T, string> propertyAccessor, string fieldName, int length)
         {
             if (!this.ShouldRun) return this;

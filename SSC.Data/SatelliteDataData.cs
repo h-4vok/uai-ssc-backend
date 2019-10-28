@@ -36,7 +36,13 @@ namespace SSC.Data
 
         private ParameterDataType FetchParameterDataType(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new ParameterDataType
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code")
+            };
+
+            return record;
         }
 
         private PatientType FetchPatientType(IDataReader reader)
@@ -51,7 +57,7 @@ namespace SSC.Data
 
         public IEnumerable<ParameterDataType> GetParameterDataTypes()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_ParameterDataType_getAll", this.FetchParameterDataType);
         }
 
         public IEnumerable<UnitOfMeasure> GetUnitOfMeasures()

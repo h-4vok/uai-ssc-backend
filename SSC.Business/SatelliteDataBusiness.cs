@@ -44,7 +44,7 @@ namespace SSC.Business
 
         public IEnumerable<ParameterDataType> GetParameterDataTypes()
         {
-            throw new NotImplementedException();
+            return this.data.GetParameterDataTypes();
         }
 
         public IEnumerable<PatientType> GetPatientTypes()

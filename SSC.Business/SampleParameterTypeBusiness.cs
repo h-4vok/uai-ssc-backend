@@ -63,6 +63,10 @@ namespace SSC.Business
 
         public void Update(SampleTypeParameter model)
         {
+            // TODO: Validar que los rangos de numero no afecten datos existentes
+
+            // TODO: Validator que los rangos decimales no afected datos existentes
+
             this.data.Update(model);
         }
 

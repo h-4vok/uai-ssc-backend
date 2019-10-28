@@ -1,7 +1,7 @@
 ﻿CREATE TABLE SampleTypeParameter
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-	SampleTypeId INT NOT NULL,
+	SampleTypeId INT NULL,
 	Code NVARCHAR(500) NOT NULL,
 	DefaultDescription NVARCHAR(500) NOT NULL,
 	ParameterDataTypeId INT NOT NULL,
@@ -9,7 +9,7 @@
 	MinimumRange NUMERIC(10, 2) NULL,
 	MaximumRange Numeric(10, 2) NULL,
 	UnitOfMeasureId INT NOT NULL,
-	IsEnabled BIT,
+	IsEnabled BIT NOT NULL DEFAULT(1),
 	TenantId INT,
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,

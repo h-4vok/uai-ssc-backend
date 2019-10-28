@@ -180,6 +180,13 @@
     <Build Include="Programmability\Stored Procedures\sp_UnitOfMeasure_exists.sql" />
     <Build Include="Programmability\Stored Procedures\sp_UnitOfMeasure_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_UnitOfMeasure_update_isEnabled.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ParameterDataType_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleTypeParameter_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleParameterType_update_isEnabled.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

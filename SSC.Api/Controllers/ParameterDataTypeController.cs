@@ -1,4 +1,5 @@
-﻿using SSC.Models;
+﻿using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,5 +9,6 @@ namespace SSC.Api.Controllers
 {
     public class ParameterDataTypeController : SatelliteDataController<ParameterDataType>
     {
+        public ResponseViewModel<IEnumerable<ParameterDataType>> Get() => this.business.GetParameterDataTypes().ToList();
     }
 }

@@ -473,6 +473,13 @@ BEGIN
 		UpdatedBy = 1
 END
 
+-- Default unit of measures
+EXEC sp_UnitOfMeasure_create
+	@Code = 'ml',
+	@DefaultDescription = 'mililitros',
+	@CreatedBy = 1
+
+
 -- System Language Entries (Initial - Spanish) - Part 1
 INSERT SystemLanguageEntry (
 	SystemLanguageId,
@@ -1549,44 +1556,44 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Enabled'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-type-parameter.title.edit',
+	@es = 'Editar Tipo de Parámetro de Muestra',
+	@en = 'Edit Sample Parameter Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-type-parameter.title.new',
+	@es = 'Nuevo Tipo de Parámetro de Muestra',
+	@en = 'New Sample Parameter Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.parameter-data-type',
+	@es = 'Tipo de Dato',
+	@en = 'Data Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.sample-type-parameter.decimal-digits',
+	@es = 'Cant. de Dígitos Decimales',
+	@en = 'Decimal Digits'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.sample-type-parameter.minimum-range',
+	@es = 'Rango Mínimo',
+	@en = 'Minimum Range'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.sample-type-parameter.maximum-range',
+	@es = 'Rango Máximo',
+	@en = 'Maximum Range'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.unit-of-measure',
+	@es = 'Unidad de Medida',
+	@en = 'Unit of Measure'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'validator.api.mandatory-decimal',
+	@es = 'El campo "{0}" es requerido.',
+	@en = 'The field "{0}" is required.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

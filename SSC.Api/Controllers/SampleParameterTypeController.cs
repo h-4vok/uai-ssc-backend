@@ -31,12 +31,22 @@ namespace SSC.Api.Controllers
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
-            // TODO: validations
             var validations = Validator<SampleTypeParameter>.Start(model)
                 .MandatoryString(x => x.Code, i10n["global.code"])
                 .MandatoryString(x => x.DefaultDescription, i10n["global.description"])
+                .NotNull(x => x.DataType, i10n["model.parameter-data-type"])
+                .MandatoryDropdownSelection(x => x.DataType.Id, i10n["model.parameter-data-type"])
+                .MandatoryDecimal(x => x.MinimumRange, i10n["model.sample-type-parameter.minimum-range"])
+                .MandatoryDecimal(x => x.MaximumRange, i10n["model.sample-type-parameter.maximum-range"])
+                .NotNull(x => x.UnitOfMeasure, i10n["model.unit-of-measure"])
+                .MandatoryDropdownSelection(x => x.UnitOfMeasure.Id, i10n["model.unit-of-measure"])
                 .ValidationResult;
                
+            if (!String.IsNullOrWhiteSpace(validations))
+            {
+                return validations;
+            }
+
             try
             {
                 this.business.Create(model);
@@ -52,14 +62,26 @@ namespace SSC.Api.Controllers
         [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
         public ResponseViewModel Put(int id, SampleTypeParameter model)
         {
-            // TODO: Validations
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            var validations = Validator<SampleTypeParameter>.Start(model)
+                .MandatoryString(x => x.Code, i10n["global.code"])
+                .MandatoryString(x => x.DefaultDescription, i10n["global.description"])
+                .NotNull(x => x.DataType, i10n["model.parameter-data-type"])
+                .MandatoryDropdownSelection(x => x.DataType.Id, i10n["model.parameter-data-type"])
+                .MandatoryDecimal(x => x.MinimumRange, i10n["model.sample-type-parameter.minimum-range"])
+                .MandatoryDecimal(x => x.MaximumRange, i10n["model.sample-type-parameter.maximum-range"])
+                .NotNull(x => x.UnitOfMeasure, i10n["model.unit-of-measure"])
+                .MandatoryDropdownSelection(x => x.UnitOfMeasure.Id, i10n["model.unit-of-measure"])
+                .ValidationResult;
+
+            if (!String.IsNullOrWhiteSpace(validations))
+            {
+                return validations;
+            }
 
             try
             {
-                // Validar que los rangos de numero no afecten datos existentes
-
-                // Validator que los rangos decimales no afected datos existentes
-
                 model.Id = id;
                 this.business.Update(model);
             }

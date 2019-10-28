@@ -1,5 +1,4 @@
 ﻿CREATE PROCEDURE sp_SampleTypeParameter_getAll
-	@TenantId INT
 AS
 BEGIN
 
@@ -22,7 +21,5 @@ BEGIN
 
 	LEFT  JOIN	PlatformUser PU
 			ON	stp.UpdatedBy = pu.Id
-
-	WHERE		stp.TenantId = @TenantId 
 
 END
