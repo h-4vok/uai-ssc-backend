@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
@@ -24,12 +25,16 @@ namespace SSC.Api.Controllers
             return this.business.GetAll(clientId).ToList();
         }
 
+        [SscAuthorize(Permissions = "PATIENTS_MANAGEMENT")]
         public ResponseViewModel<Patient> Get(int id) => this.business.Get(id);
 
+        [SscAuthorize(Permissions = "PATIENTS_MANAGEMENT")]
         public ResponseViewModel Post(Patient model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
+        [SscAuthorize(Permissions = "PATIENTS_MANAGEMENT")]
         public ResponseViewModel Put(int id, Patient model) => ResponseViewModel.RunAndReturn(() => this.business.Update(model));
 
+        [SscAuthorize(Permissions = "PATIENTS_MANAGEMENT")]
         public ResponseViewModel Delete(int id) => ResponseViewModel.RunAndReturn(() => this.business.Delete(id));
     }
 }

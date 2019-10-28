@@ -25,18 +25,17 @@ namespace SSC.Business
         public void Create(Patient model)
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
 
             Validator<Patient>.Start(model)
                 .MandatoryString(x => x.Name, i10n["global.name"])
                 .NotNull(x => x.PatientType, i10n["model.patient.patient-type"])
                 .MandatoryDropdownSelection(x => x.PatientType.Id, i10n["model.patient.patient-type"])
-                .NotNull(x => x.Tenant, i10n["model.patient.client-company"])
-                .MandatoryDropdownSelection(x => x.Tenant.Id, i10n["model.patient.client-company"])
                 .ThrowExceptionIfApplicable();
 
             this.data.Create(model);
 
-            Logger.Obj.LogInfo(String.Format("Paciente Creado - {0} - Cliente id: {1}", model.Name, model.Tenant.Id));
+            Logger.Obj.LogInfo(String.Format("Paciente Creado - {0} - Cliente id: {1}", model.Name, auth.CurrentClientId));
         }
 
         public void Delete(int id)
@@ -75,8 +74,6 @@ namespace SSC.Business
                 .MandatoryString(x => x.Name, i10n["global.name"])
                 .NotNull(x => x.PatientType, i10n["model.patient.patient-type"])
                 .MandatoryDropdownSelection(x => x.PatientType.Id, i10n["model.patient.patient-type"])
-                .NotNull(x => x.Tenant, i10n["model.patient.client-company"])
-                .MandatoryDropdownSelection(x => x.Tenant.Id, i10n["model.patient.client-company"])
                 .ThrowExceptionIfApplicable();
 
             this.data.Update(model);

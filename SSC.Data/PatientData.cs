@@ -66,7 +66,7 @@ namespace SSC.Data
             this.uow.NonQueryDirect("sp_Patient_create",
                 ParametersBuilder.With("PatientTypeId", model.PatientType.Id)
                     .And("Name", model.Name)
-                    .And("TenantId", model.Tenant.Id)
+                    .And("TenantId", auth.CurrentClientId)
                     .And("CreatedBy", auth.CurrentUserId)
             );
         }
@@ -98,7 +98,7 @@ namespace SSC.Data
             this.uow.NonQueryDirect("sp_Patient_update",
                 ParametersBuilder.With("PatientTypeId", model.PatientType.Id)
                     .And("Name", model.Name)
-                    .And("TenantId", model.Tenant.Id)
+                    .And("TenantId", auth.CurrentClientId)
                     .And("Id", model.Id)
                     .And("UpdatedBy", auth.CurrentUserId)
             );

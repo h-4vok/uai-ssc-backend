@@ -569,6 +569,28 @@ SELECT
 FROM		Role R
 WHERE		R.Name in ('Científico Ejecutor','Científico Auditor','Controlador de Calidad','Administrador de Cliente')
 
+-- Patient Types
+INSERT PatientType (
+	Code,
+	Description,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	Code = data.Code,
+	Description = data.Description,
+	CreatedBy = 1,
+	UpdatedBy = 1
+FROM (
+	SELECT Code = 'HUMAN', Description = 'Humano' UNION ALL
+	SELECT Code = 'ANIMAL', Description = 'Animal' UNION ALL
+	SELECT Code = 'INSECT', Description = 'Insecto' UNION ALL
+	SELECT Code = 'OTRO', Description = 'Otro'
+) as data
+LEFT  JOIN	PatientType PT
+		ON	data.Code = pt.Code
+WHERE		pt.Code IS NULL
+
 -- SystemLanguages
 IF(NOT EXISTS(SELECT TOP 1 1 FROM SystemLanguage WHERE Code = 'en'))
 BEGIN
@@ -1763,19 +1785,19 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = '# of Total Samples'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'inventory.patient.title.edit',
+	@es = 'Editar Paciente',
+	@en = 'Edit Patient'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'inventory.patient.title.new',
+	@es = 'Nuevo Paciente',
+	@en = 'New Patient'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'model.patient-type',
+	@es = 'Tipo de Paciente',
+	@en = 'Patient Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
