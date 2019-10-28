@@ -38,7 +38,7 @@ namespace SSC.Business
                 throw new UnprocessableEntityException(i10n["sample-function.forbidden-code"]);
             }
 
-            if (!this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
+            if (this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
             {
                 throw new UnprocessableEntityException(i10n["sample-function.exists"]);
             }
@@ -73,7 +73,7 @@ namespace SSC.Business
                 throw new UnprocessableEntityException(i10n["sample-function.forbidden-code"]);
             }
 
-            if (!this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
+            if (this.data.IsUniqueForClient(model.Code, auth.CurrentClientId, model.Id))
             {
                 throw new UnprocessableEntityException(i10n["sample-function.exists"]);
             }

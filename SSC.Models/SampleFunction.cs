@@ -12,5 +12,6 @@ namespace SSC.Models
         public string Code { get; set; }
         public string Name { get; set; }
         public ClientCompany Client { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }

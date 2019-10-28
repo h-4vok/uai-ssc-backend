@@ -9,7 +9,8 @@ BEGIN
 		sf.Code,
 		sf.Name,
 		ClientCompanyId = cc.Id,
-		ClientCompanyName = cc.Name
+		ClientCompanyName = cc.Name,
+		sf.IsEnabled
 
 	FROM		SampleFunction SF
 

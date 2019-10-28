@@ -1718,14 +1718,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The code cannot be X, S or C'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-function.title.edit',
+	@es = 'Editar Función de Muestra',
+	@en = 'Edit Sample Function'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-function.title.new',
+	@es = 'Nueva Función de Muestra',
+	@en = 'New Sample Function'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

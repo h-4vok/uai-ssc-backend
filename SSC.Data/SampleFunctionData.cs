@@ -32,7 +32,8 @@ namespace SSC.Data
                 {
                     Id = reader.GetInt32("ClientCompanyId"),
                     Name = reader.GetString("ClientCompanyName")
-                }
+                },
+                IsEnabled = reader.GetBoolean("IsEnabled")
             };
 
             return record;
