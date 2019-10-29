@@ -62,7 +62,8 @@ namespace SSC.Data
                 {
                     this.uow.NonQuery("sp_SampleType_addParameter",
                         ParametersBuilder.With("Id", model.Id)
-                        .And("SampleTypeParameterId", item.Id)    
+                        .And("SampleTypeParameterId", item.Id)
+                        .And("CreatedBy", auth.CurrentUserId)
                     );
                 });
 
@@ -107,6 +108,7 @@ namespace SSC.Data
                     ParametersBuilder.With("Name", model.Name)
                         .And("TenantId", auth.CurrentClientId)
                         .And("UpdatedBy", auth.CurrentUserId)
+                        .And("Id", model.Id)
                 ).AsInt();
 
                 this.uow.NonQuery("sp_SampleType_deleteParameters", ParametersBuilder.With("Id", model.Id));
@@ -116,6 +118,7 @@ namespace SSC.Data
                     this.uow.NonQuery("sp_SampleType_addParameter",
                         ParametersBuilder.With("Id", model.Id)
                         .And("SampleTypeParameterId", item.Id)
+                        .And("CreatedBy", auth.CurrentUserId)
                     );
                 });
 

@@ -210,6 +210,7 @@
     <Build Include="Programmability\Stored Procedures\sp_SampleType_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleType_exists.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleType_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SampleType_get.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

@@ -20,7 +20,6 @@ namespace SSC.Api.Controllers
 
         public SampleParameterTypeController(ISampleParameterTypeBusiness business) => this.business = business;
 
-        [SscAuthorize(Permissions ="SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]
         public ResponseViewModel<IEnumerable<SampleTypeParameterReportRow>> Get() => this.business.GetAll().ToList();
 
         [SscAuthorize(Permissions = "SAMPLE_TYPE_PARAMETERS_MANAGEMENT")]

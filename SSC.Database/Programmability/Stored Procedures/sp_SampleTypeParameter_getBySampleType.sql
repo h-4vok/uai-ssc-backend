@@ -30,5 +30,6 @@ BEGIN
 	LEFT  JOIN	UnitOfMeasure UOM
 			ON	stp.UnitOfMeasureId = uom.Id
 
+	WHERE		st.Id = @SampleTypeId
 
 END

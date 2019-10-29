@@ -1820,14 +1820,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Last Update By'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-type.title.edit',
+	@es = 'Editar Tipo de Muestra',
+	@en = 'Edit Sample Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.sample-type.title.new',
+	@es = 'Nuevo Tipo de Muestra',
+	@en = 'New Sample Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
