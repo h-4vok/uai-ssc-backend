@@ -39,5 +39,6 @@ namespace SSC.Business.Interfaces
 
         void UpdateClientIsEnabled(int id, bool isEnabled);
         UserSessionViewModel GetSessionViewModel(string userName);
+        bool PasswordMatchesCurrentUser(string password);
     }
 }

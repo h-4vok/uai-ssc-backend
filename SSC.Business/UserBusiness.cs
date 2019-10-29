@@ -26,7 +26,7 @@ namespace SSC.Business
         public void Create(User model)
         {
             var exists = this.data.Exists(model.UserName);
-            
+
             if (exists)
             {
                 var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
@@ -65,6 +65,15 @@ namespace SSC.Business
             }
 
             return String.Empty;
+        }
+
+        public bool PasswordMatchesCurrentUser(string password)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            var currentPassword = this.data.GetPassword(auth.CurrentUserId);
+
+            return currentPassword == PasswordHasher.obj.Hash(password);
         }
 
         public ResponseViewModel<AuthenticationResponseViewModel> Authenticate(string userName, string password)

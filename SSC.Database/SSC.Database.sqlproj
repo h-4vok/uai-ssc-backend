@@ -211,6 +211,7 @@
     <Build Include="Programmability\Stored Procedures\sp_SampleType_exists.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleType_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleType_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_User_getPassword.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

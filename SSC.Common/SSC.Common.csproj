@@ -83,6 +83,7 @@
     <Compile Include="PythonEngineProcessor.cs" />
     <Compile Include="ViewModels\AboutUsViewModel.cs" />
     <Compile Include="ViewModels\AuthenticationResponseViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ClientBalanceBillReport.cs" />
     <Compile Include="ViewModels\ClientBalanceReport.cs" />
     <Compile Include="ViewModels\ClientCompanyReportRow.cs" />

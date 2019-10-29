@@ -362,5 +362,11 @@ namespace SSC.Data
             var output = this.uow.GetOneDirect("sp_User_getSessionData", this.FetchUserSessionViewModel, ParametersBuilder.With("userName", userName));
             return output;
         }
+
+        public string GetPassword(int userId)
+        {
+            var output = this.uow.ScalarDirect("sp_User_getPassword", ParametersBuilder.With("Id", userId)).AsString();
+            return output;
+        }
     }
 }

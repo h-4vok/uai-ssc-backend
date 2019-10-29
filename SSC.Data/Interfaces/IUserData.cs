@@ -28,5 +28,6 @@ namespace SSC.Data.Interfaces
         void UpdateIsClientEnabled(int id, bool isEnabled);
         bool IncreaseLoginFailures(int id);
         UserSessionViewModel GetSessionViewModel(string userName);
+        string GetPassword(int userId);
     }
 }

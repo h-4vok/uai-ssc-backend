@@ -1830,59 +1830,59 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'New Sample Type'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.account-menu',
+	@es = 'Mi Cuenta',
+	@en = 'My Account'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.account.change-password',
+	@es = 'Cambio de contraseña',
+	@en = 'Password change'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'account.change-password.page.title',
+	@es = 'Cambio de Contraseña',
+	@en = 'Change your Password'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.currentPassword',
+	@es = 'Contraseña Actual',
+	@en = 'Current Password'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.password1',
+	@es = 'Ingrese una nueva contraseña',
+	@en = 'Input a new password'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.password2',
+	@es = 'Repita la nueva contraseña',
+	@en = 'Repeat the new password'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.success',
+	@es = 'Su contraseña ha sido actualizada con éxito.',
+	@en = 'Your password has been successfully changed.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.validation.password-no-match',
+	@es = 'La contraseña actual no coincide. Vuelva a intentarlo.',
+	@en = 'The current password does not match. Try again.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.validation.empty-passwords',
+	@es = 'Debe llenar todos los campos.',
+	@en = 'You must fill in all the input boxes.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'change-password.validation.new-password-no-match',
+	@es = 'Las contraseñas no coinciden.',
+	@en = 'The passwords do not match.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'email.password-changed.subject',
+	@es = 'SSC - Su contraseña ha sido actualizada',
+	@en = 'SSC - Password has been updated'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
