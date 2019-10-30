@@ -15,6 +15,7 @@ namespace SSC.Api.Controllers
 
         public PricingPlanController(IPricingPlanBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<PricingPlan>> GetAll() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<PricingPlan>> GetAll(string nameAlike = null, int minPrice = 0, int maxPrice = 50000, int minRating = 1) 
+            => this.business.GetAll(nameAlike, minPrice, maxPrice, minRating).ToList();
     }
 }

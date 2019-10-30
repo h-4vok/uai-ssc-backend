@@ -38,9 +38,14 @@ namespace SSC.Data
             return output;
         }
 
-        public IEnumerable<PricingPlan> GetAll()
+        public IEnumerable<PricingPlan> GetAll(string nameAlike, int minPrice, int maxPrice, int minRating)
         {
-            var output = this.uow.GetDirect("sp_PricingPlan_getAll", this.Fetch);
+            var output = this.uow.GetDirect("sp_PricingPlan_getAll", this.Fetch,
+                ParametersBuilder.With("nameAlike", nameAlike)
+                    .And("minPrice", minPrice)
+                    .And("maxPrice", maxPrice)
+                    .And("minRating", minRating)
+            );
             return output;
         }
 

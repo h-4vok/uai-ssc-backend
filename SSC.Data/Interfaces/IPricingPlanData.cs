@@ -9,7 +9,7 @@ namespace SSC.Data.Interfaces
 {
     public interface IPricingPlanData
     {
-        IEnumerable<PricingPlan> GetAll();
+        IEnumerable<PricingPlan> GetAll(string nameAlike, int minPrice, int maxPrice, int minRating);
         PricingPlan GetByCode(string code);
     }
 }

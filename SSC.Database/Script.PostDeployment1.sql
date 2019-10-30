@@ -1885,84 +1885,84 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'SSC - Password has been updated'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.title',
+	@es = 'Catálogo de Servicios',
+	@en = 'Service Catalog'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.open-filters',
+	@es = 'Abrir Filtros',
+	@en = 'Open Filters'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.name-filter',
+	@es = 'Filtrar por nombre',
+	@en = 'Filter by name'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.rating-filter',
+	@es = 'Mínimo de rating',
+	@en = 'Minimum rating'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.price-range-filter',
+	@es = 'Rango de precios',
+	@en = 'Price range'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-search.page.apply-filter',
+	@es = 'Aplicar filtros',
+	@en = 'Apply filters'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'app.marketing.menu.catalog',
+	@es = 'Catálogo',
+	@en = 'Services'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.patient-sample-limit',
+	@es = 'Hasta ${value} muestras de pacientes.',
+	@en = 'Up to ${value} patient samples.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.patient-sample-unlimited',
+	@es = 'Sin límite de muestras de pacientes.',
+	@en = 'No limit on patient samples.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.control-sample-limit',
+	@es = 'Hasta ${value} muestras de control.',
+	@en = 'Up to ${value} control samples.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.control-sample-unlimited',
+	@es = 'Sin límite de muestras de control.',
+	@en = 'No limit on control samples.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.run-limit',
+	@es = 'Hasta ${value} ensayos clínicos al mes.',
+	@en = 'Up to ${value} clinic runs each month.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.run-unlimited',
+	@es = 'Sin límite de ensayos clínicos.',
+	@en = 'Unlimited clinic runs.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.user-limit',
+	@es = 'Hasta ${value} cuentas de usuario.',
+	@en = 'Up to ${value} user accounts.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-card.no-user-limit',
+	@es = 'Sin límite de cuentas de usuario.',
+	@en = 'No user account limit.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.compare',
+	@es = 'Comparar',
+	@en = 'Compare'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

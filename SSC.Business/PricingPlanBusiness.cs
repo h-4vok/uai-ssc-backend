@@ -19,9 +19,9 @@ namespace SSC.Business
 
         public IPricingPlanData data;
 
-        public IEnumerable<PricingPlan> GetAll()
+        public IEnumerable<PricingPlan> GetAll(string nameAlike, int minPrice, int maxPrice, int minRating)
         {
-            throw new NotImplementedException();
+            return this.data.GetAll(nameAlike, minPrice, maxPrice, minRating);
         }
 
         public PricingPlan GetByCode(string code)
