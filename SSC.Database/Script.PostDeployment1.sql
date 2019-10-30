@@ -1,4 +1,5 @@
-﻿-- Setup ssc login
+﻿
+-- Setup ssc login
 IF NOT EXISTS (SELECT [name]
                 FROM [sys].[database_principals]
                 WHERE [type] = N'S' AND [name] = N'ssc')
@@ -1965,29 +1966,64 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Compare'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.close',
+	@es = 'Cerrar',
+	@en = 'Close'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.yes',
+	@es = 'Sí',
+	@en = 'Yes'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.no',
+	@es = 'No',
+	@en = 'No'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-compare.grid.row.user-limit',
+	@es = 'Límite de Usuarios',
+	@en = 'User Accounts Limit'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-compare.grid.row.patient-sample-limit',
+	@es = 'Límite de Muestras de Pacientes',
+	@en = 'Patient Sample Limit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-compare.grid.row.control-sample-limit',
+	@es = 'Límite de Muestras de Control',
+	@en = 'Control Sample Limit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-compare.grid.row.run-limit',
+	@es = 'Límite de Ensayos Clínicos',
+	@en = 'Clinic Run Execution Limit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-compare.grid.row.price',
+	@es = 'Precio',
+	@en = 'Price'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.free',
+	@es = 'Gratis',
+	@en = 'Free'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.no-limit',
+	@es = 'Sin Límite',
+	@en = 'No Limit'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.remove-compare',
+	@es = 'Remover',
+	@en = 'Remove'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-search.page.open-compare',
+	@es = 'Abrir Comparación',
+	@en = 'Open Compare'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
