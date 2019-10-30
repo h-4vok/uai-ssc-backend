@@ -2026,6 +2026,81 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Open Compare'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'app.marketing.menu.faq',
+	@es = 'FAQ',
+	@en = 'FAQ'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.what-is-ssc.header',
+	@es = 'Qué es Sample Supply Chain',
+	@en = 'What is Sample Supply Chain'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.what-is-ssc.subheader',
+	@es = 'Conoce nuestro servicio',
+	@en = 'Get to know our service'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.what-is-ssc.details',
+	@es = 'Sample Supply Chain, o abreviando SSC, es una plataforma digital de control y administración de ensayos clínicos. Creada con la necesidad de ayudar a las organizaciones de investigación por contrato, SSC trae una revolucionaria forma de administrar sus estudios a la vez que logra disminuir sus costos operativos y tecnológicos.',
+	@en = 'Sample Supply Chain, or abbreviating SSC, is a digital platform for control and administration of clinical trials. Created with the need to help contract research organizations, SSC brings a revolutionary way to manage their studies while reducing their operational and technological costs.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.how-to-operate.details',
+	@es = 'Para operar con la plataforma primero debe crear su cuenta. Ingrese a la opción "Ingresar" y luego registre una nueva cuenta. La plataforma ofrece distintos planes de servicio, incluído un plan gratuito con limitaciones que puede utilizar para usar la plataforma de forma legal y gratuita y poder entender qué es lo que ofrecemos.',
+	@en = 'To operate with the platform you must first create your account. Enter the "Login" option and then register a new account. The platform offers different service plans, including a free plan with limitations that you can use to use the platform legally and free of charge and understand what we offer.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.how-to-operate.header',
+	@es = '¿Cómo empezar a operar?',
+	@en = 'How to start operating?'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.how-to-operate.subheader',
+	@es = 'Inicie su trabajo hoy mismo',
+	@en = 'Start working today!'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.diff-samples.header',
+	@es = '¿Qué tipos de muestra maneja SSC?',
+	@en = 'What types of samples SSC handles?'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.diff-samples.subheader',
+	@es = 'Conozca sobre nuestra división',
+	@en = 'Know about our typification'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'faq.diff-samples.details',
+	@es = 'Conocemos su organización y su negocio. No todas las muestras son iguales ni provienen del mismo origen. Nuestra plataforma correctamente divide entre muestras de pacientes y muestras de control. Usted tendrá completo control para tipificar sus muestras con diferentes tipos de funciones clínicas, y además podrá tipificar a sus pacientes con la tipificación que prefiera.',
+	@en = 'We know your organization and your business. Not all samples are the same or come from the same origin. Our platform correctly divides between patient samples and control samples. You will have complete control to typify your samples with different types of clinical functions, and you can also typify your patients with the type you prefer.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
