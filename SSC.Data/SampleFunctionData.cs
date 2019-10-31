@@ -17,8 +17,10 @@ namespace SSC.Data
         public SampleFunctionData()
         {
             this.uow = DependencyResolver.Obj.Resolve<IUnitOfWork>();
+            this.auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
         }
 
+        private IAuthenticationProvider auth;
         private IUnitOfWork uow;
 
         private SampleFunction Fetch(IDataReader reader)
@@ -26,8 +28,8 @@ namespace SSC.Data
             var record = new SampleFunction
             {
                 Id = reader.GetInt32("Id"),
-                Code = reader.GetString("Code"),
-                Name = reader.GetString("Name"),
+                Code = ReversibleEncryption.DecryptString(reader.GetString("Code"), auth.CurrentClientApiKey),
+                Name = ReversibleEncryption.DecryptString(reader.GetString("Name"), auth.CurrentClientApiKey),
                 Client = new ClientCompany
                 {
                     Id = reader.GetInt32("ClientCompanyId"),
@@ -58,25 +60,21 @@ namespace SSC.Data
 
         public void Create(SampleFunction model)
         {
-            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
-
             this.uow.NonQueryDirect("sp_SampleFunction_create",
                 ParametersBuilder.With("TenantId", auth.CurrentClientId)
-                    .And("Code", model.Code)
-                    .And("Name", model.Name)
+                    .And("Code", ReversibleEncryption.EncryptString(model.Code, auth.CurrentClientApiKey))
+                    .And("Name", ReversibleEncryption.EncryptString(model.Name, auth.CurrentClientApiKey))
                     .And("CreatedBy", auth.CurrentUserId)
             );
         }
 
         public void Update(SampleFunction model)
         {
-            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
-
             this.uow.NonQueryDirect("sp_SampleFunction_update",
                 ParametersBuilder.With("TenantId", auth.CurrentClientId)
                     .And("Id", model.Id)
-                    .And("Code", model.Code)
-                    .And("Name", model.Name)
+                    .And("Code", ReversibleEncryption.EncryptString(model.Code, auth.CurrentClientApiKey))
+                    .And("Name", ReversibleEncryption.EncryptString(model.Name, auth.CurrentClientApiKey))
                     .And("UpdatedBy", auth.CurrentUserId)
             );
         }
@@ -98,7 +96,7 @@ namespace SSC.Data
 
             return this.uow.ScalarDirect("sp_SampleFunction_exists",
                 ParametersBuilder.With("TenantId", tenantId)
-                    .And("Code", code)
+                    .And("Code", ReversibleEncryption.EncryptString(code, auth.CurrentClientApiKey))
                     .And("CurrentId", currentId)
                 ).AsBool();
         }

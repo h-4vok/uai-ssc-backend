@@ -81,6 +81,7 @@
     <Compile Include="PasswordHasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PythonEngineProcessor.cs" />
+    <Compile Include="ReversibleEncryption.cs" />
     <Compile Include="ViewModels\AboutUsViewModel.cs" />
     <Compile Include="ViewModels\AuthenticationResponseViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />

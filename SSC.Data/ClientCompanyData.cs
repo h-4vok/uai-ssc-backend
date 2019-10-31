@@ -47,8 +47,8 @@ namespace SSC.Data
 
                 this.uow.NonQuery("sp_ClientCompanyCreditCard_create",
                     ParametersBuilder.With("ClientId", id)
-                    .And("Number", model.DefaultCreditCard.Number)
-                    .And("Owner", model.DefaultCreditCard.Owner)
+                    .And("Number", ReversibleEncryption.EncryptString(model.DefaultCreditCard.Number))
+                    .And("Owner", ReversibleEncryption.EncryptString(model.DefaultCreditCard.Owner))
                     .And("CCV", model.DefaultCreditCard.CCV)
                     .And("ExpirationDateMMYY", model.DefaultCreditCard.ExpirationDateMMYY)
                     .And("IsDefault", true)
