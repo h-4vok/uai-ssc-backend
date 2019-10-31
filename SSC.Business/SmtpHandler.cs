@@ -36,6 +36,9 @@ namespace SSC.Business
         {
             try
             {
+                var smtpEnabled = ConfigurationManager.AppSettings["Smtp.Enabled"].AsBool();
+                if (!smtpEnabled) return;
+
                 var mailMessage = this.CreateMailMessage(mail);
                 mailMessage.IsBodyHtml = isBodyHtml;
                 this.CreateSmtpClient(mailMessage);

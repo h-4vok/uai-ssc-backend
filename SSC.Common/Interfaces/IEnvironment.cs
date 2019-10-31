@@ -18,5 +18,6 @@ namespace SSC.Common.Interfaces
         string GetLabScriptUserConnectionString();
         string GetLabScriptFileFormat();
         string GetEmailTemplate(string filename);
+        string GetBackupPath();
     }
 }

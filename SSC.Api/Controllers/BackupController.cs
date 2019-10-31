@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,12 +16,16 @@ namespace SSC.Api.Controllers
 
         public BackupController(IBackupBusiness business) => this.business = business;
 
-        public ResponseViewModel Post() => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "PLATFORM_BACKUP")]
+        public ResponseViewModel Post(BackupRegistry model) => ResponseViewModel.RunAndReturn(() => this.business.DoBackup());
 
-        public ResponseViewModel Put(int id) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "PLATFORM_RESTORE")]
+        public ResponseViewModel Put(int id, BackupRegistry model) => ResponseViewModel.RunAndReturn(() => this.business.DoRestore(id));
 
-        public ResponseViewModel<IEnumerable<BackupRegistry>> Get() => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "PLATFORM_BACKUP,PLATFORM_RESTORE")]
+        public ResponseViewModel<IEnumerable<BackupRegistry>> Get() => this.business.GetAll().ToList();
 
-        public ResponseViewModel<BackupRegistry> Get(int id) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "PLATFORM_BACKUP,PLATFORM_RESTORE")]
+        public ResponseViewModel<BackupRegistry> Get(int id) => this.business.Get(id);
     }
 }

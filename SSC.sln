@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SSC.Database", "SSC.Database\SSC.Database.sqlproj", "{19E22062-74B9-4281-9AD2-B2E8F7CED19A}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSC.Common", "SSC.Common\SSC.Common.csproj", "{D42D3B49-DE94-4980-B0BB-89E4C60491B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSC.Api", "SSC.Api\SSC.Api.csproj", "{8A398523-3BD4-4D95-997C-4981348A36AD}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SSC.MasterDatabase", "SSC.MasterDatabase\SSC.MasterDatabase.sqlproj", "{EE5C05CB-E217-4966-A087-B4BFBC43094A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,12 @@ Global
 		{8A398523-3BD4-4D95-997C-4981348A36AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A398523-3BD4-4D95-997C-4981348A36AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A398523-3BD4-4D95-997C-4981348A36AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5C05CB-E217-4966-A087-B4BFBC43094A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

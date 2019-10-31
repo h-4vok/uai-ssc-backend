@@ -17,6 +17,11 @@ namespace SSC.Common
             throw new NotImplementedException();
         }
 
+        public string GetBackupPath()
+        {
+            return ConfigurationManager.AppSettings["Backup.Path"];
+        }
+
         public string GetEmailTemplate(string filename)
         {
             var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();

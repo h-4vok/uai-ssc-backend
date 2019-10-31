@@ -6,6 +6,7 @@ IF NOT EXISTS (SELECT [name]
 BEGIN
 	CREATE USER ssc FOR LOGIN ssc;
 	EXEC sp_addrolemember N'db_owner', N'ssc';
+	EXEC sp_addrolemember N'db_backupoperator', N'ssc';
 END
 
 -- Satellite Data: Provinces
@@ -2076,39 +2077,39 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'We know your organization and your business. Not all samples are the same or come from the same origin. Our platform correctly divides between patient samples and control samples. You will have complete control to typify your samples with different types of clinical functions, and you can also typify your patients with the type you prefer.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.backup-success',
+	@es = 'El resguardo se ha realizado exitosamente.',
+	@en = 'The backup has been completed successfully.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.restore-success',
+	@es = 'La base de datos se ha restaurado exitosamente.',
+	@en = 'The database restore has been completed successfully.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.filepath',
+	@es = 'Ubicación',
+	@en = 'FilePath'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.date',
+	@es = 'Fecha de Resguardo',
+	@en = 'Backup Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.createdby',
+	@es = 'Realizado por',
+	@en = 'Performed by'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.doBackup',
+	@es = 'Generar Resguardo',
+	@en = 'Perform Backup'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.doRestore',
+	@es = 'Restaurar un resguardo',
+	@en = 'Restore a backup'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
