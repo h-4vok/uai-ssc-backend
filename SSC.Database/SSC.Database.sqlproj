@@ -212,6 +212,10 @@
     <Build Include="Programmability\Stored Procedures\sp_SampleType_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SampleType_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_User_getPassword.sql" />
+    <Build Include="Tables\PricingPlanComment.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PricingPlanComment_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PricingPlanComment_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PricingPlanComment_getByUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

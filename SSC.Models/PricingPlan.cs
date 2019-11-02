@@ -17,5 +17,6 @@ namespace SSC.Models
         public int? ControlSampleLimit { get; set; }
         public int? AnualDiscountPercentage { get; set; }
         public decimal Price { get; set; }
+        public decimal AverageRating { get; set; }
     }
 }

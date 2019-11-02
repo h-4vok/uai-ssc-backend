@@ -41,6 +41,7 @@ namespace SSC.Business
             Register<IWorkOrderData, WorkOrderData>();
 
             Register<IPermissionData, PermissionData>();
+            Register<IPricingPlanCommentData, PricingPlanCommentData>();
 
             DataDependencyInjector.RegisterAll();
         }

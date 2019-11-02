@@ -57,6 +57,7 @@ namespace SSC.Api.App_Start
             Register<ISmtpHandler, SmtpHandler>();
 
             Register<IPermissionBusiness, PermissionBusiness>();
+            Register<IPricingPlanCommentBusiness, PricingPlanCommentBusiness>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {

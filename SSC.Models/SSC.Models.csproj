@@ -74,6 +74,7 @@
     <Compile Include="Phone.cs" />
     <Compile Include="PhoneType.cs" />
     <Compile Include="PricingPlan.cs" />
+    <Compile Include="PricingPlanComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Province.cs" />
     <Compile Include="QueuedMail.cs" />

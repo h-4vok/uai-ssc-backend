@@ -31,6 +31,9 @@ namespace SSC.Api.Behavior
             var userBusiness = DependencyResolver.Obj.Resolve<IUserBusiness>();
             var user = userBusiness.Get(userId, userId);
 
+            if (String.IsNullOrWhiteSpace(this.Permissions))
+                return true;
+
             var requiredPermissions = this.Permissions.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
             var userPermissions = user.GetGrantedPermissions();
 

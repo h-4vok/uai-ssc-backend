@@ -32,7 +32,8 @@ namespace SSC.Data
                 ControlSampleLimit = reader.GetInt32Nullable("ControlSampleLimit"),
                 ClinicRehearsalLimit = reader.GetInt32Nullable("ClinicRehearsalLimit"),
                 AnualDiscountPercentage = reader.GetInt32Nullable("AnualDiscountPercentage"),
-                Price = reader.GetDecimal(reader.GetOrdinal("Price"))
+                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                AverageRating = reader.GetValue(reader.GetOrdinal("AverageRating")).AsDecimal(),
             };
 
             return output;

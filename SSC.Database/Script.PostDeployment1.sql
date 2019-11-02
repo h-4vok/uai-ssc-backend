@@ -2112,6 +2112,161 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Restore a backup'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.view-details',
+	@es = 'Ver Detalle',
+	@en = 'View Details'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-detail.average.rating',
+	@es = 'Valoración Promedio',
+	@en = 'Average Rating'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.account.leave-comment',
+	@es = 'Comentar tu experiencia',
+	@en = 'Comment your experience'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'leave-comment.title',
+	@es = 'Deje su comentario sobre nuestro servicio:',
+	@en = 'Leave us a comment about our service:'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'leave-comment.comment',
+	@es = 'Describa su experiencia con la plataforma',
+	@en = 'Describe your experience with the platform'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'leave-comment.already-done',
+	@es = 'Continuaremos mejorando nuestro servicio para usted.',
+	@en = 'We will continue improving our service for you.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'leave-comment.already-done-title',
+	@es = '¡Muchas gracias por su comentario!',
+	@en = 'Thank you so much for your comment!'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'product-compare.grid.row.rating',
+	@es = 'Valoración',
+	@en = 'Rating'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
