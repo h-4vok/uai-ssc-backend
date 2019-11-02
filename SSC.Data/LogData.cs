@@ -38,7 +38,7 @@ namespace SSC.Data
                 Id = (int)type,
                 Description = reader.GetString("AuditTypeDescription")
             };
-            record.Message = reader.GetString("Message");
+            record.Message = ReversibleEncryption.DecryptString(reader.GetString("Message"));
 
             return record;
         }
@@ -59,7 +59,7 @@ namespace SSC.Data
 
             this.uow.NonQueryDirect("sp_AuditRecord_create",
                 ParametersBuilder.With("UserReference", record.UserName)
-                .And("Message", record.Message)
+                .And("Message", ReversibleEncryption.EncryptString(record.Message))
                 .And("AuditTypeId", (int)record.RecordType)
                 .And("ClientId", authProvider.CurrentClientId)
                 .And("CreatedDate", record.CreatedDate)
