@@ -117,9 +117,43 @@ namespace SSC.Data
             return record;
         }
 
+        protected PlatformMenuItem FetchItem(IDataReader reader)
+        {
+            var record = new PlatformMenuItem
+            {
+                Id = reader.GetInt32("Id"),
+                MenuOrder = reader.GetInt32("MenuOrder"),
+                RelativeRoute = reader.GetString("RelativeRoute"),
+                TranslationKey = reader.GetString("TranslationKey")
+            };
+
+            return record;
+        }
+
+        protected Permission FetchPermission(IDataReader reader)
+        {
+            var record = new Permission
+            {
+                Id = reader.GetInt32("Id"),
+                Code = reader.GetString("Code")
+            };
+
+            return record;
+        }
+
         public PlatformMenu Get(int id)
         {
-            return this.uow.GetOneDirect("sp_PlatformMenu_getOne", this.Fetch, ParametersBuilder.With("Id", id));
+            var menu = this.uow.GetOneDirect("sp_PlatformMenu_getOne", this.Fetch, ParametersBuilder.With("Id", id));
+            menu.Items = this.uow.GetDirect("sp_PlatformMenuItem_getByParentId", this.FetchItem, ParametersBuilder.With("Id", id));
+
+            foreach(var item in menu.Items)
+            {
+                item.RequiredPermissions = this.uow.GetDirect("sp_PlatformMenuItem_getPermissionsById", this.FetchPermission, 
+                    ParametersBuilder.With("MenuItemId", item.Id)
+                );
+            }
+
+            return menu;
         }
 
         public IEnumerable<PlatformMenu> GetAll()

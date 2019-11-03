@@ -217,5 +217,43 @@ namespace SSC.Business
             var output = this.data.GetSessionViewModel(userName);
             return output;
         }
+
+        public IEnumerable<PlatformMenu> GetMenuForUser(int userId, IEnumerable<String> permissionCodes)
+        {
+            var menuData = DependencyResolver.Obj.Resolve<IPlatformMenuData>();
+            var allMenues = menuData.GetAll();
+            var myMenuArray = new List<PlatformMenu>();
+
+            bool menuHasUsableItems(PlatformMenu m)
+            {
+                var allMenuPermissions = m.Items.Select(i => i.RequiredPermissions.Select(p => p.Code)).SelectMany(x => x).Distinct();
+                return permissionCodes.Any(p => allMenuPermissions.Any(p2 => p2 == p));
+            }
+
+            foreach (var menu in allMenues)
+            {
+                var newMenu = menuData.Get(menu.Id);
+                
+                if (menuHasUsableItems(newMenu))
+                {
+                    myMenuArray.Add(newMenu);
+
+                    var normalizedMenuItems = new List<PlatformMenuItem>();
+
+                    newMenu.Items.ForEach(i =>
+                    {
+                        var canUseThisOne = permissionCodes.Any(p => i.RequiredPermissions.Any(x => x.Code == p));
+                        if (canUseThisOne)
+                        {
+                            normalizedMenuItems.Add(i);
+                        }
+                    });
+
+                    newMenu.Items = normalizedMenuItems;
+                }
+            }
+
+            return myMenuArray;
+        }
     }
 }

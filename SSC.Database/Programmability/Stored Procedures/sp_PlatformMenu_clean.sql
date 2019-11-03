@@ -7,7 +7,7 @@ BEGIN
 	DELETE per
 	FROM		PlatformMenuItemPermission PER
 	INNER JOIN	PlatformMenuItem PMI
-			ON	per.PlatformMenuId = pmi.Id
+			ON	per.PlatformMenuItemId= pmi.Id
 	WHERE		pmi.PlatformMenuId = @Id
 
 	-- Delete menu items

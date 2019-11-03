@@ -229,6 +229,8 @@
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenu_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_fullCreate.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItemPermission_byCode.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_getByParentId.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_getPermissionsById.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

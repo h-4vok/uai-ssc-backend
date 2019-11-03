@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace SSC.Common.ViewModels
     {
         public IEnumerable<string> GrantedPermissions { get; set; } = new List<string>();
         public string SetCookie { get; set; }
+        public IEnumerable<PlatformMenu> Menues { get; set; }
     }
 }

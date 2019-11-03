@@ -12,5 +12,6 @@ namespace SSC.Models
         public string Code { get; set; }
         public string TranslationKey { get; set; }
         public int MenuOrder { get; set; }
+        public IEnumerable<PlatformMenuItem> Items { get; set; }
     }
 }

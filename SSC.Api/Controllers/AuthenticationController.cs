@@ -50,6 +50,7 @@ namespace SSC.Api.Controllers
                 HttpContext.Current.Session["ClientApiKey"] = userSessionData.ClientApiKey;
 
                 response.Result.SetCookie = String.Format("ASP.NET_SessionId={0}", HttpContext.Current.Session.SessionID);
+                response.Result.Menues = this.business.GetMenuForUser(userSessionData.UserId, response.Result.GrantedPermissions);
 
                 Logger.Obj.LogInfo(String.Format("Autenticación Exitosa - '{0}'", userSessionData.UserName));
 

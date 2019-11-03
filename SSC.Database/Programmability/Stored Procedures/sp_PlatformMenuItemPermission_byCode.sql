@@ -10,13 +10,13 @@ BEGIN
 	END
 
 	INSERT PlatformMenuItemPermission (
-		PlatformMenuId,
+		PlatformMenuItemId,
 		PermissionId,
 		CreatedBy,
 		UpdatedBy
 	)
 	SELECT
-		PlatformMenuId = @MenuItemId,
+		PlatformMenuItemId = @MenuItemId,
 		PermissionId = Id,
 		CreatedBy = 1,
 		UpdatedBy = 1

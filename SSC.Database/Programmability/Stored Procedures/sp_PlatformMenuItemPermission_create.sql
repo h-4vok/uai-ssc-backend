@@ -1,18 +1,18 @@
 ﻿CREATE PROCEDURE sp_PlatformMenuItemPermission_create
-	@PlatformMenuId INT,
+	@PlatformMenuItemId INT,
 	@PermissionId INT,
 	@CreatedBy INT
 AS
 BEGIN
 
 	INSERT PlatformMenuItemPermission (
-		PlatformMenuId,
+		PlatformMenuItemId,
 		PermissionId,
 		CreatedBy,
 		UpdatedBy
 	)
 	SELECT
-		PlatformMenuId = @PlatformMenuId,
+		PlatformMenuItemId = @PlatformMenuItemId,
 		PermissionId = @PermissionId,
 		CreatedBy = @CreatedBy,
 		UpdatedBy = @CreatedBy
