@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\ISiteNewsBusiness.cs" />
     <Compile Include="Interfaces\ISmtpHandler.cs" />
     <Compile Include="Interfaces\ISystemLanguageBusiness.cs" />
+    <Compile Include="Interfaces\ITranslationKeysBusiness.cs" />
     <Compile Include="Interfaces\IUserBusiness.cs" />
     <Compile Include="Interfaces\IUserInvitationBusiness.cs" />
     <Compile Include="Interfaces\IWorkOrderBusiness.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="SiteNewsBusiness.cs" />
     <Compile Include="SmtpHandler.cs" />
     <Compile Include="SystemLanguageBusiness.cs" />
+    <Compile Include="TranslationKeysBusiness.cs" />
     <Compile Include="UserBusiness.cs" />
     <Compile Include="UserInvitationBusiness.cs" />
     <Compile Include="Validator.cs" />

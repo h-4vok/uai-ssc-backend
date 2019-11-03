@@ -144,13 +144,13 @@ namespace SSC.Data
         public PlatformMenu Get(int id)
         {
             var menu = this.uow.GetOneDirect("sp_PlatformMenu_getOne", this.Fetch, ParametersBuilder.With("Id", id));
-            menu.Items = this.uow.GetDirect("sp_PlatformMenuItem_getByParentId", this.FetchItem, ParametersBuilder.With("Id", id));
+            menu.Items = this.uow.GetDirect("sp_PlatformMenuItem_getByParentId", this.FetchItem, ParametersBuilder.With("Id", id)).ToList();
 
             foreach(var item in menu.Items)
             {
                 item.RequiredPermissions = this.uow.GetDirect("sp_PlatformMenuItem_getPermissionsById", this.FetchPermission, 
                     ParametersBuilder.With("MenuItemId", item.Id)
-                );
+                ).ToList();
             }
 
             return menu;

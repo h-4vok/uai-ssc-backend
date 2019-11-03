@@ -2197,24 +2197,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Menu Order'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.platform-menu.title.edit',
+	@es = 'Editar Menú de Plataforma',
+	@en = 'Edit Platform Menu'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'configuration.platform-menu.title.new',
+	@es = 'Nuevo Menú de Plataforma',
+	@en = 'New Platform Menu'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.menu-order',
+	@es = 'Orden en el Menú',
+	@en = 'Menu Order'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.relative-route',
+	@es = 'Ruta Relativa',
+	@en = 'Relative Route'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

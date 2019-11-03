@@ -59,10 +59,11 @@ namespace SSC.Api.App_Start
             Register<IPermissionBusiness, PermissionBusiness>();
             Register<IPricingPlanCommentBusiness, PricingPlanCommentBusiness>();
             Register<IPlatformMenuBusiness, PlatformMenuBusiness>();
+            Register<ITranslationKeysBusiness, TranslationKeysBusiness>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {
             DependencyResolver.Obj.Register<Interface, Concrete>();
-        }
+       }
     }
 }

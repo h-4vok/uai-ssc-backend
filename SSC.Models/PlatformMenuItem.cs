@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace SSC.Models
 {
@@ -13,6 +14,9 @@ namespace SSC.Models
         public int MenuOrder { get; set; }
         public string RelativeRoute { get; set; }
         public string TranslationKey { get; set; }
-        public IEnumerable<Permission> RequiredPermissions { get; set; } = new HashSet<Permission>();
+        
+        [XmlArray("RequiredPermissions")]
+        [XmlArrayItem("Permission")]
+        public List<Permission> RequiredPermissions { get; set; } = new List<Permission>();
     }
 }

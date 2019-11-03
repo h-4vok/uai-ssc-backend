@@ -245,6 +245,7 @@
     <Compile Include="Controllers\SiteNewsController.cs" />
     <Compile Include="Controllers\SystemLanguageController.cs" />
     <Compile Include="Controllers\SystemLanguageEntryController.cs" />
+    <Compile Include="Controllers\TranslationKeysController.cs" />
     <Compile Include="Controllers\UnitOfMeasureController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />

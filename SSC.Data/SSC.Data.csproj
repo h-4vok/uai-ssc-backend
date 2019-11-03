@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\ISatelliteDataData.cs" />
     <Compile Include="Interfaces\ISiteNewsData.cs" />
     <Compile Include="Interfaces\ISystemLanguageData.cs" />
+    <Compile Include="Interfaces\ITranslationKeysData.cs" />
     <Compile Include="Interfaces\IUserData.cs" />
     <Compile Include="Interfaces\IUserInvitationData.cs" />
     <Compile Include="Interfaces\IWorkOrderData.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="SatelliteDataData.cs" />
     <Compile Include="SiteNewsData.cs" />
     <Compile Include="SystemLanguageData.cs" />
+    <Compile Include="TranslationKeysData.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="UserInvitationData.cs" />
     <Compile Include="WorkOrderData.cs" />

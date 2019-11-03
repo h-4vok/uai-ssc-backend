@@ -43,6 +43,7 @@ namespace SSC.Business
             Register<IPermissionData, PermissionData>();
             Register<IPricingPlanCommentData, PricingPlanCommentData>();
             Register<IPlatformMenuData, PlatformMenuData>();
+            Register<ITranslationKeysData, TranslationKeysData>();
 
             DataDependencyInjector.RegisterAll();
         }

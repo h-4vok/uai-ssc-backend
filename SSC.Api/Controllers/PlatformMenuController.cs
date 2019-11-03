@@ -3,9 +3,11 @@ using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Xml.Serialization;
 
 namespace SSC.Api.Controllers
 {
@@ -17,6 +19,15 @@ namespace SSC.Api.Controllers
             public string XmlSerializedItems { get; set; }
         }
 
+        [XmlRoot]
+        public class RequestXmlRoot {
+
+            [XmlArray("Items")]
+            [XmlArrayItem("Item")]
+            public List<PlatformMenuItem> Items { get; set; } = new List<PlatformMenuItem>();
+        }
+
+
         public PlatformMenuController(IPlatformMenuBusiness business) => this.business = business;
 
         protected IPlatformMenuBusiness business;
@@ -27,6 +38,20 @@ namespace SSC.Api.Controllers
 
         protected IEnumerable<PlatformMenuItem> DeserializeItems(string xml)
         {
+            if (String.IsNullOrWhiteSpace(xml))
+            {
+                return new List<PlatformMenuItem>();
+            }
+
+            RequestXmlRoot root;
+            var serializer = new XmlSerializer(typeof(RequestXmlRoot));
+
+            using (var stream = new StringReader(xml))
+                root = (RequestXmlRoot)serializer.Deserialize(stream);
+
+            if (root != null)
+                return root.Items;
+
             return null;
         }
 
