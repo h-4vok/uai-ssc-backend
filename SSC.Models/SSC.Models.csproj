@@ -73,6 +73,8 @@
     <Compile Include="Permission.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="PhoneType.cs" />
+    <Compile Include="PlatformMenu.cs" />
+    <Compile Include="PlatformMenuItem.cs" />
     <Compile Include="PricingPlan.cs" />
     <Compile Include="PricingPlanComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

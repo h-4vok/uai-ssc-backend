@@ -111,6 +111,36 @@ LEFT  JOIN	Permission P
 		ON	aux.Code = p.Code
 WHERE		p.Code IS NULL
 
+-- Default Platform Menu and Menu Items
+EXEC sp_PlatformMenu_create 'configuration-menu', 'menu.platform.configuration-menu', 1, 1
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 1, '/configuration/unit-of-measure', 'menu.platform.configuration.unit-of-measure', 'UNIT_OF_MEASURE_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 2, '/configuration/sample-type', 'menu.platform.configuration.sample-type', 'SAMPLE_TYPE_MANAGEMENT', 'SAMPLE_TYPE_REPORT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 3, '/configuration/sample-type-parameter','menu.platform.configuration.sample-type-parameter', 'SAMPLE_TYPE_PARAMETERS_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 4, '/configuration/sample-function', 'menu.platform.configuration.sample-function', 'SAMPLE_FUNCTION_REPORT', 'SAMPLE_FUNCTION_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 5, '/configuration/language', 'menu.platform.configuration.language', 'LANGUAGES_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 6, '/configuration/client-billing', 'menu.platform.configuration.clients-and-billing', 'CLIENT_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'configuration-menu', 7, '/configuration/platform-menu', 'menu.platform.configuration.platform-menu', 'PLATFORM_ADMIN'
+
+EXEC sp_PlatformMenu_create 'security-menu', 'menu.platform.security-menu', 2, 1
+EXEC sp_PlatformMenuItem_fullCreate 'security-menu', 1, '/security/user', 'menu.platform.security.user', 'USERS_MANAGEMENT', 'USERS_REPORT'
+EXEC sp_PlatformMenuItem_fullCreate 'security-menu', 2, '/security/role', 'menu.platform.security.role', 'ROLES_MANAGEMENT', 'ROLES_REPORT'
+EXEC sp_PlatformMenuItem_fullCreate 'security-menu', 3, '/security/log', 'menu.platform.security.logging', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate 'security-menu', 4, '/security/backup', 'menu.platform.security.backup', 'PLATFORM_BACKUP', 'PLATFORM_RESTORE'
+EXEC sp_PlatformMenuItem_fullCreate 'security-menu', 5, '/security/parameter', 'menu.platform.security.parameters', 'PLATFORM_ADMIN'
+
+EXEC sp_PlatformMenu_create 'inventory-menu', 'menu.platform.inventory-menu', 3, 1
+EXEC sp_PlatformMenuItem_fullCreate 'inventory-menu', 1, '/inventory/patient', 'menu.platform.inventory.patient', 'PATIENTS_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'inventory-menu', 2, '/inventory/sample', 'menu.platform.inventory.sample', 'SAMPLE_MANAGEMENT'
+
+EXEC sp_PlatformMenu_create 'management-menu', 'menu.platform.management-menu', 4, 1
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 1, '/management/member', 'menu.platform.management.members', 'MEMBER_MANAGEMENT', 'MEMBER_REPORT'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 2, '/management/payment-type', 'menu.platform.management.payment-type', 'PAYMENT_METHOD_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing', 'menu.platform.management.billing', 'CLIENT_BILLING_MANAGEMENT'
+
+EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 5, 1
+EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
+EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 2, '/work-order/run', 'menu.platform.work-order.runs', 'RUN_EXECUTION_CANCEL', 'RUN_EXECUTION_PRIMARY','RUN_EXECUTION_QA','RUN_EXECUTION_QC'
+
 -- Satellite Data: Initial Roles
 INSERT Role (
 	Name,
@@ -2152,9 +2182,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Rating'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.configuration.platform-menu',
+	@es = 'Navegación de Plataforma',
+	@en = 'Platform Menus'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

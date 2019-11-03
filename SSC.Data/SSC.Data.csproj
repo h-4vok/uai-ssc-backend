@@ -74,6 +74,7 @@
     <Compile Include="Interfaces\ILogData.cs" />
     <Compile Include="Interfaces\IPatientData.cs" />
     <Compile Include="Interfaces\IPermissionData.cs" />
+    <Compile Include="Interfaces\IPlatformMenuData.cs" />
     <Compile Include="Interfaces\IPricingPlanCommentData.cs" />
     <Compile Include="Interfaces\IPricingPlanData.cs" />
     <Compile Include="Interfaces\IProvinceData.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="LogData.cs" />
     <Compile Include="PatientData.cs" />
     <Compile Include="PermissionData.cs" />
+    <Compile Include="PlatformMenuData.cs" />
     <Compile Include="PricingPlanCommentData.cs" />
     <Compile Include="PricingPlanData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

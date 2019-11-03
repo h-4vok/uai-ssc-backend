@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[PlatformMenuItem]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	RelativeRoute NVARCHAR(500) NOT NULL,
+	TranslationKey NVARCHAR(500) NOT NULL,
+	PlatformMenuId INT NOT NULL,
+	MenuOrder INT NOT NULL,
+
+	CreatedBy INT,
+	UpdatedBy INT,
+	CreatedDate SMALLDATETIME DEFAULT(GETUTCDATE()),
+	UpdatedDate SMALLDATETIME DEFAULT(GETUTCDATE()),
+
+	FOREIGN KEY (PlatformMenuId) REFERENCES PlatformMenu
+)

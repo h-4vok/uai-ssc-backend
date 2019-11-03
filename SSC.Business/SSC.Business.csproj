@@ -66,6 +66,7 @@
     <Compile Include="Interfaces\ILogBusiness.cs" />
     <Compile Include="Interfaces\IPatientBusiness.cs" />
     <Compile Include="Interfaces\IPermissionBusiness.cs" />
+    <Compile Include="Interfaces\IPlatformMenuBusiness.cs" />
     <Compile Include="Interfaces\IPricingPlanBusiness.cs" />
     <Compile Include="Interfaces\IPricingPlanCommentBusiness.cs" />
     <Compile Include="Interfaces\IProvinceBusiness.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="LogBusiness.cs" />
     <Compile Include="PatientBusiness.cs" />
     <Compile Include="PermissionBusiness.cs" />
+    <Compile Include="PlatformMenuBusiness.cs" />
     <Compile Include="PricingPlanBusiness.cs" />
     <Compile Include="PricingPlanCommentBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
