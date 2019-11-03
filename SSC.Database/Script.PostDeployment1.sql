@@ -2187,14 +2187,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Platform Menus'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu.translation-key',
+	@es = 'Clave de Traducción',
+	@en = 'Translation Key'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu.menu-order',
+	@es = 'Orden en el Menú',
+	@en = 'Menu Order'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
