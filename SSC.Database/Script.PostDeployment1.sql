@@ -2217,34 +2217,34 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Relative Route'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu.validation.need-menu-items',
+	@es = 'Debe especificar al menos un ítem dentro del menú.',
+	@en = 'You must at least have one menu item for your menu.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.edit.title',
+	@es = 'Edición de ítem de menú',
+	@en = 'Platform Menu Item Edition'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.validation.relative-route',
+	@es = 'Debe especificar una ruta relativa para el link del menú.',
+	@en = 'The menu item needs a relative route to point to.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.validation.menu-order',
+	@es = 'El orden del item debe ser mayor a 0.',
+	@en = 'The menu order must be greater than 0.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.validation.translation-key',
+	@es = 'Debe seleccionar una clave de traducción.',
+	@en = 'You must pick a translation key.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.validation.required-permissions',
+	@es = 'El ítem debe depender de al menos un permiso de la plataforma.',
+	@en = 'The menu item must depend at least from one platform security permission.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

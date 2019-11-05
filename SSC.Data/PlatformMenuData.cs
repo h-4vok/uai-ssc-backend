@@ -60,7 +60,7 @@ namespace SSC.Data
 
         public void Delete(int id)
         {
-            this.uow.NonQuery("sp_PlatformMenu_delete", ParametersBuilder.With("Id", id));
+            this.uow.NonQueryDirect("sp_PlatformMenu_delete", ParametersBuilder.With("Id", id));
         }
 
         public void Edit(PlatformMenu menu, IEnumerable<PlatformMenuItem> items)
