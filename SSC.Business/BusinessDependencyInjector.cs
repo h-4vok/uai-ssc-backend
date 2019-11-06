@@ -44,6 +44,7 @@ namespace SSC.Business
             Register<IPricingPlanCommentData, PricingPlanCommentData>();
             Register<IPlatformMenuData, PlatformMenuData>();
             Register<ITranslationKeysData, TranslationKeysData>();
+            Register<IFeedbackFormData, FeedbackFormData>();
 
             DataDependencyInjector.RegisterAll();
         }

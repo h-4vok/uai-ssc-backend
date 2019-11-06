@@ -64,6 +64,7 @@
     <Compile Include="ClinicRunData.cs" />
     <Compile Include="CreditCardData.cs" />
     <Compile Include="DataDependencyInjector.cs" />
+    <Compile Include="FeedbackFormData.cs" />
     <Compile Include="Interfaces\IAboutUsData.cs" />
     <Compile Include="Interfaces\IBackupData.cs" />
     <Compile Include="Interfaces\IClientCompanyLabScriptData.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Interfaces\IClientTransactionData.cs" />
     <Compile Include="Interfaces\IClinicRunData.cs" />
     <Compile Include="Interfaces\ICreditCardData.cs" />
+    <Compile Include="Interfaces\IFeedbackFormData.cs" />
     <Compile Include="Interfaces\ILogData.cs" />
     <Compile Include="Interfaces\IPatientData.cs" />
     <Compile Include="Interfaces\IPermissionData.cs" />

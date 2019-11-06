@@ -54,6 +54,7 @@
     <Compile Include="ClinicRunBusiness.cs" />
     <Compile Include="CreditCardBusiness.cs" />
     <Compile Include="ExternalCreditCardValidator.cs" />
+    <Compile Include="FeedbackFormBusiness.cs" />
     <Compile Include="Interfaces\IAboutUsBusiness.cs" />
     <Compile Include="Interfaces\IBackupBusiness.cs" />
     <Compile Include="Interfaces\IBillBusiness.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Interfaces\IClinicRunBusiness.cs" />
     <Compile Include="Interfaces\ICreditCardBusiness.cs" />
     <Compile Include="Interfaces\IExternalCreditCardValidator.cs" />
+    <Compile Include="Interfaces\IFeedbackFormBusiness.cs" />
     <Compile Include="Interfaces\ILogBusiness.cs" />
     <Compile Include="Interfaces\IPatientBusiness.cs" />
     <Compile Include="Interfaces\IPermissionBusiness.cs" />

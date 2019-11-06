@@ -64,6 +64,9 @@
     <Compile Include="Enums\AuditRecordEnum.cs" />
     <Compile Include="ErrorLog.cs" />
     <Compile Include="EventType.cs" />
+    <Compile Include="FeedbackForm.cs" />
+    <Compile Include="FeedbackFormQuestion.cs" />
+    <Compile Include="FeedbackFormQuestionChoice.cs" />
     <Compile Include="InfoLog.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="NewsletterSubscriber.cs" />

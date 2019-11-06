@@ -215,6 +215,7 @@
     <Compile Include="Controllers\ClinicRunFileController.cs" />
     <Compile Include="Controllers\ClinicRunInvalidationController.cs" />
     <Compile Include="Controllers\CreditCardController.cs" />
+    <Compile Include="Controllers\FeedbackFormController.cs" />
     <Compile Include="Controllers\ForgotPasswordController.cs" />
     <Compile Include="Controllers\LabScriptController.cs" />
     <Compile Include="Controllers\LogController.cs" />

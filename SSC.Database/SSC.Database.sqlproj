@@ -233,6 +233,20 @@
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_getPermissionsById.sql" />
     <Build Include="Programmability\Stored Procedures\sp_TranslationKeys_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_search.sql" />
+    <Build Include="Tables\FeedbackForm.sql" />
+    <Build Include="Tables\FeedbackFormQuestion.sql" />
+    <Build Include="Tables\FeedbackFormQuestionChoice.sql" />
+    <Build Include="Tables\SubmittedFeedbackForm.sql" />
+    <Build Include="Tables\SubmittedFeedbackFormAnswer.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackFormQuestion_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackFormQuestionChoice_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_getOne.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_getQuestions.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackFormQuestion_getChoices.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_getCurrent.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_updateIsCurrent.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

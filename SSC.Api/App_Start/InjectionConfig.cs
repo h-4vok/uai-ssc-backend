@@ -60,6 +60,7 @@ namespace SSC.Api.App_Start
             Register<IPricingPlanCommentBusiness, PricingPlanCommentBusiness>();
             Register<IPlatformMenuBusiness, PlatformMenuBusiness>();
             Register<ITranslationKeysBusiness, TranslationKeysBusiness>();
+            Register<IFeedbackFormBusiness, FeedbackFormBusiness>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {

@@ -137,7 +137,10 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 1, '/management/member', 
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 2, '/management/payment-type', 'menu.platform.management.payment-type', 'PAYMENT_METHOD_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing', 'menu.platform.management.billing', 'CLIENT_BILLING_MANAGEMENT'
 
-EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 5, 1
+EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
+EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
+
+EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 6, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 2, '/work-order/run', 'menu.platform.work-order.runs', 'RUN_EXECUTION_CANCEL', 'RUN_EXECUTION_PRIMARY','RUN_EXECUTION_QA','RUN_EXECUTION_QC'
 
@@ -994,6 +997,9 @@ FROM	(
 	UNION SELECT k = 'menu.platform.management-menu',
 		es = 'Auto-Gestión',
 		en = 'Self-Management'
+	UNION SELECT k = 'menu.platform.marketing-menu',
+		es = 'Investigación de Marketing',
+		en = 'Marketing Research'
 	UNION SELECT k = 'menu.platform.management.members',
 		es = 'Usuarios Miembro',
 		en = 'Member Users'
@@ -2260,6 +2266,136 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'global.search',
 	@es = 'Buscar',
 	@en = 'Search'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.marketing.feedback-form',
+	@es = 'Gestión de Fichas de Opinión',
+	@en = 'Feedback Forms Management'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'feedback-form.is-current.true',
+	@es = 'ACTUAL',
+	@en = 'CURRENT'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'feedback-form.is-current.false',
+	@es = 'No',
+	@en = 'No'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.created-date',
+	@es = 'Fecha de Creación',
+	@en = 'Created Date'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'feedback-form.is-current',
+	@es = 'Es la actual',
+	@en = 'Is current'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'feedback-form.action.set-is-current',
+	@es = 'Convertir en Actual',
+	@en = 'Set To Current'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
