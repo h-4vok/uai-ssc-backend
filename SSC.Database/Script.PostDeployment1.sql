@@ -2247,19 +2247,19 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The menu item must depend at least from one platform security permission.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-menu-item.grid.page-title',
+	@es = 'Página de la plataforma',
+	@en = 'Page'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'search-back-office.search-term-input',
+	@es = 'Indique su criterio de búsqueda',
+	@en = 'Please type in what you are looking for'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.search',
+	@es = 'Buscar',
+	@en = 'Search'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

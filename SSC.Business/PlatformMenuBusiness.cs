@@ -39,5 +39,10 @@ namespace SSC.Business
         {
             return this.data.GetAll();
         }
+
+        public IEnumerable<PlatformMenuItem> GetMenuItems(string searchTerm)
+        {
+            return this.data.GetMenuItems(searchTerm);
+        }
     }
 }

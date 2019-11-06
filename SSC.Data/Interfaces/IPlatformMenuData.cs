@@ -14,5 +14,6 @@ namespace SSC.Data.Interfaces
         void Create(PlatformMenu menu, IEnumerable<PlatformMenuItem> items);
         void Edit(PlatformMenu menu, IEnumerable<PlatformMenuItem> items);
         void Delete(int id);
+        IEnumerable<PlatformMenuItem> GetMenuItems(string searchTerm);
     }
 }

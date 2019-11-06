@@ -232,6 +232,7 @@
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_getByParentId.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_getPermissionsById.sql" />
     <Build Include="Programmability\Stored Procedures\sp_TranslationKeys_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PlatformMenuItem_search.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

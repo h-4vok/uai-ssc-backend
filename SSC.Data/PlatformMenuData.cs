@@ -160,5 +160,17 @@ namespace SSC.Data
         {
             return this.uow.GetDirect("sp_PlatformMenu_get", this.Fetch);
         }
+
+        public IEnumerable<PlatformMenuItem> GetMenuItems(string searchTerm)
+        {
+            var langCode = auth.CurrentLanguageCode;
+            var userId = auth.CurrentUserId;
+
+            return this.uow.GetDirect("sp_PlatformMenuItem_search", this.FetchItem,
+                ParametersBuilder.With("SearchTerm", searchTerm)
+                    .And("LanguageCode", langCode)
+                    .And("UserId", userId)
+            );
+        }
     }
 }

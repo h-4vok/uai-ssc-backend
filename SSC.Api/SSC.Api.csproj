@@ -225,6 +225,7 @@
     <Compile Include="Controllers\PatientTypeController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\PlatformMenuController.cs" />
+    <Compile Include="Controllers\PlatformMenuItemController.cs" />
     <Compile Include="Controllers\PricingPlanCommentController.cs" />
     <Compile Include="Controllers\PricingPlanController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
