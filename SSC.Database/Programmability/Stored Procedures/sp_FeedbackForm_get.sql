@@ -4,7 +4,8 @@ BEGIN
 	
 	SELECT
 		ff.Id,
-		ff.IsCurrent
+		ff.IsCurrent,
+		ff.CreatedDate
 
 	FROM		FeedbackForm FF
 

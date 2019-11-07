@@ -24,6 +24,7 @@ namespace SSC.Data
             {
                 Id = reader.GetInt32("Id"),
                 IsCurrent = reader.GetBoolean("IsCurrent"),
+                CreatedDate = reader.GetDateTime("CreatedDate")
             };
 
             return record;

@@ -5,7 +5,8 @@ BEGIN
 
 	SELECT
 		Id,
-		IsCurrent
+		IsCurrent,
+		CreatedDate
 
 	FROM		FeedbackForm
 

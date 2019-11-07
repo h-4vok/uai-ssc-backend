@@ -2298,49 +2298,49 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Set To Current'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.feedback-form.title.new',
+	@es = 'Nueva Ficha de Opinión',
+	@en = 'New Feedback Form'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.question',
+	@es = 'Pregunta',
+	@en = 'Question'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.validation.question',
+	@es = 'Debe especificar una pregunta.',
+	@en = 'You must specify a question.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.validation.choices',
+	@es = 'Debe tener al menos 2 opciones.',
+	@en = 'You must have at least 2 choices.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.edit.title',
+	@es = 'Pregunta de Ficha de Opinión',
+	@en = 'Feedback Form Question'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.question',
+	@es = 'Especifique el enunciado de la pregunta',
+	@en = 'Specify the question description'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question-choice.choice-title',
+	@es = 'Opción',
+	@en = 'Choice'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.validation.empty-choice',
+	@es = 'Una o más opciones están vacías.',
+	@en = 'One or more choices are empty.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-question.grid.question',
+	@es = 'Enunciado',
+	@en = 'Question'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
