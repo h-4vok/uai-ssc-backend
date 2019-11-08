@@ -111,6 +111,8 @@ namespace SSC.Data
         {       
             var id = this.uow.ScalarDirect("sp_FeedbackForm_getCurrent").AsInt();
 
+            if (id == 0) return null;
+
             return this.Get(id);
         }
 

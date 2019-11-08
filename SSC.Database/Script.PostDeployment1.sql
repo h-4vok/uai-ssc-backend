@@ -2343,24 +2343,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Question'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'submitted-feedback-form.page.title',
+	@es = 'Bienvenido a Sample Supply Chain',
+	@en = 'Welcome to Sample Supply Chain'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'submitted-feedback-form.page.subtitle',
+	@es = 'Por favor tómese unos segundos para opinar sobre la experiencia y seguridad del proceso de registración.',
+	@en = 'Please take a few seconds to give us your opinion about the experience and security of the sign up process.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'submitted-feedback-form.validation.choice-null',
+	@es = 'Una o más preguntas no han sido respondidas.',
+	@en = 'One or more questions have not been answered.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'submitted-feedback-form.thank-you',
+	@es = 'Muchas Gracias!',
+	@en = 'Thank you!'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

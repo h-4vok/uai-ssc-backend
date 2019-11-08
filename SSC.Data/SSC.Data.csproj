@@ -90,6 +90,7 @@
     <Compile Include="Interfaces\ISampleTypeData.cs" />
     <Compile Include="Interfaces\ISatelliteDataData.cs" />
     <Compile Include="Interfaces\ISiteNewsData.cs" />
+    <Compile Include="Interfaces\ISubmittedFeedbackFormData.cs" />
     <Compile Include="Interfaces\ISystemLanguageData.cs" />
     <Compile Include="Interfaces\ITranslationKeysData.cs" />
     <Compile Include="Interfaces\IUserData.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="SampleTypeData.cs" />
     <Compile Include="SatelliteDataData.cs" />
     <Compile Include="SiteNewsData.cs" />
+    <Compile Include="SubmittedFeedbackFormData.cs" />
     <Compile Include="SystemLanguageData.cs" />
     <Compile Include="TranslationKeysData.cs" />
     <Compile Include="UserData.cs" />

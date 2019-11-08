@@ -247,6 +247,9 @@
     <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_getCurrent.sql" />
     <Build Include="Programmability\Stored Procedures\sp_FeedbackForm_updateIsCurrent.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackFormAnswer_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_hasUserSubmittedCurrent.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

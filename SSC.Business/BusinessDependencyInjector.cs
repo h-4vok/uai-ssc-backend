@@ -45,6 +45,7 @@ namespace SSC.Business
             Register<IPlatformMenuData, PlatformMenuData>();
             Register<ITranslationKeysData, TranslationKeysData>();
             Register<IFeedbackFormData, FeedbackFormData>();
+            Register<ISubmittedFeedbackFormData, SubmittedFeedbackFormData>();
 
             DataDependencyInjector.RegisterAll();
         }
