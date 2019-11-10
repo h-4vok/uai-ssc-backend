@@ -29,7 +29,8 @@ namespace SSC.Data
         {
             var record = new ChartDataViewModel
             {
-                Data = reader.GetDecimal(reader.GetOrdinal("Data")),
+                Percentage = reader.GetDecimal(reader.GetOrdinal("Percentage")),
+                Count = reader.GetInt32("Count"),
                 Label = reader.GetString("Label")
             };
 

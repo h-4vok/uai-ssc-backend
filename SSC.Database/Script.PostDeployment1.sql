@@ -2419,6 +2419,71 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Survey Results'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.compare-results',
+	@es = 'Comparar Resultados',
+	@en = 'Compare Results'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.view-results',
+	@es = 'Ver Resultados',
+	@en = 'View Results'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.percentage',
+	@es = 'Porcentaje',
+	@en = 'Percentage'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.count',
+	@es = 'Cantidad',
+	@en = 'Count'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

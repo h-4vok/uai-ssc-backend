@@ -33,7 +33,8 @@ BEGIN
 	)
 	SELECT 
 		'Label' = scc.ChoiceTitle,
-		'Data' = CONVERT(NUMERIC(12, 2), (CONVERT(NUMERIC(12, 2), scc.SurveyCount) * 100) / @TotalCount)
+		'Percentage' = CONVERT(NUMERIC(12, 2), (CONVERT(NUMERIC(12, 2), scc.SurveyCount) * 100) / @TotalCount),
+		Count = scc.SurveyCount
 
 	FROM		CTE_SurveyChoiceCounts SCC
 
