@@ -1,4 +1,5 @@
-﻿using SSC.Models;
+﻿using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace SSC.Data.Interfaces
         bool GetHasSubmitted();
 
         void Create(SubmittedFeedbackForm form);
+        IEnumerable<FeedbackQuestionChartDataViewModel> GetChartData(int surveyId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SSC.Business.Interfaces;
+using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -23,6 +24,11 @@ namespace SSC.Business
         public bool GetHasSubmitted()
         {
             return this.data.GetHasSubmitted();
+        }
+
+        public IEnumerable<FeedbackQuestionChartDataViewModel> GetChartData(int surveyId)
+        {
+            return this.data.GetChartData(surveyId);
         }
     }
 }

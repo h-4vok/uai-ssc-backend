@@ -565,45 +565,17 @@ SELECT
 	ExpirationDateMMYY = '0120',
 	IsDefault = 1
 
-INSERT PlatformUser (
-	UserName,
-	Password,
-	IsBlocked,
-	IsEnabled,
-	FirstName,
-	LastName,
-	ClientId,
-	IsEnabledInCompany,
-	LoginFailures,
-	CreatedBy,
-	UpdatedBy
-)
-SELECT
-	UserName = 'test@test.com',
-	Password = '1A4+OYh1+avWgZilfsAZY1hBt+Y=',
-	IsBlocked = 0,
-	IsEnabled = 1,
-	FirstName = 'Tester',
-	LastName = 'McBug',
-	ClientId = @DefaultCompanyId,
-	IsEnabledInCompany = 1,
-	LoginFailures = 0,
-	CreatedBy = 1,
-	UpdatedBy = 1
-
-DECLARE @testUserId INT
-SET @testUserId = SCOPE_IDENTITY()
-
--- Set roles
-INSERT UserRole (
-	UserId,
-	RoleId
-)
-SELECT
-	UserId = @testUserId,
-	RoleId = r.Id
-FROM		Role R
-WHERE		R.Name in ('Científico Ejecutor','Científico Auditor','Controlador de Calidad','Administrador de Cliente')
+EXEC sp_PlatformUser_createTestUser 'test@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test1@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test2@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test3@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test4@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test5@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test6@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test7@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test8@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test9@test.com', @DefaultCompanyId
+EXEC sp_PlatformUser_createTestUser 'test10@test.com', @DefaultCompanyId
 
 -- Patient Types
 INSERT PatientType (
@@ -2444,9 +2416,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Compare Surveys'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'feedback-form-results.page.title',
+	@es = 'Resultados de Ficha de opinión',
+	@en = 'Feedback Form Results'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

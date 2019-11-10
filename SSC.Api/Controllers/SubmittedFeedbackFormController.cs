@@ -17,6 +17,8 @@ namespace SSC.Api.Controllers
 
         protected ISubmittedFeedbackFormBusiness business;
 
+        public ResponseViewModel<IEnumerable<FeedbackQuestionChartDataViewModel>> Get(int id) => this.business.GetChartData(id).ToList();
+        
         public ResponseViewModel<IEnumerable<SubmittedFeedbackForm>> Get(bool needForCurrentUser)
         {
             if (needForCurrentUser)

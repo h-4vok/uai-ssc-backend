@@ -261,6 +261,9 @@
     <Build Include="Programmability\Stored Procedures\SubmittedSurvey.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SubmittedSurvey_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SubmittedSurvey_getChartData.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_getChartQuestions.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_getChartData.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_PlatformUser_createTestUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
