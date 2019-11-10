@@ -16,5 +16,7 @@ namespace SSC.Api.Controllers
         protected ISubmittedSurveyBusiness business;
 
         public ResponseViewModel Post(SubmittedSurvey model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
+
+        public ResponseViewModel<IEnumerable<ChartDataViewModel>> Get(int id) => this.business.GetChartData(id).ToList();
     }
 }

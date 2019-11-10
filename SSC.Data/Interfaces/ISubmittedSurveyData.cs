@@ -1,4 +1,5 @@
-﻿using SSC.Models;
+﻿using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace SSC.Data.Interfaces
     public interface ISubmittedSurveyData
     {
         void Create(SubmittedSurvey model);
+        IEnumerable<ChartDataViewModel> GetChartData(int surveyId);
     }
 }

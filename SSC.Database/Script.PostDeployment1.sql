@@ -2414,9 +2414,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Give us your opinion!'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-results.page.title',
+	@es = 'Resultados de la Encuesta',
+	@en = 'Survey Results'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
