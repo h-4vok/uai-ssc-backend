@@ -25,10 +25,11 @@ namespace SSC.Business
             var validations = Validator<SurveyForm>.Start(model)
                 .MandatoryString(x => x.QuestionTitle, i10n["survey-form.question-title"])
                 .ListNotEmpty(x => x.Choices, i10n["survey-form.choices"])
-                .ClosureReturnsFalse(x =>
+                .FailWhenClosureReturnsFalse(x =>
                 {
                     return !x.Choices.Any(choice => String.IsNullOrWhiteSpace(choice.ChoiceTitle));
                 }, i10n["survey-form.choices.choice-title-empty"])
+                .FailWhenClosureReturnsFalse(x => x.Choices.Count() > 1, i10n["survey-form.choices.need-more-than-one"])
                 .ValidationResult;
 
             if (!String.IsNullOrWhiteSpace(validations))
@@ -37,9 +38,9 @@ namespace SSC.Business
             this.data.Create(model);
         }
 
-        public IEnumerable<SurveyForm> Get()
+        public IEnumerable<SurveyForm> Get(bool getOneRandom)
         {
-            return this.data.Get();
+            return this.data.Get(getOneRandom);
         }
 
         public SurveyForm Get(int id)

@@ -47,6 +47,7 @@ namespace SSC.Business
             Register<IFeedbackFormData, FeedbackFormData>();
             Register<ISubmittedFeedbackFormData, SubmittedFeedbackFormData>();
             Register<ISurveyFormData, SurveyFormData>();
+            Register<ISubmittedSurveyData, SubmittedSurveyData>();
 
             DataDependencyInjector.RegisterAll();
         }

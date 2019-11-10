@@ -258,6 +258,8 @@
     <Build Include="Programmability\Stored Procedures\sp_SurveyForm_getOne.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SurveyChoice_getForForm.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SurveyForm_updateIsEnabled.sql" />
+    <Build Include="Programmability\Stored Procedures\SubmittedSurvey.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SubmittedSurvey_create.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

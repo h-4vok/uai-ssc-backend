@@ -174,7 +174,7 @@ namespace SSC.Business
             return this;
         }
 
-        public Validator<T> ClosureReturnsFalse(Func<T, bool> closure, string errorMessage)
+        public Validator<T> FailWhenClosureReturnsFalse(Func<T, bool> closure, string errorMessage)
         {
             if (!this.ShouldRun) return this;
 

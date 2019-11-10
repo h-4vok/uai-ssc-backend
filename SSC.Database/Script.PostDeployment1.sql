@@ -2404,14 +2404,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Expiration Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-form.choices.need-more-than-one',
+	@es = 'Debe haber al menos dos opciones.',
+	@en = 'You must have at least two options.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-submission.hello',
+	@es = '¡Danos tu opinión!',
+	@en = 'Give us your opinion!'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

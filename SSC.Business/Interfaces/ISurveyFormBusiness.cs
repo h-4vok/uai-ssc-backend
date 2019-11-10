@@ -9,7 +9,7 @@ namespace SSC.Business.Interfaces
 {
     public interface ISurveyFormBusiness
     {
-        IEnumerable<SurveyForm> Get();
+        IEnumerable<SurveyForm> Get(bool getOneRandom);
         SurveyForm Get(int id);
         void Create(SurveyForm model);
         void UpdateIsEnabled(int id, bool isEnabled);

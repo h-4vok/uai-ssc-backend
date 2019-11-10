@@ -21,7 +21,7 @@ namespace SSC.Api.Controllers
 
         public ResponseViewModel<SurveyForm> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel<IEnumerable<SurveyForm>> Get() => this.business.Get().ToList();
+        public ResponseViewModel<IEnumerable<SurveyForm>> Get(bool getOneRandom = false) => this.business.Get(getOneRandom).ToList();
 
         [SscAuthorize(Permissions = "PLATFORM_ADMIN")]
         public ResponseViewModel Patch(int id, PatchOperationList list)

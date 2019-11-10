@@ -55,9 +55,23 @@ namespace SSC.Data
             return record;
         }
 
-        public IEnumerable<SurveyForm> Get()
+        public IEnumerable<SurveyForm> Get(bool getOneRandom)
         {
-            return this.uow.GetDirect("sp_SurveyForm_getAll", this.Fetch);
+            var items = this.uow.GetDirect("sp_SurveyForm_getAll", this.Fetch);
+
+            if (!getOneRandom || items.Count() == 0)
+                return items;
+
+            // Buscamos dentro de las encuestas habilitadas y sin expirar, un indice random
+            var enabledItems = items.Where(x => x.IsEnabled && x.ExpirationDate > DateTime.Now);
+            var randomIndex = new Random(DateTime.Now.Second).Next(0, enabledItems.Count());
+
+            // Devolvemos esa encuesta a la UI
+            var surveyForm = enabledItems.ElementAt(randomIndex);
+
+            surveyForm.Choices = this.uow.GetDirect("sp_SurveyChoice_getForForm", this.FetchChoice, ParametersBuilder.With("Id", surveyForm.Id));
+
+            return new List<SurveyForm> { surveyForm };
         }
 
         protected SurveyChoice FetchChoice(IDataReader reader)
