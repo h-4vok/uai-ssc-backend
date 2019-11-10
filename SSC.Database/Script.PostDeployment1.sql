@@ -2439,9 +2439,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Count'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-results.compare.page.title',
+	@es = 'Comparar Encuestas',
+	@en = 'Compare Surveys'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
