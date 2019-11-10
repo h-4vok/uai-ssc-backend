@@ -11,6 +11,7 @@ namespace SSC.Models
         public int Id { get; set; }
         public string QuestionTitle { get; set; }
         public bool IsEnabled { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public IEnumerable<SurveyChoice> Choices { get; set; } = new List<SurveyChoice>();
     }
 }

@@ -26,6 +26,7 @@ namespace SSC.Data
             {
                 model.Id = this.uow.Scalar("sp_SurveyForm_create",
                     ParametersBuilder.With("QuestionTitle", model.QuestionTitle)
+                        .And("ExpirationDate", model.ExpirationDate)
                         .And("CreatedBy", userId)
                 ).AsInt();
 
@@ -47,7 +48,8 @@ namespace SSC.Data
             {
                 Id = reader.GetInt32("Id"),
                 QuestionTitle = reader.GetString("QuestionTitle"),
-                IsEnabled = reader.GetBoolean("IsEnabled")
+                IsEnabled = reader.GetBoolean("IsEnabled"),
+                ExpirationDate = reader.GetDateTime("ExpirationDate")
             };
 
             return record;

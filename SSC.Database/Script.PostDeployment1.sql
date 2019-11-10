@@ -2374,34 +2374,34 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Surveys'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.survey-form.title.edit',
+	@es = 'Editar Encuesta',
+	@en = 'Edit Survey Form'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.survey-form.title.new',
+	@es = 'Nueva Encuesta',
+	@en = 'New Survey Form'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-choice.choice-title',
+	@es = 'Opción',
+	@en = 'Choice'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-form.choices',
+	@es = 'Opciones',
+	@en = 'Choices'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-form.choices.choice-title-empty',
+	@es = 'Una o más opciones están vacías.',
+	@en = 'One or more options are empty.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-form.expiration-date',
+	@es = 'Fecha de Expiración',
+	@en = 'Expiration Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

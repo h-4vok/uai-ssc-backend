@@ -173,5 +173,19 @@ namespace SSC.Business
 
             return this;
         }
+
+        public Validator<T> ClosureReturnsFalse(Func<T, bool> closure, string errorMessage)
+        {
+            if (!this.ShouldRun) return this;
+
+            var output = closure(this.model);
+
+            if (!output)
+            {
+                return this.SetAndReturn(errorMessage);
+            }
+
+            return this;
+        }
     }
 }

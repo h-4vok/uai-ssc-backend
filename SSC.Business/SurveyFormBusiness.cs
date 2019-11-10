@@ -1,4 +1,7 @@
 ﻿using SSC.Business.Interfaces;
+using SSC.Common;
+using SSC.Common.Exceptions;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -17,6 +20,20 @@ namespace SSC.Business
 
         public void Create(SurveyForm model)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            var validations = Validator<SurveyForm>.Start(model)
+                .MandatoryString(x => x.QuestionTitle, i10n["survey-form.question-title"])
+                .ListNotEmpty(x => x.Choices, i10n["survey-form.choices"])
+                .ClosureReturnsFalse(x =>
+                {
+                    return !x.Choices.Any(choice => String.IsNullOrWhiteSpace(choice.ChoiceTitle));
+                }, i10n["survey-form.choices.choice-title-empty"])
+                .ValidationResult;
+
+            if (!String.IsNullOrWhiteSpace(validations))
+                throw new UnprocessableEntityException(validations);
+
             this.data.Create(model);
         }
 
