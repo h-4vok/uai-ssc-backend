@@ -139,6 +139,7 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing',
 
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 2, '/marketing/survey-form', 'menu.platform.marketing.survey-form', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 6, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
@@ -2363,14 +2364,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Thank you!'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'survey-form.question-title',
+	@es = 'Pregunta de Encuesta',
+	@en = 'Survey Question'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.marketing.survey-form',
+	@es = 'Encuestas',
+	@en = 'Surveys'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

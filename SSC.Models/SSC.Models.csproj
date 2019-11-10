@@ -100,6 +100,8 @@
     <Compile Include="SiteNewsArticle.cs" />
     <Compile Include="SubmittedFeedbackForm.cs" />
     <Compile Include="SubmittedFeedbackFormAnswer.cs" />
+    <Compile Include="SurveyChoice.cs" />
+    <Compile Include="SurveyForm.cs" />
     <Compile Include="SystemLanguage.cs" />
     <Compile Include="SystemLanguageEntry.cs" />
     <Compile Include="TransactionType.cs" />

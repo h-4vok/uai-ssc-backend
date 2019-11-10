@@ -250,6 +250,14 @@
     <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackFormAnswer_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_hasUserSubmittedCurrent.sql" />
+    <Build Include="Tables\SurveyForm.sql" />
+    <Build Include="Tables\SurveyChoice.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyForm_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyChoice_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyForm_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyForm_getOne.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyChoice_getForForm.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SurveyForm_updateIsEnabled.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

@@ -246,6 +246,7 @@
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\SiteNewsController.cs" />
     <Compile Include="Controllers\SubmittedFeedbackFormController.cs" />
+    <Compile Include="Controllers\SurveyFormController.cs" />
     <Compile Include="Controllers\SystemLanguageController.cs" />
     <Compile Include="Controllers\SystemLanguageEntryController.cs" />
     <Compile Include="Controllers\TranslationKeysController.cs" />
