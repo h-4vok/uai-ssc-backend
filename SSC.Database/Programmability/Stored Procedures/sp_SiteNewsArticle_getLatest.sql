@@ -12,7 +12,7 @@ BEGIN
 
 	FROM		SiteNewsArticle SNA
 
-	WHERE		sna.PublicationDate <= GETDATE()
+	WHERE		CONVERT(DATE, sna.PublicationDate) <= CONVERT(DATE, GETDATE())
 
 	ORDER BY	sna.PublicationDate DESC
 
