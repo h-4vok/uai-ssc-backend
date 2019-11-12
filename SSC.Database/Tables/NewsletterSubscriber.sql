@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[NewsletterSubscriber]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	Email NVARCHAR(500) NOT NULL,
+	IsEnabled BIT NOT NULL DEFAULT(1)
+)

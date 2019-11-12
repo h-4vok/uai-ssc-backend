@@ -17,6 +17,7 @@ namespace SSC.Data.Interfaces
         void Queue(QueuedMail mail);
         IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo);
         IEnumerable<NewsletterSubscriber> GetNewsletterSubscribers();
+        SiteNewsArticle Get(int id);
         bool SubscriberExists(string email);
         void SubscribeToNewsletter(string email);
         void UnsubscribeToNewsletter(string email);

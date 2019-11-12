@@ -264,6 +264,18 @@
     <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_getChartQuestions.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SubmittedFeedbackForm_getChartData.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PlatformUser_createTestUser.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArtigle_getBetween.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getLatest.sql" />
+    <Build Include="Tables\NewsletterSubscriber.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_exists.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getOne.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

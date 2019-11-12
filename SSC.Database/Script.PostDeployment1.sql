@@ -140,6 +140,7 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing',
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 2, '/marketing/survey-form', 'menu.platform.marketing.survey-form', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 3, '/marketing/site-news', 'menu.platform.marketing.site-news', 'NEWS_MANAGEMENT'
 
 EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 6, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
@@ -926,17 +927,17 @@ FROM	(
 		es = 'Configuración',
 		en = 'Configuration'
 	UNION SELECT k = 'menu.platform.configuration.sample-type',
-		es = 'Tipos de Muestra',
-		en = 'Sample Types'
+		es = 'Gestión de Tipos de Muestra',
+		en = 'Sample Types Management'
 	UNION SELECT k = 'menu.platform.configuration.sample-type-parameter',
 		es = 'Parámetros de tipos de muestra',
 		en = 'Sample Type Parameters'
 	UNION SELECT k = 'menu.platform.configuration.sample-function',
 		es = 'Funciones de Muestra',
-		en = 'Sample Functions'
+		en = 'Sample Functions Management'
 	UNION SELECT k = 'menu.platform.configuration.language',
 		es = 'Gestión de Idiomas',
-		en = 'Languages'
+		en = 'Languages Management'
 	UNION SELECT k = 'menu.platform.configuration.clients-and-billing',
 		es = 'Clientes y Facturación',
 		en = 'Clients and Billing'
@@ -945,10 +946,10 @@ FROM	(
 		en = 'Security'
 	UNION SELECT k = 'menu.platform.security.user',
 		es = 'Gestión de Usuarios',
-		en = 'Users'
+		en = 'Users Management'
 	UNION SELECT k = 'menu.platform.security.role',
 		es = 'Gestión de Roles',
-		en = 'Roles'
+		en = 'Security Roles Management'
 	UNION SELECT k = 'menu.platform.security.logging',
 		es = 'Bitácora',
 		en = 'Logs'
@@ -963,10 +964,10 @@ FROM	(
 		en = 'Inventory'
 	UNION SELECT k = 'menu.platform.inventory.patient',
 		es = 'Gestión de Pacientes',
-		en = 'Patients'
+		en = 'Patients Management'
 	UNION SELECT k = 'menu.platform.inventory.sample',
 		es = 'Gestión de Muestras',
-		en = 'Samples'
+		en = 'Samples Management'
 	UNION SELECT k = 'menu.platform.management-menu',
 		es = 'Auto-Gestión',
 		en = 'Self-Management'
@@ -1848,7 +1849,7 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'menu.platform.account.change-password',
 	@es = 'Cambio de contraseña',
-	@en = 'Password change'
+	@en = 'Change Password'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'account.change-password.page.title',
@@ -2163,7 +2164,7 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'menu.platform.configuration.platform-menu',
 	@es = 'Navegación de Plataforma',
-	@en = 'Platform Menus'
+	@en = 'Platform Navigation Management'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'platform-menu.translation-key',
@@ -2342,8 +2343,8 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'menu.platform.marketing.survey-form',
-	@es = 'Encuestas',
-	@en = 'Surveys'
+	@es = 'Gestión de Encuestas',
+	@en = 'Surveys Management'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'marketing.survey-form.title.edit',
@@ -2421,24 +2422,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Feedback Form Results'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.marketing.site-news',
+	@es = 'Gestión de Noticias',
+	@en = 'News Management'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news-article.title',
+	@es = 'Título',
+	@en = 'Title'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news-article.author',
+	@es = 'Autor',
+	@en = 'Author'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news-article.publication-date',
+	@es = 'Fecha de Publicación',
+	@en = 'Publication Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

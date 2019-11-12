@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -22,67 +23,116 @@ namespace SSC.Data
 
         private SiteNewsArticle Fetch(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new SiteNewsArticle
+            {
+                Id = reader.GetInt32("Id"),
+                Author = reader.GetString("Author"),
+                Title = reader.GetString("Title"),
+                Content = reader.GetString("Content"),
+                PublicationDate = reader.GetDateTime("PublicationDate")
+            };
+
+            return record;
         }
 
         private NewsletterSubscriber FetchSubscriber(IDataReader reader)
         {
-            throw new NotImplementedException();
+            var record = new NewsletterSubscriber
+            {
+                Id = reader.GetInt32("Id"),
+                Email = reader.GetString("Email"),
+                IsEnabled = reader.GetBoolean("IsEnabled")
+            };
+
+            return record;
         }
 
         public void Create(SiteNewsArticle model)
         {
-            throw new NotImplementedException();
+            var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
+
+            this.uow.NonQueryDirect("sp_SiteNewsArticle_create",
+                ParametersBuilder.With("Author", model.Author)
+                    .And("Title", model.Title)
+                    .And("Content", model.Content)
+                    .And("PublicationDate", model.PublicationDate)
+                    .And("CreatedBy", userId)
+            );
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_SiteNewsArticle_delete", ParametersBuilder.With("Id", id));
         }
 
         public IEnumerable<SiteNewsArticle> Get()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_SiteNewsArticle_getAll", this.Fetch);
         }
 
         public IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo)
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_SiteNewsArtigle_getBetween",
+                this.Fetch,
+                ParametersBuilder.With("DateFrom", dateFrom)
+                    .And("DateTo", dateTo)
+            );
         }
 
         public IEnumerable<SiteNewsArticle> GetLatest()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_SiteNewsArticle_getLatest",
+                this.Fetch,
+                ParametersBuilder.With("LatestCount", 3)
+            );
         }
 
         public IEnumerable<NewsletterSubscriber> GetNewsletterSubscribers()
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_NewsletterSubscriber_getAll", this.FetchSubscriber);
         }
 
         public void Queue(QueuedMail mail)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_QueuedMail_create",
+                ParametersBuilder.With("MailTo", mail.To)
+                    .And("Subject", mail.Subject)
+                    .And("Body", mail.Body)
+            );
         }
 
         public bool SubscriberExists(string email)
         {
-            throw new NotImplementedException();
+            return this.uow.ScalarDirect("sp_NewsletterSubscriber_exists", ParametersBuilder.With("Email", email)).AsBool();
         }
 
         public void SubscribeToNewsletter(string email)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_NewsletterSubscriber_create", ParametersBuilder.With("Email", email));
         }
 
         public void UnsubscribeToNewsletter(string email)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_NewsletterSubscriber_delete", ParametersBuilder.With("Email", email));
         }
 
         public void Update(SiteNewsArticle model)
         {
-            throw new NotImplementedException();
+            var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
+
+            this.uow.NonQueryDirect("sp_SiteNewsArticle_update",
+                ParametersBuilder.With("Author", model.Author)
+                    .And("Id", model.Id)
+                    .And("Title", model.Title)
+                    .And("Content", model.Content)
+                    .And("PublicationDate", model.PublicationDate)
+                    .And("UpdatedBy", userId)
+            );
+        }
+
+        public SiteNewsArticle Get(int id)
+        {
+            return this.uow.GetOneDirect("sp_SiteNewsArticle_getOne", this.Fetch, ParametersBuilder.With("Id", id));
         }
     }
 }

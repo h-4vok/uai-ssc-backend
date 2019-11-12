@@ -20,27 +20,27 @@ namespace SSC.Business
 
         public void Create(SiteNewsArticle model)
         {
-            throw new NotImplementedException();
+            this.uow.Create(model);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.uow.Delete(id);
         }
 
         public SiteNewsArticle Get(int id)
         {
-            throw new NotImplementedException();
+            return this.uow.Get(id);
         }
 
         public IEnumerable<SiteNewsArticle> GetAll()
         {
-            throw new NotImplementedException();
+            return this.uow.Get();
         }
 
         public IEnumerable<SiteNewsArticle> GetLatest()
         {
-            throw new NotImplementedException();
+            return this.uow.GetLatest();
         }
 
         public void SendNewsletter(DateTime dateFrom, DateTime dateTo)
@@ -50,17 +50,17 @@ namespace SSC.Business
 
         public void SubscribeToNewsletter(string email)
         {
-            throw new NotImplementedException();
+            this.uow.SubscribeToNewsletter(email);
         }
 
         public void UnsubscribeToNewsletter(string email)
         {
-            throw new NotImplementedException();
+            this.uow.UnsubscribeToNewsletter(email);
         }
 
         public void Update(SiteNewsArticle model)
         {
-            throw new NotImplementedException();
+            this.uow.Update(model);
         }
     }
 }

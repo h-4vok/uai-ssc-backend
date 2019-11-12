@@ -15,16 +15,14 @@ namespace SSC.Api.Controllers
 
         public SiteNewsController(ISiteNewsBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SiteNewsArticle>> Get() => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<SiteNewsArticle>> Get(bool latest = false) =>  latest ? this.business.GetLatest().ToList() : this.business.GetAll().ToList();
 
-        public ResponseViewModel<SiteNewsArticle> Get(int id) => throw new NotImplementedException();
+        public ResponseViewModel<SiteNewsArticle> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel<IEnumerable<SiteNewsArticle>> Get(bool latest) => throw new NotImplementedException();
+        public ResponseViewModel Post(SiteNewsArticle model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
-        public ResponseViewModel Post(SiteNewsArticle model) => throw new NotImplementedException();
+        public ResponseViewModel Put(int id, SiteNewsArticle model) => ResponseViewModel.RunAndReturn(() => this.business.Update(model));
 
-        public ResponseViewModel Put(int id, SiteNewsArticle model) => throw new NotImplementedException();
-
-        public ResponseViewModel Delete(int id) => throw new NotImplementedException();
+        public ResponseViewModel Delete(int id) => ResponseViewModel.RunAndReturn(() => this.business.Delete(id));
     }
 }
