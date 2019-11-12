@@ -16,12 +16,25 @@ namespace SSC.Api.Controllers
 
         public NewsletterController(ISiteNewsBusiness business) => this.business = business;
 
-        public ResponseViewModel Put(int id, NewsletterSubscriptionViewModel model) => ResponseViewModel.RunAndReturn(() => this.business.SubscribeToNewsletter(model.Email));
+        public ResponseViewModel Put(int id, NewsletterSubscriptionViewModel model)
+        {
+            return ResponseViewModel.RunAndReturn(
+                () =>
+                {
+                    if (model.IsDelete)
+                    {
+                        this.business.UnsubscribeToNewsletter(model.Email);
+                    }
+                    else
+                    {
+                        this.business.SubscribeToNewsletter(model.Email);
+                    }
+                }
+            );
+        }
 
         [SscAuthorize(Permissions = "NEWS_MANAGEMENT")]
-        public ResponseViewModel  Post(NewNewsletterDistributionModel model) 
+        public ResponseViewModel Post(NewNewsletterDistributionModel model)
             => ResponseViewModel.RunAndReturn(() => this.business.SendNewsletter(model.DateFrom, model.DateTo, model.IncomingHost));
-
-        public ResponseViewModel Delete(string email) => throw new NotImplementedException();
     }
 }

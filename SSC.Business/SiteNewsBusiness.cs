@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Hosting;
 
 namespace SSC.Business
@@ -76,8 +77,8 @@ namespace SSC.Business
 
             // Finish up mail
             mailTemplate = mailTemplate.Replace("${PlatformLink}", String.Format("http://{0}/#/", incomingHost));
-            mailTemplate = mailTemplate.Replace("${UnsubscribeLink}", String.Format("http://{0}/#/newsletter/unsubscribe", incomingHost));
             mailTemplate = mailTemplate.Replace("${NewsArticles}", newsParts.ToString());
+
 
             // Get subscribers
             var subscribers = this.uow.GetNewsletterSubscribers();
@@ -87,15 +88,21 @@ namespace SSC.Business
 
             subscribers.ForEach(subscriber =>
             {
+                var encryptedMail = HttpUtility.UrlEncode(ReversibleEncryption.EncryptString(subscriber.Email));
+                var specificUserMailTemplate = mailTemplate.Replace("${UnsubscribeLink}", String.Format("http://{0}/#/newsletter/unsubscribe/{1}", incomingHost, encryptedMail));
+
                 var mail = new QueuedMail
                 {
                     To = authProvider.CurrentUserName,
                     Subject = i10n["newsletter-email.subject"],
-                    Body = mailTemplate,
+                    Body = specificUserMailTemplate,
                 };
+
+                this.uow.Queue(mail);
 
                 smtpHandler.Send(mail, true);
             });
+
         }
 
         public void SubscribeToNewsletter(string email)
@@ -120,7 +127,25 @@ namespace SSC.Business
 
         public void UnsubscribeToNewsletter(string email)
         {
-            this.uow.UnsubscribeToNewsletter(email);
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            String decryptedEmail = String.Empty;
+
+            var validation = Validator<string>.Start(email)
+                .MandatoryString(x => x, i10n["subscribe-newsletter.email"])
+                .FailWhenClosureReturnsFalse(x =>
+                {
+                    decryptedEmail = ReversibleEncryption.DecryptString(HttpUtility.UrlDecode(email));
+
+                    var exists = this.uow.SubscriberExists(decryptedEmail);
+                    return exists;
+                }, i10n["subscribe-newsletter.email-does-not-exist"])
+                .ValidationResult;
+
+            if (!String.IsNullOrWhiteSpace(validation))
+                throw new UnprocessableEntityException(validation);
+
+            this.uow.UnsubscribeToNewsletter(decryptedEmail);
         }
 
         public void Update(SiteNewsArticle model)

@@ -2852,6 +2852,56 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'You are already subscribed.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'subscribe-newsletter.email-does-not-exist',
+	@es = 'Usted no se encuentra suscripto.',
+	@en = 'You are not subscribed.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'newsletter-email.subject',
+	@es = 'Newsletter de SSC',
+	@en = 'SSC Newsletter'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'newsletter.unsubscribe.success',
+	@es = 'Su suscripción al newsletter ha sido cancelada.',
+	@en = 'Your newsletter subscription has been cancelled.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
