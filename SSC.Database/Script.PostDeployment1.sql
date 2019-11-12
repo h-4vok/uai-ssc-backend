@@ -2442,34 +2442,34 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Publication Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.site-news.title.edit',
+	@es = 'Editar Noticia',
+	@en = 'Edit News Article'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.site-news.title.new',
+	@es = 'Nueva Noticia',
+	@en = 'New News Article'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.author',
+	@es = 'Autor',
+	@en = 'Author'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.title',
+	@es = 'Título',
+	@en = 'Title'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.content',
+	@es = 'Contenido',
+	@en = 'Content'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.publication-date',
+	@es = 'Fecha de Publicación',
+	@en = 'Publication Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
