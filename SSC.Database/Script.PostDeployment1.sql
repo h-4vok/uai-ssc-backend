@@ -2472,6 +2472,81 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Publication Date'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'app.marketing.menu.blog',
+	@es = 'Blog',
+	@en = 'Blog'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'blog.page.title',
+	@es = 'Noticias de SSC',
+	@en = 'SSC News'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'blog.article-by',
+	@es = 'Escrito por ',
+	@en = 'Written by '
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'blog.go-to-subscribe',
+	@es = 'Suscribirse a nuestro Newsletter',
+	@en = 'Subscribe to our Newsletter'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

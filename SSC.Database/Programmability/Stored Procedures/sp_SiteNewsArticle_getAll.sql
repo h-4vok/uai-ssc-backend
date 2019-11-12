@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE sp_SiteNewsArticle_getAll
+﻿
+CREATE PROCEDURE sp_SiteNewsArticle_getAll
 AS
 BEGIN
 
