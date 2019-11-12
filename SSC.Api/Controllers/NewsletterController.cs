@@ -16,7 +16,7 @@ namespace SSC.Api.Controllers
 
         public NewsletterController(ISiteNewsBusiness business) => this.business = business;
 
-        public ResponseViewModel Put(int id, NewNewsletterDistributionModel model) => throw new NotImplementedException();
+        public ResponseViewModel Put(int id, NewsletterSubscriptionViewModel model) => ResponseViewModel.RunAndReturn(() => this.business.SubscribeToNewsletter(model.Email));
 
         [SscAuthorize(Permissions = "NEWS_MANAGEMENT")]
         public ResponseViewModel  Post(NewNewsletterDistributionModel model) 

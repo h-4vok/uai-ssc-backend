@@ -2827,29 +2827,29 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Send Newsletter'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.title',
+	@es = 'Suscribirse al Newsletter',
+	@en = 'Subscribe to our Newsletter'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.subttitle',
+	@es = 'Indique su e-mail para empezar a recibir el newsletter de SSC.',
+	@en = 'Type in your e-mail to start receiving our newsletter.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.email',
+	@es = 'Su correo electrónico',
+	@en = 'Your e-mail'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.success',
+	@es = 'Se ha suscrito al newsletter!',
+	@en = 'You have subscribed to our newsletter!'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.email-exists',
+	@es = 'Ya se encuentra suscripto.',
+	@en = 'You are already subscribed.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

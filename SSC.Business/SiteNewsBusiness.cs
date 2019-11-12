@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -99,6 +100,21 @@ namespace SSC.Business
 
         public void SubscribeToNewsletter(string email)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            var validation = Validator<string>.Start(email)
+                .MandatoryString(x => x, i10n["subscribe-newsletter.email"])
+                .ValidEmailAddress(x => x, i10n["subscribe-newsletter.email"])
+                .FailWhenClosureReturnsFalse(x =>
+                {
+                    var exists = this.uow.SubscriberExists(x);
+                    return !exists;
+                }, i10n["subscribe-newsletter.email-exists"])
+                .ValidationResult;
+
+            if (!String.IsNullOrWhiteSpace(validation))
+                throw new UnprocessableEntityException(validation);
+
             this.uow.SubscribeToNewsletter(email);
         }
 
