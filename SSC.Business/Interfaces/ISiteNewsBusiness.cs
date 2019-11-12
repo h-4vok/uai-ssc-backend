@@ -15,7 +15,7 @@ namespace SSC.Business.Interfaces
         void Create(SiteNewsArticle model);
         void Update(SiteNewsArticle model);
         void Delete(int id);
-        void SendNewsletter(DateTime dateFrom, DateTime dateTo);
+        void SendNewsletter(DateTime dateFrom, DateTime dateTo, string incomingHost);
         void SubscribeToNewsletter(string email);
         void UnsubscribeToNewsletter(string email);
     }
