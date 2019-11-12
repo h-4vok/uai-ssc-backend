@@ -85,6 +85,7 @@
     <Compile Include="Interfaces\ISmtpHandler.cs" />
     <Compile Include="Interfaces\ISubmittedFeedbackFormBusiness.cs" />
     <Compile Include="Interfaces\ISubmittedSurveyBusiness.cs" />
+    <Compile Include="Interfaces\ISupportTicketBusiness.cs" />
     <Compile Include="Interfaces\ISurveyFormBusiness.cs" />
     <Compile Include="Interfaces\ISystemLanguageBusiness.cs" />
     <Compile Include="Interfaces\ITranslationKeysBusiness.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="SmtpHandler.cs" />
     <Compile Include="SubmittedFeedbackFormBusiness.cs" />
     <Compile Include="SubmittedSurveyBusiness.cs" />
+    <Compile Include="SupportTicketBusiness.cs" />
     <Compile Include="SurveyFormBusiness.cs" />
     <Compile Include="SystemLanguageBusiness.cs" />
     <Compile Include="TranslationKeysBusiness.cs" />

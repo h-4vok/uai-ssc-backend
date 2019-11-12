@@ -92,6 +92,7 @@
     <Compile Include="Interfaces\ISiteNewsData.cs" />
     <Compile Include="Interfaces\ISubmittedFeedbackFormData.cs" />
     <Compile Include="Interfaces\ISubmittedSurveyData.cs" />
+    <Compile Include="Interfaces\ISupportTicketData.cs" />
     <Compile Include="Interfaces\ISurveyFormData.cs" />
     <Compile Include="Interfaces\ISystemLanguageData.cs" />
     <Compile Include="Interfaces\ITranslationKeysData.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="SiteNewsData.cs" />
     <Compile Include="SubmittedFeedbackFormData.cs" />
     <Compile Include="SubmittedSurveyData.cs" />
+    <Compile Include="SupportTicketData.cs" />
     <Compile Include="SurveyFormData.cs" />
     <Compile Include="SystemLanguageData.cs" />
     <Compile Include="TranslationKeysData.cs" />

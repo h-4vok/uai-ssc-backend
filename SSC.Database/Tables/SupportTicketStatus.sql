@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[SupportTicketStatus]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	Code NVARCHAR(100) NOT NULL,
+	TranslationKey NVARCHAR(200) NOT NULL
+)

@@ -101,6 +101,9 @@
     <Compile Include="SubmittedFeedbackForm.cs" />
     <Compile Include="SubmittedFeedbackFormAnswer.cs" />
     <Compile Include="SubmittedSurvey.cs" />
+    <Compile Include="SupportTicket.cs" />
+    <Compile Include="SupportTicketConversation.cs" />
+    <Compile Include="SupportTicketStatus.cs" />
     <Compile Include="SurveyChoice.cs" />
     <Compile Include="SurveyForm.cs" />
     <Compile Include="SystemLanguage.cs" />

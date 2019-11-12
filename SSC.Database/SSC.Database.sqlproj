@@ -276,6 +276,16 @@
     <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getOne.sql" />
+    <Build Include="Tables\SupportTicketStatus.sql" />
+    <Build Include="Tables\SupportTicket.sql" />
+    <Build Include="Tables\SupportTicketConversation.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicket_getOne.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicketConversation_getByTicket.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicket_getByUser.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicket_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicketConversation_add.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicket_start.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SupportTicket_updateStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

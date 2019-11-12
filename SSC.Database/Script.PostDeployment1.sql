@@ -522,6 +522,24 @@ FROM (
 	ON	data.Code = pp.Code
 WHERE		pp.CODE IS NULL
 
+-- Support Ticket Statuses
+INSERT SupportTicketStatus (
+	Code,
+	TranslationKey
+)
+SELECT
+	Code = 'SENT',
+	TranslationKey = 'support-ticket-status.sent'
+UNION ALL SELECT
+	Code = 'RESPONDED',
+	TranslationKey = 'support-ticket-status.replied'
+UNION ALL SELECT
+	Code = 'CLOSED',
+	TranslationKey = 'support-ticket-status.closed'
+UNION ALL SELECT
+	Code = 'CANCELLED',
+	TranslationKey = 'support-ticket-status.cancelled'
+
 -- System Languages (Initial)
 IF(NOT EXISTS(SELECT TOP 1
 	1
@@ -2867,44 +2885,44 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Your newsletter subscription has been cancelled.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket-status.sent',
+	@es = 'Enviado',
+	@en = 'Sent'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket-status.replied',
+	@es = 'Respondido',
+	@en = 'Replied'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket-status.closed',
+	@es = 'Cerrado',
+	@en = 'Closed'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket-status.cancelled',
+	@es = 'Cancelado',
+	@en = 'Cancelled'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket-conversation.model.content',
+	@es = 'Mensaje',
+	@en = 'Message'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket.model.subject',
+	@es = 'Asunto',
+	@en = 'Subject'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket.model.status-code',
+	@es = 'Estado',
+	@en = 'Status'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket.model.content',
+	@es = 'Mensaje',
+	@en = 'Message'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
