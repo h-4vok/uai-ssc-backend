@@ -2944,14 +2944,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Reply'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'start-support-ticket.page.title',
+	@es = 'Nuevo Ticket a Soporte',
+	@en = 'New Support Ticket'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'support-ticket.validation.cannot-reply-closed-or-cancelled',
+	@es = 'No se puede responder un ticket que está cerrado o cancelado.',
+	@en = 'Cannot reply a ticket that is closed or cancelled.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

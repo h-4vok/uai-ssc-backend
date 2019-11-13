@@ -19,4 +19,7 @@ BEGIN
 	
 	WHERE		st.UserId = @UserId
 
+	ORDER BY
+		st.CreatedDate DESC
+
 END
