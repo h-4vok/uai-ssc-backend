@@ -201,7 +201,10 @@ EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 2, '/marketing/survey-for
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 3, '/marketing/site-news', 'menu.platform.marketing.site-news', 'NEWS_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 4, '/marketing/newsletter/new', 'menu.platform.marketing.newsletter.new', 'NEWS_MANAGEMENT'
 
-EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 6, 1
+EXEC sp_PlatformMenu_create 'support-menu', 'menu.platform.support-menu', 6, 1
+EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 1, '/support/support-ticket', 'menu.platform.support.support-ticket', 'PLATFORM_ADMIN'
+
+EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 7, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 2, '/work-order/run', 'menu.platform.work-order.runs', 'RUN_EXECUTION_CANCEL', 'RUN_EXECUTION_PRIMARY','RUN_EXECUTION_QA','RUN_EXECUTION_QC'
 
@@ -2952,6 +2955,61 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'support-ticket.validation.cannot-reply-closed-or-cancelled',
 	@es = 'No se puede responder un ticket que está cerrado o cancelado.',
 	@en = 'Cannot reply a ticket that is closed or cancelled.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.close',
+	@es = 'Cerrar',
+	@en = 'Close'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.support-menu',
+	@es = 'Soporte',
+	@en = 'Support'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.support.support-ticket',
+	@es = 'Gestionar Tickets',
+	@en = 'Support Tickets'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
