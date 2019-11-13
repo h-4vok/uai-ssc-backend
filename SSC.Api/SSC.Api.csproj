@@ -198,6 +198,7 @@
     <Compile Include="Behavior\AuthenticationProvider.cs" />
     <Compile Include="Behavior\LocalizationProvider.cs" />
     <Compile Include="Behavior\LogExceptionFilterAttribute.cs" />
+    <Compile Include="Behavior\PlatformChatMessageCache.cs" />
     <Compile Include="Behavior\SscAuthorize.cs" />
     <Compile Include="Behavior\ForgotPasswordTokenCache.cs" />
     <Compile Include="Behavior\VerificationCodeHandler.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PatientTypeController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\PlatformChatController.cs" />
     <Compile Include="Controllers\PlatformMenuController.cs" />
     <Compile Include="Controllers\PlatformMenuItemController.cs" />
     <Compile Include="Controllers\PricingPlanCommentController.cs" />
@@ -264,6 +266,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\ChatMessageViewModel.cs" />
     <Compile Include="ViewModels\ClientCompanyViewModel.cs" />
     <Compile Include="ViewModels\CompleteSignUpViewModel.cs" />
     <Compile Include="ViewModels\FileUploadViewModel.cs" />
@@ -275,6 +278,7 @@
     <Compile Include="ViewModels\EditUserViewModel.cs" />
     <Compile Include="ViewModels\SessionViewModel.cs" />
     <Compile Include="ViewModels\SignUpValidationViewModel.cs" />
+    <Compile Include="ViewModels\UserChatViewModel.cs" />
     <Compile Include="ViewModels\UserInvitationSignUpViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

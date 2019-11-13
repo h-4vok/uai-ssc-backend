@@ -12,5 +12,6 @@ namespace SSC.Common.ViewModels
         public IEnumerable<string> GrantedPermissions { get; set; } = new List<string>();
         public string SetCookie { get; set; }
         public IEnumerable<PlatformMenu> Menues { get; set; }
+        public int UserId { get; set; }
     }
 }
