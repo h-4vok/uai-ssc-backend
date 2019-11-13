@@ -10,6 +10,6 @@ namespace SSC.Api.ViewModels
         public int UserId { get; set; }
         public string UserName { get; set; }
         public IList<ChatMessageViewModel> Messages { get; set; } = new List<ChatMessageViewModel>();
-        public int PendingCount { get { return this.Messages.Count(x => x.Pending); } }
+        public int PendingCount { get { return this.Messages.Count(x => x.Pending && x.IsMine); } }
     }
 }

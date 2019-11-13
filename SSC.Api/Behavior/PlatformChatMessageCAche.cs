@@ -22,7 +22,11 @@ namespace SSC.Api.Behavior
                     var isSupportPersonReplying = message.AuthorId != userId;
                     if (isSupportPersonReplying)
                     {
-                        model.Messages.Where(x => x.Pending).ForEach(x => x.Pending = false);
+                        model.Messages.Where(x => x.Pending && x.IsMine).ForEach(x => x.Pending = false);
+                    }
+                    else
+                    {
+                        model.Messages.Where(x => x.Pending && !x.IsMine).ForEach(x => x.Pending = false);
                     }
 
                     model.Messages.Add(message);

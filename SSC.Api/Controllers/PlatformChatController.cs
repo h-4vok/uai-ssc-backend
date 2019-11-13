@@ -1,5 +1,6 @@
 ﻿using SSC.Api.Behavior;
 using SSC.Api.ViewModels;
+using SSC.Business;
 using SSC.Common;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
@@ -26,6 +27,14 @@ namespace SSC.Api.Controllers
         public ResponseViewModel<IEnumerable<ChatMessageViewModel>> Put(int id, ChatMessageViewModel message)
         {
             var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            var validations = Validator<ChatMessageViewModel>.Start(message)
+                .MandatoryString(x => x.Content, i10n["support-ticket-conversation.model.content"])
+                .ValidationResult;
+
+            if (!String.IsNullOrWhiteSpace(validations))
+                return validations;
 
             message.AuthorId = auth.CurrentUserId;
             message.AuthorName = auth.CurrentUserName;
