@@ -34,7 +34,11 @@ namespace SSC.Api.Behavior
                 }
                 else
                 {
-                    var userChat = new UserChatViewModel();
+                    var userChat = new UserChatViewModel
+                    {
+                        UserId = userId,
+                        UserName = message.AuthorName
+                    };
                     userChat.Messages.Add(message);
 
                     dict.Add(userId, userChat);

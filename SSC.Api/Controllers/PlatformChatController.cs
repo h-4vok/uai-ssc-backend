@@ -20,7 +20,7 @@ namespace SSC.Api.Controllers
 
         public ResponseViewModel<IEnumerable<UserChatViewModel>> Get()
         {
-            return PlatformChatMessageCache.GetAll().ToList();
+            return PlatformChatMessageCache.GetAll().OrderByDescending(x => x.PendingCount).ToList();
         }
 
         public ResponseViewModel<IEnumerable<ChatMessageViewModel>> Put(int id, ChatMessageViewModel message)

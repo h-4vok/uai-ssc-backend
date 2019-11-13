@@ -203,6 +203,7 @@ EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 4, '/marketing/newsletter
 
 EXEC sp_PlatformMenu_create 'support-menu', 'menu.platform.support-menu', 6, 1
 EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 1, '/support/support-ticket', 'menu.platform.support.support-ticket', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 2, '/support/chat-conversation', 'menu.platform.support.chat-conversation', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 7, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
@@ -2977,34 +2978,34 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'You can communicate and talk to one of our support spokesperson right now. Send a message and in about minutes a specialist will get back to you.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-chat.grid.user-id',
+	@es = 'Id de Usuario',
+	@en = 'User Id'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-chat.grid.user-name',
+	@es = 'Cuenta',
+	@en = 'Account'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-chat.grid.pending-count',
+	@es = 'Mensajes Pendientes',
+	@en = 'Pending Messages'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-chat.grid.needs-reply',
+	@es = 'Necesita Contestación',
+	@en = 'Requires Reply'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'platform-chat.action.reply',
+	@es = 'Contestar',
+	@en = 'Reply'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.support.chat-conversation',
+	@es = 'Mensajería de Chat',
+	@en = 'Chat Messaging'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
