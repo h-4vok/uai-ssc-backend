@@ -2972,9 +2972,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Support Tickets'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'chat-drawer.tip',
+	@es = 'Puede comunicarse y hablar con nuestro soporte en vivo. Envíe un mensaje en instantes un especialista se comunicará con usted.',
+	@en = 'You can communicate and talk to one of our support spokesperson right now. Send a message and in about minutes a specialist will get back to you.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

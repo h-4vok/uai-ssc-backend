@@ -13,9 +13,9 @@ namespace SSC.Api.Controllers
 {
     public class PlatformChatController : ApiController
     {
-        public ResponseViewModel<IEnumerable<ChatMessageViewModel>> Get(int userId)
+        public ResponseViewModel<IEnumerable<ChatMessageViewModel>> Get(int id)
         {
-            return PlatformChatMessageCache.Get(userId).ToList();
+            return PlatformChatMessageCache.Get(id).ToList();
         }
 
         public ResponseViewModel<IEnumerable<UserChatViewModel>> Get()

@@ -18,6 +18,13 @@ namespace SSC.Api.Behavior
                 if (dict.ContainsKey(userId))
                 {
                     var model = dict[userId];
+
+                    var isSupportPersonReplying = message.AuthorId != userId;
+                    if (isSupportPersonReplying)
+                    {
+                        model.Messages.Where(x => x.Pending).ForEach(x => x.Pending = false);
+                    }
+
                     model.Messages.Add(message);
 
                     if (model.Messages.Count > 30)
