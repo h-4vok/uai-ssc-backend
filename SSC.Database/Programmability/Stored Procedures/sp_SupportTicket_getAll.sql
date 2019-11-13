@@ -16,4 +16,7 @@ BEGIN
 	INNER JOIN	SupportTicketStatus STT
 			ON	st.SupportTicketStatusId = stt.Id
 
+	ORDER BY
+		st.CreatedDate DESC
+
 END

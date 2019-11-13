@@ -1,4 +1,6 @@
 ﻿using DBNostalgia;
+using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
@@ -32,14 +34,21 @@ namespace SSC.Data
             };
 
         protected SupportTicketConversation FetchConversation(IDataReader reader)
-            => new SupportTicketConversation
+        {
+            var record =  new SupportTicketConversation
             {
                 Id = reader.GetInt32("Id"),
                 AuthorId = reader.GetInt32("AuthorId"),
                 AuthorName = reader.GetString("AuthorName"),
                 Content = reader.GetString("Content"),
-                SupportTicketId = reader.GetInt32("SupportTicketId")
+                SupportTicketId = reader.GetInt32("SupportTicketId"),
+                IsMine = reader.GetInt32("AuthorId") == DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId,
+                CreatedDate = reader.GetDateTime("CreatedDate")
             };
+
+            return record;
+        }
+            
 
         public SupportTicket GetFullTicket(int id)
         {

@@ -8,7 +8,8 @@ BEGIN
 		stc.AuthorId,
 		stc.Content,
 		stc.SupportTicketId,
-		'AuthorName' = pu.UserName
+		'AuthorName' = pu.UserName,
+		stc.CreatedDate
 
 	FROM		SupportTicketConversation STC
 

@@ -13,5 +13,7 @@ namespace SSC.Models
         public int SupportTicketId { get; set; }
         public string AuthorName { get; set; }
         public string Content { get; set; }
+        public bool IsMine { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -4,6 +4,7 @@
 	SupportTicketId INT NOT NULL,
 	AuthorId INT NOT NULL,
 	Content NVARCHAR(MAX) NOT NULL,
+	CreatedDate SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 
 	FOREIGN KEY (SupportTicketId) REFERENCES SupportTicket,
 	FOREIGN KEY (AuthorId) REFERENCES PlatformUser
