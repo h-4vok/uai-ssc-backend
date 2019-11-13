@@ -12,6 +12,7 @@ namespace SSC.Models
         public SupportTicketStatus Status { get; set; }
         public int UserId { get; set; }
         public string Subject { get; set; }
+        public DateTime CreatedDate { get; set; }
         public IEnumerable<SupportTicketConversation> Messages { get; set; }
     }
 }

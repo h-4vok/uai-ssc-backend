@@ -8,12 +8,14 @@ BEGIN
 	INSERT SupportTicket (
 		Subject,
 		SupportTicketStatusId,
-		UserId
+		UserId,
+		CreatedDate
 	)
 	SELECT
 		Subject = @Subject,
 		SupportTicketStatusId = sts.Id,
-		UserId = @UserId
+		UserId = @UserId,
+		CreatedDate = GETDATE()
 
 	FROM		SupportTicketStatus STS
 	WHERE		sts.Code = @StatusCode

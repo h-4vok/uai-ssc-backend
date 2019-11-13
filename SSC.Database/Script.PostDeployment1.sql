@@ -15,7 +15,7 @@ INSERT Province
 SELECT
 	Name = data.Name
 FROM (
-																																													SELECT Name = 'Ciudad Autónoma de Buenos Aires'
+																																																																			SELECT Name = 'Ciudad Autónoma de Buenos Aires'
 	UNION ALL
 		SELECT Name = 'Buenos Aires'
 	UNION ALL
@@ -75,7 +75,7 @@ SELECT
 	IsPlatformRole = data.IsPlatformRole,
 	IsEnabled = 1
 FROM (
-													SELECT Name = 'No Registrado', IsPlatformRole = 1
+																			SELECT Name = 'No Registrado', IsPlatformRole = 1
 	UNION ALL
 		SELECT Name = 'Administrador de Sistema', IsPlatformRole = 1
 	UNION ALL
@@ -105,7 +105,7 @@ SELECT
 	CreatedDate = GETDATE(),
 	UpdatedDate = GETDATE()
 FROM (
-																																																													SELECT Code = 'CLIENT_BILLING_MANAGEMENT', Name = 'Gestión de Facturación de Clientes'
+																																																																																											SELECT Code = 'CLIENT_BILLING_MANAGEMENT', Name = 'Gestión de Facturación de Clientes'
 	UNION ALL
 		SELECT Code = 'CLIENT_MANAGEMENT', Name = 'Gestión de Clientes'
 	UNION ALL
@@ -221,7 +221,7 @@ SELECT
 	CreatedDate = GETDATE(),
 	UpdatedDate = GETDATE()
 FROM (
-													SELECT Name = 'Usuario No Registrado', IsPlatformRole = 0
+																			SELECT Name = 'Usuario No Registrado', IsPlatformRole = 0
 	UNION ALL
 		SELECT Name = 'Administrador de Sistema', IsPlatformRole = 1
 	UNION ALL
@@ -488,7 +488,7 @@ SELECT
 	AnualDiscountPercentage = data.AnualDiscountPercentage,
 	Price = data.Price
 FROM (
-							SELECT
+										SELECT
 			Code = 'pricing-plan--free',
 			Name = 'Gratuito',
 			UserLimit = 5,
@@ -523,22 +523,26 @@ FROM (
 WHERE		pp.CODE IS NULL
 
 -- Support Ticket Statuses
-INSERT SupportTicketStatus (
+INSERT SupportTicketStatus
+	(
 	Code,
 	TranslationKey
-)
-SELECT
-	Code = 'SENT',
-	TranslationKey = 'support-ticket-status.sent'
-UNION ALL SELECT
-	Code = 'RESPONDED',
-	TranslationKey = 'support-ticket-status.replied'
-UNION ALL SELECT
-	Code = 'CLOSED',
-	TranslationKey = 'support-ticket-status.closed'
-UNION ALL SELECT
-	Code = 'CANCELLED',
-	TranslationKey = 'support-ticket-status.cancelled'
+	)
+	SELECT
+		Code = 'SENT',
+		TranslationKey = 'support-ticket-status.sent'
+UNION ALL
+	SELECT
+		Code = 'RESPONDED',
+		TranslationKey = 'support-ticket-status.replied'
+UNION ALL
+	SELECT
+		Code = 'CLOSED',
+		TranslationKey = 'support-ticket-status.closed'
+UNION ALL
+	SELECT
+		Code = 'CANCELLED',
+		TranslationKey = 'support-ticket-status.cancelled'
 
 -- System Languages (Initial)
 IF(NOT EXISTS(SELECT TOP 1
@@ -578,7 +582,7 @@ SELECT
 	UpdatedBy = 1,
 	UpdatedDate = GETUTCDATE()
 FROM (
-					SELECT Id = 1, Name = 'Information'
+							SELECT Id = 1, Name = 'Information'
 	UNION
 		SELECT Id = 2, Name = 'Error'
 ) AS data
@@ -603,7 +607,7 @@ SELECT
 	UpdatedDate = GETUTCDATE(),
 	UpdatedBy = 1
 FROM (
-					SELECT Code = 'INTEGER'
+							SELECT Code = 'INTEGER'
 	UNION ALL
 		SELECT Code = 'DECIMAL'
 ) AS data
@@ -713,7 +717,7 @@ SELECT
 	CreatedBy = 1,
 	UpdatedBy = 1
 FROM (
-									SELECT Code = 'HUMAN', Description = 'Humano'
+													SELECT Code = 'HUMAN', Description = 'Humano'
 	UNION ALL
 		SELECT Code = 'ANIMAL', Description = 'Animal'
 	UNION ALL
@@ -768,7 +772,7 @@ SELECT
 	CreatedBy = 1,
 	UpdatedBy = 1
 FROM (
-																																																																																																																																																																																																																																																																																																																																																																																																							SELECT k = 'app.title',
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										SELECT k = 'app.title',
 			es = 'Sample Supply Chain',
 			en = 'Sample Supply Chain'
 	UNION
@@ -1604,7 +1608,7 @@ SELECT
 	CreatedBy = 1,
 	UpdatedBy = 1
 FROM (
-									SELECT k = 'forgot-password.token-invalid',
+													SELECT k = 'forgot-password.token-invalid',
 			es = 'No se pudo validar su pedido de blanquear la contraseña. Por favor, vuelva a intentarlo.',
 			en = 'We could not validate your password reset request. Please, try again.'
 	UNION
@@ -2923,6 +2927,36 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'support-ticket.model.content',
 	@es = 'Mensaje',
 	@en = 'Message'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.management.tickets',
+	@es = 'Mensajería a Soporte',
+	@en = 'Support Messaging'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.action.cancel',
+	@es = 'Cancelar',
+	@en = 'Cancel'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'support-ticket.action.reply',
+	@es = 'Responder',
+	@en = 'Reply'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

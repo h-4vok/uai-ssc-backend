@@ -4,6 +4,7 @@
 	UserId INT NOT NULL,
 	Subject NVARCHAR(200) NOT NULL,
 	SupportTicketStatusId INT NOT NULL,
+	CreatedDate SMALLDATETIME NOT NULL,
 
 	FOREIGN KEY (UserId) REFERENCES PlatformUser,
 	FOREIGN KEY (SupportTicketStatusId) REFERENCES SupportTicketStatus

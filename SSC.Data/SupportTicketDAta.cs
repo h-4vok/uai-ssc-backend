@@ -22,6 +22,7 @@ namespace SSC.Data
                 Id = reader.GetInt32("Id"),
                 UserId = reader.GetInt32("UserId"),
                 Subject = reader.GetString("Subject"),
+                CreatedDate = reader.GetDateTime("CreatedDate"),
                 Status = new SupportTicketStatus
                 {
                     Id = reader.GetInt32("StatusId"),

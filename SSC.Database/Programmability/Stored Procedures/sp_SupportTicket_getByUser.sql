@@ -7,6 +7,7 @@ BEGIN
 		st.Id,
 		st.Subject,
 		st.UserId,
+		st.CreatedDate,
 		'StatusId' = stt.Id,
 		'StatusCode' = stt.Code,
 		'StatusTranslationKey' = stt.TranslationKey
