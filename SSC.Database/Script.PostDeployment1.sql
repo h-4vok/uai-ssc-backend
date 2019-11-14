@@ -3048,9 +3048,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Balance Status'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'sign-in.validation.client-disabled',
+	@es = 'El acceso se encuentra bloqueado. Contacte a un administrador.',
+	@en = 'Access is blocked. Please contact an administrator.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

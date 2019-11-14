@@ -13,6 +13,7 @@ namespace SSC.Data.Interfaces
     {
         bool Exists(string name, string taxCode);
         int Create(ClientCompany model);
+        bool IsEnabled(int id);
         IEnumerable<ClientCompanyReportRow> GetAll();
         void UpdateIsEnabled(int id, bool isEnabled);
         ClientBalanceReport GetBalanceReport(int id);

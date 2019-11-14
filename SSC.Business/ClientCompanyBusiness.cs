@@ -54,5 +54,10 @@ namespace SSC.Business
         {
             this.data.UpdateIsEnabled(id, isEnabled);
         }
+
+        public bool IsEnabled(int id)
+        {
+            return this.data.IsEnabled(id);
+        }
     }
 }

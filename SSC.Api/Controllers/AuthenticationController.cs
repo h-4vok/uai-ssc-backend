@@ -27,9 +27,11 @@ namespace SSC.Api.Controllers
         {
             HttpContext.Current?.Session?.Clear();
 
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
             var validations = Validator<AuthenticationViewModel>.Start(viewModel)
-                .MandatoryString(x => x.UserName, "Nombre de usuario")
-                .MandatoryString(x => x.Password, "Contraseña")
+                .MandatoryString(x => x.UserName, i10n["model.user.username"])
+                .MandatoryString(x => x.Password, i10n["sign-in.password"])
                 .ValidationResult;
 
             if (!String.IsNullOrEmpty(validations))
@@ -42,6 +44,14 @@ namespace SSC.Api.Controllers
             {
                 var response = this.business.Authenticate(viewModel.UserName, viewModel.Password);
                 var userSessionData = this.business.GetSessionViewModel(viewModel.UserName);
+
+                {
+                    var clientBusiness = DependencyResolver.Obj.Resolve<IClientCompanyBusiness>();
+                    var isClientEnabled = clientBusiness.IsEnabled(userSessionData.ClientId);
+
+                    if (!isClientEnabled)
+                        throw new UserAuthenticationException(i10n["sign-in.validation.client-disabled"]);
+                }
 
                 HttpContext.Current.Session["UserName"] = userSessionData.UserName;
                 HttpContext.Current.Session["ClientId"] = userSessionData.ClientId;

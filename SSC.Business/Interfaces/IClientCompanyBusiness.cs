@@ -12,6 +12,7 @@ namespace SSC.Business.Interfaces
     {
         int Create(ClientCompany model);
         IEnumerable<ClientCompanyReportRow> GetAll();
+        bool IsEnabled(int id);
         void UpdateIsEnabled(int id, bool isEnabled);
         ClientBalanceReport GetBalanceReport(int id);
         ClientCompanyBillingInformation GetBillingInformation(int clientId);

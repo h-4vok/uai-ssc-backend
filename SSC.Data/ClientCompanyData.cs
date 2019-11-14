@@ -156,5 +156,10 @@ namespace SSC.Data
             };
             return record;
         }
+
+        public bool IsEnabled(int id)
+        {
+            return this.uow.ScalarDirect("sp_ClientCompany_isEnabled", ParametersBuilder.With("Id", id)).AsBool();
+        }
     }
 }
