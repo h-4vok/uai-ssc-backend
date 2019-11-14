@@ -286,6 +286,7 @@
     <Build Include="Programmability\Stored Procedures\sp_SupportTicketConversation_add.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SupportTicket_start.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SupportTicket_updateStatus.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_updateIsEnabled.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

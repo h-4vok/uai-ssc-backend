@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -110,7 +111,11 @@ namespace SSC.Data
 
         public void UpdateIsEnabled(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            this.uow.NonQueryDirect("sp_ClientCompany_updateIsEnabled",
+                ParametersBuilder.With("Id", id)
+                    .And("IsEnabled", isEnabled)
+                    .And("UpdatedBy", DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId)
+            );
         }
 
         private ClientCompanyReportRow FetchReportRow(IDataReader reader)

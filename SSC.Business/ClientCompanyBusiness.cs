@@ -52,7 +52,7 @@ namespace SSC.Business
 
         public void UpdateIsEnabled(int id, bool isEnabled)
         {
-            throw new NotImplementedException();
+            this.data.UpdateIsEnabled(id, isEnabled);
         }
     }
 }
