@@ -49,7 +49,7 @@ namespace SSC.Api.Controllers
                     var clientBusiness = DependencyResolver.Obj.Resolve<IClientCompanyBusiness>();
                     var isClientEnabled = clientBusiness.IsEnabled(userSessionData.ClientId);
 
-                    if (!isClientEnabled)
+                    if (userSessionData.ClientId > 0 && !isClientEnabled)
                         throw new UserAuthenticationException(i10n["sign-in.validation.client-disabled"]);
                 }
 
