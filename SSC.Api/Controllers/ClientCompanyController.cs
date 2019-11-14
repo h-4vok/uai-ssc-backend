@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -21,9 +22,19 @@ namespace SSC.Api.Controllers
             return output.ToList();
         }
 
-        public ResponseViewModel Post(ClientCompany model) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "CLIENT_MANAGEMENT")]
+        public ResponseViewModel Patch(int id, PatchOperationList list)
+        {
+            foreach (var operation in list.Operations)
+            {
+                if (operation.op == "replace" && operation.field == "IsEnabled")
+                {
+                    this.business.UpdateIsEnabled(operation.key, operation.value.AsBool());
+                }
+            }
 
-        public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();
+            return true;
+        }
 
     }
 }

@@ -3008,6 +3008,96 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Chat Messaging'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-management.action.view-transactions',
+	@es = 'Ver Transacciones',
+	@en = 'View Transactions'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-management.action.view-status',
+	@es = 'Ver Estado de Cuenta',
+	@en = 'View Account Status'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.legal-name',
+	@es = 'Razón Social',
+	@en = 'Legal Name'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.tax-code',
+	@es = 'CUIT',
+	@en = 'Tax Code'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.selected-plan-description',
+	@es = 'Plan de Servicio',
+	@en = 'Service Plan'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.selected-payment-type',
+	@es = 'Método de Pago',
+	@en = 'Payment Method'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.last-bill-expiration-date',
+	@es = 'Vencimiento Última Factura',
+	@en = 'Expiration Last Bill'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'client-company.model.balance-status-description',
+	@es = 'Estado de Cuenta',
+	@en = 'Balance Status'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
