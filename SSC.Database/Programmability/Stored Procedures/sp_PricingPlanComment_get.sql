@@ -4,14 +4,19 @@ AS
 BEGIN
 
 	SELECT
-		Id,
-		Comment,
-		CommentBy,
-		PricingPlanId,
-		Rating,
-		CreatedBy,
-		CreatedDate
+		ppc.Id,
+		ppc.Comment,
+		ppc.CommentBy,
+		ppc.PricingPlanId,
+		ppc.Rating,
+		ppc.CreatedBy,
+		ppc.CreatedDate
 
-	FROM		PricingPlanComment 
+	FROM		PricingPlanComment PPC
+
+	INNER JOIN	PricingPlan PP
+			ON	PPC.PricingPlanId = PP.Id
+
+	WHERE		pp.Code = @PricingPlanCode
 
 END
