@@ -201,9 +201,9 @@ EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 2, '/marketing/survey-for
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 3, '/marketing/site-news', 'menu.platform.marketing.site-news', 'NEWS_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 4, '/marketing/newsletter/new', 'menu.platform.marketing.newsletter.new', 'NEWS_MANAGEMENT'
 
-EXEC sp_PlatformMenu_create 'support-menu', 'menu.platform.support-menu', 6, 1
-EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 1, '/support/support-ticket', 'menu.platform.support.support-ticket', 'PLATFORM_ADMIN'
-EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 2, '/support/chat-conversation', 'menu.platform.support.chat-conversation', 'PLATFORM_ADMIN'
+--EXEC sp_PlatformMenu_create 'support-menu', 'menu.platform.support-menu', 6, 1
+--EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 1, '/support/support-ticket', 'menu.platform.support.support-ticket', 'PLATFORM_ADMIN'
+--EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 2, '/support/chat-conversation', 'menu.platform.support.chat-conversation', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'work-order-menu', 'menu.platform.work-order-menu', 7, 1
 EXEC sp_PlatformMenuItem_fullCreate 'work-order-menu', 1, '/work-order/work-order', 'menu.platform.work-order.batches', 'WORK_ORDER_CREATE', 'WORK_ORDER_EXECUTE', 'WORK_ORDER_REPORT'
