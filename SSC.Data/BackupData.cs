@@ -27,16 +27,16 @@ namespace SSC.Data
 
         private readonly IUnitOfWork uow;
 
-        public void DoBackup()
+        public void DoBackup(string filepath)
         {
             var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
             var environment = DependencyResolver.Obj.Resolve<IEnvironment>();
 
-            var backupPath = environment.GetBackupPath();
-            Directory.CreateDirectory(backupPath);
+            //var backupPath = environment.GetBackupPath();
+            //Directory.CreateDirectory(backupPath);
 
-            var filename = String.Format("SSC_{0}.bkp", DateTime.Now.ToString("yyyyMMdd_hhmmss"));
-            var filepath = Path.Combine(backupPath, filename);
+            //var filename = String.Format("SSC_{0}.bkp", DateTime.Now.ToString("yyyyMMdd_hhmmss"));
+            //var filepath = Path.Combine(backupPath, filename);
 
             this.uow.NonQueryDirect("Backup_perform", ParametersBuilder.With("filepath", filepath));
             this.uow.NonQueryDirect("Backup_new", ParametersBuilder.With("filepath", filepath).And("CreatedBy", auth.CurrentUserName));

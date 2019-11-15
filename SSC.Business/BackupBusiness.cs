@@ -1,9 +1,11 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +20,18 @@ namespace SSC.Business
         }
         private IBackupData data;
 
-        public void DoBackup()
+        public void DoBackup(string filepath)
         {
-            this.data.DoBackup();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            Validator<string>.Start(filepath)
+                .MandatoryString(x => x, i10n["backup.filepath"])
+                .FailWhenClosureReturnsFalse(x => x.ToLowerInvariant().EndsWith(".bkp"), i10n["backup.file-must-end-with-bkp"])
+                .FailWhenClosureReturnsFalse(x => Directory.Exists(Path.GetDirectoryName(x)), i10n["backup.dir-not-exists"])
+                .FailWhenClosureReturnsFalse(x => File.Exists(x) == false, i10n["backup.file-exists"])
+                .ThrowExceptionIfApplicable();
+
+            this.data.DoBackup(filepath);
         }
 
         public void DoRestore(int id)

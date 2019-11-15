@@ -3,6 +3,7 @@ using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -37,7 +38,16 @@ namespace SSC.Business
             try
             {
                 var smtpEnabled = ConfigurationManager.AppSettings["Smtp.Enabled"].AsBool();
-                if (!smtpEnabled) return;
+                if (!smtpEnabled)
+                {
+                    var failoverDir = ConfigurationManager.AppSettings["Smtp.FailoverDir"].AsString();
+                    Directory.CreateDirectory(failoverDir);
+                    var randomName = Path.Combine(failoverDir, String.Format("{0}.html", Guid.NewGuid().ToString()));
+                    File.WriteAllText(randomName, mail.Body);
+
+                    return;
+                }
+                
 
                 var mailMessage = this.CreateMailMessage(mail);
                 mailMessage.IsBodyHtml = isBodyHtml;

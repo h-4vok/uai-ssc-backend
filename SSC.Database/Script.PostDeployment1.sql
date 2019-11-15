@@ -2454,8 +2454,8 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'backup.doRestore',
-	@es = 'Restaurar un resguardo',
-	@en = 'Restore a backup'
+	@es = 'Restaurar el resguardo seleccionado',
+	@en = 'Restore from selected backup'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'global.view-details',
@@ -3053,24 +3053,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Access is blocked. Please contact an administrator.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.invalid-path',
+	@es = 'El formato del path es inválido.',
+	@en = 'The path formato is invalid.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.dir-not-exists',
+	@es = 'El directorio no existe.',
+	@en = 'The directory does not exist.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.file-exists',
+	@es = 'El archivo ya existe. Por seguridad, no se pueden reemplazar archivos existentes con nuevos resguardos.',
+	@en = 'The file already exists. For security, existing files will not be replaced by new backup files.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.file-must-end-with-bkp',
+	@es = 'El archivo debe tener la extensión .bkp',
+	@en = 'The file must have the .bkp extension'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

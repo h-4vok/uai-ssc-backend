@@ -9,7 +9,7 @@ namespace SSC.Business.Interfaces
 {
     public interface IBackupBusiness
     {
-        void DoBackup();
+        void DoBackup(string filepath);
         void DoRestore(int id);
         BackupRegistry Get(int id);
         IEnumerable<BackupRegistry> GetAll();

@@ -25,6 +25,12 @@ namespace SSC.Business
 
         public void Create(SiteNewsArticle model)
         {
+            {
+                var d = model.PublicationDate;
+                d = d.Subtract(new TimeSpan(3, 0, 0));
+                model.PublicationDate = new DateTime(d.Year, d.Month, d.Day);
+            }
+
             this.uow.Create(model);
         }
 

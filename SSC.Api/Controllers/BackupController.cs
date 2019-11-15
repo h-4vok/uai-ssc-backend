@@ -17,7 +17,7 @@ namespace SSC.Api.Controllers
         public BackupController(IBackupBusiness business) => this.business = business;
 
         [SscAuthorize(Permissions = "PLATFORM_BACKUP")]
-        public ResponseViewModel Post(BackupRegistry model) => ResponseViewModel.RunAndReturn(() => this.business.DoBackup());
+        public ResponseViewModel Post(BackupRegistry model) => ResponseViewModel.RunAndReturn(() => this.business.DoBackup(model.FilePath));
 
         [SscAuthorize(Permissions = "PLATFORM_RESTORE")]
         public ResponseViewModel Put(int id, BackupRegistry model) => ResponseViewModel.RunAndReturn(() => this.business.DoRestore(id));

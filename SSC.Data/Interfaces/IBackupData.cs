@@ -9,7 +9,7 @@ namespace SSC.Data.Interfaces
 {
     public interface IBackupData
     {
-        void DoBackup();
+        void DoBackup(string filepath);
         void DoRestore(int id);
         BackupRegistry Get(int id);
         IEnumerable<BackupRegistry> GetAll();
