@@ -63,10 +63,14 @@ namespace SSC.Data
                 return items;
 
             // Buscamos dentro de las encuestas habilitadas y sin expirar, un indice random
-            var enabledItems = items.Where(x => x.IsEnabled && x.ExpirationDate > DateTime.Now);
-            var randomIndex = new Random(DateTime.Now.Second).Next(0, enabledItems.Count());
+            var enabledItems = items.Where(x => x.IsEnabled && x.ExpirationDate >= DateTime.Today);
 
-            // Devolvemos esa encuesta a la UI
+            // Vemos que tengamos al menos una habilitada
+            if (enabledItems.Count() == 0)
+                return new List<SurveyForm>();
+
+            // Devolvemos esa encuesta random a la UI
+            var randomIndex = new Random(DateTime.Now.Second).Next(0, enabledItems.Count());
             var surveyForm = enabledItems.ElementAt(randomIndex);
 
             surveyForm.Choices = this.uow.GetDirect("sp_SurveyChoice_getForForm", this.FetchChoice, ParametersBuilder.With("Id", surveyForm.Id));

@@ -22,6 +22,12 @@ namespace SSC.Business
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
+            {
+                var d = model.ExpirationDate;
+                d = d.Subtract(new TimeSpan(3, 0, 0));
+                model.ExpirationDate = new DateTime(d.Year, d.Month, d.Day);
+            }
+            
             var validations = Validator<SurveyForm>.Start(model)
                 .MandatoryString(x => x.QuestionTitle, i10n["survey-form.question-title"])
                 .ListNotEmpty(x => x.Choices, i10n["survey-form.choices"])
