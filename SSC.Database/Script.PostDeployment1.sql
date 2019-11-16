@@ -701,6 +701,27 @@ SELECT
 	CCV = '878',
 	ExpirationDateMMYY = '0120',
 	IsDefault = 1
+UNION SELECT
+	ClientId = @DefaultCompanyId,
+	Number = '379500000007154',
+	Owner = 'GUZMANOV CHRISTOFF',
+	CCV = '7777',
+	ExpirationDateMMYY = '0924',
+	IsDefault = 0
+UNION SELECT
+	ClientId = @DefaultCompanyId,
+	Number = '5258001100300093',
+	Owner = 'GUZMANOV CHRISTOFF',
+	CCV = '878',
+	ExpirationDateMMYY = '0120',
+	IsDefault = 0
+UNION SELECT
+	ClientId = @DefaultCompanyId,
+	Number = '4704555500002222',
+	Owner = 'GUZMANOV CHRISTOFF',
+	CCV = '111',
+	ExpirationDateMMYY = '0120',
+	IsDefault = 0
 
 EXEC sp_PlatformUser_createTestUser 'test@test.com', @DefaultCompanyId
 EXEC sp_PlatformUser_createTestUser 'test1@test.com', @DefaultCompanyId
