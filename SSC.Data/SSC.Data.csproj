@@ -89,6 +89,7 @@
     <Compile Include="Interfaces\ISampleTransactionData.cs" />
     <Compile Include="Interfaces\ISampleTypeData.cs" />
     <Compile Include="Interfaces\ISatelliteDataData.cs" />
+    <Compile Include="Interfaces\ISiteNewsCategoryData.cs" />
     <Compile Include="Interfaces\ISiteNewsData.cs" />
     <Compile Include="Interfaces\ISubmittedFeedbackFormData.cs" />
     <Compile Include="Interfaces\ISubmittedSurveyData.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="SampleTransactionData.cs" />
     <Compile Include="SampleTypeData.cs" />
     <Compile Include="SatelliteDataData.cs" />
+    <Compile Include="SiteNewsCategoryData.cs" />
     <Compile Include="SiteNewsData.cs" />
     <Compile Include="SubmittedFeedbackFormData.cs" />
     <Compile Include="SubmittedSurveyData.cs" />

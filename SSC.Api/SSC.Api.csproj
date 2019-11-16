@@ -247,6 +247,7 @@
     <Compile Include="Controllers\SatelliteDataController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Controllers\SiteNewsCategoryController.cs" />
     <Compile Include="Controllers\SiteNewsController.cs" />
     <Compile Include="Controllers\SiteNewsThumbnailController.cs" />
     <Compile Include="Controllers\SubmittedFeedbackFormController.cs" />

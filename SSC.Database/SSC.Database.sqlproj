@@ -289,6 +289,14 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_updateIsEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_isEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_setThumbnail.sql" />
+    <Build Include="Tables\SiteNewsCategory.sql" />
+    <Build Include="Tables\SiteNewsArticleCategory.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_delete.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_getOne.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_get.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_update.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_isInUse.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

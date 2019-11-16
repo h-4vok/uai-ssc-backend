@@ -200,6 +200,7 @@ EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-f
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 2, '/marketing/survey-form', 'menu.platform.marketing.survey-form', 'PLATFORM_ADMIN'
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 3, '/marketing/site-news', 'menu.platform.marketing.site-news', 'NEWS_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 4, '/marketing/newsletter/new', 'menu.platform.marketing.newsletter.new', 'NEWS_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 4, '/marketing/site-news-category', 'menu.platform.marketing.site-news-category', 'NEWS_MANAGEMENT'
 
 --EXEC sp_PlatformMenu_create 'support-menu', 'menu.platform.support-menu', 6, 1
 --EXEC sp_PlatformMenuItem_fullCreate  'support-menu', 1, '/support/support-ticket', 'menu.platform.support.support-ticket', 'PLATFORM_ADMIN'
@@ -3096,6 +3097,56 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'site-news.validation.missing-thumbnail',
 	@es = 'Debe seleccionar una imagen de portada.',
 	@en = 'You must select a thumbnail image.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.cannot-delete-in-use',
+	@es = 'El registro se encuentra en uso. No puede eliminarse.',
+	@en = 'The record is in use. It cannot be deleted.'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.marketing.site-news-category',
+	@es = 'Categorías de Noticias',
+	@en = 'Site News Categories'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
