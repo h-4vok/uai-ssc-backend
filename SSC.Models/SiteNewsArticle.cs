@@ -15,5 +15,6 @@ namespace SSC.Models
         public string ThumbnailPath { get; set; }
         public string ThumbnailRelativePath { get; set; }
         public DateTime PublicationDate { get; set; }
+        public IEnumerable<SiteNewsCategory> Categories { get; set; } = new List<SiteNewsCategory>();
     }
 }

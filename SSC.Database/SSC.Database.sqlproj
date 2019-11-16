@@ -297,6 +297,9 @@
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsCategory_isInUse.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_addCategory.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getCategories.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_removeCategories.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

@@ -37,6 +37,13 @@ namespace SSC.Data
             return record;
         }
 
+        private SiteNewsCategory FetchCategory(IDataReader reader) =>
+            new SiteNewsCategory
+            {
+                Id = reader.GetInt32("CategoryId"),
+                Description = reader.GetString("CategoryDescription")
+            };
+
         private NewsletterSubscriber FetchSubscriber(IDataReader reader)
         {
             var record = new NewsletterSubscriber
@@ -53,13 +60,26 @@ namespace SSC.Data
         {
             var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
 
-            return this.uow.ScalarDirect("sp_SiteNewsArticle_create",
-                ParametersBuilder.With("Author", model.Author)
-                    .And("Title", model.Title)
-                    .And("Content", model.Content)
-                    .And("PublicationDate", model.PublicationDate)
-                    .And("CreatedBy", userId)
-            ).AsInt();
+            return this.uow.Run(() =>
+            {
+                model.Id = this.uow.Scalar("sp_SiteNewsArticle_create",
+                    ParametersBuilder.With("Author", model.Author)
+                        .And("Title", model.Title)
+                        .And("Content", model.Content)
+                        .And("PublicationDate", model.PublicationDate)
+                        .And("CreatedBy", userId)
+                    ).AsInt();
+
+                model.Categories.ForEach(c =>
+                {
+                    this.uow.NonQuery("sp_SiteNewsArticle_addCategory",
+                        ParametersBuilder.With("Id", model.Id)
+                            .And("CategoryId", c.Id)
+                    );
+                });
+
+                return model.Id;
+            }, true);
         }
 
         public void Delete(int id)
@@ -72,21 +92,41 @@ namespace SSC.Data
             return this.uow.GetDirect("sp_SiteNewsArticle_getAll", this.Fetch);
         }
 
-        public IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo, IEnumerable<SiteNewsCategory> filterCategories)
         {
-            return this.uow.GetDirect("sp_SiteNewsArtigle_getBetween",
+            var items = this.uow.GetDirect("sp_SiteNewsArtigle_getBetween",
                 this.Fetch,
                 ParametersBuilder.With("DateFrom", dateFrom)
                     .And("DateTo", dateTo)
             );
+
+            items.ForEach(m =>
+            {
+                m.Categories = this.uow.GetDirect("sp_SiteNewsArticle_getCategories", this.FetchCategory,
+                    ParametersBuilder.With("Id", m.Id)
+                );
+            });
+
+            items = items.Where(item => filterCategories.Any(filterC => item.Categories.Any(c => c.Id == filterC.Id)));
+
+            return items;
         }
 
         public IEnumerable<SiteNewsArticle> GetLatest()
         {
-            return this.uow.GetDirect("sp_SiteNewsArticle_getLatest",
+            var items = this.uow.GetDirect("sp_SiteNewsArticle_getLatest",
                 this.Fetch,
                 ParametersBuilder.With("LatestCount", 3)
             );
+
+            items.ForEach(m =>
+            {
+                m.Categories = this.uow.GetDirect("sp_SiteNewsArticle_getCategories", this.FetchCategory,
+                    ParametersBuilder.With("Id", m.Id)
+                );
+            });
+
+            return items;
         }
 
         public IEnumerable<NewsletterSubscriber> GetNewsletterSubscribers()
@@ -122,24 +162,41 @@ namespace SSC.Data
         {
             var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
 
-            this.uow.NonQueryDirect("sp_SiteNewsArticle_update",
+            this.uow.Run(() =>
+            {
+                this.uow.NonQuery("sp_SiteNewsArticle_update",
                 ParametersBuilder.With("Author", model.Author)
                     .And("Id", model.Id)
                     .And("Title", model.Title)
                     .And("Content", model.Content)
                     .And("PublicationDate", model.PublicationDate)
                     .And("UpdatedBy", userId)
-            );
+                );
+
+                this.uow.NonQuery("sp_SiteNewsArticle_removeCategories", ParametersBuilder.With("Id", model.Id));
+
+                model.Categories.ForEach(c =>
+                {
+                    this.uow.NonQuery("sp_SiteNewsArticle_addCategory",
+                        ParametersBuilder.With("Id", model.Id)
+                            .And("CategoryId", c.Id)
+                    );
+                });
+
+            }, true);
         }
 
         public SiteNewsArticle Get(int id)
         {
-            return this.uow.GetOneDirect("sp_SiteNewsArticle_getOne", this.Fetch, ParametersBuilder.With("Id", id));
+            var item = this.uow.GetOneDirect("sp_SiteNewsArticle_getOne", this.Fetch, ParametersBuilder.With("Id", id));
+            item.Categories = this.uow.GetDirect("sp_SiteNewsArticle_getCategories", this.FetchCategory, ParametersBuilder.With("Id", id));
+
+            return item;
         }
 
         public void SetThumbnail(int id, string filepath, string relativepath)
         {
-            this.uow.NonQueryDirect("sp_SiteNewsArticle_setThumbnail", 
+            this.uow.NonQueryDirect("sp_SiteNewsArticle_setThumbnail",
                 ParametersBuilder.With("Id", id)
                     .And("ThumbnailPath", filepath)
                     .And("ThumbnailRelativePath", relativepath)

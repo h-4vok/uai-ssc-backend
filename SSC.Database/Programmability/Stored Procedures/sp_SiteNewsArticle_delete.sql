@@ -3,6 +3,7 @@
 AS
 BEGIN
 
+	DELETE SiteNewsArticleCategory WHERE SiteNewsArticleId = @Id
 	DELETE SiteNewsArticle WHERE Id = @Id
 
 END

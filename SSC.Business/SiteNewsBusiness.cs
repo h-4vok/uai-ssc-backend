@@ -38,6 +38,7 @@ namespace SSC.Business
                 .MandatoryString(x => x.Author, i10n["site-news.author"])
                 .MandatoryString(x => x.Title, i10n["site-news.title"])
                 .MandatoryString(x => x.Content, i10n["site-news.content"])
+                .ListNotEmpty(x => x.Categories, i10n["site-news.category"])
                 .ThrowExceptionIfApplicable();
 
             return this.uow.Create(model);
@@ -63,13 +64,18 @@ namespace SSC.Business
             return this.uow.GetLatest();
         }
 
-        public void SendNewsletter(DateTime dateFrom, DateTime dateTo, string incomingHost)
+        public void SendNewsletter(DateTime dateFrom, DateTime dateTo, IEnumerable<SiteNewsCategory> filterCategories, string incomingHost)
         {
             var authProvider = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
+            Validator<string>.Start("")
+                .FailWhenClosureReturnsFalse(x => dateFrom >= dateTo, i10n["newsletter.invalid-date-range"])
+                .ListNotEmpty(x => filterCategories, i10n["site-news.category"])
+                .ThrowExceptionIfApplicable();
+
             // Setup templates
-            var news = this.uow.Get(dateFrom, dateTo);
+            var news = this.uow.Get(dateFrom, dateTo, filterCategories);
 
             var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/newsletter_{0}.html", authProvider.CurrentLanguageCode));
             var mailTemplate = File.ReadAllText(mailTemplatePath);
@@ -170,6 +176,21 @@ namespace SSC.Business
 
         public void Update(SiteNewsArticle model)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            {
+                var d = model.PublicationDate;
+                d = d.Subtract(new TimeSpan(3, 0, 0));
+                model.PublicationDate = new DateTime(d.Year, d.Month, d.Day);
+            }
+
+            Validator<SiteNewsArticle>.Start(model)
+                .MandatoryString(x => x.Author, i10n["site-news.author"])
+                .MandatoryString(x => x.Title, i10n["site-news.title"])
+                .MandatoryString(x => x.Content, i10n["site-news.content"])
+                .ListNotEmpty(x => x.Categories, i10n["site-news.category"])
+                .ThrowExceptionIfApplicable();
+
             this.uow.Update(model);
         }
 

@@ -3125,14 +3125,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'New Site News Category'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.category',
+	@es = 'Categorías',
+	@en = 'Categories'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'newsletter.invalid-date-range',
+	@es = 'El rango de fechas seleccionado es inválido.',
+	@en = 'The selected date range is invalid.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

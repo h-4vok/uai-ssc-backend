@@ -15,7 +15,7 @@ namespace SSC.Data.Interfaces
         void Update(SiteNewsArticle model);
         void Delete(int id);
         void Queue(QueuedMail mail);
-        IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo);
+        IEnumerable<SiteNewsArticle> Get(DateTime dateFrom, DateTime dateTo, IEnumerable<SiteNewsCategory> filterCategories);
         IEnumerable<NewsletterSubscriber> GetNewsletterSubscribers();
         SiteNewsArticle Get(int id);
         bool SubscriberExists(string email);

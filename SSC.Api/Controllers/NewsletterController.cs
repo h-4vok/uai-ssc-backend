@@ -35,6 +35,6 @@ namespace SSC.Api.Controllers
 
         [SscAuthorize(Permissions = "NEWS_MANAGEMENT")]
         public ResponseViewModel Post(NewNewsletterDistributionModel model)
-            => ResponseViewModel.RunAndReturn(() => this.business.SendNewsletter(model.DateFrom, model.DateTo, model.IncomingHost));
+            => ResponseViewModel.RunAndReturn(() => this.business.SendNewsletter(model.DateFrom, model.DateTo, model.Categories, model.IncomingHost));
     }
 }
