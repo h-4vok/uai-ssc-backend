@@ -59,7 +59,7 @@ namespace SSC.Data
         {
             var model = this.Get(id);
 
-            this.uow.NonQueryDirect("Backup_restore", ParametersBuilder.With("filepath", model.FilePath).And("dbname", "SSC.Database"));
+            this.DoRestoreFrom(model);
         }
 
         public BackupRegistry Get(int id)
@@ -70,6 +70,11 @@ namespace SSC.Data
         public IEnumerable<BackupRegistry> GetAll()
         {
             return this.uow.GetDirect("Backup_get", this.Fetch);
+        }
+
+        public void DoRestoreFrom(BackupRegistry model)
+        {
+            this.uow.NonQueryDirect("Backup_restore", ParametersBuilder.With("filepath", model.FilePath).And("dbname", "SSC.Database"));
         }
     }
 }

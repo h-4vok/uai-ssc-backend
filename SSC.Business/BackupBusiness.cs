@@ -48,5 +48,10 @@ namespace SSC.Business
         {
             return this.data.GetAll();
         }
+
+        public void DoRestoreFrom(BackupRegistry model)
+        {
+            this.data.DoRestoreFrom(model);
+        }
     }
 }

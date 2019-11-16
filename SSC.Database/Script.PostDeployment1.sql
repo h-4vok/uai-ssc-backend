@@ -3073,19 +3073,19 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The file must have the .bkp extension'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'backup.doRestoreFrom',
+	@es = 'Restaurar desde',
+	@en = 'Restore from'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'restore.invalid-file',
+	@es = 'El archivo de backup ingresado es inválido o no está correctamente formateado.',
+	@en = 'El backup file selected is invalid or it is not correctly formatted.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'restore.from.tip',
+	@es = 'Seleccione y suba un archivo de BKP para hacer la restauración de base de datos.',
+	@en = 'Select and upload a BKP file to restore the database.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

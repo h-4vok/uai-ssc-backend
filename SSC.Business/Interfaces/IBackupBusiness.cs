@@ -11,6 +11,7 @@ namespace SSC.Business.Interfaces
     {
         void DoBackup(string filepath);
         void DoRestore(int id);
+        void DoRestoreFrom(BackupRegistry model);
         BackupRegistry Get(int id);
         IEnumerable<BackupRegistry> GetAll();
     }
