@@ -11,7 +11,7 @@ namespace SSC.Data.Interfaces
     {
         IEnumerable<SiteNewsArticle> GetLatest();
         IEnumerable<SiteNewsArticle> Get();
-        void Create(SiteNewsArticle model);
+        int Create(SiteNewsArticle model);
         void Update(SiteNewsArticle model);
         void Delete(int id);
         void Queue(QueuedMail mail);
@@ -21,5 +21,6 @@ namespace SSC.Data.Interfaces
         bool SubscriberExists(string email);
         void SubscribeToNewsletter(string email);
         void UnsubscribeToNewsletter(string email);
+        void SetThumbnail(int id, string filepath, string relativepath);
     }
 }

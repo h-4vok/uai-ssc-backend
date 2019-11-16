@@ -48,6 +48,18 @@ namespace SSC.Common.ViewModels
 
             return true;
         }
+
+        public static ResponseViewModel<T> RunAndReturn<T>(Func<T> action)
+        {
+            try
+            {
+                return action();
+            }
+            catch (UnprocessableEntityException ex)
+            {
+                return ex.Message;
+            }
+        }
     }
 
     public class ResponseViewModel<T> : ResponseViewModel

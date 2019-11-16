@@ -288,6 +288,7 @@
     <Build Include="Programmability\Stored Procedures\sp_SupportTicket_updateStatus.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_updateIsEnabled.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientCompany_isEnabled.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_setThumbnail.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

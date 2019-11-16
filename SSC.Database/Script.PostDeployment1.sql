@@ -3088,14 +3088,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Select and upload a BKP file to restore the database.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.thumbnail-image',
+	@es = 'Seleccione una imagen de portada',
+	@en = 'Select a thumbnail image'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'site-news.validation.missing-thumbnail',
+	@es = 'Debe seleccionar una imagen de portada.',
+	@en = 'You must select a thumbnail image.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

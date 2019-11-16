@@ -12,11 +12,12 @@ namespace SSC.Business.Interfaces
         IEnumerable<SiteNewsArticle> GetLatest();
         IEnumerable<SiteNewsArticle> GetAll();
         SiteNewsArticle Get(int id);
-        void Create(SiteNewsArticle model);
+        int Create(SiteNewsArticle model);
         void Update(SiteNewsArticle model);
         void Delete(int id);
         void SendNewsletter(DateTime dateFrom, DateTime dateTo, string incomingHost);
         void SubscribeToNewsletter(string email);
         void UnsubscribeToNewsletter(string email);
+        void SetThumbnail(int id, string filepath, string relativepath);
     }
 }

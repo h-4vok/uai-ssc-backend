@@ -29,7 +29,9 @@ namespace SSC.Data
                 Author = reader.GetString("Author"),
                 Title = reader.GetString("Title"),
                 Content = reader.GetString("Content"),
-                PublicationDate = reader.GetDateTime("PublicationDate")
+                PublicationDate = reader.GetDateTime("PublicationDate"),
+                ThumbnailPath = reader.GetString("ThumbnailPath"),
+                ThumbnailRelativePath = reader.GetString("ThumbnailRelativePath")
             };
 
             return record;
@@ -47,17 +49,17 @@ namespace SSC.Data
             return record;
         }
 
-        public void Create(SiteNewsArticle model)
+        public int Create(SiteNewsArticle model)
         {
             var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
 
-            this.uow.NonQueryDirect("sp_SiteNewsArticle_create",
+            return this.uow.ScalarDirect("sp_SiteNewsArticle_create",
                 ParametersBuilder.With("Author", model.Author)
                     .And("Title", model.Title)
                     .And("Content", model.Content)
                     .And("PublicationDate", model.PublicationDate)
                     .And("CreatedBy", userId)
-            );
+            ).AsInt();
         }
 
         public void Delete(int id)
@@ -133,6 +135,15 @@ namespace SSC.Data
         public SiteNewsArticle Get(int id)
         {
             return this.uow.GetOneDirect("sp_SiteNewsArticle_getOne", this.Fetch, ParametersBuilder.With("Id", id));
+        }
+
+        public void SetThumbnail(int id, string filepath, string relativepath)
+        {
+            this.uow.NonQueryDirect("sp_SiteNewsArticle_setThumbnail", 
+                ParametersBuilder.With("Id", id)
+                    .And("ThumbnailPath", filepath)
+                    .And("ThumbnailRelativePath", relativepath)
+            );
         }
     }
 }

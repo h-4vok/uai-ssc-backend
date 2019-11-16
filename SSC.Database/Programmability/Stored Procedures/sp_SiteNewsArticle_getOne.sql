@@ -8,7 +8,9 @@ BEGIN
 		sna.Author,
 		sna.Content,
 		sna.PublicationDate,
-		sna.Title
+		sna.Title,
+		sna.ThumbnailPath,
+		sna.ThumbnailRelativePath
 
 	FROM		SiteNewsArticle SNA
 

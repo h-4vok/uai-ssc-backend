@@ -25,6 +25,7 @@ namespace SSC.Api.Controllers
         {
             var request = HttpContext.Current.Request;
             var dir = ConfigurationManager.AppSettings["Backup.Path"];
+            Directory.CreateDirectory(dir);
             var filename = String.Format("{0}.bkp", Guid.NewGuid().ToString());
             var filepath = Path.Combine(dir, filename);
 

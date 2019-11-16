@@ -23,4 +23,6 @@ BEGIN
 		CreatedBy = @CreatedBy,
 		UpdatedBy = @CreatedBy
 
+	SELECT SCOPE_IDENTITY()
+
 END

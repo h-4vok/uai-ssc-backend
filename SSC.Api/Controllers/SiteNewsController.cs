@@ -19,7 +19,7 @@ namespace SSC.Api.Controllers
 
         public ResponseViewModel<SiteNewsArticle> Get(int id) => this.business.Get(id);
 
-        public ResponseViewModel Post(SiteNewsArticle model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
+        public ResponseViewModel<int> Post(SiteNewsArticle model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
         public ResponseViewModel Put(int id, SiteNewsArticle model) => ResponseViewModel.RunAndReturn(() => this.business.Update(model));
 

@@ -6,6 +6,7 @@ using SSC.Data.Interfaces;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,15 +24,23 @@ namespace SSC.Business
         }
         private ISiteNewsData uow;
 
-        public void Create(SiteNewsArticle model)
+        public int Create(SiteNewsArticle model)
         {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
             {
                 var d = model.PublicationDate;
                 d = d.Subtract(new TimeSpan(3, 0, 0));
                 model.PublicationDate = new DateTime(d.Year, d.Month, d.Day);
             }
 
-            this.uow.Create(model);
+            Validator<SiteNewsArticle>.Start(model)
+                .MandatoryString(x => x.Author, i10n["site-news.author"])
+                .MandatoryString(x => x.Title, i10n["site-news.title"])
+                .MandatoryString(x => x.Content, i10n["site-news.content"])
+                .ThrowExceptionIfApplicable();
+
+            return this.uow.Create(model);
         }
 
         public void Delete(int id)
@@ -77,6 +86,11 @@ namespace SSC.Business
                 part = part.Replace("${Author}", article.Author);
                 part = part.Replace("${Title}", article.Title);
                 part = part.Replace("${Content}", article.Content);
+
+                var thumbnailBase = ConfigurationManager.AppSettings["SiteNewsImages.ServerBasePath"];
+                var fullThumbnailPath = thumbnailBase + article.ThumbnailRelativePath.Replace("\\", "/");
+
+                part = part.Replace("${ImageSrc}", fullThumbnailPath);
 
                 newsParts.Append(part);
             });
@@ -157,6 +171,11 @@ namespace SSC.Business
         public void Update(SiteNewsArticle model)
         {
             this.uow.Update(model);
+        }
+
+        public void SetThumbnail(int id, string filepath, string relativepath)
+        {
+            this.uow.SetThumbnail(id, filepath, relativepath);
         }
     }
 }
