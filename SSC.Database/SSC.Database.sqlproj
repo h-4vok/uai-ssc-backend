@@ -301,6 +301,8 @@
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getCategories.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_removeCategories.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getLandingData.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getPricingPlanOfClient.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getClientCreditCards.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

@@ -3155,6 +3155,71 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Buy'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.select',
+	@es = 'Seleccionar',
+	@en = 'Select'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'buy-more.months',
+	@es = 'Extender Un mes',
+	@en = 'Extend One Month'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'buy-more.years',
+	@es = 'Extender Un Año',
+	@en = 'Extend One Year'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-methods.tab.credit-card',
+	@es = 'Tarjeta de Crédito',
+	@en = 'Credit Card'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-methods.tab.credit-note',
+	@es = 'Nota de Crédito',
+	@en = 'Credit Note'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card-select',
+	@es = 'Tarjeta de Crédito Guardada',
+	@en = 'Saved Credit Card'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card-number',
+	@es = 'Número de Tarjeta de Crédito',
+	@en = 'Credit Card Number'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card-ccv',
+	@es = 'Código CCV',
+	@en = 'CCV Code'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card-expiration',
+	@es = 'Fecha de Expiración (Formato MM/YY)',
+	@en = 'Expiration Date (MM/YY Format)'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card-holder',
+	@es = 'Titular',
+	@en = 'Holder'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.save-credit-card',
+	@es = 'Guardar tarjeta de crédito',
+	@en = 'Save credit card'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.new-credit-card',
+	@es = 'Nueva Tarjeta',
+	@en = 'New Card'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'global.selected',
+	@es = 'Seleccionado',
+	@en = 'Selected'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

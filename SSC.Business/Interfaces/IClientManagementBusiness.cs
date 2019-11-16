@@ -10,5 +10,8 @@ namespace SSC.Business.Interfaces
     public interface IClientManagementBusiness
     {
         ClientLandingViewModel GetLandingData();
+        SelectablePricesViewModel GetSelectablePrices();
+        IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards();
+
     }
 }

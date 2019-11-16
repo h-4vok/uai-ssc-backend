@@ -1,6 +1,9 @@
 ﻿using DBNostalgia;
+using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,6 +31,45 @@ namespace SSC.Data
             return this.uow.GetOneDirect("sp_ClientManagement_getLandingData", 
                 this.FetchClientLanding, 
                 ParametersBuilder.With("ClientId", clientId));
+        }
+
+        protected PricingPlan FetchPricingPlan(IDataReader reader) =>
+            new PricingPlan
+            {
+                Code = reader.GetString("Code"),
+                Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                AnualDiscountPercentage = reader.GetInt32Nullable("AnualDiscountPercentage")
+            };
+
+        public PricingPlan GetPricingPlanOfClient(int clientId)
+        {
+            return this.uow.GetOneDirect("sp_ClientManagement_getPricingPlanOfClient",
+                this.FetchPricingPlan,
+                ParametersBuilder.With("ClientId", clientId)
+            );
+        }
+
+        protected SelectableCreditCardViewModel FetchCreditCard(IDataReader reader) =>
+            new SelectableCreditCardViewModel
+            {
+                CreditCard = new CreditCard
+                {
+                    Id = reader.GetInt32("Id"),
+                    Owner = reader.GetString("Owner"),
+                    Number = reader.GetString("Number"),
+                    ExpirationDateMMYY = reader.GetString("ExpirationDateMMYY"),
+                    CCV = reader.GetInt32("CCV"),
+                }
+            };
+
+        public IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards()
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            return this.uow.GetDirect("sp_ClientManagement_getClientCreditCards",
+                this.FetchCreditCard,
+                ParametersBuilder.With("ClientId", auth.CurrentClientId)
+            );
         }
     }
 }

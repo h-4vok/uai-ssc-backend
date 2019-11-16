@@ -91,6 +91,7 @@
     <Compile Include="ViewModels\ClientCompanyReportRow.cs" />
     <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
+    <Compile Include="ViewModels\SelectableCreditCardViewModel.cs" />
     <Compile Include="ViewModels\ClientTransactionReportRow.cs" />
     <Compile Include="ViewModels\ClinicRunReportRow.cs" />
     <Compile Include="ViewModels\CreditCardReportRow.cs" />
@@ -105,6 +106,8 @@
     <Compile Include="ViewModels\SampleTransactionReportRow.cs" />
     <Compile Include="ViewModels\SampleTypeParameterReportRow.cs" />
     <Compile Include="ViewModels\SampleTypeReportRow.cs" />
+    <Compile Include="ViewModels\SelectablePricesViewModel.cs" />
+    <Compile Include="ViewModels\SelectablePriceViewModel.cs" />
     <Compile Include="ViewModels\UserReportRow.cs" />
     <Compile Include="ViewModels\UserReportViewModel.cs" />
     <Compile Include="SystemEnvironment.cs" />
