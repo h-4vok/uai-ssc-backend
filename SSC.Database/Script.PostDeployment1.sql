@@ -549,6 +549,12 @@ UNION ALL
 		Code = 'CANCELLED',
 		TranslationKey = 'support-ticket-status.cancelled'
 
+-- Default Site News Categories
+INSERT SiteNewsCategory (
+	Description
+)
+VALUES ( 'General' ), ( 'Investigación Clínica' ), ( 'Avances en Software Médico' ), ( 'Ofertas' )
+
 -- System Languages (Initial)
 IF(NOT EXISTS(SELECT TOP 1
 	1
@@ -3109,14 +3115,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Site News Categories'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.site-news-category.title.edit',
+	@es = 'Editar Categoría de Noticia',
+	@en = 'Edit Site News Category'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'marketing.site-news-category.title.new',
+	@es = 'Nueva Categoría de Noticia',
+	@en = 'New Site News Category'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
