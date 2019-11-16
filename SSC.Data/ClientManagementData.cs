@@ -75,9 +75,17 @@ namespace SSC.Data
             );
         }
 
-        public IEnumerable<CreditCard> GetApprovedCards()
+        public IEnumerable<CreditCard> GetAllCreditCards()
         {
-            return this.uow.GetDirect("sp_ClientManagement_getApprovedCards", this.FetchCreditCard);
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var approvedCards = this.uow.GetDirect("sp_ClientManagement_getApprovedCards", this.FetchCreditCard);
+            var clientCards = this.uow.GetDirect("sp_ClientManagement_getClientCards", this.FetchCreditCard, ParametersBuilder.With("ClientId", auth.CurrentClientId));
+
+            var merged = new List<CreditCard>();
+            merged.AddRange(approvedCards);
+            merged.AddRange(clientCards);
+
+            return merged;
         }
     }
 }

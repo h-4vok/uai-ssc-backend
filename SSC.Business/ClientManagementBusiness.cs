@@ -147,16 +147,16 @@ namespace SSC.Business
                 .MandatoryString(x => x.Owner, i10n["payment.credit-card-holder"])
                 .ThrowExceptionIfApplicable();
 
-            if (!isPayment) return;
+            if (!isPayment && card.Id == 0) return;
 
-            var approvedCards = this.data.GetApprovedCards();
+            var allCards = this.data.GetAllCreditCards();
 
-            var cardMatch = approvedCards.FirstOrDefault(x => x.Number == card.Number);
+            var cardMatch = allCards.FirstOrDefault(x => x.Number == card.Number);
 
             if (cardMatch == null)
                 throw new UnprocessableEntityException(i10n["payment.credit-card.validation.invalid-number"]);
 
-            Func<string, string, bool> valuesMatch = (v1, v2) => v1.ToLowerInvariant().Trim() != v2.ToLowerInvariant().Trim();
+            Func<string, string, bool> valuesMatch = (v1, v2) => v1.ToLowerInvariant().Trim() == v2.ToLowerInvariant().Trim();
 
             if (!valuesMatch(card.Owner, cardMatch.Owner))
                 throw new UnprocessableEntityException(i10n["payment.credit-card.validation.data-mismatch"]);

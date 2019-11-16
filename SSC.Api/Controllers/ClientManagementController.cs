@@ -35,5 +35,6 @@ namespace SSC.Api.Controllers
         [Route("validateCreditCardPayment")]
         [HttpPost]
         public ResponseViewModel ValidateCreditCardPayment(CreditCard card) => ResponseViewModel.RunAndReturn(() => this.business.ValidateCreditCard(card, true));
+
     }
 }

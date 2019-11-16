@@ -13,6 +13,6 @@ namespace SSC.Data.Interfaces
         ClientLandingViewModel GetLandingData(int clientId);
         PricingPlan GetPricingPlanOfClient(int clientId);
         IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards();
-        IEnumerable<CreditCard> GetApprovedCards();
+        IEnumerable<CreditCard> GetAllCreditCards();
     }
 }

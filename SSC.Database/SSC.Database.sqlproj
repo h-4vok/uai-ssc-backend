@@ -306,6 +306,7 @@
     <Build Include="Tables\ApprovedCreditCard.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ApprovedCreditCard_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getApprovedCards.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getClientCards.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
