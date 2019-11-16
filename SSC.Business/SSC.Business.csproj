@@ -51,6 +51,7 @@
     <Compile Include="BusinessDependencyInjector.cs" />
     <Compile Include="ClientCompanyBusiness.cs" />
     <Compile Include="ClientCompanyLabScriptBusiness.cs" />
+    <Compile Include="ClientManagementBusiness.cs" />
     <Compile Include="ClientTransactionBusiness.cs" />
     <Compile Include="ClinicRunBusiness.cs" />
     <Compile Include="CreditCardBusiness.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Interfaces\IBillBusiness.cs" />
     <Compile Include="Interfaces\IClientCompanyBusiness.cs" />
     <Compile Include="Interfaces\IClientCompanyLabScriptBusiness.cs" />
+    <Compile Include="Interfaces\IClientManagementBusiness.cs" />
     <Compile Include="Interfaces\IClientTransactionBusiness.cs" />
     <Compile Include="Interfaces\IClinicRunBusiness.cs" />
     <Compile Include="Interfaces\ICreditCardBusiness.cs" />

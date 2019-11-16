@@ -60,6 +60,7 @@
     <Compile Include="BackupData.cs" />
     <Compile Include="ClientCompanyData.cs" />
     <Compile Include="ClientCompanyLabScriptData.cs" />
+    <Compile Include="ClientManagementData.cs" />
     <Compile Include="ClientTransactionData.cs" />
     <Compile Include="ClinicRunData.cs" />
     <Compile Include="CreditCardData.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Interfaces\IBackupData.cs" />
     <Compile Include="Interfaces\IClientCompanyLabScriptData.cs" />
     <Compile Include="Interfaces\IClientCompanyData.cs" />
+    <Compile Include="Interfaces\IClientManagementData.cs" />
     <Compile Include="Interfaces\IClientTransactionData.cs" />
     <Compile Include="Interfaces\IClinicRunData.cs" />
     <Compile Include="Interfaces\ICreditCardData.cs" />

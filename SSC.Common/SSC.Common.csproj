@@ -89,6 +89,7 @@
     <Compile Include="ViewModels\ClientBalanceBillReport.cs" />
     <Compile Include="ViewModels\ClientBalanceReport.cs" />
     <Compile Include="ViewModels\ClientCompanyReportRow.cs" />
+    <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
     <Compile Include="ViewModels\ClientTransactionReportRow.cs" />
     <Compile Include="ViewModels\ClinicRunReportRow.cs" />

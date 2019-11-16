@@ -17,5 +17,6 @@ namespace SSC.Models
         public ClientCompanyBillingInformation BillingInformation { get; set; }
         public CreditCard DefaultCreditCard { get; set; }
         public string ApiToken { get; set; }
+        public DateTime ServicePlanExpirationDate { get; set; }
     }
 }

@@ -3135,24 +3135,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The selected date range is invalid.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'client-landing.your-plan',
+	@es = 'Tu plan:',
+	@en = 'Your plan:'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'client-landing.action.manage',
+	@es = 'Gestionar',
+	@en = 'Manage'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'client-landing.expiration-date',
+	@es = 'Plan válido hasta:',
+	@en = 'Plan valid until:'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'client-landing.action.buy',
+	@es = 'Comprar',
+	@en = 'Buy'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

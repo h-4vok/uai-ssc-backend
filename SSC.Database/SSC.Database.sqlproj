@@ -300,6 +300,7 @@
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_addCategory.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getCategories.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_removeCategories.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getLandingData.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

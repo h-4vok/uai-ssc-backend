@@ -66,6 +66,7 @@ namespace SSC.Api.App_Start
             Register<ISubmittedSurveyBusiness, SubmittedSurveyBusiness>();
             Register<ISupportTicketBusiness, SupportTicketBusiness>();
             Register<ISiteNewsCategoryBusiness, SiteNewsCategoryBusiness>();
+            Register<IClientManagementBusiness, ClientManagementBusiness>();
         }
 
         private static void Register<Interface, Concrete>() where Concrete : Interface {

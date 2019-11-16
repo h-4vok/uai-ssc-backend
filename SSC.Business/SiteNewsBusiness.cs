@@ -70,7 +70,7 @@ namespace SSC.Business
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
             Validator<string>.Start("")
-                .FailWhenClosureReturnsFalse(x => dateFrom >= dateTo, i10n["newsletter.invalid-date-range"])
+                .FailWhenClosureReturnsFalse(x => dateFrom <= dateTo, i10n["newsletter.invalid-date-range"])
                 .ListNotEmpty(x => filterCategories, i10n["site-news.category"])
                 .ThrowExceptionIfApplicable();
 
