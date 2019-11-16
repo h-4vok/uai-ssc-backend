@@ -49,17 +49,20 @@ namespace SSC.Data
             );
         }
 
-        protected SelectableCreditCardViewModel FetchCreditCard(IDataReader reader) =>
+        protected SelectableCreditCardViewModel FetchCreditCardViewModel(IDataReader reader) =>
             new SelectableCreditCardViewModel
             {
-                CreditCard = new CreditCard
-                {
-                    Id = reader.GetInt32("Id"),
-                    Owner = reader.GetString("Owner"),
-                    Number = reader.GetString("Number"),
-                    ExpirationDateMMYY = reader.GetString("ExpirationDateMMYY"),
-                    CCV = reader.GetInt32("CCV"),
-                }
+                CreditCard = this.FetchCreditCard(reader)
+            };
+
+        protected CreditCard FetchCreditCard(IDataReader reader) =>
+            new CreditCard
+            {
+                Id = reader.GetInt32("Id"),
+                Owner = reader.GetString("Owner"),
+                Number = reader.GetString("Number"),
+                ExpirationDateMMYY = reader.GetString("ExpirationDateMMYY"),
+                CCV = reader.GetInt32("CCV"),
             };
 
         public IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards()
@@ -67,9 +70,14 @@ namespace SSC.Data
             var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
 
             return this.uow.GetDirect("sp_ClientManagement_getClientCreditCards",
-                this.FetchCreditCard,
+                this.FetchCreditCardViewModel,
                 ParametersBuilder.With("ClientId", auth.CurrentClientId)
             );
+        }
+
+        public IEnumerable<CreditCard> GetApprovedCards()
+        {
+            return this.uow.GetDirect("sp_ClientManagement_getApprovedCards", this.FetchCreditCard);
         }
     }
 }

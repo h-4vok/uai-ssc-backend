@@ -1,4 +1,5 @@
 ﻿using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SSC.Business.Interfaces
         ClientLandingViewModel GetLandingData();
         SelectablePricesViewModel GetSelectablePrices();
         IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards();
+        void ValidateCreditCard(CreditCard card, bool isPayment);
 
     }
 }

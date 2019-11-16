@@ -555,6 +555,13 @@ INSERT SiteNewsCategory (
 )
 VALUES ( 'General' ), ( 'Investigación Clínica' ), ( 'Avances en Software Médico' ), ( 'Ofertas' )
 
+-- Approved Credit Cards (for testing)
+EXEC sp_ApprovedCreditCard_create '5258116611881129', 'CHRISTIAN A GUZMAN', 747, '1132'
+EXEC sp_ApprovedCreditCard_create '379500550031649', 'CHRISTIAN A GUZMAN', 4569, '1025'
+EXEC sp_ApprovedCreditCard_create '5165887744556699', 'GUZMAN CHRISTIAN A', 333, '1018'
+EXEC sp_ApprovedCreditCard_create '4111321432143214', 'CHRISTIAN A GUZMAN', 111, '1026'
+EXEC sp_ApprovedCreditCard_create '4517666866676669', 'GUZMAN CHRISTIAN', 222, '1030'
+
 -- System Languages (Initial)
 IF(NOT EXISTS(SELECT TOP 1
 	1
@@ -3211,6 +3218,11 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Credit Card Number'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.number',
+	@es = 'Número de Tarjeta de Crédito',
+	@en = 'Credit Card Number'
+
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'payment.credit-card-ccv',
 	@es = 'Código CCV',
 	@en = 'CCV Code'
@@ -3241,15 +3253,40 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Selected'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'payment.credit-card.validation.invalid-number',
+	@es = 'El número de tarjeta de crédito es inválido o no existe.',
+	@en = 'The credit card number is invalid or does not exist.'
 
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
-
+	@k = 'payment.credit-card.validation.process-error',
+	@es = 'Un error ha ocurrido procesando su pago. Por favor vuelva a intentarlo más tarde.',
+	@en = 'An error has occurred while processing your payment. Please try again later.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.validation.declined',
+	@es = 'La tarjeta de crédito que ha ingresado ha sido rechazada. Por favor, intente pagar con otra tarjeta de crédito o contacte a su emisor.',
+	@en = 'The credit card you have entered has been declined. Please, try paying with a different card or contact your issuer.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.validation.data-mismatch',
+	@es = 'Uno o varios datos no coinciden o no son válidos con la tarjeta ingresadas.',
+	@en = 'There is invalid data or a data mismatch against the indicated credit card.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.validation.expired',
+	@es = 'Ha ingresado una fecha de expiración que ya ha caducado. Por favor, intente con otra tarjeta de crédito o corrija el campo.',
+	@en = 'You have entered an expiration date that has already passed. Please, try with a different card or correct the data input.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.validation.ccv-empty',
+	@es = 'El campo CCV no es válido.',
+	@en = 'The CVC is not valid.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment.credit-card.validation.date-invalid-format',
+	@es = 'Formato de fecha debe ser MMYY.',
+	@en = 'The date format must be MMYY'
+	
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',

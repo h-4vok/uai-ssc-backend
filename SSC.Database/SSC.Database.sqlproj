@@ -303,6 +303,9 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getLandingData.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getPricingPlanOfClient.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getClientCreditCards.sql" />
+    <Build Include="Tables\ApprovedCreditCard.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ApprovedCreditCard_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getApprovedCards.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
