@@ -295,6 +295,8 @@ namespace SSC.Business
 
             // Send email saying what we bought
             {
+                var receiptNumber = bill.Number.AsInt().ToString("A0001-0000####");
+
                 var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
                 var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/purchase-finished_{0}.html", auth.CurrentLanguageCode));
@@ -356,6 +358,7 @@ namespace SSC.Business
                 mailTemplate = mailTemplate.Replace("${ReceiptLines}", linesParts.ToString());
                 mailTemplate = mailTemplate.Replace("${TotalAmount}", transaction.Total.ToString("$#.00"));
                 mailTemplate = mailTemplate.Replace("${PaidWithLines}", paymentParts.ToString());
+                mailTemplate = mailTemplate.Replace("${BillNumber}", receiptNumber);
 
                 // Send email
                 var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
