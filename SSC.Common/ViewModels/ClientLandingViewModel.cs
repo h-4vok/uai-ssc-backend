@@ -10,5 +10,6 @@ namespace SSC.Common.ViewModels
     {
         public string ServicePlanName { get; set; }
         public string ServiceExpirationDescription { get; set; }
+        public IEnumerable<ClientTransactionReportRow> Transactions { get; set; }
     }
 }

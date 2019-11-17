@@ -26,11 +26,34 @@ namespace SSC.Data
                 ServiceExpirationDescription = reader.GetDateTime("ServiceExpirationDescription").ToString("dd/MM/yyyy")
             };
 
+        protected ClientTransactionReportRow FetchTransactionRow(IDataReader reader)
+        {
+            var record = new ClientTransactionReportRow
+            {
+                TransactionId  = reader.GetInt32("TransactionId"),
+                ReceiptId = reader.GetInt32("ReceiptId"),
+                ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####"),
+                Total = reader.GetDecimal(reader.GetOrdinal("Total")).ToString("$ #.00"),
+                TransactionDate = reader.GetDateTime("TransactionDate").ToString("yyyy-MM-dd"),
+                TransactionDescription = reader.GetString("TransactionDescription"),
+                TransactionTypeCode = reader.GetString("TransactionTypeCode")
+            };
+
+            return record;
+        }
+
         public ClientLandingViewModel GetLandingData(int clientId)
         {
-            return this.uow.GetOneDirect("sp_ClientManagement_getLandingData", 
+            var viewModel = this.uow.GetOneDirect("sp_ClientManagement_getLandingData", 
                 this.FetchClientLanding, 
                 ParametersBuilder.With("ClientId", clientId));
+
+            viewModel.Transactions = this.uow.GetDirect("sp_ClientManagement_getTransactions",
+                this.FetchTransactionRow,
+                ParametersBuilder.With("ClientId", clientId)
+            );
+            
+            return viewModel;
         }
 
         protected PricingPlan FetchPricingPlan(IDataReader reader) =>

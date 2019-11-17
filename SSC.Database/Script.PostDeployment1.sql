@@ -3390,54 +3390,54 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Specify Payment Methods'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.account.my-service-status',
+	@es = 'Estado de Servicio',
+	@en = 'Service Status'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction.date',
+	@es = 'Fecha',
+	@en = 'Date'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction.receipt-type',
+	@es = 'Tipo Comprobante',
+	@en = 'Receipt Type'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction.receipt-number',
+	@es = 'Número Cbte.',
+	@en = 'Receipt Number'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction.description',
+	@es = 'Servicio',
+	@en = 'Service'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction.amount',
+	@es = 'Importe',
+	@en = 'Amount'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'client-landing.account-status',
+	@es = 'Estado de Cuenta',
+	@en = 'Account Transactions'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction-type.purchase-bill',
+	@es = 'Factura',
+	@en = 'Purchase Bill'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'transaction-type.credit-note',
+	@es = 'Nota de Crédito',
+	@en = 'Credit Note'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'account-transactions.actions.view-receipt',
+	@es = 'Ver Comprobante',
+	@en = 'View Receipt'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

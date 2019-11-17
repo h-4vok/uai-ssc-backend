@@ -8,10 +8,12 @@ namespace SSC.Common.ViewModels
 {
     public class ClientTransactionReportRow
     {
+        public int TransactionId { get; set; }
         public int ReceiptId { get; set; }
-        public DateTime TransactionDate { get; set; }
+        public string ReceiptNumber { get; set; }
         public string TransactionDescription { get; set; }
-        public decimal Total { get; set; }
+        public string TransactionDate { get; set; }
+        public string Total { get; set; }
         public string TransactionTypeCode { get; set; }
     }
 }
