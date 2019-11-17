@@ -27,7 +27,30 @@ namespace SSC.Data
 
         public void Create(ClientTransaction transaction)
         {
-            throw new NotImplementedException();
+            this.uow.Run(() =>
+            {
+                transaction.Id = this.uow.Scalar("sp_ClientTransaction_create",
+                    ParametersBuilder.With("TransactionTypeCode", transaction.TransactionType.Description)
+                        .And("Total", transaction.Total)
+                        .And("ClientId", transaction.ClientCompany.Id)
+                        .And("ReceiptId", transaction.Receipt.Id)
+                        .And("RelatedReceiptId", transaction.RelatedReceipt?.Id)
+                ).AsInt();
+
+                transaction.Payments.ForEach(p =>
+                {
+                    this.uow.NonQuery("sp_ClientTransaction_addPayment",
+                        ParametersBuilder.With("TransactionId", transaction.Id)
+                            .And("ClientCreditCardId", p.CreditCard?.Id)
+                            .And("CreditCardNumber", p.Number)
+                            .And("CreditCardOwner", p.Owner)
+                            .And("CreditCardCCV", p.CCV)
+                            .And("CreditCardExpirationDateMMYY", p.ExpirationDateMMYY)
+                            .And("Amount", p.Amount)
+                            .And("CreditNoteId", p.CreditNoteId)
+                    );
+                });
+            }, true);
         }
 
         public IEnumerable<ClientTransactionReportRow> Get(int clientId)

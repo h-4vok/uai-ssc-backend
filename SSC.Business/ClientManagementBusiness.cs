@@ -173,5 +173,124 @@ namespace SSC.Business
             if (card.Number == "4111321432143214")
                 throw new UnprocessableEntityException(i10n["payment.credit-card.validation.process-error"]);
         }
+
+        public void ProcessBuy(BuyViewModel model)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            if (model.CreditCard != null)
+            {
+                this.ValidateCreditCard(model.CreditCard, true);
+            }
+
+
+            var pricingPlan = DependencyResolver.Obj.Resolve<IPricingPlanData>().GetByCode(model.PricingPlanCode);
+            var receiptType = new ReceiptType
+            {
+                Code = "purchase-bill",
+                IsSale = true
+            };
+
+            var bill = new Receipt<ReceiptLine>
+            {
+                Client = new ClientCompany { Id = auth.CurrentClientId },
+                ReceiptType = receiptType,
+            }; // El number lo genera la base
+
+            var total = pricingPlan.Price;
+            decimal discount = 0;
+            decimal finalTotal = total;
+
+            if (model.isAnualBuy)
+            {
+                discount = pricingPlan.Price.AsDecimal() * (pricingPlan.AnualDiscountPercentage.AsDecimal() / 100);
+                finalTotal = total - discount;
+            }
+
+            bill.Lines.Add(new ReceiptLine
+            {
+                Concept = String.Format("Servicio {0} - {1}", pricingPlan.Name, model.isAnualBuy ? "Extensión 12 Meses" : "Extensión 1 Mes"),
+                Subtotal = total,
+                Taxes = finalTotal
+            });
+
+            if (discount > 0)
+            {
+                bill.Lines.Add(new ReceiptLine
+                {
+                    Concept = String.Format("Descuento Extensión Anual - {0}", pricingPlan.Name),
+                    Subtotal = -discount,
+                    Taxes = 0
+                });
+            }
+
+            var receiptBusiness = DependencyResolver.Obj.Resolve<IReceiptData>();
+            receiptBusiness.CreateNewBill(bill);
+
+            // Save credit card if needed
+            if (model.SaveCard)
+            {
+                var ccBusiness = DependencyResolver.Obj.Resolve<ICreditCardBusiness>();
+                ccBusiness.Create(model.CreditCard);
+            }
+
+            // Generate related transaction
+            var transaction = new ClientTransaction
+            {
+                ClientCompany = new ClientCompany
+                {
+                    Id = auth.CurrentClientId
+                },
+                Receipt = bill,
+                Total = bill.Lines.Sum(x => x.GetTotal()),
+                TransactionType = new TransactionType { Description = "Compra" },
+            };
+
+            // Setup payments
+            if (model.CreditCard?.Id > 0)
+            {
+                transaction.Payments.Add(new ClientTransactionPayment
+                {
+                    CreditCard = model.CreditCard,
+                    Amount = finalTotal
+                });
+            }
+            else if (model.CreditCard != null )
+            {
+                transaction.Payments.Add(new ClientTransactionPayment
+                {
+                    Number = model.CreditCard.Number,
+                    Owner = model.CreditCard.Owner,
+                    CCV = model.CreditCard.CCV,
+                    ExpirationDateMMYY = model.CreditCard.ExpirationDateMMYY,
+                    Amount = finalTotal
+                });
+            }
+
+            // TODO: Setup credit notes
+            // TODO: When credit notes are added, the amount of client transaction payment changes
+
+            // Save transaction
+            {
+                var trBusiness = DependencyResolver.Obj.Resolve<IClientTransactionBusiness>();
+                trBusiness.Create(transaction);
+            }
+
+            // Calculate new service expiration date for client
+            var serviceTime = this.data.GetCurrentServiceExpirationTime(auth.CurrentClientId);
+
+            if (model.isAnualBuy)
+            {
+                serviceTime = serviceTime.AddMonths(12);
+            }
+            else
+            {
+                serviceTime = serviceTime.AddMonths(1);
+            }
+
+            this.data.UpdateServiceExpirationTime(auth.CurrentClientId, serviceTime);
+
+            // Send email saying what we bought
+        }
     }
 }

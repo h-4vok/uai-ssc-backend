@@ -14,7 +14,7 @@ namespace SSC.Models
         public decimal Taxes { get; set; }
         public decimal GetTotal()
         {
-            throw new NotImplementedException();
+            return this.Subtotal + this.Taxes;
         }
     }
 }

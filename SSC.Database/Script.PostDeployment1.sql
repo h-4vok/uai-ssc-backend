@@ -562,6 +562,28 @@ EXEC sp_ApprovedCreditCard_create '5165887744556699', 'GUZMAN CHRISTIAN A', 333,
 EXEC sp_ApprovedCreditCard_create '4111321432143214', 'CHRISTIAN A GUZMAN', 111, '1026'
 EXEC sp_ApprovedCreditCard_create '4517666866676669', 'GUZMAN CHRISTIAN', 222, '1030'
 
+-- Receipt Types
+INSERT ReceiptType (
+	Code,
+	Description,
+	IsSale,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	Code = 'purchase-bill',
+	Description = 'Factura',
+	IsSale = 1,
+	CreatedBy = @adminUserId,  
+	UpdatedBy = @adminUserId
+UNION
+SELECT
+	Code = 'credit-note',
+	Description = 'Nota de Crédito',
+	IsSale = 1,
+	CreatedBy = @adminUserId,  
+	UpdatedBy = @adminUserId
+
 -- System Languages (Initial)
 IF(NOT EXISTS(SELECT TOP 1
 	1

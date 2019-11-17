@@ -33,7 +33,13 @@ namespace SSC.Data
 
         public void Create(CreditCard model)
         {
-            throw new NotImplementedException();
+            model.Id = this.uow.ScalarDirect("sp_CreditCard_create",
+                ParametersBuilder.With("Number", model.Number)
+                .And("Owner", model.Owner)
+                .And("CCV", model.CCV)
+                .And("ExpirationDateMMYY", model.ExpirationDateMMYY)
+                .And("ClientId", model.Client.Id)
+            ).AsInt();
         }
 
         public void Delete(int id)

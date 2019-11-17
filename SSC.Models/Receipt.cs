@@ -14,9 +14,10 @@ namespace SSC.Models
         public DateTime ExpirationDate { get; set; }
         public ReceiptType ReceiptType { get; set; }
         public bool IsNullified { get; set; }
+        public string Number { get; set; }
     }
     public class Receipt<T> : Receipt
     {
-        public IEnumerable<T> Lines { get; set; }
+        public IList<T> Lines { get; set; } = new List<T>();
     }
 }

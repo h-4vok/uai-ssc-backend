@@ -21,7 +21,7 @@ namespace SSC.Business
 
         public void Create(ClientTransaction transaction)
         {
-            throw new NotImplementedException();
+            this.data.Create(transaction);
         }
 
         public IEnumerable<ClientTransactionReportRow> GetAll(int clientId)

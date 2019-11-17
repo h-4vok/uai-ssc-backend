@@ -14,7 +14,7 @@ namespace SSC.Models
         public decimal Total { get; set; }
         public ClientCompany ClientCompany { get; set; }
         public Receipt Receipt { get; set; }
-        public ClientTransactionPayment Payment { get; set; }
+        public IList<ClientTransactionPayment> Payments { get; set; } = new List<ClientTransactionPayment>();
         public Receipt RelatedReceipt { get; set; }
     }
 }

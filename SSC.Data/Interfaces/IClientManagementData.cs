@@ -14,5 +14,7 @@ namespace SSC.Data.Interfaces
         PricingPlan GetPricingPlanOfClient(int clientId);
         IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards();
         IEnumerable<CreditCard> GetAllCreditCards();
+        DateTime GetCurrentServiceExpirationTime(int clientId);
+        void UpdateServiceExpirationTime(int clientId, DateTime newDate);
     }
 }

@@ -23,7 +23,7 @@ namespace SSC.Business
 
         public void Create(CreditCard model)
         {
-            throw new NotImplementedException();
+            this.data.Create(model);
         }
 
         public void Delete(int id)

@@ -87,5 +87,20 @@ namespace SSC.Data
 
             return merged;
         }
+
+        public DateTime GetCurrentServiceExpirationTime(int clientId)
+        {
+            return Convert.ToDateTime(
+                this.uow.ScalarDirect("sp_ClientCompany_getServiceExpiration", 
+                ParametersBuilder.With("ClientId", clientId)));
+        }
+
+        public void UpdateServiceExpirationTime(int clientId, DateTime newDate)
+        {
+            this.uow.NonQueryDirect("sp_ClientCompany_updateServiceExpiration",
+                ParametersBuilder.With("ServicePlanExpirationTime", newDate)
+                    .And("ClientId", clientId)
+            );
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace SSC.Models
     {
         public string Code { get; set; }
         public string Description { get; set; }
+        public int LastNumber { get; set; }
         public bool IsSale { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace SSC.Data.Interfaces
     public interface IReceiptData
     {
         Receipt GetLastBill(int clientId);
+
+        void CreateNewBill(Receipt<ReceiptLine> receipt);
     }
 }

@@ -307,6 +307,14 @@
     <Build Include="Programmability\Stored Procedures\sp_ApprovedCreditCard_create.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getApprovedCards.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getClientCards.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_getNumber.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ReceiptLine_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_CreditCard_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientTransaction_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientTransaction_addPayment.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_getServiceExpiration.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_updateServiceExpiration.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />
