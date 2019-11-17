@@ -211,7 +211,7 @@ namespace SSC.Business
             {
                 Concept = String.Format("Servicio {0} - {1}", pricingPlan.Name, model.isAnualBuy ? "Extensión 12 Meses" : "Extensión 1 Mes"),
                 Subtotal = total,
-                Taxes = finalTotal
+                Taxes = finalTotal * 0.21.AsDecimal()
             });
 
             if (discount > 0)
@@ -231,6 +231,7 @@ namespace SSC.Business
             if (model.SaveCard)
             {
                 var ccBusiness = DependencyResolver.Obj.Resolve<ICreditCardBusiness>();
+                model.CreditCard.Client = new ClientCompany { Id = auth.CurrentClientId };
                 ccBusiness.Create(model.CreditCard);
             }
 
@@ -263,7 +264,7 @@ namespace SSC.Business
                     Owner = model.CreditCard.Owner,
                     CCV = model.CreditCard.CCV,
                     ExpirationDateMMYY = model.CreditCard.ExpirationDateMMYY,
-                    Amount = finalTotal
+                    Amount = transaction.Total
                 });
             }
 

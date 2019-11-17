@@ -1,12 +1,12 @@
 ﻿CREATE TABLE ClientCompanyTransactionPayment
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-	ClientCreditCardId INT NULL,
-	CreditNoteId INT NULL,
-	CreditCardNumber NVARCHAR(30) NOT NULL,
-	CreditCardOwner NVARCHAR(500) NOT NULL,
-	CreditCardCCV INT NOT NULL,
-	CreditCardExpirationDateMMYY NVARCHAR(4) NOT NULL,
+	ClientCreditCardId INT,
+	CreditNoteId INT,
+	CreditCardNumber NVARCHAR(30),
+	CreditCardOwner NVARCHAR(500),
+	CreditCardCCV INT,
+	CreditCardExpirationDateMMYY NVARCHAR(4),
 	ClientTransactionId INT NOT NULL,
 	Amount NUMERIC(12, 0),
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),

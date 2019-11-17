@@ -556,11 +556,11 @@ INSERT SiteNewsCategory (
 VALUES ( 'General' ), ( 'Investigación Clínica' ), ( 'Avances en Software Médico' ), ( 'Ofertas' )
 
 -- Approved Credit Cards (for testing)
-EXEC sp_ApprovedCreditCard_create '5258116611881129', 'CHRISTIAN A GUZMAN', 747, '1132'
+EXEC sp_ApprovedCreditCard_create '5258116611881129', 'CHRISTIAN A GUZMAN', 747, '1129'
 EXEC sp_ApprovedCreditCard_create '379500550031649', 'CHRISTIAN A GUZMAN', 4569, '1025'
 EXEC sp_ApprovedCreditCard_create '5165887744556699', 'GUZMAN CHRISTIAN A', 333, '1018'
 EXEC sp_ApprovedCreditCard_create '4111321432143214', 'CHRISTIAN A GUZMAN', 111, '1026'
-EXEC sp_ApprovedCreditCard_create '4517666866676669', 'GUZMAN CHRISTIAN', 222, '1030'
+EXEC sp_ApprovedCreditCard_create '4517666866676669', 'GUZMAN CHRISTIAN', 222, '0822'
 
 -- Receipt Types
 INSERT ReceiptType (
@@ -582,6 +582,21 @@ SELECT
 	Description = 'Nota de Crédito',
 	IsSale = 1,
 	CreatedBy = @adminUserId,  
+	UpdatedBy = @adminUserId
+
+INSERT TransactionType (
+	Description,
+	CreatedBy,
+	UpdatedBy
+)
+SELECT
+	Description = 'Compra',
+	CreatedBy = @adminUserId,
+	UpdatedBy = @adminUserId
+UNION
+SELECT
+	Description = 'Retorno',
+	CreatedBy = @adminUserId,
 	UpdatedBy = @adminUserId
 
 -- System Languages (Initial)
