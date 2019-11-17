@@ -14,5 +14,6 @@ namespace SSC.Common.ViewModels
         public IEnumerable<object> CreditNotes { get; set; } = new List<object>();
         public string PricingPlanCode { get; set; }
         public bool isAnualBuy { get; set; }
+        public string IncomingHost { get; set; }
     }
 }

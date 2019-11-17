@@ -8,9 +8,11 @@ using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 
 namespace SSC.Business
 {
@@ -292,6 +294,81 @@ namespace SSC.Business
             this.data.UpdateServiceExpirationTime(auth.CurrentClientId, serviceTime);
 
             // Send email saying what we bought
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+                var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/purchase-finished_{0}.html", auth.CurrentLanguageCode));
+                var mailTemplate = File.ReadAllText(mailTemplatePath);
+                var lineTemplatePath = HostingEnvironment.MapPath("~/EmailTemplates/purchase-line.html");
+                var lineTemplate = File.ReadAllText(lineTemplatePath);
+
+                // Build lines
+                var linesParts = new StringBuilder();
+
+                bill.Lines.ForEach(line =>
+                {
+                    var part = lineTemplate;
+                    part = part.Replace("${PurchaseDetailLine}", line.Concept);
+                    part = part.Replace("${PurchaseDetailPrice}", line.Subtotal.ToString("$#.00"));
+
+                    linesParts.Append(part);
+
+                    if (line.Taxes > 0)
+                    {
+                        var taxPart = lineTemplate;
+                        taxPart = taxPart.Replace("${PurchaseDetailLine}", line.Concept + " - IVA");
+                        taxPart = taxPart.Replace("${PurchaseDetailPrice}", line.Taxes.ToString("$#.00"));
+
+                        linesParts.Append(taxPart);
+                    }
+                });
+
+                // Build payment lines
+                var paymentParts = new StringBuilder();
+
+                transaction.Payments.ForEach(payment =>
+                {
+                    var isCreditNote = payment.CreditNoteId.HasValue;
+
+                    var part = lineTemplate;
+                    part = part.Replace("${PurchaseDetailLine}", isCreditNote ? i10n["purchase.payment-part.credit-note"] : i10n["purchase.payment-part.credit-card"]);
+
+                    if (isCreditNote)
+                    {
+                        // la tenemos que ir a buscar
+                        //.ToString("A0001-0000####")
+                    }
+                    else
+                    {
+                        var number = payment.CreditCard?.Number ?? payment.Number;
+                        var fmt = new String('X', number.Length - 4) + number.Substring(number.Length - 4);
+
+                        part = part.Replace("${PurchaseDetailPrice}", fmt);
+                    }
+
+                    paymentParts.Append(part);
+                });
+
+                // Finish up mail
+                mailTemplate = mailTemplate.Replace("${ExtensionType}", model.isAnualBuy ? i10n["purchase.extension.year"] : i10n["purchase.extension.month"]);
+                mailTemplate = mailTemplate.Replace("${ServicePlanName}", pricingPlan.Name);
+                mailTemplate = mailTemplate.Replace("${SscBillLink}", String.Format("http://{0}/#/client-management/bill/{1}", model.IncomingHost, bill.Id));
+                mailTemplate = mailTemplate.Replace("${ReceiptLines}", linesParts.ToString());
+                mailTemplate = mailTemplate.Replace("${TotalAmount}", transaction.Total.ToString("$#.00"));
+                mailTemplate = mailTemplate.Replace("${PaidWithLines}", paymentParts.ToString());
+
+                // Send email
+                var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
+
+                var mail = new QueuedMail
+                {
+                    To = auth.CurrentUserName,
+                    Subject = i10n["newsletter-email.subject"],
+                    Body = mailTemplate,
+                };
+
+                smtpHandler.Send(mail, true);
+            }
         }
     }
 }

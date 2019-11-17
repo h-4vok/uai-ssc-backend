@@ -119,7 +119,7 @@ namespace SSC.Business
 
                 var mail = new QueuedMail
                 {
-                    To = authProvider.CurrentUserName,
+                    To = subscriber.Email,
                     Subject = i10n["newsletter-email.subject"],
                     Body = specificUserMailTemplate,
                 };

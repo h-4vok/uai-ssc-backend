@@ -3350,24 +3350,24 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Remainder'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'purchase.extension.month',
+	@es = 'Extensión 1 Mes',
+	@en = 'Extended 1 Month'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'purchase.extension.year',
+	@es = 'Extensión 12 Meses',
+	@en = 'Extended 12 Months'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'purchase.payment-part.credit-note',
+	@es = 'Nota de Crédito',
+	@en = 'Credit Note'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'purchase.payment-part.credit-card',
+	@es = 'Tarjeta de Crédito',
+	@en = 'Credit Card'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
