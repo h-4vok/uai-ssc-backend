@@ -199,13 +199,13 @@ namespace SSC.Business
                 ReceiptType = receiptType,
             }; // El number lo genera la base
 
-            var total = pricingPlan.Price;
+            var total = model.isAnualBuy ? pricingPlan.Price * 12 : pricingPlan.Price;
             decimal discount = 0;
             decimal finalTotal = total;
 
             if (model.isAnualBuy)
             {
-                discount = pricingPlan.Price.AsDecimal() * (pricingPlan.AnualDiscountPercentage.AsDecimal() / 100);
+                discount = total * (pricingPlan.AnualDiscountPercentage.AsDecimal() / 100);
                 finalTotal = total - discount;
             }
 
