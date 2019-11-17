@@ -3288,6 +3288,51 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'The date format must be MMYY'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-method.type.credit-card',
+	@es = 'Tarjeta de Crédito',
+	@en = 'Credit Card'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-method.grid.type',
+	@es = 'Forma de Pago',
+	@en = 'Payment Method'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-method.grid.reference',
+	@es = 'Referencia',
+	@en = 'Referencia'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-method.grid.value',
+	@es = 'Importe',
+	@en = 'Value'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'payment-method.grid.remainder',
+	@es = 'Remanente',
+	@en = 'Remainder'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
