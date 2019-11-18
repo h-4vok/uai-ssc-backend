@@ -30,13 +30,14 @@ namespace SSC.Data
         {
             var record = new ClientTransactionReportRow
             {
-                TransactionId  = reader.GetInt32("TransactionId"),
+                TransactionId = reader.GetInt32("TransactionId"),
                 ReceiptId = reader.GetInt32("ReceiptId"),
                 ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####"),
                 Total = reader.GetDecimal(reader.GetOrdinal("Total")).ToString("$ #.00"),
                 TransactionDate = reader.GetDateTime("TransactionDate").ToString("yyyy-MM-dd"),
                 TransactionDescription = reader.GetString("TransactionDescription"),
-                TransactionTypeCode = reader.GetString("TransactionTypeCode")
+                TransactionTypeCode = reader.GetString("TransactionTypeCode"),
+                TransactionStatusCode = reader.GetString("TransactionStatusCode")
             };
 
             return record;
@@ -44,15 +45,15 @@ namespace SSC.Data
 
         public ClientLandingViewModel GetLandingData(int clientId)
         {
-            var viewModel = this.uow.GetOneDirect("sp_ClientManagement_getLandingData", 
-                this.FetchClientLanding, 
+            var viewModel = this.uow.GetOneDirect("sp_ClientManagement_getLandingData",
+                this.FetchClientLanding,
                 ParametersBuilder.With("ClientId", clientId));
 
             viewModel.Transactions = this.uow.GetDirect("sp_ClientManagement_getTransactions",
                 this.FetchTransactionRow,
                 ParametersBuilder.With("ClientId", clientId)
             );
-            
+
             return viewModel;
         }
 
@@ -114,7 +115,7 @@ namespace SSC.Data
         public DateTime GetCurrentServiceExpirationTime(int clientId)
         {
             return Convert.ToDateTime(
-                this.uow.ScalarDirect("sp_ClientCompany_getServiceExpiration", 
+                this.uow.ScalarDirect("sp_ClientCompany_getServiceExpiration",
                 ParametersBuilder.With("ClientId", clientId)));
         }
 
@@ -198,6 +199,38 @@ namespace SSC.Data
 
                 return model;
             });
+        }
+
+        public bool ReturnForReceiptExists(int receiptId)
+        {
+            return this.uow.ScalarDirect("sp_BillReturn_exists", ParametersBuilder.With("ReceiptId", receiptId)).AsBool();
+        }
+
+        protected BillDetailForReturnViewModel FetchBillDetailForReturn(IDataReader reader)
+        {
+            var model = new BillDetailForReturnViewModel
+            {
+                ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####"),
+                ItemDescription = reader.GetString("ItemDescription"),
+                TotalAmount = reader.GetDecimal(reader.GetOrdinal("TotalAmount")).ToString("U$D #.00")
+            };
+
+            return model;
+        }
+
+        public BillDetailForReturnViewModel GetDetailForReturn(int receiptId)
+        {
+            return this.uow.GetOneDirect("sp_BillReturn_getDetail", this.FetchBillDetailForReturn, ParametersBuilder.With("ReceiptId", receiptId));
+        }
+
+        public void StartReturnRequest(int receiptId)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            this.uow.NonQueryDirect("sp_StartReturnRequest",
+                ParametersBuilder.With("ReceiptId", receiptId)
+                    .And("RequestedBy", auth.CurrentUserId)
+            );
         }
     }
 }

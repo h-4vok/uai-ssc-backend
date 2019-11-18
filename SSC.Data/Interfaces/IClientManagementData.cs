@@ -17,5 +17,8 @@ namespace SSC.Data.Interfaces
         DateTime GetCurrentServiceExpirationTime(int clientId);
         void UpdateServiceExpirationTime(int clientId, DateTime newDate);
         PrintableBillViewModel GetBillForPrinting(int receiptId);
+        bool ReturnForReceiptExists(int receiptId);
+        BillDetailForReturnViewModel GetDetailForReturn(int receiptId);
+        void StartReturnRequest(int receiptId);
     }
 }

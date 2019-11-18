@@ -44,5 +44,14 @@ namespace SSC.Api.Controllers
         [HttpGet]
         public ResponseViewModel<PrintableBillViewModel> Get(int receiptId) => this.business.GetPrintableBill(receiptId);
 
+        [Route("billdetailforreturn/{receiptId}")]
+        [HttpGet]
+        public ResponseViewModel<BillDetailForReturnViewModel> GetDetailForReturn(int receiptId) => 
+            ResponseViewModel.RunAndReturn(() => this.business.GetDetailForReturn(receiptId));
+
+        [Route("returnbillrequest/{receiptId}")]
+        [HttpPut]
+        public ResponseViewModel StartReturnRequest(int receiptId) => ResponseViewModel.RunAndReturn(() => this.business.StartReturnRequest(receiptId));
+
     }
 }

@@ -318,6 +318,10 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getTransactions.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PrintableBill_getHeader.sql" />
     <Build Include="Programmability\Stored Procedures\sp_PrintableBill_getLines.sql" />
+    <Build Include="Tables\ReceiptReturnRequest.sql" />
+    <Build Include="Tables\sp_BillReturn_exists.sql" />
+    <Build Include="Tables\sp_BillReturn_getDetail.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_StartReturnRequest.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

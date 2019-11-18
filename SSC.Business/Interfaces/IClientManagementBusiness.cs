@@ -16,5 +16,7 @@ namespace SSC.Business.Interfaces
         void ValidateCreditCard(CreditCard card, bool isPayment);
         void ProcessBuy(BuyViewModel model);
         PrintableBillViewModel GetPrintableBill(int receiptId);
+        BillDetailForReturnViewModel GetDetailForReturn(int receiptId);
+        void StartReturnRequest(int receiptId);
     }
 }

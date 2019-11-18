@@ -3450,30 +3450,396 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Print'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'account-transactions.actions.request-return',
+	@es = 'Solicitar Devolución',
+	@en = 'Request Return'
 	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-return.typography.are-you-sure',
+	@es = '¿Está seguro de solicitar una anulación de la siguiente compra?',
+	@en = 'Are you sure that you wish to request a cancellation of the following purchase?'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-return.typography.bill-row-header',
+	@es = 'Factura Comprobante:',
+	@en = 'Purchase Bill:'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-return.typography.admin-notice',
+	@es = 'Un administrador de Sample Supply Chain revisará su pedido y se pondrá en contacto con usted.',
+	@en = 'An admin from Sample Supply Chain will review your request and get in contact with you.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-return.typography.expiration-date-notice',
+	@es = 'Recuerde que la fecha de vencimiento de su servicio se verá afectada al aplicarse la devolución.',
+	@en = 'Remember that the expiration date of your service will be affected by applying the return.'
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-return.typography.credit-note-notice',
+	@es = 'De aprobarse la devolución, usted recibirá una nota de crédito que podrá utilizar en nuestra plataforma.',
+	@en = 'By approving the return, you will receive a credit note that you can use in our platform.'
+
+	
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'request-for-return.validation.already-exists',
+	@es = 'Ya existe un pedido de devolución para esta compra.',
+	@en = 'A request for return already exists for this purchase.'
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'transaction.status-code.finalized',
+	@es = 'Finalizada',
+	@en = 'Finalized'
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'transaction.status-code.return-requested',
+	@es = 'Devolución Pedida',
+	@en = 'Return Requested'
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'transaction.status-code.return-approved',
+	@es = 'Anulada',
+	@en = 'Returned'
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'transaction.status-code.emitted',
+	@es = 'Emitida',
+	@en = 'Emitted'
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'transaction.status',
+	@es = 'Estado',
+	@en = 'Status'
+
+		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
-	
+
+		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
-	
+
+		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
-	
+
+		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
-	
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+
+		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',

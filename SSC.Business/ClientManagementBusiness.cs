@@ -378,5 +378,29 @@ namespace SSC.Business
         {
             return this.data.GetBillForPrinting(receiptId);
         }
+
+        public BillDetailForReturnViewModel GetDetailForReturn(int receiptId)
+        {
+            // existe el retorno? tiro exception
+            if (this.data.ReturnForReceiptExists(receiptId)) {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+                throw new UnprocessableEntityException(i10n["request-for-return.validation.already-exists"]);
+            }
+
+            // retorno el modelo desde data
+            return this.data.GetDetailForReturn(receiptId);
+        }
+
+        public void StartReturnRequest(int receiptId)
+        {
+            // existe el retorno? tiro exception
+            if (this.data.ReturnForReceiptExists(receiptId))
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+                throw new UnprocessableEntityException(i10n["request-for-return.validation.already-exists"]);
+            }
+
+            this.data.StartReturnRequest(receiptId);
+        }
     }
 }

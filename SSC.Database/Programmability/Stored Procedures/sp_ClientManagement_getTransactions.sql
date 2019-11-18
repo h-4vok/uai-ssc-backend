@@ -10,8 +10,19 @@ BEGIN
 		TransactionDescription = tt.Description,
 		TransactionDate = cct.TransactionDate,
 		Total = cct.Total,
-		TransactionTypeCode = rt.Code
-
+		TransactionTypeCode = rt.Code,
+		TransactionStatusCode = 
+			CASE WHEN rt.Code = 'credit-note' THEN 'emitted'
+			ELSE
+				CASE WHEN rrr.Id IS NULL THEN 'finalized'
+				ELSE
+					CASE 
+						WHEN rrr.Approved = 1 THEN 'return-approved'
+						WHEN rrr.Rejected = 1 THEN 'finalized'
+						ELSE 'return-requested'
+					END
+				END
+			END
 	FROM		ClientCompanyTransaction CCT
 
 	LEFT  JOIN	Receipt R
@@ -23,8 +34,11 @@ BEGIN
 	INNER JOIN	TransactionType TT
 			ON	cct.TransactionTypeId = tt.Id
 
+	LEFT  JOIN	ReceiptReturnRequest RRR
+			ON	r.Id = rrr.ReceiptId
+
 	WHERE		cct.ClientId = @ClientId
 
-	ORDER BY cct.TransactionDate DESC
+	ORDER BY cct.Id DESC
 
 END

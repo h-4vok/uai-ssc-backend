@@ -15,5 +15,6 @@ namespace SSC.Common.ViewModels
         public string TransactionDate { get; set; }
         public string Total { get; set; }
         public string TransactionTypeCode { get; set; }
+        public string TransactionStatusCode { get; set; } = "finalized";
     }
 }
