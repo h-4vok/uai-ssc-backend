@@ -373,5 +373,10 @@ namespace SSC.Business
                 smtpHandler.Send(mail, true);
             }
         }
+
+        public PrintableBillViewModel GetPrintableBill(int receiptId)
+        {
+            return this.data.GetBillForPrinting(receiptId);
+        }
     }
 }

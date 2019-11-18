@@ -125,5 +125,79 @@ namespace SSC.Data
                     .And("ClientId", clientId)
             );
         }
+
+        protected PrintableBillViewModel FetchBillHeader(IDataReader reader)
+        {
+            var model = new PrintableBillViewModel();
+
+            model.ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####");
+            model.FormattedTransactionDate = reader.GetDateTime("TransactionDate").ToString("dd/MM/yyyy");
+            model.ClientLegalName = reader.GetString("LegalName");
+            model.ClientTaxCode = reader.GetString("TaxCode");
+
+            var city = reader.GetString("City");
+            var streetName = reader.GetString("StreetName");
+            var streetNumber = reader.GetString("StreetNumber");
+            var postalCode = reader.GetString("PostalCode");
+            var department = reader.GetString("Department");
+            var province = reader.GetString("ProvinceName");
+
+            var items = new[] { streetName, streetNumber, department, postalCode, city, province };
+            model.ClientCompositeAddress = String.Join(", ", items);
+
+            model.IsCreditCardSale = reader.GetBoolean("IsCreditCardSale");
+            model.IsCreditNoteSale = reader.GetBoolean("IsCreditNoteSale");
+
+            model.FormattedTotal = reader.GetDecimal(reader.GetOrdinal("Total")).ToString("#.00");
+
+            return model;
+        }
+
+        private class PrintableBillStagingLine
+        {
+            public int Quantity { get; set; }
+            public string Detail { get; set; }
+            public decimal UnitPrice { get; set; }
+            public decimal TotalPrice { get; set; }
+            public decimal LineTaxes { get; set; }
+        }
+
+        private PrintableBillStagingLine FetchBillStagingLine(IDataReader reader) =>
+            new PrintableBillStagingLine
+            {
+                Quantity = reader.GetInt32("Quantity"),
+                Detail = reader.GetString("Detail"),
+                UnitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice")),
+                TotalPrice = reader.GetDecimal(reader.GetOrdinal("TotalPrice")),
+                LineTaxes = reader.GetDecimal(reader.GetOrdinal("LineTaxes")),
+            };
+
+        public PrintableBillViewModel GetBillForPrinting(int receiptId)
+        {
+            return this.uow.Run(() =>
+            {
+                var model = this.uow.GetOne("sp_PrintableBill_getHeader", this.FetchBillHeader, ParametersBuilder.With("ReceiptId", receiptId));
+                var stagingLines = this.uow.Get("sp_PrintableBill_getLines", this.FetchBillStagingLine, ParametersBuilder.With("ReceiptId", receiptId));
+
+                stagingLines.ForEach(sl =>
+                {
+                    var line = new PrintableBillLineViewModel
+                    {
+                        Quantity = sl.Quantity,
+                        Detail = sl.Detail,
+                        FormattedUnitPrice = sl.UnitPrice.ToString("#.00"),
+                        FormattedTotalPrice = sl.TotalPrice.ToString("#.00")
+                    };
+
+                    model.Lines.Add(line);
+                });
+
+                model.FormattedSubtotal = stagingLines.Sum(x => x.TotalPrice).ToString("#.00");
+                model.FormattedVAT = stagingLines.Sum(x => x.LineTaxes).ToString("#.00");
+                model.FormattedTotal = stagingLines.Sum(x => x.TotalPrice + x.LineTaxes).ToString("#.00");
+
+                return model;
+            });
+        }
     }
 }

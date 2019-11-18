@@ -3440,14 +3440,14 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'View Receipt'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.action.goback',
+	@es = 'Volver',
+	@en = 'Go Back'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.action.print',
+	@es = 'Imprimir',
+	@en = 'Print'
 	
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

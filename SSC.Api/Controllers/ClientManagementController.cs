@@ -40,5 +40,9 @@ namespace SSC.Api.Controllers
         [HttpPost]
         public ResponseViewModel Buy(BuyViewModel model) => ResponseViewModel.RunAndReturn(() => this.business.ProcessBuy(model));
 
+        [Route("billforprinting/{receiptId}")]
+        [HttpGet]
+        public ResponseViewModel<PrintableBillViewModel> Get(int receiptId) => this.business.GetPrintableBill(receiptId);
+
     }
 }

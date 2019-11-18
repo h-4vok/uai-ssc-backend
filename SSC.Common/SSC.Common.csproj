@@ -92,6 +92,7 @@
     <Compile Include="ViewModels\ClientCompanyReportRow.cs" />
     <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
+    <Compile Include="ViewModels\PrintableBillViewModel.cs" />
     <Compile Include="ViewModels\SelectableCreditCardViewModel.cs" />
     <Compile Include="ViewModels\ClientTransactionReportRow.cs" />
     <Compile Include="ViewModels\ClinicRunReportRow.cs" />

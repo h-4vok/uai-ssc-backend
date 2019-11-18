@@ -15,5 +15,6 @@ namespace SSC.Business.Interfaces
         IEnumerable<SelectableCreditCardViewModel> GetSelectableCreditCards();
         void ValidateCreditCard(CreditCard card, bool isPayment);
         void ProcessBuy(BuyViewModel model);
+        PrintableBillViewModel GetPrintableBill(int receiptId);
     }
 }

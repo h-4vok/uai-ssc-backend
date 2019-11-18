@@ -16,5 +16,6 @@ namespace SSC.Data.Interfaces
         IEnumerable<CreditCard> GetAllCreditCards();
         DateTime GetCurrentServiceExpirationTime(int clientId);
         void UpdateServiceExpirationTime(int clientId, DateTime newDate);
+        PrintableBillViewModel GetBillForPrinting(int receiptId);
     }
 }
