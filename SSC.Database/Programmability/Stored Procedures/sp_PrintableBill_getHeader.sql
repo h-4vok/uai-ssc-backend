@@ -35,6 +35,7 @@ BEGIN
 	SELECT
 		r.ReceiptNumber,
 		r.IsNullified,
+		ReceiptTypeDescription = rt.Description,
 		cct.TransactionDate,
 		ccbi.LegalName,
 		ccbi.TaxCode,
@@ -67,6 +68,9 @@ BEGIN
 
 	LEFT  JOIN	CTE_Receipt_HasCreditNote HCN
 			ON	r.Id = hcn.Id
+
+	INNER JOIN	ReceiptType RT
+			ON	r.ReceiptTypeId = rt.Id
 
 	WHERE		r.Id = @ReceiptId
 

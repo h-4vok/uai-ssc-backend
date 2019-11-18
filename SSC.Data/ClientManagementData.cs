@@ -33,7 +33,7 @@ namespace SSC.Data
                 TransactionId = reader.GetInt32("TransactionId"),
                 ReceiptId = reader.GetInt32("ReceiptId"),
                 ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####"),
-                Total = reader.GetDecimal(reader.GetOrdinal("Total")).ToString("$ #.00"),
+                Total = (-reader.GetDecimal(reader.GetOrdinal("Total"))).ToString("$ #.00"),
                 TransactionDate = reader.GetDateTime("TransactionDate").ToString("yyyy-MM-dd"),
                 TransactionDescription = reader.GetString("TransactionDescription"),
                 TransactionTypeCode = reader.GetString("TransactionTypeCode"),
@@ -132,9 +132,11 @@ namespace SSC.Data
             var model = new PrintableBillViewModel();
 
             model.ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####");
+            model.ReceiptTypeDescription = reader.GetString("ReceiptTypeDescription");
             model.FormattedTransactionDate = reader.GetDateTime("TransactionDate").ToString("dd/MM/yyyy");
             model.ClientLegalName = reader.GetString("LegalName");
             model.ClientTaxCode = reader.GetString("TaxCode");
+            model.IsNullified = reader.GetBoolean("IsNullified");
 
             var city = reader.GetString("City");
             var streetName = reader.GetString("StreetName");
@@ -231,6 +233,146 @@ namespace SSC.Data
                 ParametersBuilder.With("ReceiptId", receiptId)
                     .And("RequestedBy", auth.CurrentUserId)
             );
+        }
+
+        private string formatNumberIfExists(string number)
+        {
+            if (String.IsNullOrWhiteSpace(number))
+                return null;
+
+            return number.AsInt().ToString("A0001-0000####");
+        }
+
+        protected ReceiptReturnRequestViewModel FetchRRR(IDataReader reader) =>
+            new ReceiptReturnRequestViewModel
+            {
+                Id = reader.GetInt32("Id"),
+                ReceiptId = reader.GetInt32("ReceiptId"),
+                Approved = reader.GetBoolean("Approved"),
+                ApprovedBy = reader.GetString("ApprovedBy"),
+                ReceiptNumber = reader.GetString("ReceiptNumber").AsInt().ToString("A0001-0000####"),
+                Rejected = reader.GetBoolean("Rejected"),
+                RejectedBy = reader.GetString("RejectedBy"),
+                RequestDate = reader.GetDateTime("RequestDate"),
+                RequestedBy = reader.GetString("RequestedBy"),
+                ReviewDate = reader.GetDateTimeNullable("ReviewDate"),
+                RelatedCreditNoteNumber = formatNumberIfExists(reader.GetString("RelatedCreditNoteNumber")),
+                RelatedCreditNoteId = reader.GetInt32Nullable("RelatedCreditNoteId")
+            };
+
+        public IEnumerable<ReceiptReturnRequestViewModel> GetReceiptReturnRequests()
+        {
+            return this.uow.GetDirect("sp_ReceiptReturnRequest_getAll", this.FetchRRR);
+        }
+
+        public AfterReturnApproval ApproveReturn(int receiptId)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var output = new AfterReturnApproval();
+
+            this.uow.Run(() =>
+            {
+                // modificamos el registro
+                output.ClientUserId = this.uow.Scalar("sp_ReceiptReturnRequest_approve",
+                    ParametersBuilder.With("ReceiptId", receiptId)
+                    .And("ApprovedBy", auth.CurrentUserId)
+                ).AsInt();
+
+                // anulamos la factura original
+                var clientId = this.uow.Scalar("sp_Receipt_nullify",
+                    ParametersBuilder.With("ReceiptId", receiptId)).AsInt();
+
+                // generamos el encabezado de NC
+                var ncId = this.uow.Scalar("sp_Receipt_create",
+                    ParametersBuilder.With("ClientId", clientId)
+                        .And("ReceiptTypeCode", "credit-note")
+                        .And("CreatedBy", auth.CurrentUserId)
+                ).AsInt();
+
+                // obtenemos numero de factura
+                var receiptNumber = this.uow.Scalar("sp_Receipt_getNumber", ParametersBuilder.With("Id", receiptId)).AsString();
+                output.NullifiedReceiptNumber = receiptNumber.AsInt().ToString("A0001-0000####");
+
+                // generamos la linea del NC
+                var ncLine = new ReceiptLine();
+                {
+                    var stagingLines = this.uow.Get("sp_PrintableBill_getLines", this.FetchBillStagingLine, ParametersBuilder.With("ReceiptId", receiptId));
+
+                    ncLine.Subtotal = stagingLines.Sum(x => x.TotalPrice);
+                    ncLine.Taxes = stagingLines.Sum(x => x.LineTaxes);
+                }
+                this.uow.NonQuery("sp_ReceiptLine_create",
+                    ParametersBuilder.With("ReceiptId", ncId)
+                        .And("Concept", String.Format("Devolución Factura {0}", output.NullifiedReceiptNumber))
+                        .And("Subtotal", -ncLine.Subtotal)
+                        .And("Taxes", -ncLine.Taxes)
+                        .And("CreatedBy", auth.CurrentUserId)
+                );
+                output.CreditNoteNumber = this.uow.Scalar("sp_Receipt_getNumber", ParametersBuilder.With("Id", ncId)).AsString().AsInt().ToString("A0001-0000####");
+
+                // generamos la transaccion del NC
+                this.uow.NonQuery("sp_ClientTransaction_create",
+                    ParametersBuilder.With("TransactionTypeCode", "Retorno")
+                        .And("Total", -(ncLine.Subtotal + ncLine.Taxes))
+                        .And("ClientId", clientId)
+                        .And("ReceiptId", ncId)
+                        .And("RelatedReceiptId", receiptId)
+                );
+
+                // actualizamos el expiration date del cliente
+                var monthsBought = this.uow.Scalar("sp_Receipt_getBoughtMonths", ParametersBuilder.With("ReceiptId", receiptId)).AsInt();
+                var currentDate = Convert.ToDateTime( this.uow.Scalar("sp_ClientCompany_getServiceExpiration", ParametersBuilder.With("ClientId", clientId)));
+
+                var days = monthsBought * 30;
+                var newDate = currentDate.Subtract(new TimeSpan(days, 0, 0, 0));
+
+                this.uow.NonQuery("sp_ClientCompany_updateExpirationDate",
+                    ParametersBuilder.With("Id", clientId)
+                        .And("ServiceExpirationDate", newDate)
+                );
+            }, true);
+
+            return output;
+        }
+
+        public ReturnApprovalRequiredData GetReturnApprovedRequiredData(int receiptId)
+        {
+            var clientId = this.uow.ScalarDirect("sp_Receipt_getClientId", ParametersBuilder.With("ReceiptId", receiptId)).AsInt();
+            var monthsBought = this.uow.ScalarDirect("sp_Receipt_getBoughtMonths", ParametersBuilder.With("ReceiptId", receiptId)).AsInt();
+            var currentDate = Convert.ToDateTime(this.uow.ScalarDirect("sp_ClientCompany_getServiceExpiration", ParametersBuilder.With("ClientId", clientId)));
+            var days = monthsBought * 30;
+
+            var model = new ReturnApprovalRequiredData
+            {
+                ClientId = clientId,
+                ReceiptId = receiptId,
+                DaysToReturn = days,
+                CurrentExpirationDate = currentDate
+            };
+
+            return model;
+
+        }
+
+        public bool IsPurchaseBill(int receiptId)
+        {
+            return this.uow.ScalarDirect("sp_Receipt_isPurchaseBill", ParametersBuilder.With("Id", receiptId)).AsBool();
+        }
+
+        public Tuple<int, string> RejectReturn(int receiptId)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            var userId = this.uow.ScalarDirect("sp_ReceiptReturnRequest_reject",
+                    ParametersBuilder.With("ReceiptId", receiptId)
+                    .And("RejectedBY", auth.CurrentUserId)
+                ).AsInt();
+
+            var receiptNumber = this.uow.ScalarDirect("sp_Receipt_getNumber", ParametersBuilder.With("Id", receiptId)).AsString();
+            var finalReceiptNumber = receiptNumber.AsInt().ToString("A0001-0000####");
+
+            var output = new Tuple<int, string>(userId, finalReceiptNumber);
+            return output;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace SSC.Common.ViewModels
     public class PrintableBillViewModel
     {
         public string ReceiptNumber { get; set; }
+        public string ReceiptTypeDescription { get; set; }
         public string FormattedTransactionDate { get; set; }
         public string ClientLegalName { get; set; }
         public string ClientCompositeAddress { get; set; }
@@ -19,6 +20,7 @@ namespace SSC.Common.ViewModels
         public string FormattedSubtotal { get; set; }
         public string FormattedVAT { get; set; }
         public string FormattedTotal { get; set; }
+        public bool IsNullified { get; set; }
     }
 
     public class PrintableBillLineViewModel

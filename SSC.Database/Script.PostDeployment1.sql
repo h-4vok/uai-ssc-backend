@@ -194,6 +194,7 @@ EXEC sp_PlatformMenu_create 'management-menu', 'menu.platform.management-menu', 
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 1, '/management/member', 'menu.platform.management.members', 'MEMBER_MANAGEMENT', 'MEMBER_REPORT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 2, '/management/payment-type', 'menu.platform.management.payment-type', 'PAYMENT_METHOD_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing', 'menu.platform.management.billing', 'CLIENT_BILLING_MANAGEMENT'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 4, '/management/receipt-return-request', 'menu.platform.management.receipt-return-request', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
@@ -1289,8 +1290,8 @@ FROM (
 			en = 'Samples Management'
 	UNION
 		SELECT k = 'menu.platform.management-menu',
-			es = 'Auto-Gestión',
-			en = 'Self-Management'
+			es = 'Gestión',
+			en = 'Management'
 	UNION
 		SELECT k = 'menu.platform.marketing-menu',
 			es = 'Investigación de Marketing',
@@ -3517,117 +3518,117 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.action.approve',
+	@es = 'Aprobar',
+	@en = 'Approve'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.action.reject',
+	@es = 'Rechazar',
+	@en = 'Reject'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.status.approved',
+	@es = 'Aprobado',
+	@en = 'Approved'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.status.rejected',
+	@es = 'Rechazado',
+	@en = 'Reject'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.status.pending',
+	@es = 'Pendiente',
+	@en = 'Pending'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.management.receipt-return-request',
+	@es = 'Pedidos de Devolución',
+	@en = 'Receipt Return Requests'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.receipt-number',
+	@es = 'Factura',
+	@en = 'Bill'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.status',
+	@es = 'Estado',
+	@en = 'Status'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.request-date',
+	@es = 'Fecha de Pedido',
+	@en = 'Request Date'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.review-by',
+	@es = 'Revisado Por',
+	@en = 'Reviewed By'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.review-date',
+	@es = 'Fecha de Revisión',
+	@en = 'Review Date'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.validation.bad-expiration-after',
+	@es = 'De aprobarse la devolución la fecha de vencimiento del servicio del cliente quedaría en el pasado. Debe rechazar la devolución y comunicarle al usuario el problema.',
+	@en = 'If the return were to be approved then the service plan expiration date of the client would be set into the past. You must reject the return and communicate the problem to the user.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'request-for-return.validation.not-purchase-bill',
+	@es = 'El comprobante seleccionado no es una factura.',
+	@en = 'The receipt selected is not a purchase bill.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.grid.related-credit-note-number',
+	@es = 'Nota de Crédito',
+	@en = 'Credit Note'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'account-transactions.actions.view-credit-note',
+	@es = 'Ver Nota de Crédito',
+	@en = 'View Credit Note'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'reject-return-request.page.title',
+	@es = 'Rechazo de Devolución',
+	@en = 'Rejection of Return Request'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'reject-return-request.page.help',
+	@es = 'Debe especificar un mensaje para el usuario sobre el rechazo de su pedido de devolución. Debe ingresar al menos 50 caracteres explicando el motivo del rechazo.',
+	@en = 'You must specify a message for the user that requested the purchase return. You must input at least 50 characters explaining why you are rejecting the request.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'reject-return-request.rejection-text',
+	@es = 'Motivo de Rechazo',
+	@en = 'Rejection Motive'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'receipt-return-request.validation.rejection-motive-too-short',
+	@es = 'Debe especificar un motivo de rechazo de al menos 50 caracteres.',
+	@en = 'You must specify a rejection motive of at least 50 characters.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate

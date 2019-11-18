@@ -20,5 +20,10 @@ namespace SSC.Data.Interfaces
         bool ReturnForReceiptExists(int receiptId);
         BillDetailForReturnViewModel GetDetailForReturn(int receiptId);
         void StartReturnRequest(int receiptId);
+        IEnumerable<ReceiptReturnRequestViewModel> GetReceiptReturnRequests();
+        AfterReturnApproval ApproveReturn(int receiptId);
+        ReturnApprovalRequiredData GetReturnApprovedRequiredData(int receiptId);
+        bool IsPurchaseBill(int receiptId);
+        Tuple<int, string> RejectReturn(int receiptId);
     }
 }

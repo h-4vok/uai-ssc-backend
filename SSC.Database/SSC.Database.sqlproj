@@ -322,6 +322,14 @@
     <Build Include="Tables\sp_BillReturn_exists.sql" />
     <Build Include="Tables\sp_BillReturn_getDetail.sql" />
     <Build Include="Programmability\Stored Procedures\sp_StartReturnRequest.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ReceiptReturnRequest_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ReceiptReturnRequest_approve.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_nullify.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_getBoughtMonths.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientCompany_updateExpirationDate.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_getClientId.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Receipt_isPurchaseBill.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ReceiptReturnRequest_reject.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

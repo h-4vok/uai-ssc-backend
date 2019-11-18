@@ -381,6 +381,13 @@ namespace SSC.Business
 
         public BillDetailForReturnViewModel GetDetailForReturn(int receiptId)
         {
+            // es otro cbte que no es una factura?
+            if (!this.data.IsPurchaseBill(receiptId))
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+                throw new UnprocessableEntityException(i10n["request-for-return.validation.not-purchase-bill"]);
+            }
+
             // existe el retorno? tiro exception
             if (this.data.ReturnForReceiptExists(receiptId)) {
                 var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
@@ -401,6 +408,41 @@ namespace SSC.Business
             }
 
             this.data.StartReturnRequest(receiptId);
+        }
+
+        public IEnumerable<ReceiptReturnRequestViewModel> GetReceiptReturnRequests()
+        {
+            return this.data.GetReceiptReturnRequests();
+        }
+
+        public void ApproveReturn(int receiptId, Action<int, string, string> callback)
+        {
+            // revisamos que al hacer la devolucion no lleguemos a una fecha de expiracion anterior a hoy
+            var returnData = this.data.GetReturnApprovedRequiredData(receiptId);
+            if (returnData.CurrentExpirationDate.Subtract(new TimeSpan(returnData.DaysToReturn, 0, 0, 0, 0)) < DateTime.Today)
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+                throw new UnprocessableEntityException(i10n["receipt-return-request.validation.bad-expiration-after"]);
+            }
+
+            // aprobamos
+            var output = this.data.ApproveReturn(receiptId);
+
+            // mandamos mensaje al chat
+            callback(output.ClientUserId, output.NullifiedReceiptNumber, output.CreditNoteNumber);
+        }
+
+        public void RejectReturn(ReturnRejectionViewModel viewModel, Action<int, string, string> sendRejectionMessageToClient)
+        {
+            if (viewModel.RejectionMotive.Length < 50)
+            {
+                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+                throw new UnprocessableEntityException(i10n["receipt-return-request.validation.rejection-motive-too-short"]);
+            }
+
+            Tuple<int, string> rejectionData = this.data.RejectReturn(viewModel.ReceiptId);
+
+            sendRejectionMessageToClient(rejectionData.Item1, rejectionData.Item2, viewModel.RejectionMotive);
         }
     }
 }

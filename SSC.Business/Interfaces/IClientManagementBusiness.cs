@@ -18,5 +18,8 @@ namespace SSC.Business.Interfaces
         PrintableBillViewModel GetPrintableBill(int receiptId);
         BillDetailForReturnViewModel GetDetailForReturn(int receiptId);
         void StartReturnRequest(int receiptId);
+        IEnumerable<ReceiptReturnRequestViewModel> GetReceiptReturnRequests();
+        void ApproveReturn(int receiptId, Action<int, string, string> callback);
+        void RejectReturn(ReturnRejectionViewModel viewModel, Action<int, string, string> sendRejectionMessageToClient);
     }
 }

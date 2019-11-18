@@ -83,6 +83,7 @@
     <Compile Include="PythonEngineProcessor.cs" />
     <Compile Include="ReversibleEncryption.cs" />
     <Compile Include="ViewModels\AboutUsViewModel.cs" />
+    <Compile Include="ViewModels\AfterReturnApproval.cs" />
     <Compile Include="ViewModels\AuthenticationResponseViewModel.cs" />
     <Compile Include="ViewModels\BillDetailForReturnViewModel.cs" />
     <Compile Include="ViewModels\BuyViewModel.cs" />
@@ -94,6 +95,9 @@
     <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
     <Compile Include="ViewModels\PrintableBillViewModel.cs" />
+    <Compile Include="ViewModels\ReceiptReturnRequestViewModel.cs" />
+    <Compile Include="ViewModels\ReturnApprovalRequiredData.cs" />
+    <Compile Include="ViewModels\ReturnRejectionViewModel.cs" />
     <Compile Include="ViewModels\SelectableCreditCardViewModel.cs" />
     <Compile Include="ViewModels\ClientTransactionReportRow.cs" />
     <Compile Include="ViewModels\ClinicRunReportRow.cs" />
