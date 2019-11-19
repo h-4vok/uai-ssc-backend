@@ -25,5 +25,8 @@ namespace SSC.Data.Interfaces
         ReturnApprovalRequiredData GetReturnApprovedRequiredData(int receiptId);
         bool IsPurchaseBill(int receiptId);
         Tuple<int, string> RejectReturn(int receiptId);
+        IEnumerable<SelectableCreditNoteViewModel> GetSelectableCreditNotes();
+        void NullifyCreditNote(int value);
+        void CreateCreditNoteFromPurchaseSurplus(decimal remainderForNewCreditNote, string purchaseReceiptNumber);
     }
 }

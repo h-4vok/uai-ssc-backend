@@ -321,7 +321,7 @@ namespace SSC.Data
 
                 // actualizamos el expiration date del cliente
                 var monthsBought = this.uow.Scalar("sp_Receipt_getBoughtMonths", ParametersBuilder.With("ReceiptId", receiptId)).AsInt();
-                var currentDate = Convert.ToDateTime( this.uow.Scalar("sp_ClientCompany_getServiceExpiration", ParametersBuilder.With("ClientId", clientId)));
+                var currentDate = Convert.ToDateTime(this.uow.Scalar("sp_ClientCompany_getServiceExpiration", ParametersBuilder.With("ClientId", clientId)));
 
                 var days = monthsBought * 30;
                 var newDate = currentDate.Subtract(new TimeSpan(days, 0, 0, 0));
@@ -373,6 +373,56 @@ namespace SSC.Data
 
             var output = new Tuple<int, string>(userId, finalReceiptNumber);
             return output;
+        }
+
+        protected SelectableCreditNoteViewModel FetchSelectableCreditNote(IDataReader reader) =>
+            new SelectableCreditNoteViewModel(
+                reader.GetInt32("CreditNoteId"), 
+                reader.GetString("CreditNoteNumber"), 
+                reader.GetDecimal(reader.GetOrdinal("Amount")));
+
+        public IEnumerable<SelectableCreditNoteViewModel> GetSelectableCreditNotes()
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            return this.uow.GetDirect("sp_ClientManagement_getSelectableCreditNotes", this.FetchSelectableCreditNote, ParametersBuilder.With("ClientId", auth.CurrentClientId));
+        }
+
+        public void NullifyCreditNote(int id)
+        {
+            this.uow.NonQueryDirect("sp_CreditNote_nullify", ParametersBuilder.With("CreditNoteId", id));
+        }
+
+        public void CreateCreditNoteFromPurchaseSurplus(decimal remainderForNewCreditNote, string purchaseReceiptNumber)
+        {
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var clientId = auth.CurrentClientId;
+
+            this.uow.Run(() =>
+            {
+                // generamos el encabezado de NC
+                var ncId = this.uow.Scalar("sp_Receipt_create",
+                    ParametersBuilder.With("ClientId", clientId)
+                        .And("ReceiptTypeCode", "credit-note")
+                        .And("CreatedBy", auth.CurrentUserId)
+                ).AsInt();
+
+                this.uow.NonQuery("sp_ReceiptLine_create",
+                    ParametersBuilder.With("ReceiptId", ncId)
+                        .And("Concept", String.Format("Exceso Compra Factura {0}", purchaseReceiptNumber))
+                        .And("Subtotal", -remainderForNewCreditNote)
+                        .And("Taxes", 0)
+                        .And("CreatedBy", auth.CurrentUserId)
+                );
+
+                // generamos la transaccion del NC
+                this.uow.NonQuery("sp_ClientTransaction_create",
+                    ParametersBuilder.With("TransactionTypeCode", "Retorno")
+                        .And("Total", -remainderForNewCreditNote)
+                        .And("ClientId", clientId)
+                        .And("ReceiptId", ncId)
+                );
+            }, true);
         }
     }
 }

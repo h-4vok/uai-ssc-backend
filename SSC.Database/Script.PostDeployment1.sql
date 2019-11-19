@@ -3632,39 +3632,39 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'payment.credit-note-select',
+	@es = 'Seleccionar una nota de crédito',
+	@en = 'Select a credit note'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'payment-methods.credit-note-already-selected',
+	@es = 'Esta nota de crédito ya se encuentra seleccionada.',
+	@en = 'This credit note is already selected.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'payment-method.type.credit-note',
+	@es = 'Nota de Crédito',
+	@en = 'Credit Note'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'buy-more.validation.combined-payment-not-needed',
+	@es = 'Las notas de crédito especificadas ya cubren el importe. Puede remover la tarjeta de crédito.',
+	@en = 'The selected credit notes already cover the expense. You can remove the credit card.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'buy-more.validation.amount-not-met',
+	@es = 'Las notas de crédito especificadas no cubren el importe. Agregue otra nota de crédito o especifique una tarjeta de crédito.',
+	@en = 'The selected credit notes do not cover the expense. Add another credit note or specify a credit card.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'buy-more.validation.too-many-credit-notes',
+	@es = 'Ha especificado demasiadas notas de crédito. Puede cubrir el importe con menos notas. Revise y vuelva a intentarlo.',
+	@en = 'You have selected too many credit notes. You can cover the expense with less credit notes. Review and try again.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate

@@ -11,7 +11,7 @@ namespace SSC.Common.ViewModels
     {
         public CreditCard CreditCard { get; set; }
         public bool SaveCard { get; set; }
-        public IEnumerable<object> CreditNotes { get; set; } = new List<object>();
+        public IEnumerable<SelectableCreditNoteViewModel> CreditNotes { get; set; } = new List<SelectableCreditNoteViewModel>();
         public string PricingPlanCode { get; set; }
         public bool isAnualBuy { get; set; }
         public string IncomingHost { get; set; }

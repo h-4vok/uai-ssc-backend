@@ -28,6 +28,10 @@ namespace SSC.Api.Controllers
         [HttpGet]
         public ResponseViewModel<IEnumerable<SelectableCreditCardViewModel>> GetCreditCards() => this.business.GetSelectableCreditCards().ToList();
 
+        [Route("selectableCreditNotes")]
+        [HttpGet]
+        public ResponseViewModel<IEnumerable<SelectableCreditNoteViewModel>> GetCreditNotes() => this.business.GetSelectableCreditNotes().ToList();
+
         [Route("validateCreditCard")]
         [HttpPost]
         public ResponseViewModel ValidateCreditCard(CreditCard card) => ResponseViewModel.RunAndReturn(() => this.business.ValidateCreditCard(card, false));

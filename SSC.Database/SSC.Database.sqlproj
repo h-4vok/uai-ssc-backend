@@ -330,6 +330,8 @@
     <Build Include="Programmability\Stored Procedures\sp_Receipt_getClientId.sql" />
     <Build Include="Programmability\Stored Procedures\sp_Receipt_isPurchaseBill.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ReceiptReturnRequest_reject.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getSelectableCreditNotes.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_CreditNote_nullify.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

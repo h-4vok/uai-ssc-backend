@@ -179,12 +179,12 @@ namespace SSC.Business
         public void ProcessBuy(BuyViewModel model)
         {
             var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
             if (model.CreditCard != null)
             {
                 this.ValidateCreditCard(model.CreditCard, true);
             }
-
 
             var pricingPlan = DependencyResolver.Obj.Resolve<IPricingPlanData>().GetByCode(model.PricingPlanCode);
             var receiptType = new ReceiptType
@@ -201,19 +201,57 @@ namespace SSC.Business
 
             var total = model.isAnualBuy ? pricingPlan.Price * 12 : pricingPlan.Price;
             decimal discount = 0;
-            decimal finalTotal = total;
+            decimal finalSubtotal = total;
 
             if (model.isAnualBuy)
             {
                 discount = total * (pricingPlan.AnualDiscountPercentage.AsDecimal() / 100);
-                finalTotal = total - discount;
+                finalSubtotal = total - discount;
             }
 
+            decimal finalTotalWithTaxes = finalSubtotal + (finalSubtotal * 0.21M);
+
+            // Una vez que sabemos el final total podemos validar el tema de credit notes
+            {
+                if (model.CreditNotes.Count() > 0)
+                {
+                    var totalAmount = model.CreditNotes.Sum(x => -x.Amount);
+
+                    if (totalAmount >= finalTotalWithTaxes && model.CreditCard != null)
+                    {
+                        throw new UnprocessableEntityException(i10n["buy-more.validation.combined-payment-not-needed"]);
+                    }
+
+                    if (totalAmount < finalTotalWithTaxes && model.CreditCard == null)
+                    {
+                        throw new UnprocessableEntityException(i10n["buy-more.validation.amount-not-met"]);
+                    }
+
+                    // Acaso estoy agregando notas de credito de mas?
+                    var orderedList = model.CreditNotes.OrderByDescending(x => -x.Amount);
+
+                    decimal orderedTotal = 0M;
+
+                    for (var i = 0; i < orderedList.Count(); i++)
+                    {
+                        var creditNoteItem = orderedList.ElementAt(i);
+                        orderedTotal += -creditNoteItem.Amount;
+
+                        if (orderedTotal >= finalTotalWithTaxes && i < orderedList.Count() - 1)
+                        {
+                            throw new UnprocessableEntityException(i10n["buy-more.validation.too-many-credit-notes"]);
+                        }
+                    }
+
+                }
+            }
+
+            // Seguimos con la factura
             bill.Lines.Add(new ReceiptLine
             {
                 Concept = String.Format("Servicio {0} - {1}", pricingPlan.Name, model.isAnualBuy ? "Extensión 12 Meses" : "Extensión 1 Mes"),
                 Subtotal = total,
-                Taxes = finalTotal * 0.21.AsDecimal()
+                Taxes = finalSubtotal * 0.21.AsDecimal()
             });
 
             if (discount > 0)
@@ -249,16 +287,50 @@ namespace SSC.Business
                 TransactionType = new TransactionType { Description = "Compra" },
             };
 
-            // Setup payments
+            // Setup credit note payments
+            var orderedCreditNotes = model.CreditNotes.OrderByDescending(x => -x.Amount);
+
+            decimal remainingTotal = finalTotalWithTaxes;
+
+            for (var i = 0; i < orderedCreditNotes.Count(); i++)
+            {
+                var creditNoteItem = orderedCreditNotes.ElementAt(i);
+                var positiveAmount = -creditNoteItem.Amount;
+
+                remainingTotal -= positiveAmount;
+
+                decimal amountToSet;
+
+                if (remainingTotal >= 0)
+                {
+                    amountToSet = positiveAmount;
+                }
+                else
+                {
+                    amountToSet = positiveAmount - remainingTotal;
+                }
+
+                transaction.Payments.Add(new ClientTransactionPayment
+                {
+                    CreditNoteId = creditNoteItem.value,
+                    Amount = amountToSet
+                });
+            }
+
+            // Credit card pays the remaining
+            var transactionAmountSoFar = transaction.Payments.Sum(x => x.Amount);
+            var remainingAmount = finalTotalWithTaxes - transactionAmountSoFar;
+
+            // Setup credit card payment
             if (model.CreditCard?.Id > 0)
             {
                 transaction.Payments.Add(new ClientTransactionPayment
                 {
                     CreditCard = model.CreditCard,
-                    Amount = finalTotal
+                    Amount = remainingAmount
                 });
             }
-            else if (model.CreditCard != null )
+            else if (model.CreditCard != null)
             {
                 transaction.Payments.Add(new ClientTransactionPayment
                 {
@@ -266,17 +338,29 @@ namespace SSC.Business
                     Owner = model.CreditCard.Owner,
                     CCV = model.CreditCard.CCV,
                     ExpirationDateMMYY = model.CreditCard.ExpirationDateMMYY,
-                    Amount = transaction.Total
+                    Amount = remainingAmount
                 });
             }
-
-            // TODO: Setup credit notes
-            // TODO: When credit notes are added, the amount of client transaction payment changes
 
             // Save transaction
             {
                 var trBusiness = DependencyResolver.Obj.Resolve<IClientTransactionBusiness>();
                 trBusiness.Create(transaction);
+            }
+
+            // Nullify credit notes
+            foreach(var creditNoteItem in model.CreditNotes)
+            {
+                this.data.NullifyCreditNote(creditNoteItem.value);
+            }
+
+            // Should I create a new one?
+            var creditNotesSum = model.CreditNotes.Sum(x => -x.Amount);
+            var remainderForNewCreditNote = creditNotesSum - finalTotalWithTaxes;
+
+            if(creditNotesSum > 0 && remainderForNewCreditNote > 0)
+            {
+                this.data.CreateCreditNoteFromPurchaseSurplus(remainderForNewCreditNote, bill.Number.AsInt().ToString("A0001-0000####"));
             }
 
             // Calculate new service expiration date for client
@@ -296,8 +380,6 @@ namespace SSC.Business
             // Send email saying what we bought
             {
                 var receiptNumber = bill.Number.AsInt().ToString("A0001-0000####");
-
-                var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
                 var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/purchase-finished_{0}.html", auth.CurrentLanguageCode));
                 var mailTemplate = File.ReadAllText(mailTemplatePath);
@@ -337,9 +419,9 @@ namespace SSC.Business
 
                     if (isCreditNote)
                     {
-                        // la tenemos que ir a buscar
-                        //.ToString("A0001-0000####")
-                    }
+                            // la tenemos que ir a buscar
+                            //.ToString("A0001-0000####")
+                        }
                     else
                     {
                         var number = payment.CreditCard?.Number ?? payment.Number;
@@ -389,7 +471,8 @@ namespace SSC.Business
             }
 
             // existe el retorno? tiro exception
-            if (this.data.ReturnForReceiptExists(receiptId)) {
+            if (this.data.ReturnForReceiptExists(receiptId))
+            {
                 var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
                 throw new UnprocessableEntityException(i10n["request-for-return.validation.already-exists"]);
             }
@@ -443,6 +526,11 @@ namespace SSC.Business
             Tuple<int, string> rejectionData = this.data.RejectReturn(viewModel.ReceiptId);
 
             sendRejectionMessageToClient(rejectionData.Item1, rejectionData.Item2, viewModel.RejectionMotive);
+        }
+
+        public IEnumerable<SelectableCreditNoteViewModel> GetSelectableCreditNotes()
+        {
+            return this.data.GetSelectableCreditNotes();
         }
     }
 }

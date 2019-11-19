@@ -12,7 +12,8 @@ BEGIN
 		Total = cct.Total,
 		TransactionTypeCode = rt.Code,
 		TransactionStatusCode = 
-			CASE WHEN rt.Code = 'credit-note' THEN 'emitted'
+			CASE WHEN rt.Code = 'credit-note' THEN 
+				CASE WHEN r.IsNullified = 1 THEN 'return-approved' ELSE 'emitted' END
 			ELSE
 				CASE WHEN rrr.Id IS NULL THEN 'finalized'
 				ELSE

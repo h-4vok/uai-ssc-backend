@@ -29,8 +29,9 @@ namespace SSC.Api.Controllers
 
             var message = new ChatMessageViewModel
             {
-                AuthorId =auth.CurrentClientId,
+                AuthorId = auth.CurrentClientId,
                 AuthorName = auth.CurrentUserName,
+                CreatedDate = DateTime.Now,
                 Content = String.Format("Se ha aprobado al devolución sobre la factura {0}. Ahora dispone de la nota de crédito {1} que puede utilizar para comprar servicios en SSC.", nullifiedReceiptNumber, creditNoteNumber),
                 IsMine = false
             };
