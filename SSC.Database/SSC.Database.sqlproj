@@ -332,6 +332,12 @@
     <Build Include="Programmability\Stored Procedures\sp_ReceiptReturnRequest_reject.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getSelectableCreditNotes.sql" />
     <Build Include="Programmability\Stored Procedures\sp_CreditNote_nullify.sql" />
+    <Build Include="Tables\ProductQuestion.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_post.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_reply.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getForProduct.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getOne.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

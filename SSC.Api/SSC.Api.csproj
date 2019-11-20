@@ -232,6 +232,7 @@
     <Compile Include="Controllers\PlatformMenuItemController.cs" />
     <Compile Include="Controllers\PricingPlanCommentController.cs" />
     <Compile Include="Controllers\PricingPlanController.cs" />
+    <Compile Include="Controllers\ProductQuestionController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\RawDataController.cs" />
     <Compile Include="Controllers\ReceiptReturnRequestController.cs" />

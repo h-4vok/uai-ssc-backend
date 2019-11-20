@@ -51,6 +51,7 @@ namespace SSC.Business
             Register<ISupportTicketData, SupportTicketData>();
             Register<ISiteNewsCategoryData, SiteNewsCategoryData>();
             Register<IClientManagementData, ClientManagementData>();
+            Register<IProductQuestionData, ProductQuestionData>();
 
             DataDependencyInjector.RegisterAll();
         }

@@ -187,5 +187,19 @@ namespace SSC.Business
 
             return this;
         }
+
+        public Validator<T> IntPositiveNonZero(Func<T, int> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            var data = propertyAccessor(this.model);
+
+            if (data <= 0)
+            {
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.int-positive-non-zero"], fieldName));
+            }
+
+            return this;
+        }
     }
 }

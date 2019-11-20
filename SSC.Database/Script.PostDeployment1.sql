@@ -195,6 +195,7 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 1, '/management/member', 
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 2, '/management/payment-type', 'menu.platform.management.payment-type', 'PAYMENT_METHOD_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing', 'menu.platform.management.billing', 'CLIENT_BILLING_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 4, '/management/receipt-return-request', 'menu.platform.management.receipt-return-request', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 5, '/management/product-question', 'menu.platform.management.product-question', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
@@ -3668,141 +3669,141 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.no-scoring-yet',
+	@es = 'Sin valoraciones aún ',
+	@en = 'No scoring yet '
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.your-question',
+	@es = 'Escriba su pregunta',
+	@en = 'Write your question'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.action.send-question',
+	@es = 'Enviar Pregunta',
+	@en = 'Send Question'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.question-sent',
+	@es = 'Nuestros especialistas pronto responderán su pregunta.',
+	@en = 'Our specialists will soon answer your question.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.your-name',
+	@es = 'Indique su nombre',
+	@en = 'Tell us your name'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.question-by',
+	@es = 'Su Nombre',
+	@en = 'Your Name'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.question',
+	@es = 'Pregunta',
+	@en = 'Question'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'validator.api.int-positive-non-zero',
+	@es = 'El campo {0} debe ser mayor a cero.',
+	@en = 'The field {0} must be above zero.'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.reply',
+	@es = 'Respuesta',
+	@en = 'Reply'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.management.product-question',
+	@es = 'Preguntas y Respuestas',
+	@en = 'Questions and Answers'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.field.question-by',
+	@es = 'Pregunta Por',
+	@en = 'Question By'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.field.posted-date',
+	@es = 'Fecha Pregunta',
+	@en = 'Posted Date'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.field.pricing-plan-name',
+	@es = 'Servicio',
+	@en = 'Pricing Plan'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.field.replied-date',
+	@es = 'Fecha Respuesta',
+	@en = 'Replied Date'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-question.action.reply',
+	@es = 'Responder',
+	@en = 'Reply'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.title',
+	@es = 'Responder al usuario',
+	@en = 'Reply to user'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.field.reply',
+	@es = 'Respuesta',
+	@en = 'Reply'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.field.question-by',
+	@es = 'Pregunta por:',
+	@en = 'Question by:'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.field.question',
+	@es = 'Pregunta:',
+	@en = 'Question:'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.field.posted-date',
+	@es = 'Fecha de la Pregunta',
+	@en = 'Posted Date'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'management.product-question.reply.field.pricing-plan-name',
+	@es = 'Plan de Servicio',
+	@en = 'Pricing Plan'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.scores',
+	@es = 'Valoraciones',
+	@en = 'Scores by Users'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'product-detail.questions',
+	@es = 'Preguntas',
+	@en = 'Questions'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate

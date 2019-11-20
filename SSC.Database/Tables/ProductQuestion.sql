@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[ProductQuestion]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	QuestionBy NVARCHAR(100) NOT NULL,
+	Question NVARCHAR(500) NOT NULL,
+	ReplyBy INT,
+	Reply NVARCHAR(500),
+	PostedDate SMALLDATETIME DEFAULT(GETDATE()),
+	RepliedDate SMALLDATETIME,
+	PricingPlanId INT NOT NULL,
+
+	FOREIGN KEY (PricingPlanId) REFERENCES PricingPlan
+)
