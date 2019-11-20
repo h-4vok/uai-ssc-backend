@@ -16,7 +16,7 @@ namespace SSC.Business.Interfaces
         void Update(SiteNewsArticle model);
         void Delete(int id);
         void SendNewsletter(DateTime dateFrom, DateTime dateTo, IEnumerable<SiteNewsCategory> filterCategories, string incomingHost);
-        void SubscribeToNewsletter(string email);
+        void SubscribeToNewsletter(string email, IEnumerable<SiteNewsCategory> selectedCategories);
         void UnsubscribeToNewsletter(string email);
         void SetThumbnail(int id, string filepath, string relativepath);
     }

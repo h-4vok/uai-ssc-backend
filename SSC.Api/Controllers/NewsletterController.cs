@@ -27,7 +27,7 @@ namespace SSC.Api.Controllers
                     }
                     else
                     {
-                        this.business.SubscribeToNewsletter(model.Email);
+                        this.business.SubscribeToNewsletter(model.Email, model.SelectedCategories);
                     }
                 }
             );

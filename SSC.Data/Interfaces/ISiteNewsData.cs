@@ -19,8 +19,9 @@ namespace SSC.Data.Interfaces
         IEnumerable<NewsletterSubscriber> GetNewsletterSubscribers();
         SiteNewsArticle Get(int id);
         bool SubscriberExists(string email);
-        void SubscribeToNewsletter(string email);
+        void SubscribeToNewsletter(string email, IEnumerable<SiteNewsCategory> selectedCategories);
         void UnsubscribeToNewsletter(string email);
         void SetThumbnail(int id, string filepath, string relativepath);
+        IEnumerable<SiteNewsCategory> GetNewsletterSubscribersCategories(int id, IEnumerable<SiteNewsCategory> filterCategories);
     }
 }

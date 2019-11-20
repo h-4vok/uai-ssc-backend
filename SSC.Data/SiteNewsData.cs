@@ -148,9 +148,24 @@ namespace SSC.Data
             return this.uow.ScalarDirect("sp_NewsletterSubscriber_exists", ParametersBuilder.With("Email", email)).AsBool();
         }
 
-        public void SubscribeToNewsletter(string email)
+        public void SubscribeToNewsletter(string email, IEnumerable<SiteNewsCategory> selectedCategories)
         {
-            this.uow.NonQueryDirect("sp_NewsletterSubscriber_create", ParametersBuilder.With("Email", email));
+            this.uow.Run(() =>
+            {
+                var subscriberId = this.uow.Scalar("sp_NewsletterSubscriber_createIfNeeded", ParametersBuilder.With("Email", email));
+
+                this.uow.NonQuery("sp_NewsletterSubscriber_clearCategories", ParametersBuilder.With("Id", subscriberId));
+
+                selectedCategories.ForEach(x =>
+                {
+                    this.uow.NonQuery("sp_NewsletterSubscriber_addCategory",
+                        ParametersBuilder.With("NewsletterSubscriberId", subscriberId)
+                        .And("SiteNewsCategoryId", x.Id)
+                    );
+                });
+                
+            }, true);
+            
         }
 
         public void UnsubscribeToNewsletter(string email)
@@ -201,6 +216,15 @@ namespace SSC.Data
                     .And("ThumbnailPath", filepath)
                     .And("ThumbnailRelativePath", relativepath)
             );
+        }
+
+        public IEnumerable<SiteNewsCategory> GetNewsletterSubscribersCategories(int id, IEnumerable<SiteNewsCategory> filterCategories)
+        {
+            var categories = this.uow.GetDirect("sp_NewsletterSubscriber_getCategoriesOf", this.FetchCategory, ParametersBuilder.With("NewsletterSubscriberId", id));
+
+            var filtered = filterCategories.Where(f => categories.Any(c => c.Id == f.Id));
+
+            return filtered;
         }
     }
 }

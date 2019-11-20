@@ -74,81 +74,86 @@ namespace SSC.Business
                 .ListNotEmpty(x => filterCategories, i10n["site-news.category"])
                 .ThrowExceptionIfApplicable();
 
-            // Setup templates
-            var news = this.uow.Get(dateFrom, dateTo, filterCategories);
-
-            var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/newsletter_{0}.html", authProvider.CurrentLanguageCode));
-            var mailTemplate = File.ReadAllText(mailTemplatePath);
-            var newsTemplatePath = HostingEnvironment.MapPath("~/EmailTemplates/news-article-part.html");
-            var newsTemplate = File.ReadAllText(newsTemplatePath);
-
-            // Build articles
-            var newsParts = new StringBuilder();
-
-            news.ForEach(article =>
-            {
-                var part = newsTemplate;
-                part = part.Replace("${PublicationDate}", article.PublicationDate.ToString("yyyy-MM-dd"));
-                part = part.Replace("${Author}", article.Author);
-                part = part.Replace("${Title}", article.Title);
-                part = part.Replace("${Content}", article.Content);
-
-                var thumbnailBase = ConfigurationManager.AppSettings["SiteNewsImages.ServerBasePath"];
-                var fullThumbnailPath = thumbnailBase + article.ThumbnailRelativePath.Replace("\\", "/");
-
-                part = part.Replace("${ImageSrc}", fullThumbnailPath);
-
-                newsParts.Append(part);
-            });
-
-            // Finish up mail
-            mailTemplate = mailTemplate.Replace("${PlatformLink}", String.Format("http://{0}/#/", incomingHost));
-            mailTemplate = mailTemplate.Replace("${NewsArticles}", newsParts.ToString());
-
-
+            // Build the newsletter for each subscriber
             // Get subscribers
             var subscribers = this.uow.GetNewsletterSubscribers();
 
-            // Send email to every subscriber
-            var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
-
-            subscribers.ForEach(subscriber =>
+            foreach (var subscriber in subscribers)
             {
-                var encryptedMail = HttpUtility.UrlEncode(ReversibleEncryption.EncryptString(subscriber.Email));
-                var specificUserMailTemplate = mailTemplate.Replace("${UnsubscribeLink}", String.Format("http://{0}/#/newsletter/unsubscribe/{1}", incomingHost, encryptedMail));
+                // Get the filtered categories by the admin and the subscriber
+                var categoriesForThisSubscriber = this.uow.GetNewsletterSubscribersCategories(subscriber.Id, filterCategories);
 
-                var mail = new QueuedMail
+                if (!categoriesForThisSubscriber.Any())
+                    continue;
+
+                // Get the news for these categories and dates
+                var news = this.uow.Get(dateFrom, dateTo, categoriesForThisSubscriber);
+
+                // If we have no news for this user, lets get out
+                if (!news.Any())
+                    continue;
+
+                // Lets build the email and send it to this guy
                 {
-                    To = subscriber.Email,
-                    Subject = i10n["newsletter-email.subject"],
-                    Body = specificUserMailTemplate,
-                };
+                    var mailTemplatePath = HostingEnvironment.MapPath(String.Format("~/EmailTemplates/newsletter_{0}.html", authProvider.CurrentLanguageCode));
+                    var mailTemplate = File.ReadAllText(mailTemplatePath);
+                    var newsTemplatePath = HostingEnvironment.MapPath("~/EmailTemplates/news-article-part.html");
+                    var newsTemplate = File.ReadAllText(newsTemplatePath);
 
-                this.uow.Queue(mail);
+                    // Build articles
+                    var newsParts = new StringBuilder();
 
-                smtpHandler.Send(mail, true);
-            });
+                    news.ForEach(article =>
+                    {
+                        var part = newsTemplate;
+                        part = part.Replace("${PublicationDate}", article.PublicationDate.ToString("yyyy-MM-dd"));
+                        part = part.Replace("${Author}", article.Author);
+                        part = part.Replace("${Title}", article.Title);
+                        part = part.Replace("${Content}", article.Content);
 
+                        var thumbnailBase = ConfigurationManager.AppSettings["SiteNewsImages.ServerBasePath"];
+                        var fullThumbnailPath = thumbnailBase + article.ThumbnailRelativePath.Replace("\\", "/");
+
+                        part = part.Replace("${ImageSrc}", fullThumbnailPath);
+
+                        newsParts.Append(part);
+                    });
+
+                    // Finish up mail
+                    mailTemplate = mailTemplate.Replace("${PlatformLink}", String.Format("http://{0}/#/", incomingHost));
+                    mailTemplate = mailTemplate.Replace("${NewsArticles}", newsParts.ToString());
+
+                    // Send email to every subscriber
+                    var smtpHandler = DependencyResolver.Obj.Resolve<ISmtpHandler>();
+
+                    var encryptedMail = HttpUtility.UrlEncode(ReversibleEncryption.EncryptString(subscriber.Email));
+                    var specificUserMailTemplate = mailTemplate.Replace("${UnsubscribeLink}", String.Format("http://{0}/#/newsletter/unsubscribe/{1}", incomingHost, encryptedMail));
+
+                    var mail = new QueuedMail
+                    {
+                        To = subscriber.Email,
+                        Subject = i10n["newsletter-email.subject"],
+                        Body = specificUserMailTemplate,
+                    };
+
+                    this.uow.Queue(mail);
+
+                    smtpHandler.Send(mail, true);
+                }
+            }
         }
 
-        public void SubscribeToNewsletter(string email)
+        public void SubscribeToNewsletter(string email, IEnumerable<SiteNewsCategory> selectedCategories)
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
-            var validation = Validator<string>.Start(email)
+            Validator<string>.Start(email)
                 .MandatoryString(x => x, i10n["subscribe-newsletter.email"])
                 .ValidEmailAddress(x => x, i10n["subscribe-newsletter.email"])
-                .FailWhenClosureReturnsFalse(x =>
-                {
-                    var exists = this.uow.SubscriberExists(x);
-                    return !exists;
-                }, i10n["subscribe-newsletter.email-exists"])
-                .ValidationResult;
+                .ListNotEmpty(x => selectedCategories, i10n["subscribe-newsletter.categories"])
+                .ThrowExceptionIfApplicable();
 
-            if (!String.IsNullOrWhiteSpace(validation))
-                throw new UnprocessableEntityException(validation);
-
-            this.uow.SubscribeToNewsletter(email);
+            this.uow.SubscribeToNewsletter(email, selectedCategories);
         }
 
         public void UnsubscribeToNewsletter(string email)

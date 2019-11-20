@@ -272,7 +272,7 @@
     <Build Include="Tables\NewsletterSubscriber.sql" />
     <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_exists.sql" />
-    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_create.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_createIfNeeded.sql" />
     <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_delete.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_update.sql" />
     <Build Include="Programmability\Stored Procedures\sp_SiteNewsArticle_getOne.sql" />
@@ -338,6 +338,10 @@
     <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getAll.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getForProduct.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ProductQuestion_getOne.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_NewsletterSubscriber_clearCategories.sql" />
+    <Build Include="Tables\NewsletterSubscriberCategory.sql" />
+    <Build Include="Tables\sp_NewsletterSubscriber_addCategory.sql" />
+    <Build Include="Tables\sp_NewsletterSubscriber_getCategoriesOf.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

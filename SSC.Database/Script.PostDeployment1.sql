@@ -3807,9 +3807,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'subscribe-newsletter.categories',
+	@es = 'Categorías',
+	@en = 'Categories'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
