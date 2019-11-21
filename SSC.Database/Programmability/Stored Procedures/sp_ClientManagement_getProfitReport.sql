@@ -10,8 +10,8 @@ BEGIN
 
 	FROM		ClientCompanyTransaction
 
-	WHERE		convert(date, TransactionDate) >= '20181111'
-	AND			convert(date, TransactionDate) <= '20191121'
+	WHERE		convert(date, TransactionDate) >= @DateFrom
+	AND			convert(date, TransactionDate) <= @DateTo
 
 	GROUP BY
 		CONVERT(DATE, TransactionDate)
