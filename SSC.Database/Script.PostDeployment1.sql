@@ -196,6 +196,7 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 2, '/management/payment-t
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing', 'menu.platform.management.billing', 'CLIENT_BILLING_MANAGEMENT'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 4, '/management/receipt-return-request', 'menu.platform.management.receipt-return-request', 'PLATFORM_ADMIN'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 5, '/management/product-question', 'menu.platform.management.product-question', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 6, '/management/chat-statistics', 'menu.platform.management.chat-statistics', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
@@ -3813,27 +3814,27 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'chat-statistics-chart.title',
+	@es = 'Efectividad en Respuestas al Cliente por Día',
+	@en = 'Effectivity on Responses to Clients by Day'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'view-chat-stats.page.title',
+	@es = 'Estadísticas de la Mensajería',
+	@en = 'Chat Messaging Statistics'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'chat-statistics-chart.axis-y',
+	@es = 'Porcentaje de Efectividad',
+	@en = 'Effectivity Percentage'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'menu.platform.management.chat-statistics',
+	@es = 'Estadísticas de Mensajería',
+	@en = 'Chat Messaging Stats'
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate

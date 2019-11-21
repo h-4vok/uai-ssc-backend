@@ -30,11 +30,6 @@ namespace SSC.Api.Behavior
                     }
 
                     model.Messages.Add(message);
-
-                    if (model.Messages.Count > 30)
-                    {
-                        model.Messages = model.Messages.Take(30).ToList();
-                    }
                 }
                 else
                 {

@@ -207,6 +207,7 @@
     <Compile Include="Controllers\BarcodePrintingController.cs" />
     <Compile Include="Controllers\BillingController.cs" />
     <Compile Include="Controllers\ChangePasswordController.cs" />
+    <Compile Include="Controllers\ChatCommunicationStatisticsController.cs" />
     <Compile Include="Controllers\ClientBalanceController.cs" />
     <Compile Include="Controllers\ClientCompanyBillingInformationController.cs" />
     <Compile Include="Controllers\ClientCompanyController.cs" />
