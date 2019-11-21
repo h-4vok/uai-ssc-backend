@@ -342,6 +342,8 @@
     <Build Include="Tables\NewsletterSubscriberCategory.sql" />
     <Build Include="Tables\sp_NewsletterSubscriber_addCategory.sql" />
     <Build Include="Tables\sp_NewsletterSubscriber_getCategoriesOf.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getProfitReport.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_ClientManagement_createFakeTransaction.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

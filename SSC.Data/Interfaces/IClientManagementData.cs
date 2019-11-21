@@ -28,5 +28,7 @@ namespace SSC.Data.Interfaces
         IEnumerable<SelectableCreditNoteViewModel> GetSelectableCreditNotes();
         void NullifyCreditNote(int value);
         void CreateCreditNoteFromPurchaseSurplus(decimal remainderForNewCreditNote, string purchaseReceiptNumber);
+        IEnumerable<ProfitReportRow> GetProfitReport(string dateFrom, string dateTo);
+        void CreateFakeTransaction(ClientTransaction transaction);
     }
 }

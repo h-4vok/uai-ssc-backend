@@ -22,5 +22,7 @@ namespace SSC.Business.Interfaces
         void ApproveReturn(int receiptId, Action<int, string, string> callback);
         void RejectReturn(ReturnRejectionViewModel viewModel, Action<int, string, string> sendRejectionMessageToClient);
         IEnumerable<SelectableCreditNoteViewModel> GetSelectableCreditNotes();
+        IEnumerable<ProfitReportRow> GetProfitReport(string dateFrom, string dateTo);
+        void GenerateFakeBilling();
     }
 }

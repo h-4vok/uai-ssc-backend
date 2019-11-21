@@ -95,6 +95,7 @@
     <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
     <Compile Include="ViewModels\PrintableBillViewModel.cs" />
+    <Compile Include="ViewModels\ProfitReportRow.cs" />
     <Compile Include="ViewModels\ReceiptReturnRequestViewModel.cs" />
     <Compile Include="ViewModels\ReturnApprovalRequiredData.cs" />
     <Compile Include="ViewModels\ReturnRejectionViewModel.cs" />

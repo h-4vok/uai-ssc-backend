@@ -532,5 +532,38 @@ namespace SSC.Business
         {
             return this.data.GetSelectableCreditNotes();
         }
+
+        public IEnumerable<ProfitReportRow> GetProfitReport(string dateFrom, string dateTo)
+        {
+            return this.data.GetProfitReport(dateFrom, dateTo);
+        }
+
+        public void GenerateFakeBilling()
+        {
+            var transactions = new List<ClientTransaction>();
+            var dateFrom = new DateTime(2015, 1, 1);
+            var currentDate = dateFrom;
+            var haveBillingRandomizer = new Random(DateTime.Now.Second);
+            var amountRandom = new Random(haveBillingRandomizer.Next(1000));
+
+            while(currentDate <= DateTime.Today)
+            {
+                var haveBilling = haveBillingRandomizer.Next(10) < 8;
+
+                if (haveBilling)
+                {
+                    var transaction = new ClientTransaction
+                    {
+                        TransactionDate = currentDate,
+                        ClientCompany = new ClientCompany {  Id = 1 },
+                        Total = amountRandom.Next(17500, 450001)
+                    };
+
+                    this.data.CreateFakeTransaction(transaction);
+                }
+
+                currentDate = currentDate.AddDays(1);
+            }
+        }
     }
 }

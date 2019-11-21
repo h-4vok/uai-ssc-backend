@@ -424,5 +424,29 @@ namespace SSC.Data
                 );
             }, true);
         }
+
+        protected ProfitReportRow FetchProfitReportRow(IDataReader reader) =>
+            new ProfitReportRow
+            {
+                Date = reader.GetDateTime("Date"),
+                Profit = reader.GetDecimal(reader.GetOrdinal("Profit"))
+            };
+
+        public IEnumerable<ProfitReportRow> GetProfitReport(string dateFrom, string dateTo)
+        {
+            return this.uow.GetDirect("sp_ClientManagement_getProfitReport", this.FetchProfitReportRow,
+                ParametersBuilder.With("DateFrom", dateFrom)
+                    .And("DateTo", dateTo)
+            );
+        }
+
+        public void CreateFakeTransaction(ClientTransaction transaction)
+        {
+            this.uow.NonQueryDirect("sp_ClientManagement_createFakeTransaction",
+                    ParametersBuilder.With("TransactionDate", transaction.TransactionDate)
+                        .And("Total", transaction.Total)
+                        .And("ClientId", transaction.ClientCompany.Id)
+                );
+        }
     }
 }

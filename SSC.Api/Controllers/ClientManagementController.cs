@@ -3,6 +3,7 @@ using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -23,6 +24,19 @@ namespace SSC.Api.Controllers
         [Route("selectablePrices")]
         [HttpGet]
         public ResponseViewModel<SelectablePricesViewModel> GetSelectablePrices() => this.business.GetSelectablePrices();
+
+        [Route("profitReport")]
+        [HttpGet]
+        public ResponseViewModel<IEnumerable<ProfitReportRow>> GetProfitReport(string dateFrom, string dateTo) => 
+            this.business.GetProfitReport(dateFrom, dateTo).ToList();
+
+        [Route("generateFakeBilling")]
+        [HttpGet]
+        public ResponseViewModel GenerateFakeBilling()
+        {
+            this.business.GenerateFakeBilling();
+            return true;
+        }
 
         [Route("selectableCreditCards")]
         [HttpGet]

@@ -197,6 +197,7 @@ EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 3, '/management/billing',
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 4, '/management/receipt-return-request', 'menu.platform.management.receipt-return-request', 'PLATFORM_ADMIN'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 5, '/management/product-question', 'menu.platform.management.product-question', 'PLATFORM_ADMIN'
 EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 6, '/management/chat-statistics', 'menu.platform.management.chat-statistics', 'PLATFORM_ADMIN'
+EXEC sp_PlatformMenuItem_fullCreate 'management-menu', 7, '/management/profit-report', 'menu.platform.management.profit-report', 'PLATFORM_ADMIN'
 
 EXEC sp_PlatformMenu_create 'marketing-menu', 'menu.platform.marketing-menu', 5, 1
 EXEC sp_PlatformMenuItem_fullCreate  'marketing-menu', 1, '/marketing/feedback-form', 'menu.platform.marketing.feedback-form', 'PLATFORM_ADMIN'
@@ -3838,10 +3839,40 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'view-profit-report.page.title',
+	@es = 'Reporte de Utilidades',
+	@en = 'Profit Report'
+	
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'view-profit-report.filter.date-from',
+	@es = 'Fecha desde',
+	@en = 'Date From'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'view-profit-report.filter.date-to',
+	@es = 'Fecha hasta',
+	@en = 'Date To'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'menu.platform.management.profit-report',
+	@es = 'Reporte de Utilidades',
+	@en = 'Profit Report'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'profit-report-chart.title',
+	@es = 'Utilidades',
+	@en = 'Profit'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'profit-report-chart.axis-y',
+	@es = 'Facturación',
+	@en = 'Gross Income'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
-
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
