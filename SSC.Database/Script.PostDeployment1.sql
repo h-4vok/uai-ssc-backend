@@ -3870,6 +3870,36 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Gross Income'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'new-backup-fs.browse-folder',
+	@es = 'Seleccionar Carpeta',
+	@en = 'Pick Folder'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'backup.doBackupTo',
+	@es = 'Resguardar En',
+	@en = 'Backup To'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''
