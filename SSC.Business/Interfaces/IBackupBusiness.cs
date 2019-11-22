@@ -9,7 +9,7 @@ namespace SSC.Business.Interfaces
 {
     public interface IBackupBusiness
     {
-        void DoBackup(string filepath);
+        void DoBackup(string filepath, bool isPathOnly);
         void DoRestore(int id);
         void DoRestoreFrom(BackupRegistry model);
         BackupRegistry Get(int id);

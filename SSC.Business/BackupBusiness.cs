@@ -20,15 +20,24 @@ namespace SSC.Business
         }
         private IBackupData data;
 
-        public void DoBackup(string filepath)
+        public void DoBackup(string filepath, bool isPathOnly)
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
 
             Validator<string>.Start(filepath)
                 .MandatoryString(x => x, i10n["backup.filepath"])
-                .FailWhenClosureReturnsFalse(x => x.ToLowerInvariant().EndsWith(".bkp"), i10n["backup.file-must-end-with-bkp"])
+                .FailWhenClosureReturnsFalse(x =>
+                {
+                    if (isPathOnly)
+                    {
+                        filepath = Path.Combine(x, String.Format("{0}.bkp", Guid.NewGuid()));
+                    }
+
+                    return true;
+                }, "")
+                .FailWhenClosureReturnsFalse(x => isPathOnly || x.ToLowerInvariant().EndsWith(".bkp"), i10n["backup.file-must-end-with-bkp"])
                 .FailWhenClosureReturnsFalse(x => Directory.Exists(Path.GetDirectoryName(x)), i10n["backup.dir-not-exists"])
-                .FailWhenClosureReturnsFalse(x => File.Exists(x) == false, i10n["backup.file-exists"])
+                .FailWhenClosureReturnsFalse(x => isPathOnly || File.Exists(x) == false, i10n["backup.file-exists"])
                 .ThrowExceptionIfApplicable();
 
             this.data.DoBackup(filepath);

@@ -12,5 +12,6 @@ namespace SSC.Models
         public string FilePath { get; set; }
         public DateTime BackupDate { get; set; }
         public string CreatedBy { get; set; }
+        public bool IsPathOnly { get; set; }
     }
 }

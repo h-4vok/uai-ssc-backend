@@ -9,4 +9,6 @@ BEGIN
 		CreatedBy
 	FROM		[Backup]
 
+	ORDER BY BackupDate DESC
+
 END
