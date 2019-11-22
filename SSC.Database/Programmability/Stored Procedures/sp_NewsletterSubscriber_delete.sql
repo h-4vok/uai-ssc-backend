@@ -3,6 +3,11 @@
 AS
 BEGIN
 
-	DELETE NewsletterSubscriber WHERE Email = @Email
+	DECLARE @Id INT
+
+	SELECT @Id = Id FROM NewsletterSubscriber WHERE Email = @Email
+
+	DELETE NewsletterSubscriberCategory WHERE NewsletterSubscriberId = @Id
+	DELETE NewsletterSubscriber WHERE Id = @Id
 
 END
