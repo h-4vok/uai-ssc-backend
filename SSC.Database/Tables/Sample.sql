@@ -1,6 +1,7 @@
 ﻿CREATE TABLE Sample
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	Barcode NVARCHAR(100) NOT NULL,
 	SampleTypeId INT NOT NULL,
 	SampleFunctionId INT NOT NULL,
 	InitialVolume NUMERIC(10,2) NOT NULL,

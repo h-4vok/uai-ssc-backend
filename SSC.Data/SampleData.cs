@@ -25,6 +25,7 @@ namespace SSC.Data
             => new SampleReportRow
             {
                 Id = reader.GetInt32("Id"),
+                Barcode = reader.GetString("Barcode"),
                 SampleTypeCode = reader.GetString("SampleTypeCode"),
                 AvailableVolume = reader.GetDecimal(reader.GetOrdinal("AvailableVolume")),
                 UnitOfMeasureCode = reader.GetString("UnitOfMeasureCode")

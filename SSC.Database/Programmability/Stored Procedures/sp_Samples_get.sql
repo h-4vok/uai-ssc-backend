@@ -5,8 +5,9 @@ BEGIN
 
 	SELECT
 		s.Id,
+		s.Barcode,
 		SampleTypeCode = st.Name,
-		AvailableVolumne = s.CurrentVolume,
+		AvailableVolume = s.CurrentVolume,
 		UnitOfMeasureCode = uom.Code
 
 	FROM		Sample S

@@ -3898,7 +3898,11 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = 'start-work-order.page.selected-samples',
 	@es = 'Configurar Salida',
 	@en = 'Configure Output'
+
+/** Datos de prueba **/
+EXEC sp_testData_createSampleSatellite
 		
+/** Volvemos a las traducciones **/
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
