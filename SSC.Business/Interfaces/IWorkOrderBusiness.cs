@@ -10,7 +10,7 @@ namespace SSC.Business.Interfaces
 {
     public interface IWorkOrderBusiness
     {
-        IEnumerable<WorkOrderReportRow> GetReport(int clientId, string statusCode);
+        IEnumerable<WorkOrderReportRow> GetReport();
         int Create(WorkOrder model);
         void UpdateStatus(int id, string statusCode);
         WorkOrder Get(int id);

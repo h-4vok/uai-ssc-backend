@@ -1,5 +1,6 @@
 ﻿using DBNostalgia;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using SSC.Models;
@@ -21,7 +22,20 @@ namespace SSC.Data
 
         private IUnitOfWork uow;
 
-        private WorkOrderReportRow FetchReportRow(IDataReader reader) => throw new NotImplementedException();
+        private WorkOrderReportRow FetchReportRow(IDataReader reader)
+            => new WorkOrderReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                CreatedBy = reader.GetString("CreatedBy"),
+                CurrentlyAssignedTo = reader.GetString("CurrentlyAssignedTo"),
+                QuantityOfExpectedChildSamples = reader.GetInt32("QuantityOfExpectedChildSamples"),
+                QuantityOfParentSamples = reader.GetInt32("QuantityOfParentSamples"),
+                RequestDate = reader.GetDateTime("RequestDate"),
+                StatusDescription = reader.GetString("StatusDescription"),
+                TypeDescription = reader.GetString("TypeDescription"),
+                UpdatedBy = reader.GetString("UpdatedBy"),
+                UpdatedDate = reader.GetDateTime("UpdatedDate")
+            };
 
         private WorkOrder Fetch(IDataReader reader) => throw new NotImplementedException();
 
@@ -48,9 +62,11 @@ namespace SSC.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerable<WorkOrderReportRow> GetReport(int clientId, string statusCode)
+        public IEnumerable<WorkOrderReportRow> GetReport()
         {
-            throw new NotImplementedException();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            return this.uow.GetDirect("sp_WorkOrder_getAll", this.FetchReportRow);
         }
 
         public void MarkAsChecked(int id, string sampleCode)

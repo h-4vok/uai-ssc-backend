@@ -3880,9 +3880,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Backup To'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'work-order.action.continue',
+	@es = 'Ejecutar/Continuar',
+	@en = 'Execute/Continue'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

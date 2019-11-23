@@ -29,9 +29,9 @@ namespace SSC.Business
             throw new NotImplementedException();
         }
 
-        public IEnumerable<WorkOrderReportRow> GetReport(int clientId, string statusCode)
+        public IEnumerable<WorkOrderReportRow> GetReport()
         {
-            throw new NotImplementedException();
+            return this.data.GetReport();
         }
 
         public void MarkAsChecked(int id, string sampleCode)

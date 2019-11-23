@@ -12,8 +12,8 @@ namespace SSC.Common.ViewModels
         public DateTime RequestDate { get; set; }
         public string CreatedBy { get; set; }
         public string TypeDescription { get; set; }
-        public uint QuantityOfParemtSamples { get; set; }
-        public uint QuantityOfExpectedChildSamples { get; set; }
+        public int QuantityOfParentSamples { get; set; }
+        public int QuantityOfExpectedChildSamples { get; set; }
         public string StatusDescription { get; set; }
         public string CurrentlyAssignedTo { get; set; }
         public DateTime UpdatedDate { get; set; }

@@ -1,4 +1,5 @@
-﻿using SSC.Business.Interfaces;
+﻿using SSC.Api.Behavior;
+using SSC.Business.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Models;
 using System;
@@ -15,7 +16,9 @@ namespace SSC.Api.Controllers
 
         public WorkOrderController(IWorkOrderBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<WorkOrderReportRow>> GetReport(string statusCode) => throw new NotImplementedException();
+        [SscAuthorize(Permissions = "WORK_ORDER_REPORT")]
+        public ResponseViewModel<IEnumerable<WorkOrderReportRow>> Get()
+            => this.business.GetReport().ToList();
 
         public ResponseViewModel<int> Post(WorkOrder model) => throw new NotImplementedException();
 
