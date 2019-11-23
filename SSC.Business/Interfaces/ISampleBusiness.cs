@@ -9,6 +9,6 @@ namespace SSC.Business.Interfaces
 {
     public interface ISampleBusiness
     {
-        IEnumerable<SampleReportRow> GetAvailableSamples(int clientId, string functionCode, string typeCode);
+        IEnumerable<SampleReportRow> GetAvailableSamples(string functionCode, string typeCode);
     }
 }

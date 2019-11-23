@@ -3885,19 +3885,19 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Execute/Continue'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'start-work-order.page.title',
+	@es = 'Crear Orden de Trabajo',
+	@en = 'Create Work Order'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'start-work-order.page.select-your-samples',
+	@es = 'Seleccionar Muestras',
+	@en = 'Select Samples'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'start-work-order.page.selected-samples',
+	@es = 'Configurar Salida',
+	@en = 'Configure Output'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

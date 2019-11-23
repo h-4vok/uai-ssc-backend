@@ -345,6 +345,7 @@
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_getProfitReport.sql" />
     <Build Include="Programmability\Stored Procedures\sp_ClientManagement_createFakeTransaction.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_getAll.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Samples_get.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

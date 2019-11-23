@@ -21,11 +21,21 @@ namespace SSC.Data
 
         private IUnitOfWork uow;
 
-        private SampleReportRow FetchReportRow(IDataReader reader) => throw new NotImplementedException();
+        private SampleReportRow FetchReportRow(IDataReader reader)
+            => new SampleReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                SampleTypeCode = reader.GetString("SampleTypeCode"),
+                AvailableVolume = reader.GetDecimal(reader.GetOrdinal("AvailableVolume")),
+                UnitOfMeasureCode = reader.GetString("UnitOfMeasureCode")
+            };
 
-        public IEnumerable<Sample> GetSamples(int clientId, string statusCode, string funcitonCode, string typeCode)
+        public IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode, string functionCode, string typeCode)
         {
-            throw new NotImplementedException();
+            return this.uow.GetDirect("sp_Samples_get",
+                this.FetchReportRow,
+                ParametersBuilder.With("StatusCode", statusCode)
+            );
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SSC.Api.Controllers
 
         public SampleController(ISampleBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SampleReportRow>> Get(string functionCode, string typeCode) => throw new NotImplementedException();
+        public ResponseViewModel<IEnumerable<SampleReportRow>> Get(string functionCode, string typeCode)
+            => this.business.GetAvailableSamples(functionCode, typeCode).ToList();
     }
 }

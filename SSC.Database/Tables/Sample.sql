@@ -6,6 +6,7 @@
 	InitialVolume NUMERIC(10,2) NOT NULL,
 	CurrentVolume NUMERIC(10, 2) NOT NULL,
 	UnitOfMeasureId INT NOT NULL,
+	StatusCode NVARCHAR(100) NOT NULL DEFAULT('available'),
 	[CreatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),
 	[CreatedBy] INT,
 	[UpdatedDate] SMALLDATETIME NOT NULL DEFAULT(GETDATE()),

@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
 using System;
@@ -18,9 +19,11 @@ namespace SSC.Business
         }
         private ISampleData data;
 
-        public IEnumerable<SampleReportRow> GetAvailableSamples(int clientId, string functionCode, string typeCode)
+        public IEnumerable<SampleReportRow> GetAvailableSamples(string functionCode, string typeCode)
         {
-            throw new NotImplementedException();
+            var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
+
+            return this.data.GetSamples(clientId, "available", null, null);
         }
     }
 }

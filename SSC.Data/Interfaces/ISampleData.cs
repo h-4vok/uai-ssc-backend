@@ -1,4 +1,5 @@
-﻿using SSC.Models;
+﻿using SSC.Common.ViewModels;
+using SSC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace SSC.Data.Interfaces
 {
     public interface ISampleData
     {
-        IEnumerable<Sample> GetSamples(int clientId, string statusCode, string funcitonCode, string typeCode);
+        IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode, string functionCode, string typeCode);
     }
 }
