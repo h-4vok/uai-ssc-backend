@@ -348,6 +348,9 @@
     <Build Include="Programmability\Stored Procedures\sp_Samples_get.sql" />
     <Build Include="Programmability\Stored Procedures\sp_testData_createSamples.sql" />
     <Build Include="Programmability\Stored Procedures\sp_testData_createSampleSatellite.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_start.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_addParentSample.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_addExpectedSample.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

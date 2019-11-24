@@ -54,7 +54,37 @@ namespace SSC.Data
 
         public int Create(WorkOrder model)
         {
-            throw new NotImplementedException();
+            var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
+
+            return this.uow.Run(() =>
+            {
+                model.Id = this.uow.Scalar("sp_WorkOrder_start",
+                    ParametersBuilder.With("OrderType", model.OrderType.Code)
+                        .And("TenantId", model.Tenant.Id)
+                        .And("CreatedBy", auth.CurrentUserId)
+                ).AsInt();
+
+                model.ParentSamples.ForEach(ps =>
+                    this.uow.NonQuery("sp_WorkOrder_addParentSample",
+                        ParametersBuilder.With("SampleId", ps.Id)
+                            .And("WorkOrderId", model.Id)
+                            .And("CreatedBy", auth.CurrentUserId)
+                    )
+                );
+
+                model.ExpectedChilds.ForEach(ec =>
+                    this.uow.NonQuery("sp_WorkOrder_addExpectedSample",
+                        ParametersBuilder.With("WorkOrderId", model.Id)
+                            .And("ParentSampleId", ec.ParentSample.Id)
+                            .And("DilutionFactor", ec.DilutionFactor)
+                            .And("VolumeToUse", ec.VolumeToUse)
+                            .And("ResultingVolume", ec.ResultingVolume)
+                            .And("UnitOfMeasureCode", ec.UnitOfMeasure.Code)
+                            .And("CreatedBy", auth.CurrentUserId)
+                ));
+
+                return model.Id;
+            }, true);
         }
 
         public WorkOrder Get(int id)

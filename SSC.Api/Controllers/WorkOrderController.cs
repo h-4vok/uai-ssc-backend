@@ -20,7 +20,7 @@ namespace SSC.Api.Controllers
         public ResponseViewModel<IEnumerable<WorkOrderReportRow>> Get()
             => this.business.GetReport().ToList();
 
-        public ResponseViewModel<int> Post(WorkOrder model) => throw new NotImplementedException();
+        public ResponseViewModel<int> Post(StartWorkOrderViewModel model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
         public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();
 

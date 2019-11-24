@@ -11,7 +11,7 @@ namespace SSC.Business.Interfaces
     public interface IWorkOrderBusiness
     {
         IEnumerable<WorkOrderReportRow> GetReport();
-        int Create(WorkOrder model);
+        int Create(StartWorkOrderViewModel model);
         void UpdateStatus(int id, string statusCode);
         WorkOrder Get(int id);
         void MarkAsChecked(int id, string sampleCode);

@@ -3904,6 +3904,111 @@ EXEC sp_testData_createSampleSatellite
 		
 /** Volvemos a las traducciones **/
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child.action.edit',
+	@es = 'Configurar',
+	@en = 'Configure'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child-sample.grid.parent-barcode',
+	@es = 'Muestra Padre',
+	@en = 'Parent Barcode'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child-sample.grid.ExpectedChildQuantity',
+	@es = 'Cant. Hijos Pedida',
+	@en = 'Childs Count Requested'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child-sample.grid.DilutionFactor',
+	@es = 'Factor de dilución',
+	@en = 'Dilution factor'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child-sample.grid.ResultingVolume',
+	@es = 'Volumen Resultante (por Muestra)',
+	@en = 'Resulting Volume (per Sample)'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'expected-child-sample.grid.UnitOfMeasureCode',
+	@es = 'Unidad de Medida',
+	@en = 'Unit of Measure'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.validation.parent-samples-empty',
+	@es = 'Muestras Padre',
+	@en = 'Parent Samples'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'validator.api.decimal-positive-non-zero',
+	@es = 'El valor {0} no puede ser vacío, negativo o cero.',
+	@en = 'The value {0} cannot be empty, negative or zero.'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.field.expected-child-quantity',
+	@es = 'Cantidad de Hijos Esperada',
+	@en = 'Expected Childs Quantity'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.field.dilution-factor',
+	@es = 'Factor de dilución',
+	@en = 'Dilution factor'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.field.resulting-volume',
+	@es = 'Volumen Resultante',
+	@en = 'Resulting Volume'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.StatusDescription',
+	@es = 'Estado',
+	@en = 'Status'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.CreatedBy',
+	@es = 'Manager',
+	@en = 'Manager'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.RequestDate',
+	@es = 'Fecha pedido',
+	@en = 'Request date'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.QuantityOfParentSamples',
+	@es = '# de Muestras Padre',
+	@en = '# of Parent Samples'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.QuantityOfExpectedChildSamples',
+	@es = '# de Muestras Hija',
+	@en = '# of Child Samples'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.grid.CurrentlyAssignedTo',
+	@es = 'Asignado a',
+	@en = 'Assigned to'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = '',
+	@es = '',
+	@en = ''
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

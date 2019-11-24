@@ -201,5 +201,33 @@ namespace SSC.Business
 
             return this;
         }
+
+        public Validator<T> Int2PositiveNonZero(Func<T, int?> propertyAccessor, string fieldName)
+        {
+            if (!this.ShouldRun) return this;
+
+            var data = propertyAccessor(this.model);
+
+            if (!data.HasValue || data.Value <= 0)
+            {
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.int-positive-non-zero"], fieldName));
+            }
+
+            return this;
+        }
+
+        public Validator<T> DecimalPositiveNonZero(Func<T, decimal?> propertyAccessor, string fieldName)
+        {
+            if (this.ShouldRun) return this;
+
+            var data = propertyAccessor(this.model);
+
+            if (!data.HasValue || data.Value <= 0)
+            {
+                return this.SetAndReturn(String.Format(this.i10n["validator.api.decimal-positive-non-zero"], fieldName));
+            }
+
+            return this;
+        }
     }
 }

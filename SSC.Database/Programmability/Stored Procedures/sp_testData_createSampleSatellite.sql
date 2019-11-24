@@ -2,6 +2,44 @@
 AS
 BEGIN
 
+	-- Work Order Status
+	INSERT WorkOrderStatus (
+		Code,
+		Description,
+		CreatedBy,
+		UpdatedBy
+	)
+	SELECT
+		Code = data.Code,
+		Description = data.Descr,
+		CreatedBy = 1,
+		UpdatedBy = 1
+	FROM (
+		SELECT Code = 'draft', Descr = 'Borrador' UNION
+		SELECT Code = 'checking', Descr = 'En Comprobación' UNION
+		SELECT Code = 'executing', Descr = 'En Ejecución' UNION
+		SELECT Code = 'completed', Descr = 'Completado' UNION
+		SELECT Code = 'cancelled', Descr = 'Cancelado'
+	) AS data
+
+	-- Work Order Types
+	INSERT WorkOrderType (
+		Code,
+		Description,
+		CreatedBy,
+		UpdatedBy
+	)
+	SELECT
+		Code = 'aliquot',
+		Description = 'Generar Alícuotas',
+		CreatedBy = 1,
+		UpdatedBy = 1
+	UNION SELECT
+		Code = 'eleuetes',
+		Description = 'Generar Eleuetes',
+		CreatedBy = 1,
+		UpdatedBy = 1
+
 	-- Insert Sample Functions
 	INSERT SampleFunction (
 		Code,
