@@ -30,12 +30,18 @@ namespace SSC.Api.Controllers
         public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();
 
         [HttpGet]
-        [Route("{id}")]
-        public ResponseViewModel<WorkOrder> Get(int id) => throw new NotImplementedException();
+        [Route("expectedSamples/{id}")]
+        public ResponseViewModel<IEnumerable<ExpectedSampleViewModel>> GetForExecution(int id)
+            => this.business.GetExpectedSamples(id).ToList();
 
         [HttpPut]
         [Route("checkSamples/{id}")]
         public ResponseViewModel Put(int id, CheckSamplesWorkOrderViewModel model)
             => ResponseViewModel.RunAndReturn(() => this.business.CheckSamples(id, model.CheckedSamples));
+
+        [HttpPut]
+        [Route("finish/{id}")]
+        public ResponseViewModel Put(int id, FinishWorkOrderViewModel model)
+            => ResponseViewModel.RunAndReturn(() => this.business.Finish(id, model));
     }
 }

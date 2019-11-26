@@ -357,6 +357,10 @@
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_markChecked.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_markUnknownAndReserved.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_assignUser.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_getExpectedSamples.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_finish.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_createAliquot.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Sample_updateVolumeAndRelease.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

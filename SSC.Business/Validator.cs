@@ -218,7 +218,7 @@ namespace SSC.Business
 
         public Validator<T> DecimalPositiveNonZero(Func<T, decimal?> propertyAccessor, string fieldName)
         {
-            if (this.ShouldRun) return this;
+            if (!this.ShouldRun) return this;
 
             var data = propertyAccessor(this.model);
 

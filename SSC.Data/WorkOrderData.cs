@@ -130,5 +130,58 @@ namespace SSC.Data
         {
             throw new NotImplementedException();
         }
+
+        protected ExpectedSampleViewModel FetchExpectedSampleViewModel(IDataReader reader)
+            => new ExpectedSampleViewModel
+            {
+                ParentSampleId = reader.GetInt32("ParentSampleId"),
+                DilutionFactor = reader.GetDecimal(reader.GetOrdinal("DilutionFactor")),
+                ParentBarcode = reader.GetString("ParentBarcode"),
+                ResultingVolume = reader.GetDecimal(reader.GetOrdinal("ResultingVolume")),
+                UnitOfMeasureCode = reader.GetString("UnitOfMeasureCode"),
+                VolumeToUse = reader.GetDecimal(reader.GetOrdinal("VolumeToUse"))
+            };
+
+
+        public IEnumerable<ExpectedSampleViewModel> GetExpectedSamples(int workOrderId)
+        {
+            return this.uow.GetDirect("sp_WorkOrder_getExpectedSamples", this.FetchExpectedSampleViewModel, ParametersBuilder.With("WorkOrderId", workOrderId));
+        }
+
+        public void Finish(int id, IEnumerable<ExpectedSampleViewModel> aliquots)
+        {
+            this.uow.Run(() =>
+            {
+                // marcamos como finalizada
+                this.uow.NonQuery("sp_WorkOrder_finish", ParametersBuilder.With("WorkOrderId", id));
+
+                // creamos samples hijos que son las alicuotas
+                aliquots.ForEach(a =>
+                {
+                    this.uow.NonQuery("sp_WorkOrder_createAliquot",
+                        ParametersBuilder.With("ParentSampleId", a.ParentSampleId)
+                            .And("Barcode", a.ChildBarcode)
+                            .And("Volume", a.FinalChildVolume)
+                            .And("CreatedBy", DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId)
+                        );
+                });
+
+                // actualizamos samples padres (estado y volumen)
+                var usedParentVolume = new Dictionary<int, decimal>();
+
+                aliquots.Select(x => x.ParentSampleId).Distinct().ForEach(x => usedParentVolume.Add(x, 0));
+                aliquots.ForEach(item => usedParentVolume[item.ParentSampleId] += item.UsedParentVolume.GetValueOrDefault());
+
+                foreach(var parentSampleId in usedParentVolume.Keys)
+                {
+                    var volume = usedParentVolume[parentSampleId];
+
+                    this.uow.NonQuery("sp_Sample_updateVolumeAndRelease",
+                        ParametersBuilder.With("SampleId", parentSampleId)
+                            .And("VolumeToDecrease", volume)
+                    );
+                }
+            }, true);
+        }
     }
 }

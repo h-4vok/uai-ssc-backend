@@ -97,6 +97,8 @@
     <Compile Include="ViewModels\ClientLandingViewModel.cs" />
     <Compile Include="ViewModels\ClientMemberReportRow.cs" />
     <Compile Include="ViewModels\ExpectedChildViewModel.cs" />
+    <Compile Include="ViewModels\ExpectedSampleViewModel.cs" />
+    <Compile Include="ViewModels\FinishWorkOrderViewModel.cs" />
     <Compile Include="ViewModels\PrintableBillViewModel.cs" />
     <Compile Include="ViewModels\ProfitReportRow.cs" />
     <Compile Include="ViewModels\ReceiptReturnRequestViewModel.cs" />

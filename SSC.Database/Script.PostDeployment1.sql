@@ -4050,6 +4050,66 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Cannot continue. At least one sample must be checked.'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.aliquot',
+	@es = 'Ingresar Alícuota',
+	@en = 'Enter Aliquot'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.ParentBarcode',
+	@es = 'Muestra Padre',
+	@en = 'Parent Sample'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.ChildBarcode',
+	@es = 'Muestra Hija',
+	@en = 'Child Sample'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.DilutionFactor',
+	@es = 'Factor de Dilución',
+	@en = 'Dilution Factor'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.VolumeToUse',
+	@es = 'Vol. a Usar',
+	@en = 'Vol. to Use'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.ResultingVolume',
+	@es = 'Vol. Esperado',
+	@en = 'Vol. Expected'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.UnitOfMeasureCode',
+	@es = 'Unidad',
+	@en = 'UOM'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.UsedParentVolume',
+	@es = 'Vol. Usado',
+	@en = 'Vol. Used'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'execute-work-order.grid.FinalChildVolume',
+	@es = 'Vol. Final',
+	@en = 'Final Volume'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.action.complete',
+	@es = 'Finalizar',
+	@en = 'Complete'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.validation.expected-childs-empty',
+	@es = 'Muestras de Salida',
+	@en = 'Output Samples'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'work-order.start.field.too-much-volume',
+	@es = 'No hay suficiente volumen en la muestra {0} para la configuración establecida. Se dispone de {1}{3} y se está requiriendo {2}{3}.',
+	@en = 'There is not enough volume in sample {1} for the requested output. There is {1}{3} available and {2}{3} is required.'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',
 	@es = '',
 	@en = ''

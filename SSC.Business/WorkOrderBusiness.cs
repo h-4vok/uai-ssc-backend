@@ -1,5 +1,6 @@
 ﻿using SSC.Business.Interfaces;
 using SSC.Common;
+using SSC.Common.Exceptions;
 using SSC.Common.Interfaces;
 using SSC.Common.ViewModels;
 using SSC.Data.Interfaces;
@@ -23,11 +24,15 @@ namespace SSC.Business
         public int Create(StartWorkOrderViewModel model)
         {
             var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+            var volumeToUse = new Dictionary<int, decimal>();
 
             Validator<StartWorkOrderViewModel>.Start(model)
                 .ListNotEmpty(x => x.ParentSamples, i10n["work-order.start.validation.parent-samples-empty"])
+                .ListNotEmpty(x => x.ExpectedChilds, i10n["work-order.start.validation.expected-childs-empty"])
                 .FailWhenClosureReturnsFalse(x =>
                 {
+                    model.ParentSamples.Select(p => p.Id).Distinct().ForEach(sampleId => volumeToUse.Add(sampleId, 0));
+
                     foreach (var expectedChild in x.ExpectedChilds)
                     {
                         Validator<ExpectedChildViewModel>.Start(expectedChild)
@@ -35,12 +40,32 @@ namespace SSC.Business
                             .DecimalPositiveNonZero(item => item.DilutionFactor, i10n["work-order.start.field.dilution-factor"])
                             .DecimalPositiveNonZero(item => item.ResultingVolume, i10n["work-order.start.field.resulting-volume"])
                             .ThrowExceptionIfApplicable();
+
+                        var parentId = x.ParentSamples.First(item => item.Barcode == expectedChild.ParentBarcode).Id;
+                        volumeToUse[parentId] += 
+                           expectedChild.ExpectedChildQuantity.Value * (expectedChild.ResultingVolume.Value / expectedChild.DilutionFactor.Value) ;
                     }
 
                     return true;
                 }, ""
                 )
                 .ThrowExceptionIfApplicable();
+
+            foreach (var sampleId in volumeToUse.Keys)
+            {
+                var sample = model.ParentSamples.First(x => x.Id == sampleId);
+
+                if (sample.AvailableVolume < volumeToUse[sampleId])
+                {
+                    throw new UnprocessableEntityException(
+                        String.Format(
+                            i10n["work-order.start.field.too-much-volume"], 
+                            sample.Barcode, 
+                            sample.AvailableVolume, 
+                            volumeToUse[sampleId], 
+                            sample.UnitOfMeasureCode));
+                }
+            }
 
             var auth = DependencyResolver.Obj.Resolve<IAuthenticationProvider>();
 
@@ -105,6 +130,37 @@ namespace SSC.Business
             var sampleIds = checkedSamples.Where(x => x.Checked).Select(x => x.Id);
 
             this.data.MarkAsChecked(workOrderId, sampleIds);
+        }
+
+        public IEnumerable<ExpectedSampleViewModel> GetExpectedSamples(int workOrderId)
+        {
+            var items = this.data.GetExpectedSamples(workOrderId);
+            var parentItems = new Dictionary<string, int>();
+
+            items.Select(x => x.ParentBarcode).Distinct().ForEach(x => parentItems.Add(x, 0));
+
+            items.ForEach(x =>
+            {
+                var count = parentItems[x.ParentBarcode]++;
+                x.ChildBarcode = String.Concat(x.ParentBarcode, (char) (65 + count));
+            });
+
+            return items;
+        }
+
+        public void Finish(int id, FinishWorkOrderViewModel model)
+        {
+            var i10n = DependencyResolver.Obj.Resolve<ILocalizationProvider>();
+
+            foreach(var item in model.Aliquots)
+            {
+                Validator<ExpectedSampleViewModel>.Start(item)
+                    .DecimalPositiveNonZero(x => x.UsedParentVolume, i10n["execute-work-order.grid.UsedParentVolume"])
+                    .DecimalPositiveNonZero(x => x.FinalChildVolume, i10n["execute-work-order.grid.FinalChildVolume"])
+                    .ThrowExceptionIfApplicable();
+            }
+
+            this.data.Finish(id, model.Aliquots);
         }
     }
 }
