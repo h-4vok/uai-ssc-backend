@@ -8,7 +8,7 @@ BEGIN
 	DECLARE @WorkOrderStatusId INT
 	DECLARE @WorkOrderTypeId INT
 
-	SELECT @WorkOrderStatusId = Id  FROM WorkOrderStatus WHERE Code = 'draft'
+	SELECT @WorkOrderStatusId = Id  FROM WorkOrderStatus WHERE Code = 'checking'
 	SELECT @WorkOrderTypeId = Id  FROM WorkOrderType WHERE Code = @OrderType
 
 	INSERT WorkOrder (

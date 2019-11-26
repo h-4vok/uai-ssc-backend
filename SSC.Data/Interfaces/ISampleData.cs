@@ -10,6 +10,7 @@ namespace SSC.Data.Interfaces
 {
     public interface ISampleData
     {
-        IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode, string functionCode, string typeCode);
+        IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode);
+        IEnumerable<CheckableSampleReportRow> GetParentSamplesOfWorkOrder(int workOrderId);
     }
 }

@@ -19,11 +19,16 @@ namespace SSC.Business
         }
         private ISampleData data;
 
-        public IEnumerable<SampleReportRow> GetAvailableSamples(string functionCode, string typeCode)
+        public IEnumerable<SampleReportRow> GetAvailableSamples()
         {
             var clientId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentClientId;
 
-            return this.data.GetSamples(clientId, "available", null, null);
+            return this.data.GetSamples(clientId, "available");
+        }
+
+        public IEnumerable<CheckableSampleReportRow> GetParentSamplesOfWorkOrder(int workOrderId)
+        {
+            return this.data.GetParentSamplesOfWorkOrder(workOrderId);
         }
     }
 }

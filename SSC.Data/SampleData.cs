@@ -31,12 +31,29 @@ namespace SSC.Data
                 UnitOfMeasureCode = reader.GetString("UnitOfMeasureCode")
             };
 
-        public IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode, string functionCode, string typeCode)
+        private CheckableSampleReportRow FetchCheckableReportRow(IDataReader reader) 
+            => new CheckableSampleReportRow
+            {
+                Id = reader.GetInt32("Id"),
+                Barcode = reader.GetString("Barcode"),
+                SampleTypeCode = reader.GetString("SampleTypeCode"),
+                AvailableVolume = reader.GetDecimal(reader.GetOrdinal("AvailableVolume")),
+                UnitOfMeasureCode = reader.GetString("UnitOfMeasureCode")
+            };
+
+        public IEnumerable<SampleReportRow> GetSamples(int clientId, string statusCode)
         {
             return this.uow.GetDirect("sp_Samples_get",
                 this.FetchReportRow,
                 ParametersBuilder.With("StatusCode", statusCode)
             );
+        }
+
+        public IEnumerable<CheckableSampleReportRow> GetParentSamplesOfWorkOrder(int workOrderId)
+        {
+            return this.uow.GetDirect("sp_Samples_getParentSamplesOfWorkOrder",
+                this.FetchCheckableReportRow,
+                ParametersBuilder.With("WorkOrderId", workOrderId));
         }
     }
 }

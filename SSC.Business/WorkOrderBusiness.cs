@@ -99,5 +99,12 @@ namespace SSC.Business
         {
             throw new NotImplementedException();
         }
+
+        public void CheckSamples(int workOrderId, IEnumerable<CheckableSampleReportRow> checkedSamples)
+        {
+            var sampleIds = checkedSamples.Where(x => x.Checked).Select(x => x.Id);
+
+            this.data.MarkAsChecked(workOrderId, sampleIds);
+        }
     }
 }

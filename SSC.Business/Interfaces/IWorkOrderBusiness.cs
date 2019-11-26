@@ -15,5 +15,6 @@ namespace SSC.Business.Interfaces
         void UpdateStatus(int id, string statusCode);
         WorkOrder Get(int id);
         void MarkAsChecked(int id, string sampleCode);
+        void CheckSamples(int workOrderId, IEnumerable<CheckableSampleReportRow> checkedSamples);
     }
 }

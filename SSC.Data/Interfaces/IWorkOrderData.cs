@@ -15,6 +15,6 @@ namespace SSC.Data.Interfaces
         void UpdateStatus(int id, string statusCode);
         WorkOrder Get(int id);
         void AssignTo(int id, int userId);
-        void MarkAsChecked(int id, string sampleCode);
+        void MarkAsChecked(int workOrderId, IEnumerable<int> sampleIds);
     }
 }

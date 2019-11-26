@@ -99,9 +99,31 @@ namespace SSC.Data
             return this.uow.GetDirect("sp_WorkOrder_getAll", this.FetchReportRow);
         }
 
-        public void MarkAsChecked(int id, string sampleCode)
+        protected object FetchFake(IDataReader reader) =>
+            new object();
+
+        public void MarkAsChecked(int id, IEnumerable<int> sampleIds)
         {
-            throw new NotImplementedException();
+            this.uow.Run(() =>
+            {
+                // cambiar estado wo
+                this.uow.NonQuery("sp_WorkOrder_ToExecuting", ParametersBuilder.With("WorkOrderId", id));
+
+                // asignar a mi usuario
+                var userId = DependencyResolver.Obj.Resolve<IAuthenticationProvider>().CurrentUserId;
+                this.uow.NonQuery("sp_WorkOrder_assignUser", ParametersBuilder.With("WorkOrderId", id).And("UserId", userId));
+
+                // poner todas las samples unchecked
+                this.uow.NonQuery("sp_WorkOrder_markAllUnchecked", ParametersBuilder.With("WorkOrderId", id));
+
+                // poner checked las samples que tenemos
+                sampleIds.ForEach(sampleId => 
+                    this.uow.NonQuery("sp_WorkOrder_markChecked", ParametersBuilder.With("WorkOrderId", id).And("SampleId", sampleId)));
+
+                // poner unknown a las samples que no esten checked
+                this.uow.NonQuery("sp_WorkOrder_markUnknownAndReserved", ParametersBuilder.With("WorkOrderId", id));
+            }, true);
+
         }
 
         public void UpdateStatus(int id, string statusCode)

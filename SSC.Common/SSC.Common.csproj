@@ -89,6 +89,8 @@
     <Compile Include="ViewModels\BuyViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ChartDataViewModel.cs" />
+    <Compile Include="ViewModels\CheckableSampleReportRow.cs" />
+    <Compile Include="ViewModels\CheckSamplesWorkOrderViewModel.cs" />
     <Compile Include="ViewModels\ClientBalanceBillReport.cs" />
     <Compile Include="ViewModels\ClientBalanceReport.cs" />
     <Compile Include="ViewModels\ClientCompanyReportRow.cs" />

@@ -351,6 +351,12 @@
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_start.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_addParentSample.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_addExpectedSample.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_Samples_getParentSamplesOfWorkOrder.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_ToExecuting.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_markAllUnchecked.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_markChecked.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_markUnknownAndReserved.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_assignUser.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

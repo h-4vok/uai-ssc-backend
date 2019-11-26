@@ -8,13 +8,20 @@ using System.Web.Http;
 
 namespace SSC.Api.Controllers
 {
+    [RoutePrefix("api/sample")]
     public class SampleController : ApiController
     {
         private ISampleBusiness business;
 
         public SampleController(ISampleBusiness business) => this.business = business;
 
-        public ResponseViewModel<IEnumerable<SampleReportRow>> Get(string functionCode, string typeCode)
-            => this.business.GetAvailableSamples(functionCode, typeCode).ToList();
+        [Route("")]
+        [HttpGet]
+        public ResponseViewModel<IEnumerable<SampleReportRow>> Get()
+            => this.business.GetAvailableSamples().ToList();
+
+        [Route("parentSamplesOfWorkOrder/{workOrderId}")]
+        public ResponseViewModel<IEnumerable<CheckableSampleReportRow>> Get(int workOrderId) =>
+            this.business.GetParentSamplesOfWorkOrder(workOrderId).ToList();
     }
 }

@@ -3901,6 +3901,7 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 
 /** Datos de prueba **/
 EXEC sp_testData_createSampleSatellite
+EXEC sp_testData_createSamples
 		
 /** Volvemos a las traducciones **/
 EXEC sp_SystemLanguageEntry_addOrUpdate
@@ -3989,19 +3990,64 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'Assigned to'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'check-work-order.dialog.confirm',
+	@es = 'Las muestras que no han sido confirmadas serán marcadas como Estado Desconocido y no se utilizarán en esta órden de trabajo. ¿Desea continuar?',
+	@en = 'The samples that have not been confirmed will be marked as Status Unknown and will not be used in this work order. Do you wish to continue?'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'global.scan-barcode',
+	@es = 'Escanee o Escriba el código de barras',
+	@en = 'Scan or type the barcode'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'check-work-order.checked',
+	@es = 'Comprobada',
+	@en = 'Checked'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'parent-sample-search.grid.Checked',
+	@es = 'Comprobado',
+	@en = 'Checked'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'parent-sample-search.grid.Barcode',
+	@es = 'Código',
+	@en = 'Barcode'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'parent-sample-search.grid.SampleTypeCode',
+	@es = 'Tipo',
+	@en = 'Type'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'parent-sample-search.grid.AvailableVolume',
+	@es = 'Volumen',
+	@en = 'Volume'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'parent-sample-search.grid.UnitOfMeasureCode',
+	@es = 'Unidad',
+	@en = 'Unit of Measure'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'check-barcode.empty',
+	@es = 'Ingrese o escanee un código de barra para comprobar una muestra.',
+	@en = 'Type or scan a barcode to check the sample.'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'check-barcode.not-found',
+	@es = 'El código de barras ingresado no ha sido encontrado en esta órden.',
+	@en = 'The barcode you scanned has not been found in this work order.'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'check-barcode.success',
+	@es = 'Muestra comprobada',
+	@en = 'Sample checked'
+		
+EXEC sp_SystemLanguageEntry_addOrUpdate
+	@k = 'check-samples.all-unchecked',
+	@es = 'No puede continuar sin al menos comprobar una muestra.',
+	@en = 'Cannot continue. At least one sample must be checked.'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

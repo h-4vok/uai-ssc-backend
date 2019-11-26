@@ -5,6 +5,12 @@
 AS
 BEGIN
 
+	UPDATE
+		Sample
+	SET
+		StatusCode = 'reserved'
+	WHERE	Id = @SampleId
+
 	INSERT WorkOrderParentSample (
 		CreatedBy,
 		SampleId,

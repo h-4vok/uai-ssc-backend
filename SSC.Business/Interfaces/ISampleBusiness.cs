@@ -9,6 +9,7 @@ namespace SSC.Business.Interfaces
 {
     public interface ISampleBusiness
     {
-        IEnumerable<SampleReportRow> GetAvailableSamples(string functionCode, string typeCode);
+        IEnumerable<SampleReportRow> GetAvailableSamples();
+        IEnumerable<CheckableSampleReportRow> GetParentSamplesOfWorkOrder(int workOrderId);
     }
 }
