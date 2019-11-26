@@ -4110,9 +4110,9 @@ EXEC sp_SystemLanguageEntry_addOrUpdate
 	@en = 'There is not enough volume in sample {1} for the requested output. There is {1}{3} available and {2}{3} is required.'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
-	@k = '',
-	@es = '',
-	@en = ''
+	@k = 'execute-work-order.print-aliquot-labels',
+	@es = 'Imprimir Códigos de Barra',
+	@en = 'Print Barcode Labels'
 		
 EXEC sp_SystemLanguageEntry_addOrUpdate
 	@k = '',

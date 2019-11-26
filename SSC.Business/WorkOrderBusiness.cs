@@ -162,5 +162,10 @@ namespace SSC.Business
 
             this.data.Finish(id, model.Aliquots);
         }
+
+        public void Cancel(int id)
+        {
+            this.data.Cancel(id);
+        }
     }
 }

@@ -18,5 +18,6 @@ namespace SSC.Data.Interfaces
         void MarkAsChecked(int workOrderId, IEnumerable<int> sampleIds);
         IEnumerable<ExpectedSampleViewModel> GetExpectedSamples(int workOrderId);
         void Finish(int id, IEnumerable<ExpectedSampleViewModel> aliquots);
+        void Cancel(int id);
     }
 }

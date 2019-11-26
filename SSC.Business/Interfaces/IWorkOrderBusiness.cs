@@ -18,5 +18,6 @@ namespace SSC.Business.Interfaces
         void CheckSamples(int workOrderId, IEnumerable<CheckableSampleReportRow> checkedSamples);
         IEnumerable<ExpectedSampleViewModel> GetExpectedSamples(int workOrderId);
         void Finish(int id, FinishWorkOrderViewModel model);
+        void Cancel(int id);
     }
 }

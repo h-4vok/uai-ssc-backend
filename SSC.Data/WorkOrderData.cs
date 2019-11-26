@@ -183,5 +183,10 @@ namespace SSC.Data
                 }
             }, true);
         }
+
+        public void Cancel(int id)
+        {
+            this.uow.NonQueryDirect("sp_WorkOrder_cancel", ParametersBuilder.With("Id", id));
+        }
     }
 }

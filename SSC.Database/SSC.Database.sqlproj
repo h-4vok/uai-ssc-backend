@@ -361,6 +361,7 @@
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_finish.sql" />
     <Build Include="Programmability\Stored Procedures\sp_WorkOrder_createAliquot.sql" />
     <Build Include="Programmability\Stored Procedures\sp_Sample_updateVolumeAndRelease.sql" />
+    <Build Include="Programmability\Stored Procedures\sp_WorkOrder_cancel.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSC.Database.publish.xml" />

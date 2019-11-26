@@ -27,7 +27,20 @@ namespace SSC.Api.Controllers
         [Route("")]
         public ResponseViewModel<int> Post(StartWorkOrderViewModel model) => ResponseViewModel.RunAndReturn(() => this.business.Create(model));
 
-        public ResponseViewModel Patch(IEnumerable<PatchOperation> operations) => throw new NotImplementedException();
+        [HttpPatch]
+        [Route("{id}")]
+        public ResponseViewModel Patch(int id, PatchOperationList list)
+        {
+            foreach (var operation in list.Operations)
+            {
+                if (operation.op == "replace" && operation.field == "WorkOrderStatusId")
+                {
+                    this.business.Cancel(operation.key);
+                }
+            }
+
+            return true;
+        }
 
         [HttpGet]
         [Route("expectedSamples/{id}")]
